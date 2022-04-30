@@ -99,3 +99,4 @@ fabric.properties
 *.iml
 *.pm
 *.tar.xz
+test.pl

@@ -49,7 +49,7 @@ my $CFG = {
     min_onegram_length         => 4,
     min_pattern_count          => 5,
 
-    min_anchor_count           => 100, #was 10 before
+    min_anchor_count           => 10, #was 10 before
     min_propertyonegram_length => 4,
     min_propertypattern_count  => 5,
     min_propertystring_length  => 5,
@@ -210,7 +210,8 @@ if (
         my $c = $obj->{o}->{value};
 
         # # next if $c !~ m/\/Actor\Z/; # TODO remove
-        # next if $c !~ m/\/$className\Z/; # TODO remove
+        # todo: change regex
+        next if $c !~ m/\/$className\Z/; # TODO remove
         print "class1 > $c\n";
 
         $frequent_class_to_entities->{$c}->{$obj->{s}->{value}} = 1 if exists $entities_with_abstract->{$obj->{s}->{value}};
@@ -219,7 +220,7 @@ if (
         print "c $c\n";
 
         ## next if $c !~ m/\/Actor\Z/; # TODO remove
-        #next if $c !~ m/\/$className\Z/; # TODO remove
+        next if $c !~ m/\/$className\Z/; # TODO remove
         print "class2 > $c\n";
 
         if (scalar keys %{$frequent_class_to_entities->{$c}} < $CFG->{min_entities_per_class}) {
@@ -439,7 +440,7 @@ if (not -e $step2_finished_file) {
     foreach my $e (keys %{$entity_to_pos_to_triples}) {
         my $e_enc;
         #TODO: Check if matcher should match for ontology too
-        if ($e =~ m/http:\/\/(.*)dbpedia.org\/resource\/(.*)/) {
+        if ($e =~ m/http:\/\/.*dbpedia.org\/resource\/(.*)/) {
             $e_enc = "dbr-" . url_encode_utf8($1);
         }
         else {
@@ -469,9 +470,8 @@ if (not -e $step2_finished_file) {
     mkdir "$BASEDIR/inter/data_per_class/" if not -d "$BASEDIR/inter/data_per_class";
     foreach my $c (keys %{$class_to_pos_to_triples}) {
         my $c_enc;
-        #TODO: Check if matcher should match for ontology too: before:if($c =~ m/http:\/\/(.*)dbpedia.org\/ontology\/(.*)/){
 
-        if ($c =~ m/http:\/\/(.*)dbpedia.org\/ontology\/(.*)/) {
+        if ($c =~ m/http:\/\/.*dbpedia.org\/ontology\/(.*)/) {
             $c_enc = "dbo-" . url_encode_utf8($1);
         }
         else {
@@ -551,7 +551,7 @@ if (not -e $step3_finished_file) {
         my $e = $obj->{s}->{value};
         if (exists $entity_to_frequent_classes->{$e}) {
             my $e_enc;
-            if ($e =~ m/http:\/\/(.*)dbpedia.org\/resource\/(.*)/) {
+            if ($e =~ m/http:\/\/.*dbpedia.org\/resource\/(.*)/) {
                 $e_enc = "dbr-" . url_encode_utf8($1);
             }
             else {
@@ -589,7 +589,7 @@ if (not -e $step3_finished_file) {
                 next;
             }
 
-            next if -s "$propertypatternfilename.bz2" and -s "$patternfilename.bz2";
+            #next if -s "$propertypatternfilename.bz2" and -s "$patternfilename.bz2";
 
             my $entitysubdatafilename = "$BASEDIR/inter/data_per_entity/$last/$e_enc-sub-" . $CFG->{min_anchor_count} . ".ttl";
             my $entityobjdatafilename = "$BASEDIR/inter/data_per_entity/$last/$e_enc-obj-" . $CFG->{min_anchor_count} . ".ttl";
@@ -1117,7 +1117,7 @@ if (-e $step3_finished_file and not -e $step4_finished_file) {
 
         print " " x 0 . " c = $c (step 4)\n";
         my $c_enc;
-        if ($c =~ m/http:\/\/(.*)dbpedia.org\/ontology\/(.*)/) {
+        if ($c =~ m/http:\/\/.*dbpedia.org\/ontology\/(.*)/) {
             $c_enc = "dbo-" . url_encode_utf8($1);
         }
         else {
@@ -1163,7 +1163,7 @@ if (-e $step3_finished_file and not -e $step4_finished_file) {
             foreach my $e (keys %{$frequent_class_to_entities->{$c}}) {
                 #print " e $e\n";
                 my $e_enc;
-                if ($e =~ m/http:\/\/(.*)dbpedia.org\/resource\/(.*)/) {
+                if ($e =~ m/http:\/\/.*dbpedia.org\/resource\/(.*)/) {
                     $e_enc = "dbr-" . url_encode_utf8($1);
                 }
                 else {
@@ -1352,7 +1352,7 @@ if (-e $step4_finished_file and not -e $step5_finished_file) {
     foreach my $c (sort keys %{$frequent_class_to_entities}) {
 
         my $c_enc;
-        if ($c =~ m/http:\/\/(.*)dbpedia.org\/ontology\/(.*)/) {
+        if ($c =~ m/http:\/\/.*dbpedia.org\/ontology\/(.*)/) {
             $c_enc = "dbo-" . url_encode_utf8($1);
         }
         else {
@@ -3089,8 +3089,16 @@ sub parse_NT_into_obj {
     # BNODE URI LIT-DAT
     # BNODE URI BNODE
 
+    # URI+(Politiker...) URI URI
+    if ($string =~ m/<(.*\($className.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
+        return {
+            s => { type => "uri", value => "$1" },
+            p => { type => "uri", value => "$2" },
+            o => { type => "uri", value => $3 =~ s/Person/$className/rig },
+        };
+    }
     # URI URI URI
-    if ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
+    elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
         return {
             s => { type => "uri", value => "$1" },
             p => { type => "uri", value => "$2" },

@@ -100,3 +100,4 @@ fabric.properties
 *.pm
 *.tar.xz
 test.pl
+*.jar

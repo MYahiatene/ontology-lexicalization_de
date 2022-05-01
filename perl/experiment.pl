@@ -3094,7 +3094,7 @@ sub parse_NT_into_obj {
         return {
             s => { type => "uri", value => "$1" },
             p => { type => "uri", value => "$2" },
-            o => { type => "uri", value => $3 =~ s/Person/$className/rig },
+            o => { type => "uri", value => "http://dbpedia.org/ontology/$className" },
         };
     }
     # URI URI URI

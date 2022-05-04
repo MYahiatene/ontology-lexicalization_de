@@ -42,7 +42,7 @@ use FindBin;
 # for maven my $BASEDIR = "/app/";
 # my $BASEDIR = "/app/"; 
 my $BASEDIR = "$FindBin::Bin/../";
-
+my $LANGTAG = "de";
 my $CFG = {
     min_entities_per_class     => 100,
     max_entities_per_class     => 100,
@@ -174,9 +174,9 @@ if (
     my $entities_with_abstract = {};
     my $entities_with_abstract_file = "$BASEDIR/inter/entities_with_abstract.yml";
     if (not -s $entities_with_abstract_file) {
-        print " < $BASEDIR/input/inputAbstract/short-abstracts_lang=de.ttl.bz2 " . format_bytes(-s "$BASEDIR/input/inputAbstract/short-abstracts_lang=de.ttl.bz2") . "\n";
+        print " < $BASEDIR/input/inputAbstract/short-abstracts_lang=$LANGTAG.ttl.bz2 " . format_bytes(-s "$BASEDIR/input/inputAbstract/short-abstracts_lang=de.ttl.bz2") . "\n";
         my $zh = IO::Uncompress::Bunzip2->new(
-            "$BASEDIR/input/inputAbstract/short-abstracts_lang=de.ttl.bz2",
+            "$BASEDIR/input/inputAbstract/short-abstracts_lang=$LANGTAG.ttl.bz2",
             { AutoClose => 1, Transparent => 1, }
         ) or die "IO::Uncompress::Bunzip2 failed: $Bunzip2Error\n";
 
@@ -194,9 +194,9 @@ if (
         $entities_with_abstract = LoadFile($entities_with_abstract_file);
     }
 
-    print " < $BASEDIR/input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 " . (format_bytes(-s "$BASEDIR/input/inputSemantic/instance-types_lang=de_specific.ttl.bz2")) . "\n";
+    print " < $BASEDIR/input/inputSemantic/instance-types_lang=$LANGTAG_specific.ttl.bz2 " . (format_bytes(-s "$BASEDIR/input/inputSemantic/instance-types_lang=de_specific.ttl.bz2")) . "\n";
     my $zh = IO::Uncompress::Bunzip2->new(
-        "$BASEDIR/input/inputSemantic/instance-types_lang=de_specific.ttl.bz2",
+        "$BASEDIR/input/inputSemantic/instance-types_lang=$LANGTAG_specific.ttl.bz2",
         { AutoClose => 1, Transparent => 1, }
     ) or die "IO::Uncompress::Bunzip2 failed: $Bunzip2Error\n";
 
@@ -291,7 +291,7 @@ if (not -e $step2_finished_file) {
     mkdir "$BASEDIR/inter/data_per_entity" if not -d "$BASEDIR/inter/data_per_entity";
 
     my $labels = {};
-    my $labels_file = "$BASEDIR/input/inputSemantic/labels_lang=de.ttl.bz2";
+    my $labels_file = "$BASEDIR/input/inputSemantic/labels_lang=$LANGTAG.ttl.bz2";
     print " < $labels_file " . format_bytes(-s $labels_file) . "\n";
     my $zhl = IO::Uncompress::Bunzip2->new(
         $labels_file,
@@ -333,10 +333,10 @@ if (not -e $step2_finished_file) {
     my $added_anchors_to_entity_file = {};
 
     foreach my $file (
-        "$BASEDIR/input/inputProperty/infobox-properties_lang=de.ttl.bz2",
-        "$BASEDIR/input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2",
-        "$BASEDIR/input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2",
-        "$BASEDIR/input/inputSemantic/instance-types_lang=de_specific.ttl.bz2",
+        "$BASEDIR/input/inputProperty/infobox-properties_lang=$LANGTAG.ttl.bz2",
+        "$BASEDIR/input/inputSemantic/mappingbased-objects_lang=$LANGTAG.ttl.bz2",
+        "$BASEDIR/input/inputSemantic/mappingbased-literals_lang=$LANGTAG.ttl.bz2",
+        "$BASEDIR/input/inputSemantic/instance-types_lang=$LANGTAG\_specific.ttl.bz2",
     ) {
         print " < $file " . format_bytes(-s $file) . "\n";
         my $zh = IO::Uncompress::Bunzip2->new(
@@ -532,9 +532,9 @@ if (not -e $step3_finished_file) {
 
     # TODO step 3 could be cleaned up a bit
     my $start_time = time();
-    print " < $BASEDIR/input/inputAbstract/short-abstracts_lang=de.ttl.bz2 " . format_bytes(-s "$BASEDIR/input/inputAbstract/short-abstracts_lang=de.ttl.bz2") . "\n";
+    print " < $BASEDIR/input/inputAbstract/short-abstracts_lang=$LANGTAG.ttl.bz2 " . format_bytes(-s "$BASEDIR/input/inputAbstract/short-abstracts_lang=de.ttl.bz2") . "\n";
     my $zh = IO::Uncompress::Bunzip2->new(
-        "$BASEDIR/input/inputAbstract/short-abstracts_lang=de.ttl.bz2",
+        "$BASEDIR/input/inputAbstract/short-abstracts_lang=$LANGTAG.ttl.bz2",
         { AutoClose => 1, Transparent => 1, }
     ) or die "IO::Uncompress::Bunzip2 failed: $Bunzip2Error\n";
 
@@ -689,14 +689,14 @@ if (not -e $step3_finished_file) {
             #print Dump { e => $e, data => $data }; <STDIN>;
             my $abstract = $obj->{o}->{value};
             $abstract =~ s/\A"//;
-            $abstract =~ s/"\@de\Z//; # TODO language specific
+            $abstract =~ s/"\@$LANGTAG\Z//; # TODO language specific
             #print "ABSTRACT <$abstract>\n";
             # check why labels->e undef
             my $entity_label = $labels->{$e};
             print $entity_label;
             $entity_label =~ s/\A"//;
-            $entity_label =~ s/"\@de\Z//; # TODO language specific
-
+            $entity_label =~ s/"\@$LANGTAG\Z//; # TODO language specific
+            #TODO: load pronouns from file
             #if(not defined $entity_label){ # TODO do something, e.g., log und skip
             #	print Dump {
             #		entity => $e,
@@ -1011,7 +1011,7 @@ if (not -e $step3_finished_file) {
                 # TODO reduce code duplication
                 my $o = $obj->{o}->{value};
                 $o =~ s/\A"//;
-                $o =~ s/"\@de\Z//;
+                $o =~ s/"\@$LANGTAG\Z//;
                 my @onegrams = split(" ", $o);
                 foreach my $onegram (@onegrams) {
                     $onegram =~ s/\.\Z//;
@@ -3029,9 +3029,9 @@ sub shorten {
         "http://dbpedia.org/resource/"                           => "dbr",
         "http://dbpedia.org/ontology/"                           => "dbo",
         "http://dbpedia.org/property/"                           => "dbp",
-        "http://de.dbpedia.org/resource/"                           => "dbrd",
-        "http://de.dbpedia.org/ontology/"                           => "dbod",
-        "http://de.dbpedia.org/property/"                           => "dbpd",
+        "http://$LANGTAG.dbpedia.org/resource/"                  => "dbr$LANGTAG",
+        "http://$LANGTAG.dbpedia.org/ontology/"                  => "dbo$LANGTAG",
+        "http://$LANGTAG.dbpedia.org/property/"                  => "dbp$LANGTAG",
         "http://purl.org/dc/elements/1.1/"                       => "dc",
         "http://xmlns.com/foaf/0.1/"                             => "foaf",
         "http://yago-knowledge.org/resource/"                    => "yago",
@@ -3168,7 +3168,7 @@ sub identify {
     my $R = {};
 
     foreach my $literal (sort keys %{$literals}) {
-        next if $literal eq "\"\"\@de";
+        next if $literal eq "\"\"\@$LANGTAG";
 
         if ($literal =~ m/\A"(.*)"\@de\Z/ or $literal =~ m/\A"(.*)"\Z/) {
             next if not length $literal >= 8;
@@ -3245,11 +3245,11 @@ sub identify {
         }
         elsif (
             $literal =~ m/\A"(.*)\"\^\^<http:\/\/www.w3.org\/2001\/XMLSchema#integer>\Z/
-                or $literal =~ m/\A"(.*)\"\^\^<http:\/\/(.*)dbpedia.org\/datatype\/Currency>\Z/
-                or $literal =~ m/\A"(.*)\"\^\^<http:\/\/(.*)dbpedia.org\/datatype\/usDollar>\Z/
-                or $literal =~ m/\A"(.*)\"\^\^<http:\/\/(.*)dbpedia.org\/datatype\/perCent>\Z/
-                or $literal =~ m/\A"(.*)\"\^\^<http:\/\/(.*)dbpedia.org\/datatype\/second>\Z/
-                or $literal =~ m/\A"(.*)\"\^\^<http:\/\/(.*)dbpedia.org\/datatype\/rod>\Z/
+                or $literal =~ m/\A"(.*)\"\^\^<http:\/\/.*dbpedia.org\/datatype\/Currency>\Z/
+                or $literal =~ m/\A"(.*)\"\^\^<http:\/\/.*dbpedia.org\/datatype\/usDollar>\Z/
+                or $literal =~ m/\A"(.*)\"\^\^<http:\/\/.*dbpedia.org\/datatype\/perCent>\Z/
+                or $literal =~ m/\A"(.*)\"\^\^<http:\/\/.*dbpedia.org\/datatype\/second>\Z/
+                or $literal =~ m/\A"(.*)\"\^\^<http:\/\/.*dbpedia.org\/datatype\/rod>\Z/
                 #or $literal =~ m/\A"(.*)\"\^\^<http:\/\/dbpedia.org\/datatype\/Currency>\Z/
 
                 or $literal =~ m/\A"(.*)\"\^\^<http:\/\/www.w3.org\/2001\/XMLSchema#gYear>\Z/

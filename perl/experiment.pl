@@ -118,7 +118,7 @@ my $num_to_month = {
 my $total = $#ARGV + 1;
 my $counter = 1;
 my $jsonConfig = "";
-my $className = "";
+my $className = "";  #TODO: Make it so you can use Politician as class instead Politiker
 
 # Use loop to print all args stored in an array called @ARGV
 foreach my $a (@ARGV) {
@@ -194,9 +194,9 @@ if (
         $entities_with_abstract = LoadFile($entities_with_abstract_file);
     }
 
-    print " < $BASEDIR/input/inputSemantic/instance-types_lang=$LANGTAG_specific.ttl.bz2 " . (format_bytes(-s "$BASEDIR/input/inputSemantic/instance-types_lang=de_specific.ttl.bz2")) . "\n";
+    print " < $BASEDIR/input/inputSemantic/instance-types_lang=$LANGTAG\_specific.ttl.bz2 " . (format_bytes(-s "$BASEDIR/input/inputSemantic/instance-types_lang=de_specific.ttl.bz2")) . "\n";
     my $zh = IO::Uncompress::Bunzip2->new(
-        "$BASEDIR/input/inputSemantic/instance-types_lang=$LANGTAG_specific.ttl.bz2",
+        "$BASEDIR/input/inputSemantic/instance-types_lang=$LANGTAG\_specific.ttl.bz2",
         { AutoClose => 1, Transparent => 1, }
     ) or die "IO::Uncompress::Bunzip2 failed: $Bunzip2Error\n";
 

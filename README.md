@@ -1,4 +1,4 @@
-# Corpus-based lexicalization for DBpedia for german
+# Corpus-based lexicalization for DBpedia(german verison)
 The corpus-based lexicalization (CBL) is a tool for bridging the lexical gap between natural language (NL) expressions (i.e. linguistic patterns) and the content stored in an RDF knowledge base (i.e. ontology).  The tool uses class-specific association rules together with null-invariant measures of interestingness to induce correspondences between lexical elements and KB elements. 
 - The current version of the tool is implemented for DBpedia. The Corpus-based lexicalization (CBL) is the core task of so-called ontology lexicalization [ontology lexicalization](https://aclanthology.org/W13-3803.pdf). 
 - This page provides instructions on how to run the tool.

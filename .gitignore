@@ -16,6 +16,7 @@ input/
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+*.bin
 
 # AWS User-specific
 .idea/**/aws.xml

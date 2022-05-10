@@ -10,32 +10,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.ling.TaggedWord;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+
 import edu.stanford.nlp.util.Sets;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.TreeMap;
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.apache.commons.lang3.StringUtils;
+import org.apache.jena.base.Sys;
 
 /**
- *
  * @author elahi
- *
  */
 public class PosAnalyzer implements TextAnalyzer {
 
-    
+
     @JsonIgnore
-    private static String stanfordModelFile = resources + "stanford-postagger-2015-12-09/models/english-left3words-distsim.tagger";
+    private static String stanfordModelFile = resources + "stanford-postagger-2015-12-09/models/german-ud.tagger";
     @JsonIgnore
     private static MaxentTagger taggerModel = new MaxentTagger(stanfordModelFile);
     @JsonIgnore
@@ -43,13 +44,13 @@ public class PosAnalyzer implements TextAnalyzer {
     @JsonIgnore
     private Boolean flag = false;
     @JsonIgnore
-    
+
     private String fullPosTag = null;
-    
+
     static {
         taggerModel = new MaxentTagger(stanfordModelFile);
     }
-    
+
     private Set<String> words = new HashSet<String>();
     private Set<String> adjectives = new HashSet<String>();
     private Set<String> nouns = new HashSet<String>();
@@ -59,7 +60,7 @@ public class PosAnalyzer implements TextAnalyzer {
 
     private String inputText = null;
 
-      public PosAnalyzer(String inputText, String analysisType, Integer numberOfSentences) throws Exception {
+    public PosAnalyzer(String inputText, String analysisType, Integer numberOfSentences) throws Exception {
         this.numberOfSentences = numberOfSentences;
         this.inputText = inputText;
         BufferedReader reader = new BufferedReader(new StringReader(inputText));
@@ -67,10 +68,10 @@ public class PosAnalyzer implements TextAnalyzer {
         if (analysisType.contains(POS_TAGGER_WORDS)) {
             posTaggerWords(reader);
         }
-        
+
     }
-      
-      private void posTaggerWords(BufferedReader reader) throws Exception {
+
+    private void posTaggerWords(BufferedReader reader) throws Exception {
         Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<Integer, Map<String, Set<String>>>();
         Map<Integer, Set<String>> sentenceWords = new HashMap<Integer, Set<String>>();
 
@@ -84,11 +85,11 @@ public class PosAnalyzer implements TextAnalyzer {
             List<TaggedWord> tSentence = taggerModel.tagSentence(sentence);
             for (TaggedWord taggedWord : tSentence) {
                 String word = taggedWord.word();
-                word=this.modifyWord(word);
-                if(isStopWord(word)){
+                word = this.modifyWord(word);
+                if (isStopWord(word)) {
                     continue;
                 }
-                if (taggedWord.tag().startsWith(TextAnalyzer.ADJECTIVE) 
+                if (taggedWord.tag().startsWith(TextAnalyzer.ADJECTIVE)
                         || taggedWord.tag().startsWith(TextAnalyzer.NOUN)
                         || taggedWord.tag().startsWith(TextAnalyzer.VERB)) {
                     posTaggers = this.populateValues(taggedWord.tag(), word, posTaggers);
@@ -98,28 +99,35 @@ public class PosAnalyzer implements TextAnalyzer {
             sentenceWords.put(index, wordsofSentence);
             sentencePosTags.put(index, posTaggers);
         }
-                
+
         sentenwisePosSeperated(sentenceWords, sentencePosTags);
     }
- 
-    private boolean isStopWord(String word) {
+
+    private boolean isStopWord(String word) throws URISyntaxException, IOException {
         word = word.trim().toLowerCase();
-        if (ENGLISH_STOPWORDS.contains(word)) {
-            return true;
+        Path path = Paths.get(System.getProperty("user.dir") + "/input/stopwords-de.txt");
+        List<String> germanStopwords = new ArrayList<>();
+        try (BufferedReader reader = Files.newBufferedReader(path)) {
+            String line = reader.readLine();
+            while (line != null) {
+                germanStopwords.add(line);
+                line = reader.readLine();
+            }
         }
-        return false;
+
+        return germanStopwords.contains(word);
     }
 
-    
-     public PosAnalyzer(String analysisType, Integer numberOfSentences) throws Exception {
+
+    public PosAnalyzer(String analysisType, Integer numberOfSentences) throws Exception {
         this.numberOfSentences = numberOfSentences;
     }
-     
-      public PosAnalyzer()  {
-        
+
+    public PosAnalyzer() {
+
     }
-    
-    
+
+
     public Boolean posTaggerText(String inputText) throws Exception {
         BufferedReader reader = new BufferedReader(new StringReader(inputText));
         List<List<HasWord>> sentences = MaxentTagger.tokenizeText(reader);
@@ -135,44 +143,42 @@ public class PosAnalyzer implements TextAnalyzer {
     }
 
     private String getSentenceFromWordListTagged(List<TaggedWord> tSentence) {
-        String str="";
-        for(TaggedWord taggedWord:tSentence){
-            String line=taggedWord+" ";
-            str+=line;
+        String str = "";
+        for (TaggedWord taggedWord : tSentence) {
+            String line = taggedWord + " ";
+            str += line;
         }
-        str=StringUtils.substring(str, 0, str.length()-1);
+        str = StringUtils.substring(str, 0, str.length() - 1);
         return str;
     }
+
     private String getSentenceFromWordListTaggedOriginal(List<HasWord> tSentence) {
-        String str="";
-        for(HasWord taggedWord:tSentence){
-            String line=taggedWord+" ";
-            str+=line;
+        String str = "";
+        for (HasWord taggedWord : tSentence) {
+            String line = taggedWord + " ";
+            str += line;
         }
-        str=StringUtils.substring(str, 0, str.length()-1);
+        str = StringUtils.substring(str, 0, str.length() - 1);
         return str;
     }
 
 
     private void sentenwisePosSeperated(Map<Integer, Set<String>> sentenceWords, Map<Integer, Map<String, Set<String>>> sentencePosTags) {
         for (Integer number : sentenceWords.keySet()) {
-            Map<String, Set<String>>temp=sentencePosTags.get(number);            
+            Map<String, Set<String>> temp = sentencePosTags.get(number);
             if (temp != null) {
                 Set<String> set = sentenceWords.get(number);
                 words.addAll(set);
             }
             for (String posTag : temp.keySet()) {
-                 Set<String> set =temp.get(posTag);
+                Set<String> set = temp.get(posTag);
                 if (posTag.contains(TextAnalyzer.NOUN)) {
                     nouns.addAll(set);
-                }
-                else if (posTag.contains(TextAnalyzer.ADJECTIVE)) {
+                } else if (posTag.contains(TextAnalyzer.ADJECTIVE)) {
                     adjectives.addAll(set);
-                }
-                else if (posTag.contains(TextAnalyzer.VERB)) {
+                } else if (posTag.contains(TextAnalyzer.VERB)) {
                     verbs.addAll(set);
-                }
-                else if (posTag.contains(TextAnalyzer.PRONOUN)) {
+                } else if (posTag.contains(TextAnalyzer.PRONOUN)) {
                     pronouns.addAll(set);
                 }
             }
@@ -229,9 +235,8 @@ public class PosAnalyzer implements TextAnalyzer {
         return flag;
     }
 
-   
 
-    private void populate(Set<String> wordsOfSentence,String key, Map<String, Set<String>> hash) {
+    private void populate(Set<String> wordsOfSentence, String key, Map<String, Set<String>> hash) {
         if (hash.containsKey(key)) {
             Set<String> existingWords = hash.get(key);
             hash.put(key, Sets.union(existingWords, wordsOfSentence));
@@ -239,19 +244,19 @@ public class PosAnalyzer implements TextAnalyzer {
             hash.put(key, wordsOfSentence);
         }
     }
-   
+
     private String setTaggs(List<TaggedWord> tSentence) {
         String str = "";
         for (TaggedWord taggedWord : tSentence) {
             String line = taggedWord.tag() + "_";
             str += line;
         }
-        return  StringUtils.substring(str, 0, str.length()-1);
+        return StringUtils.substring(str, 0, str.length() - 1);
     }
 
     private String modifyWord(String word) {
         return word.toLowerCase().trim().strip();
     }
 
-   
+
 }

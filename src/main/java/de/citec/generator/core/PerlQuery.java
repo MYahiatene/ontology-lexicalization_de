@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.citec.generator.config.ConfigLex;
 import de.citec.generator.config.Constants;
 import de.citec.sc.generator.exceptions.PerlException;
+
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +18,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author elahi
  */
 public class PerlQuery implements Constants {
@@ -25,11 +25,11 @@ public class PerlQuery implements Constants {
     private Boolean processSuccessFlag = false;
     private String configJson = null;
 
-    public PerlQuery(String location, String scriptName, String class_url) throws PerlException {
+    public PerlQuery(String location, String scriptName, String class_url, String langTag) throws PerlException {
         try {
             System.out.println("Reading DBpedia abstract and knowledge graph and corpus based lexicalization!!\n");
             //System.out.println("Step 1. find frequent entities and process abstracts. Wait..." + "\n");
-            this.runCommandLine(location, scriptName, class_url);
+            this.runCommandLine(location, scriptName, class_url, langTag);
             /*if (runCommandLine(location, "frequentClass.pl", class_url)) {
                 System.out.println("done with step 1." + "\n");
                 if (runCommandLine(location, "tripleProcess.pl", class_url)) {
@@ -70,9 +70,9 @@ public class PerlQuery implements Constants {
         }*/
     }
 
-    public Boolean runCommandLine(String location, String scriptName, String class_url) throws IOException, InterruptedException {
+    public Boolean runCommandLine(String location, String scriptName, String class_url, String langTag) throws IOException, InterruptedException {
 
-        String command = "perl " + location + scriptName + " " + appDir + " " + class_url;
+        String command = "perl " + location + scriptName + " " + appDir + " " + class_url + " " + langTag;
         Runtime runTime = Runtime.getRuntime();
         //System.out.println("location + scriptName::" + location + scriptName);
         //String[] commands = {"perl", location + scriptName};

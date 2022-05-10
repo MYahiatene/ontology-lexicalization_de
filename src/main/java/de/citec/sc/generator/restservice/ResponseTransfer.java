@@ -22,6 +22,7 @@ import de.citec.sc.generator.utils.FileFolderUtils;
 import de.citec.sc.lemon.core.Lexicon;
 import de.citec.sc.lemon.io.LexiconSerialization;
 import edu.stanford.nlp.util.Pair;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -38,13 +39,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
+
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.RDFFormat;
 
 /**
- *
  * @author elahi
  */
 public class ResponseTransfer implements Constants {
@@ -52,14 +53,16 @@ public class ResponseTransfer implements Constants {
     public ResponseTransfer() {
 
     }
-    
+
     public ResultLex lexicalization(ConfigLex config) {
         String className = null;
         try {
             FileFolderUtils.delete(new File(interDir));
             FileFolderUtils.delete(new File(resultDir));
             String class_url = config.getClass_url();
-            PerlQuery perlQuery = new PerlQuery(perlDir, scriptName, class_url);
+            //todo: insert language tag here
+            String langTag = config.getLangTag();
+            PerlQuery perlQuery = new PerlQuery(perlDir, scriptName, class_url,langTag);
             Boolean flag = perlQuery.getProcessSuccessFlag();
             System.out.println("Lexicalization process successfuly ended!!");
             return new ResultLex(className, flag);
@@ -115,9 +118,9 @@ public class ResponseTransfer implements Constants {
         }
 
     }
-    
-    
-    private ResultJsonLD makeClass(String jsonString) throws JsonProcessingException  {
+
+
+    private ResultJsonLD makeClass(String jsonString) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(jsonString, ResultJsonLD.class);
     }
@@ -163,11 +166,10 @@ public class ResponseTransfer implements Constants {
         long endTime = System.nanoTime();
         long elapsedTimeInMillis = TimeUnit.MILLISECONDS.convert((endTime - startTime), TimeUnit.NANOSECONDS);
         System.out.println("Total elapsed time: " + elapsedTimeInMillis + " ms");*/
-        
-        
-        
+
+
         URL url;
-         System.out.println(conf);
+        System.out.println(conf);
         try {
             url = new URL(conf.getUri_abstract());
             Path path = Paths.get("/home/elahi/a-teanga/dockerTest/ontology-lexicalization/app/");
@@ -177,12 +179,10 @@ public class ResponseTransfer implements Constants {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println(ex.getMessage());
             return new ResultDownload(conf.getUri_abstract(), "failed to download turtle files!");
-        }
-        catch (FileAlreadyExistsException ex) {
+        } catch (FileAlreadyExistsException ex) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, ex);
             return new ResultDownload(conf.getUri_abstract(), "File already exists!!");
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, ex);
             return new ResultDownload(conf.getUri_abstract(), "failed to download turtle files!");
         }
@@ -206,8 +206,5 @@ public class ResponseTransfer implements Constants {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    
-    
 
 }

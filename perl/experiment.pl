@@ -42,7 +42,7 @@ use FindBin;
 # for maven my $BASEDIR = "/app/";
 # my $BASEDIR = "/app/"; 
 my $BASEDIR = "$FindBin::Bin/../";
-my $LANGTAG = "de";
+my $LANGTAG = "";
 my $CFG = {
     min_entities_per_class     => 100,
     max_entities_per_class     => 100,
@@ -53,7 +53,7 @@ my $CFG = {
     min_propertyonegram_length => 4,
     min_propertypattern_count  => 5,
     min_propertystring_length  => 5,
-    max_propertystring_length  => 50, # was 100 before
+    max_propertystring_length  => 100, # was 100 before
 
     min_supA                   => 2,
     min_supB                   => 2,
@@ -119,7 +119,7 @@ my $total = $#ARGV + 1;
 my $counter = 1;
 my $jsonConfig = "";
 my $className = "";  #TODO: Make it so you can use Politician as class instead Politiker
-
+                    #TODO: Better would be to preprocess the corpus
 # Use loop to print all args stored in an array called @ARGV
 foreach my $a (@ARGV) {
     #  if($counter == 1){
@@ -132,6 +132,10 @@ foreach my $a (@ARGV) {
     }
     if ($counter == 2) {
         $className = $a;
+        print "Arg # $counter : $a\n";
+    }
+    if ($counter == 3) {
+        $LANGTAG = $a;
         print "Arg # $counter : $a\n";
     }
     $counter++;
@@ -685,7 +689,7 @@ if (not -e $step3_finished_file) {
                     }
                 }
             }
-
+            # todo: ersetze alle language tags im literal selbst.
             #print Dump { e => $e, data => $data }; <STDIN>;
             my $abstract = $obj->{o}->{value};
             $abstract =~ s/\A"//;
@@ -3091,10 +3095,15 @@ sub parse_NT_into_obj {
 
     # URI+(Politiker...) URI URI
     if ($string =~ m/<(.*\($className.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
+        # class =  Politiker
+        # <http://de.dbpedia.org/resource/Franziska_Reindl_(Politikerin)> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person> .
+        # class = Place
+        # <http://de.dbpedia.org/resource/Franziskanerkirche_(Bratislava)> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Place> .
+
         return {
             s => { type => "uri", value => "$1" },
             p => { type => "uri", value => "$2" },
-            o => { type => "uri", value => "http://dbpedia.org/ontology/$className" },
+            o => { type => "uri", value => "http://dbpedia.org/ontology/$className" }, # http://dbpedia.org/ontology/Politiker -> http://dbpedia.org/ontology/Politician
         };
     }
     # URI URI URI

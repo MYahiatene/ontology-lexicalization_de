@@ -134,7 +134,7 @@ public interface TextAnalyzer {
 
     public static String resources = "src/main/resources/";
     public static String modelDir = resources + "models/";
-    public static String posTagFile = "en-pos-maxent.bin";
+    public static String posTagFile = "de-pos-maxent.bin";
     public static String lemmaDictionary = "en-lemmatizer.txt";
 
 }

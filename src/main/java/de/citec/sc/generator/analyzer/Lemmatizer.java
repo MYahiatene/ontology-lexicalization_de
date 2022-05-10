@@ -60,8 +60,6 @@ public class Lemmatizer implements TextAnalyzer {
                 lemmasMap.put(key, value);
             }
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,8 +93,6 @@ public class Lemmatizer implements TextAnalyzer {
                 }
             }
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

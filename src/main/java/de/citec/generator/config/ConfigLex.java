@@ -26,7 +26,15 @@ public class ConfigLex {
     private Integer maximum_propertystring_length = 0;
     private Integer minimum_supportA = 0;
     private Integer minimum_supportB = 0;
-    private Integer minimum_supportAB = 0;    
+    private Integer minimum_supportAB = 0;
+
+    private String langTag = "en";
+
+
+    public String getLangTag() {
+        return langTag;
+    }
+
 
  
     public String getClass_url() throws ConfigException  {

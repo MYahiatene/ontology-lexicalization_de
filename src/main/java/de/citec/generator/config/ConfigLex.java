@@ -97,16 +97,16 @@ public class ConfigLex {
 
     public Pair<Boolean,String> checkClass(String class_url)  {
         if (class_url.isEmpty()) {
-            return new Pair<Boolean,String>(Boolean.FALSE,class_url);
+            return new Pair<>(Boolean.FALSE,class_url);
         } else if (class_url.contains("http:")) {
             class_url=class_url.substring(class_url.lastIndexOf("/") + 1);
-             return new Pair<Boolean,String>(Boolean.TRUE,class_url);
+             return new Pair<>(Boolean.TRUE,class_url);
         } else if (class_url.contains("dbo:")) {
             String[] info = class_url.split(":");
              class_url= info[1];
-             return new Pair<Boolean,String>(Boolean.TRUE,class_url);
+             return new Pair<>(Boolean.TRUE,class_url);
         } else {
-            return new Pair<Boolean,String>(Boolean.FALSE,class_url);
+            return new Pair<>(Boolean.FALSE,class_url);
         }
     }
    

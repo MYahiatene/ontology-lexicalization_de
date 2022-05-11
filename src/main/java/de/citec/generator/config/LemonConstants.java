@@ -13,24 +13,24 @@ import static de.citec.sc.lemon.vocabularies.LEXINFO.preposition;
  */
 public interface LemonConstants {
 
-    public String lexinfo = "http://www.lexinfo.net/ontology/2.0/lexinfo#";
-    public String lemon = "http://lemon-model.net/lemon#";
-    public String lexinfo_adjective = lexinfo + "/" + "adjective";
-    public String lexinfo_verb = lexinfo + "/" + "verb";
-    public String lexinfo_noun = lexinfo + "/" + "noun";
-    public String AdjectivePredicateFrame = "AdjectivePredicateFrame";
-    public String attributiveArg = "attributiveArg";
-    public String AttrSynArg = "AttrSynArg";
-    public String copulativeSubject = "copulativeSubject";
-    public String PredSynArg = "PredSynArg";
-    public String TransitiveFrame="TransitiveFrame";
-    public String IntransitivePPFrame="IntransitivePPFrame";
-    public String  prepositionalAdjunct="prepositionalAdjunct";
-    public String object="object";
-    public String subject="subject";
-    public String subjOfProp="subjOfProp";
-    public String objOfProp="objOfProp";
-    public String  NounPPFrame="NounPPFrame";
-    public String preposition="on";
-    public String directObject="directObject";
+    String lexinfo = "http://www.lexinfo.net/ontology/2.0/lexinfo#";
+    String lemon = "http://lemon-model.net/lemon#";
+    String lexinfo_adjective = lexinfo + "/" + "adjective";
+    String lexinfo_verb = lexinfo + "/" + "verb";
+    String lexinfo_noun = lexinfo + "/" + "noun";
+    String AdjectivePredicateFrame = "AdjectivePredicateFrame";
+    String attributiveArg = "attributiveArg";
+    String AttrSynArg = "AttrSynArg";
+    String copulativeSubject = "copulativeSubject";
+    String PredSynArg = "PredSynArg";
+    String TransitiveFrame="TransitiveFrame";
+    String IntransitivePPFrame="IntransitivePPFrame";
+    String  prepositionalAdjunct="prepositionalAdjunct";
+    String object="object";
+    String subject="subject";
+    String subjOfProp="subjOfProp";
+    String objOfProp="objOfProp";
+    String  NounPPFrame="NounPPFrame";
+    String preposition="on";
+    String directObject="directObject";
 }

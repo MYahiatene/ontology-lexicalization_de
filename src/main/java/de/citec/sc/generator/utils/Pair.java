@@ -10,8 +10,8 @@ package de.citec.sc.generator.utils;
  * @author elahi
  */
 public class Pair {
-    private String key=null;
-     private String value=null;
+    private String key;
+     private String value;
      
      public Pair(String key,String value){
            this.key=key;

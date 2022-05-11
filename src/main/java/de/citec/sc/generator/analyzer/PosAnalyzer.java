@@ -6,14 +6,12 @@
 package de.citec.sc.generator.analyzer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.ling.TaggedWord;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.io.StringReader;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -23,11 +21,7 @@ import java.util.*;
 
 import edu.stanford.nlp.util.Sets;
 
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import org.apache.commons.lang3.StringUtils;
-import org.apache.jena.base.Sys;
 
 /**
  * @author elahi
@@ -46,6 +40,8 @@ public class PosAnalyzer implements TextAnalyzer {
     @JsonIgnore
 
     private String fullPosTag = null;
+    @JsonIgnore
+    List<String> germanStopwords;
 
     static {
         taggerModel = new MaxentTagger(stanfordModelFile);
@@ -76,7 +72,6 @@ public class PosAnalyzer implements TextAnalyzer {
         Map<Integer, Set<String>> sentenceWords = new HashMap<Integer, Set<String>>();
 
         List<List<HasWord>> sentences = MaxentTagger.tokenizeText(reader);
-        //List<List<HasWord>> sentences = MaxentTagger.tokenizeText(new BufferedReader(new FileReader(inputText)));
         Integer index = 0;
         for (List<HasWord> sentence : sentences) {
             index++;
@@ -119,15 +114,6 @@ public class PosAnalyzer implements TextAnalyzer {
     }
 
 
-    public PosAnalyzer(String analysisType, Integer numberOfSentences) throws Exception {
-        this.numberOfSentences = numberOfSentences;
-    }
-
-    public PosAnalyzer() {
-
-    }
-
-
     public Boolean posTaggerText(String inputText) throws Exception {
         BufferedReader reader = new BufferedReader(new StringReader(inputText));
         List<List<HasWord>> sentences = MaxentTagger.tokenizeText(reader);
@@ -152,15 +138,6 @@ public class PosAnalyzer implements TextAnalyzer {
         return str;
     }
 
-    private String getSentenceFromWordListTaggedOriginal(List<HasWord> tSentence) {
-        String str = "";
-        for (HasWord taggedWord : tSentence) {
-            String line = taggedWord + " ";
-            str += line;
-        }
-        str = StringUtils.substring(str, 0, str.length() - 1);
-        return str;
-    }
 
 
     private void sentenwisePosSeperated(Map<Integer, Set<String>> sentenceWords, Map<Integer, Map<String, Set<String>>> sentencePosTags) {
@@ -187,7 +164,6 @@ public class PosAnalyzer implements TextAnalyzer {
             if (number == numberOfSentences) {
                 break;
             }
-            //System.out.println(sentenceInfo);
         }
 
     }
@@ -235,15 +211,6 @@ public class PosAnalyzer implements TextAnalyzer {
         return flag;
     }
 
-
-    private void populate(Set<String> wordsOfSentence, String key, Map<String, Set<String>> hash) {
-        if (hash.containsKey(key)) {
-            Set<String> existingWords = hash.get(key);
-            hash.put(key, Sets.union(existingWords, wordsOfSentence));
-        } else {
-            hash.put(key, wordsOfSentence);
-        }
-    }
 
     private String setTaggs(List<TaggedWord> tSentence) {
         String str = "";

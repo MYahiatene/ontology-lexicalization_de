@@ -10,8 +10,8 @@ package de.citec.sc.generator.utils;
  * @author elahi
  */
 public class PairCheck {
-    private Boolean key=null;
-     private String value=null;
+    private Boolean key;
+     private String value;
      
      public PairCheck(Boolean key,String value){
            this.key=key;

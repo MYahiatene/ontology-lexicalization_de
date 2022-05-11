@@ -16,7 +16,7 @@ input/
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-*.bin
+# *.bin
 
 # AWS User-specific
 .idea/**/aws.xml
@@ -99,6 +99,7 @@ fabric.properties
 *.txt
 *.iml
 *.pm
+*.bin
 *.tar.xz
 test.pl
 *.jar

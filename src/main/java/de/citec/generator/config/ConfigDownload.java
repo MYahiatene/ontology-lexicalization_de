@@ -18,10 +18,6 @@ public class ConfigDownload {
         return uri_abstract;
     }
 
-    public String getUri_property() {
-        return uri_property;
-    }
-
     @Override
     public String toString() {
         return "ConfigDownload{" + "uri_abstract=" + uri_abstract + ", uri_property=" + uri_property + '}';

@@ -64,9 +64,6 @@ public class CsvFile  implements PredictionPatterns {
     private BufferedReader bufferedReader=null;
     public String[] qaldHeader = null;
     private Map<String, List<String[]>> wordRows = new TreeMap<String, List<String[]>>();
-    private Map<String, Integer> interestingnessIndexes = new HashMap<String, Integer>();
-    private List<String[]> rows = new ArrayList<String[]>();
-
 
     public CsvFile(File filename) {
         this.csvFile = filename;
@@ -84,10 +81,8 @@ public class CsvFile  implements PredictionPatterns {
 
     public List<String[]> getRowsManual() {
         List<String[]> rows = new ArrayList<String[]>();
-        Stack<String> stack = new Stack<String>();
         try {
             rows = generateLinebyLine(this.bufferedReader, 300000);
-            //System.out.println("rows:::"+rows.size());
         } catch (IOException ex) {
             Logger.getLogger(CsvFile.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("The file is not found!!!" + ex.getMessage());
@@ -110,41 +105,14 @@ public class CsvFile  implements PredictionPatterns {
     
      
 
-    /*public List<String[]> getRows(File qaldFile) {
-        List<String[]> rows = new ArrayList<String[]>();
-        System.out.println("file name:"+qaldFile);
-    
-        Stack<String> stack = new Stack<String>();
-        CSVReader reader;
-        try {
-            {
-                reader = new CSVReader(new FileReader(qaldFile));
-                rows = reader.readAll();
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(CsvFile.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("The file is not found!!!" + ex.getMessage());
-        } catch (IOException ex) {
-            Logger.getLogger(CsvFile.class.getName()).log(Level.SEVERE, null, ex);
-               System.err.println("The file is not found!!!" + ex.getMessage());
-        } catch (Exception ex) {
-            Logger.getLogger(CsvFile.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Error in csv file!!!" + ex.getMessage());
 
-        }
-
-        return rows;
-    }*/
-
-   
 
   
 
     private List<String[]> generateLinebyLine(BufferedReader manualReader, Integer lineLimit) throws FileNotFoundException, IOException, Exception {
         List<String[]> rows = new ArrayList<String[]>();
-        //BufferedReader manualReader = new BufferedReader(new FileReader(pathToCsv));
         String line = null;
-        Integer index = 0;
+        int index = 0;
         while ((line = manualReader.readLine()) != null) {
             line = this.modifyLine(line);
             try {
@@ -189,18 +157,6 @@ public class CsvFile  implements PredictionPatterns {
         line = line.replace("c_o,p => l_o", predict_l_for_o_given_p);
         line = line.replace("c_o,p => ll_o", predict_localized_l_for_o_given_p);
         return line;
-    }
-  
-    public File getFilename() {
-        return csvFile;
-    }
-
-    public String[] getQaldHeader() {
-        return this.qaldHeader;
-    }
-
-    public Map<String, List<String[]>> getRow() {
-        return wordRows;
     }
 
 

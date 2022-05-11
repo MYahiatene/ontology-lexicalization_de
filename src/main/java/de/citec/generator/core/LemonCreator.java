@@ -7,7 +7,9 @@ package de.citec.generator.core;
 
 import de.citec.generator.config.LemonConstants;
 import de.citec.sc.generator.analyzer.TextAnalyzer;
+
 import static de.citec.sc.lemon.core.Language.EN;
+
 import de.citec.sc.lemon.core.Lexicon;
 import de.citec.sc.lemon.core.Provenance;
 import de.citec.sc.lemon.core.Reference;
@@ -17,14 +19,16 @@ import de.citec.sc.lemon.core.SenseArgument;
 import de.citec.sc.lemon.core.SimpleReference;
 import de.citec.sc.lemon.core.SyntacticArgument;
 import de.citec.sc.lemon.core.SyntacticBehaviour;
+
 import java.io.*;
 import java.util.*;
+
 import de.citec.generator.config.PredictionPatterns;
 import edu.stanford.nlp.util.Pair;
+
 import java.util.regex.Pattern;
 
 /**
- *
  * @author elahi
  */
 public class LemonCreator implements PredictionPatterns, LemonConstants, TextAnalyzer {
@@ -108,17 +112,12 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
             for (LexiconUnit lexiconUnit : lexiconUnts) {
                 LinkedHashMap<Integer, List<LineInfo>> ranks = lexiconUnit.getLineInfos();
                 String writtenForm = lexiconUnit.getWord();
-                //System.out.println("prediction::" + prediction);
-                //System.out.println("writtenForm::" + writtenForm);
-                /*if(!writtenForm.equals("born"))
-                    continue;*/
 
                 if (!isValidWrittenForm(writtenForm)) {
                     continue;
-                }
-                else
-                    writtenForm=this.modify(writtenForm);
-                    
+                } else
+                    writtenForm = this.modify(writtenForm);
+
 
                 de.citec.sc.lemon.core.LexicalEntry entry = new de.citec.sc.lemon.core.LexicalEntry(EN);
                 entry.setCanonicalForm(writtenForm);
@@ -135,11 +134,6 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                         break;
                     }
                     for (LineInfo lineInfo : rankLineInfo) {
-                        //System.out.println("Pos tag::" + lineInfo.getPosTag());
-                        //System.out.println("predicate::" + prediction);
-                        //System.out.println("object::" + lineInfo.getObjectOriginal());
-                        //entry=addSense(entry,writtenForm,lineInfo);
-                        //System.out.println("entry::" + entry);
                         Sense sense = null;
                         SyntacticBehaviour behaviour = null;
                         Provenance provenance = null;
@@ -147,12 +141,9 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                         try {
 
                             Pair<Boolean, Sense> senseCheck = this.addSenseToEntry(this.turtleLexicon.getBaseURI(), writtenForm, lineInfo, postag);
-                            //System.out.println("sense::::"+sense);
-                            //System.out.println("index::" + index);
                             if (senseCheck.first()) {
                                 sense = senseCheck.second();
                                 senses.add(sense);
-                                //System.out.println("sense::::" + sense);
                             } else {
                                 continue;
                             }
@@ -161,7 +152,6 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                             provenance = this.addProvinceToEntry();
                             if (sense != null && behaviour != null && provenance != null) {
                                 entry.addSyntacticBehaviour(behaviour, sense);
-                                //entry.addProvenance(provenance, sense);
                             }
 
                         } catch (NullPointerException ex) {
@@ -199,7 +189,7 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
             sense.setReference(ref);
         }
 
-        return new Pair<Boolean, Sense>(flag, sense);
+        return new Pair<>(flag, sense);
 
     }
 
@@ -212,45 +202,12 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
     }
 
     private SyntacticBehaviour addBehaviourToEntry(Sense sense, String writtenForm, String posTag, String preposition) throws FileNotFoundException, IOException {
-        SyntacticBehaviour behaviour = new SyntacticBehaviour();
-
-        if (posTag.contains(ADJECTIVE)) {
-            /*behaviour.setFrame(lexinfo + AdjectivePredicateFrame);
-            behaviour.add(new SyntacticArgument(lexinfo + attributiveArg, writtenForm + "_" + AttrSynArg, null));
-            behaviour.add(new SyntacticArgument(lexinfo + copulativeSubject, writtenForm + "_" + PredSynArg, null));
-            sense.addSenseArg(new SenseArgument(lemon + attributiveArg, writtenForm + "_" + AttrSynArg));
-            sense.addSenseArg(new SenseArgument(lemon + copulativeSubject, writtenForm + "_" + PredSynArg));*/
-        } else if (posTag.contains(VERB)) {
-            if (preposition != null) {
-                /*behaviour.setFrame(lexinfo + IntransitivePPFrame);
-                behaviour.add(new SyntacticArgument(lexinfo + prepositionalAdjunct, object, preposition));
-                behaviour.add(new SyntacticArgument(lexinfo + copulativeSubject, subject, null));
-                sense.addSenseArg(new SenseArgument(lemon + subjOfProp, subject));
-                sense.addSenseArg(new SenseArgument(lemon + objOfProp, object));*/
-            } else {
-                /*behaviour.setFrame(lexinfo + TransitiveFrame);
-                behaviour.add(new SyntacticArgument(lexinfo + subject, subject, null));
-                behaviour.add(new SyntacticArgument(lexinfo + directObject, object, null));
-                sense.addSenseArg(new SenseArgument(lemon + subjOfProp, subject));
-                sense.addSenseArg(new SenseArgument(lemon + objOfProp, object));*/
-            }
-
-        } else if (posTag.contains(NOUN)) {
-            /*behaviour.setFrame(lexinfo + NounPPFrame);
-            behaviour.add(new SyntacticArgument(lexinfo + prepositionalAdjunct, object, preposition));
-            behaviour.add(new SyntacticArgument(lexinfo + copulativeSubject, subject, null));
-            sense.addSenseArg(new SenseArgument(lemon + subjOfProp, object));
-            sense.addSenseArg(new SenseArgument(lemon + objOfProp, subject));*/
-        }
-
-        return behaviour;
+        return new SyntacticBehaviour();
 
     }
 
-    private Provenance addProvinceToEntry() throws FileNotFoundException, IOException {
-        Provenance provenance = new Provenance();
-        //provenance.setFrequency(1);
-        return provenance;
+    private Provenance addProvinceToEntry() {
+        return new Provenance();
     }
 
     private Map<String, List<LexiconUnit>> setPartsOfSpeech(String postagOfWord, LexiconUnit LexiconUnit, Map<String, List<LexiconUnit>> lexicon) {
@@ -300,11 +257,11 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
             return false;
         }
     }
-    
+
     private Boolean isValidWrittenForm(String writtenForm) {
         if (this.isNumeric(writtenForm)) {
             return false;
-        } else if (writtenForm.equals("also") ) {
+        } else if (writtenForm.equals("also")) {
             return false;
         } else {
             return true;
@@ -312,11 +269,10 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
     }
 
     private String modify(String writtenForm) {
-        if(writtenForm.contains("_")){
-            writtenForm=writtenForm.replace("_", " ") ; 
-            //System.out.println("multiword written form::"+writtenForm);
-           return writtenForm;
-        } 
+        if (writtenForm.contains("_")) {
+            writtenForm = writtenForm.replace("_", " ");
+            return writtenForm;
+        }
         return writtenForm;
     }
 }

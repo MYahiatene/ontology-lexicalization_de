@@ -60,9 +60,8 @@ public class ResponseTransfer implements Constants {
             FileFolderUtils.delete(new File(interDir));
             FileFolderUtils.delete(new File(resultDir));
             String class_url = config.getClass_url();
-            //todo: insert language tag here
             String langTag = config.getLangTag();
-            PerlQuery perlQuery = new PerlQuery(perlDir, scriptName, class_url,langTag);
+            PerlQuery perlQuery = new PerlQuery(perlDir, scriptName, class_url, langTag);
             Boolean flag = perlQuery.getProcessSuccessFlag();
             System.out.println("Lexicalization process successfuly ended!!");
             return new ResultLex(className, flag);
@@ -98,8 +97,6 @@ public class ResponseTransfer implements Constants {
             Model model = ModelFactory.createDefaultModel();
             serializer.serialize(turtleLexicon, model);
             System.out.println("lemon creating ends!! ");
-            //this.writeJsonLDToFile(model, jsonOutputDir, RDFFormat.JSONLD);
-            //this.writeJsonLDToFile(model, turtleOutputDir, RDFFormat.TURTLE);
             return this.writeJsonLDtoString(model, scriptName, RDFFormat.JSONLD);
         } catch (JsonProcessingException ex) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, ex);
@@ -126,13 +123,8 @@ public class ResponseTransfer implements Constants {
     }
 
 
-    /*private de.citec.sc.lemon.core.Lexicon runProcessOutput(Configuration config) throws Exception {
-        String resourceDir = resultDir + processData;
-        return new ProcessCsv(resultDir, resourceDir, config).getTurtleLexicon();
-    }*/
-
     private void writeJsonLDToFile(Model model, String fileName, RDFFormat type) throws FileNotFoundException, IOException {
-        FileOutputStream out = new FileOutputStream(new File(fileName));
+        FileOutputStream out = new FileOutputStream(fileName);
         RDFDataMgr.write(out, model, type);
         out.close();
 
@@ -148,26 +140,6 @@ public class ResponseTransfer implements Constants {
 
 
     public ResultDownload downloadData(ConfigDownload conf) {
-        
-        /*long startTime = System.nanoTime();
-        Path file = Paths.get("/home/elahi/a-teanga/dockerTest/ontology-lexicalization/app/");
-        try {
-            //Java 8: Stream class
-            Stream<String> lines = Files.lines(file, StandardCharsets.UTF_8);
-
-            for (String line : (Iterable<String>) lines::iterator) {
-                //System.out.println(line);
-            }
-
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-        long endTime = System.nanoTime();
-        long elapsedTimeInMillis = TimeUnit.MILLISECONDS.convert((endTime - startTime), TimeUnit.NANOSECONDS);
-        System.out.println("Total elapsed time: " + elapsedTimeInMillis + " ms");*/
-
-
         URL url;
         System.out.println(conf);
         try {
@@ -186,19 +158,6 @@ public class ResponseTransfer implements Constants {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, ex);
             return new ResultDownload(conf.getUri_abstract(), "failed to download turtle files!");
         }
-        
-       /* try {
-            PerlQuery PerlQuery = new PerlQuery(conf.getUri_abstract());
-            if (PerlQuery.getProcessSuccessFlag()) {
-                return new ResultDownload(conf.getLinked_data(), "Successfull downloaded!!");
-            } else {
-                return new ResultDownload(conf.getLinked_data(), "downloaded failed!!");
-            }
-
-        } catch (PerlException ex) {
-            Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResultDownload(conf.getLinked_data(), "downloaded failed!!");
-        }*/
 
     }
 

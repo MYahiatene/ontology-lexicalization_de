@@ -23,21 +23,11 @@ import java.util.logging.Logger;
 public class PerlQuery implements Constants {
 
     private Boolean processSuccessFlag = false;
-    private String configJson = null;
 
     public PerlQuery(String location, String scriptName, String class_url, String langTag) throws PerlException {
         try {
             System.out.println("Reading DBpedia abstract and knowledge graph and corpus based lexicalization!!\n");
-            //System.out.println("Step 1. find frequent entities and process abstracts. Wait..." + "\n");
             this.runCommandLine(location, scriptName, class_url, langTag);
-            /*if (runCommandLine(location, "frequentClass.pl", class_url)) {
-                System.out.println("done with step 1." + "\n");
-                if (runCommandLine(location, "tripleProcess.pl", class_url)) {
-                    System.out.println("done with step 1." + "\n");
-                }
-            } else
-                throw new PerlException("Step 1. failed to process");*/
-
         } catch (InterruptedException ex) {
             Logger.getLogger(PerlQuery.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
@@ -50,33 +40,12 @@ public class PerlQuery implements Constants {
 
     }
 
-    public PerlQuery(String urlString) throws PerlException {
-        this.configJson = urlString;
-
-        /*try {
-            String command = "wget --reject=\"index.html*\" " + urlString + " -P " + inputAbstract;
-            System.out.print("downloading "+urlString+" ......");
-            System.out.print("It may take some time .... ");
-            runCommandLine(command);
-            System.out.print("download is finished!");
-        } catch (InterruptedException ex) {
-            Logger.getLogger(PerlQuery.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
-            throw new PerlException("download failed!!" + ex.getMessage());
-        } catch (IOException ex) {
-            Logger.getLogger(PerlQuery.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
-            throw new PerlException("process error exceptions!!" + ex.getMessage());
-        }*/
-    }
 
     public Boolean runCommandLine(String location, String scriptName, String class_url, String langTag) throws IOException, InterruptedException {
 
         String command = "perl " + location + scriptName + " " + appDir + " " + class_url + " " + langTag;
         Runtime runTime = Runtime.getRuntime();
-        //System.out.println("location + scriptName::" + location + scriptName);
-        //String[] commands = {"perl", location + scriptName};
-        //System.out.println("command::"+command);
+
         Process process = runTime.exec(command);
 
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -106,9 +75,5 @@ public class PerlQuery implements Constants {
         return processSuccessFlag;
     }
 
-    public String makeJsonString(ConfigLex config) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(config);
-    }
 
 }

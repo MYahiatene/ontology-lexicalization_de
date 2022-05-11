@@ -29,12 +29,12 @@ public class Lemmatizer implements TextAnalyzer {
     private static Map<String, String> generalizeLemma = new TreeMap<String, String>();
 
     public Lemmatizer() {
-        this.lemmasMap = this.preparePosTagLemmaMap();
-        this.generalizeLemma = prepareGeneralizePosTagLemmaMap();
+        lemmasMap = this.preparePosTagLemmaMap();
+        generalizeLemma = prepareGeneralizePosTagLemmaMap();
     }
 
     private Map<String, String> prepareGeneralizePosTagLemmaMap() {
-        Map<String, String> lemmasMap = new TreeMap<String, String>();
+        Map<String, String> lemmasMap = new TreeMap<>();
         try {
             InputStream posModelIn = new FileInputStream(modelDir + posTagFile);
             POSModel posModel = new POSModel(posModelIn);
@@ -137,25 +137,9 @@ public class Lemmatizer implements TextAnalyzer {
         return withOutPosTag;
     }
 
-    public PairCheck getLemmaWithoutPos(String word) {
-        word = word.strip().trim();
-        if (!word.contains(" ")) {
-            if (withOutPosTag.containsKey(word)) {
-                String lemma = withOutPosTag.get(word);
-                return new PairCheck(Boolean.TRUE,lemma);
-            } else {
-                return new PairCheck(Boolean.FALSE, null);
-            }
-
-        } else {
-            return new PairCheck(Boolean.FALSE, null);
-        }
-
-    }
-
     public String getGeneralizedPosTagLemma(String word, String posTag) {
         String key = word + "/" + posTag;
-        if (this.generalizeLemma.containsKey(key)) {
+        if (generalizeLemma.containsKey(key)) {
             return generalizeLemma.get(key);
         }
         return word;
@@ -171,22 +155,12 @@ public class Lemmatizer implements TextAnalyzer {
         String lemma=null;
 
         Lemmatizer lemmaAnalyzer = new Lemmatizer();
-        /*for (String token : withOutPosTag.keySet()) {
-            //System.out.println(token + " " + withOutPosTag.get(token));
-        }
 
-        Pair<Boolean, String> pair = lemmaAnalyzer.getLemmaWithoutPos("attended");
-        if (pair.getValue0()) {
-            //System.out.println(pair.getValue1());
-        }
-        String lemma=lemmaAnalyzer.getLemma(text5);
-        //System.out.println("text5:"+lemma);*/
         
         String text10 = "attended";
         String posTag = "VB";
 
         lemma=lemmaAnalyzer.getGeneralizedPosTagLemma(text10, posTag);
-        //System.out.println(lemma);
 
     }
 

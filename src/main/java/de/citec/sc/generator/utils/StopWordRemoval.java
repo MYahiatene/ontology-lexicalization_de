@@ -6,6 +6,8 @@
 package de.citec.sc.generator.utils;
 
 import de.citec.sc.generator.analyzer.PosAnalyzer;
+import de.citec.sc.generator.analyzer.TextAnalyzer;
+
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -28,8 +30,7 @@ public class StopWordRemoval {
                 }
 
             }
-            Integer length = tokenStr.length() - 1;
-            //System.out.println(nGramStr+" "+length);
+            int length = tokenStr.length() - 1;
             if (length > 1) {
                 return tokenStr.substring(0, tokenStr.length() - 1);
             } else {
@@ -38,29 +39,6 @@ public class StopWordRemoval {
 
         } else {
             return nGramStr;
-        }
-
-    }
-
-    public static Boolean isInExcludeList(String nGram) {
-        String[] months = new String[]{"january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"};
-        String[] splitTerms = getNgramStringList(nGram);
-
-        HashSet<String> set = new HashSet<String>();
-        set.addAll(Arrays.asList(months));
-        set.retainAll(Arrays.asList(splitTerms));
-        if (set.isEmpty()) {
-            return false;
-        }
-        return true;
-
-    }
-
-    private static String[] getNgramStringList(String nGram) {
-        if (nGram.contains("_")) {
-            return nGram.split("_");
-        } else {
-            return new String[]{nGram};
         }
 
     }

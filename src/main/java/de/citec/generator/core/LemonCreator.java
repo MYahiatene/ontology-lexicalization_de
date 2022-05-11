@@ -8,6 +8,7 @@ package de.citec.generator.core;
 import de.citec.generator.config.LemonConstants;
 import de.citec.sc.generator.analyzer.TextAnalyzer;
 
+import static de.citec.sc.lemon.core.Language.DE;
 import static de.citec.sc.lemon.core.Language.EN;
 
 import de.citec.sc.lemon.core.Lexicon;
@@ -119,7 +120,7 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                     writtenForm = this.modify(writtenForm);
 
 
-                de.citec.sc.lemon.core.LexicalEntry entry = new de.citec.sc.lemon.core.LexicalEntry(EN);
+                de.citec.sc.lemon.core.LexicalEntry entry = new de.citec.sc.lemon.core.LexicalEntry(DE);
                 entry.setCanonicalForm(writtenForm);
                 entry.setPOS(posLexInfo);
                 entry.setURI(this.turtleLexicon.getBaseURI() + writtenForm);

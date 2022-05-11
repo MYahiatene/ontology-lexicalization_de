@@ -6,8 +6,14 @@
 package de.citec.sc.generator.analyzer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.ling.TaggedWord;
+import edu.stanford.nlp.pipeline.CoreDocument;
+import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import edu.stanford.nlp.simple.Document;
+import edu.stanford.nlp.simple.Sentence;
+import edu.stanford.nlp.simple.Token;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
 import java.io.BufferedReader;
@@ -18,6 +24,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import edu.stanford.nlp.util.Sets;
 
@@ -31,8 +38,8 @@ public class PosAnalyzer implements TextAnalyzer {
 
     @JsonIgnore
     private static String stanfordModelFile = resources + "stanford-postagger-2015-12-09/models/german-ud.tagger";
-    @JsonIgnore
-    private static MaxentTagger taggerModel = new MaxentTagger(stanfordModelFile);
+    //@JsonIgnore
+    //private static MaxentTagger taggerModel = new MaxentTagger(stanfordModelFile);
     @JsonIgnore
     private Integer numberOfSentences = 0;
     @JsonIgnore
@@ -42,11 +49,11 @@ public class PosAnalyzer implements TextAnalyzer {
     private String fullPosTag = null;
     @JsonIgnore
     List<String> germanStopwords;
-
-    static {
-        taggerModel = new MaxentTagger(stanfordModelFile);
-    }
-
+    /*
+        static {
+            taggerModel = new MaxentTagger(stanfordModelFile);
+        }
+    */
     private Set<String> words = new HashSet<String>();
     private Set<String> adjectives = new HashSet<String>();
     private Set<String> nouns = new HashSet<String>();
@@ -55,6 +62,7 @@ public class PosAnalyzer implements TextAnalyzer {
 
 
     private String inputText = null;
+    private List<String> stopWords;
 
     public PosAnalyzer(String inputText, String analysisType, Integer numberOfSentences) throws Exception {
         this.numberOfSentences = numberOfSentences;
@@ -64,20 +72,27 @@ public class PosAnalyzer implements TextAnalyzer {
         if (analysisType.contains(POS_TAGGER_WORDS)) {
             posTaggerWords(reader);
         }
+        stopWords = new StopWords().getGermanStopWords();
 
     }
 
     private void posTaggerWords(BufferedReader reader) throws Exception {
+        StanfordCoreNLP nlp = new StanfordCoreNLP("german");
+        CoreDocument doc =nlp.processToCoreDocument(reader.lines().collect(Collectors.joining(".")));
+
+        //Document doc = new Document(reader.lines().collect(Collectors.joining(".")));
         Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<Integer, Map<String, Set<String>>>();
         Map<Integer, Set<String>> sentenceWords = new HashMap<Integer, Set<String>>();
-
+        //    Sentence sen = new Sentence(reader.readLine());
+        //     sen.lemmas().forEach(e->new Sentence(e).posTags());
+        List<List<CoreLabel>> tSentences = doc.sentences().stream().map(s->s.tokens()).collect(Collectors.toList());
         List<List<HasWord>> sentences = MaxentTagger.tokenizeText(reader);
         Integer index = 0;
-        for (List<HasWord> sentence : sentences) {
+        for (List<CoreLabel> sentence : tSentences) {
             index++;
             Set<String> wordsofSentence = new HashSet<String>();
             Map<String, Set<String>> posTaggers = new HashMap<String, Set<String>>();
-            List<TaggedWord> tSentence = taggerModel.tagSentence(sentence);
+            List<TaggedWord> tSentence = sentence.stream().map(e -> new TaggedWord(e.word(), e.tag())).collect(Collectors.toList());
             for (TaggedWord taggedWord : tSentence) {
                 String word = taggedWord.word();
                 word = this.modifyWord(word);
@@ -100,32 +115,21 @@ public class PosAnalyzer implements TextAnalyzer {
 
     private boolean isStopWord(String word) throws URISyntaxException, IOException {
         word = word.trim().toLowerCase();
-        Path path = Paths.get(System.getProperty("user.dir") + "/input/stopwords-de.txt");
-        List<String> germanStopwords = new ArrayList<>();
-        try (BufferedReader reader = Files.newBufferedReader(path)) {
-            String line = reader.readLine();
-            while (line != null) {
-                germanStopwords.add(line);
-                line = reader.readLine();
-            }
-        }
-
-        return germanStopwords.contains(word);
+        this.stopWords = new StopWords().getGermanStopWords();
+        return this.stopWords.contains(word);
     }
 
 
     public Boolean posTaggerText(String inputText) throws Exception {
         BufferedReader reader = new BufferedReader(new StringReader(inputText));
-        List<List<HasWord>> sentences = MaxentTagger.tokenizeText(reader);
-        for (List<HasWord> sentence : sentences) {
-            List<TaggedWord> tSentence = taggerModel.tagSentence(sentence);
-            //System.out.println(tSentence);
-            String taggedText = getSentenceFromWordListTagged(tSentence);
-            String taggs = this.setTaggs(tSentence);
-            this.fullPosTag = taggs;
-            return true;
+        Sentence sen = new Sentence(reader.readLine());
+        List<TaggedWord> tSentence = new ArrayList<>();
+        for (Token token : sen.tokens()) {
+            TaggedWord tWord = new TaggedWord(token.word(), token.posTag());
+            tSentence.add(tWord);
         }
-        return false;
+        this.fullPosTag = this.setTaggs(tSentence);
+        return true;
     }
 
     private String getSentenceFromWordListTagged(List<TaggedWord> tSentence) {
@@ -137,7 +141,6 @@ public class PosAnalyzer implements TextAnalyzer {
         str = StringUtils.substring(str, 0, str.length() - 1);
         return str;
     }
-
 
 
     private void sentenwisePosSeperated(Map<Integer, Set<String>> sentenceWords, Map<Integer, Map<String, Set<String>>> sentencePosTags) {

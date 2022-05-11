@@ -7,6 +7,7 @@ package de.citec.sc.generator.analyzer;
 
 import de.citec.sc.generator.utils.PairCheck;
 import edu.stanford.nlp.ling.TaggedWord;
+import edu.stanford.nlp.simple.Document;
 import opennlp.tools.langdetect.*;
 import opennlp.tools.lemmatizer.DictionaryLemmatizer;
 import opennlp.tools.postag.POSModel;
@@ -23,19 +24,20 @@ import org.apache.commons.lang3.StringUtils;
  * Dictionary LemmaAnalyzer Example in Apache OpenNLP
  */
 public class Lemmatizer implements TextAnalyzer {
-       
+       //todo: use corenlp
     private static Map<String, String> lemmasMap = new TreeMap<String, String>();
     private static Map<String, String> withOutPosTag = new TreeMap<String, String>();
     private static Map<String, String> generalizeLemma = new TreeMap<String, String>();
 
     public Lemmatizer() {
-        lemmasMap = this.preparePosTagLemmaMap();
-        generalizeLemma = prepareGeneralizePosTagLemmaMap();
+        //lemmasMap = this.preparePosTagLemmaMap();
+        //generalizeLemma = prepareGeneralizePosTagLemmaMap();
     }
 
     private Map<String, String> prepareGeneralizePosTagLemmaMap() {
         Map<String, String> lemmasMap = new TreeMap<>();
         try {
+            //Document doc = new Document()
             InputStream posModelIn = new FileInputStream(modelDir + posTagFile);
             POSModel posModel = new POSModel(posModelIn);
             POSTaggerME posTagger = new POSTaggerME(posModel);

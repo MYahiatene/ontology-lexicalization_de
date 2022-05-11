@@ -6,23 +6,30 @@
 package de.citec.sc.generator.utils;
 
 import de.citec.sc.generator.analyzer.PosAnalyzer;
+import de.citec.sc.generator.analyzer.StopWords;
 import de.citec.sc.generator.analyzer.TextAnalyzer;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 /**
- *
  * @author elahi
  */
 public class StopWordRemoval {
+    private final List<String> stopWords;
 
-    public static String deleteStopWord(String nGramStr) {
+    public StopWordRemoval() throws IOException {
+        this.stopWords = new StopWords().getGermanStopWords();
+    }
+
+    public String deleteStopWord(String nGramStr) {
         String tokenStr = "";
         if (nGramStr.contains("_")) {
             String[] tokens = nGramStr.split("_");
             for (String token : tokens) {
-                if (PosAnalyzer.ENGLISH_STOPWORDS.contains(token)) {
+                if (this.stopWords.contains(token)) {
                     continue;
                 } else {
                     String line = token;
@@ -43,7 +50,7 @@ public class StopWordRemoval {
 
     }
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         String string = "a_australian";
         String modString = deleteStopWord(string);
         //System.out.println("modString:"+modString);

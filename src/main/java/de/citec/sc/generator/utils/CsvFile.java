@@ -75,6 +75,8 @@ public class CsvFile  implements PredictionPatterns {
         } catch (CompressorException ex) {
             Logger.getLogger(CsvFile.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("the output file needs to be compressed::"+ex.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
     }

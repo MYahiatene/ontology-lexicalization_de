@@ -6,6 +6,7 @@
 package de.citec.generator.core;
 
 import de.citec.sc.generator.analyzer.PosAnalyzer;
+import de.citec.sc.generator.analyzer.StopWords;
 import de.citec.sc.generator.analyzer.TextAnalyzer;
 
 import static de.citec.sc.generator.analyzer.TextAnalyzer.POS_TAGGER_WORDS;
@@ -15,6 +16,7 @@ import de.citec.sc.generator.utils.PropertyCSV;
 import de.citec.sc.generator.utils.StopWordRemoval;
 import com.google.common.collect.Sets;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -308,9 +310,10 @@ public class LineInfo implements PredictionPatterns {
         return this.posTag;
     }
 
-    private Boolean isStopWord(String tokenStr) {
+    private Boolean isStopWord(String tokenStr) throws IOException {
+        StopWords stopWords = new StopWords();
         tokenStr = tokenStr.toLowerCase().trim().strip();
-        if (TextAnalyzer.ENGLISH_STOPWORDS.contains(tokenStr)) {
+        if (stopWords.getGermanStopWords().contains(tokenStr)) {
             return true;
         }
         return false;

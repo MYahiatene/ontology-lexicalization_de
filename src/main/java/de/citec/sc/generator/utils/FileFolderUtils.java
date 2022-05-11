@@ -5,16 +5,8 @@
  */
 package de.citec.sc.generator.utils;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -24,12 +16,12 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.compress.compressors.CompressorException;
 import org.apache.commons.compress.compressors.CompressorInputStream;
 import org.apache.commons.compress.compressors.CompressorStreamFactory;
 
 /**
- *
  * @author elahi
  */
 public class FileFolderUtils {
@@ -53,21 +45,21 @@ public class FileFolderUtils {
             }
 
         } catch (Exception exp) {
-            System.err.println("file not found!!"+exp.getMessage());
+            System.err.println("file not found!!" + exp.getMessage());
             return new ArrayList<File>();
         }
 
         return selectedFiles;
     }
 
-     public static BufferedReader getBufferedReaderForCompressedFile(File fileIn) throws FileNotFoundException, CompressorException {
+    public static BufferedReader getBufferedReaderForCompressedFile(File fileIn) throws IOException, CompressorException {
         FileInputStream fin = new FileInputStream(fileIn);
         BufferedInputStream bis = new BufferedInputStream(fin);
         CompressorInputStream input = new CompressorStreamFactory().createCompressorInputStream(bis);
-        BufferedReader br2 = new BufferedReader(new InputStreamReader(input));
-        return br2;
+
+        return new BufferedReader(new StringReader(new String(input.readAllBytes(), StandardCharsets.ISO_8859_1)));
     }
-  
+
     public static void delete(File dir) throws Exception {
         try {
             File[] files = dir.listFiles();
@@ -75,7 +67,7 @@ public class FileFolderUtils {
                 file.delete();
             }
         } catch (Exception ex) {
-           throw new Exception("file directory does not exist!!");
+            throw new Exception("file directory does not exist!!");
         }
 
     }

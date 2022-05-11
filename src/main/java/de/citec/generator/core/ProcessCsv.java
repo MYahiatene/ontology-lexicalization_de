@@ -15,6 +15,7 @@ package de.citec.generator.core;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import de.citec.sc.generator.analyzer.StopWords;
 import de.citec.sc.generator.utils.FileFolderUtils;
 import de.citec.sc.generator.utils.StopWordRemoval;
 import de.citec.sc.generator.utils.PropertyCSV;
@@ -26,6 +27,7 @@ import de.citec.generator.config.ConfigLemon;
 import de.citec.generator.config.ConfigLex;
 import static de.citec.generator.config.Constants.UNDERSCORE;
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import de.citec.sc.lemon.core.Lexicon;
 import java.util.logging.Logger;
@@ -159,12 +161,13 @@ ProcessCsv implements  PredictionPatterns,LemonConstants {
                
     }
 
-    private String isValidWord(String word,Integer nGramNumber) {
+    private String isValidWord(String word,Integer nGramNumber) throws IOException {
         String nGram = word;
+        StopWordRemoval stopWordRemoval= new StopWordRemoval();
         nGram = nGram.replace("\"", "");
         nGram = nGram.toLowerCase().trim().strip();
         nGram = nGram.replaceAll(" ", "_");
-        nGram = StopWordRemoval.deleteStopWord(nGram);
+        nGram = stopWordRemoval.deleteStopWord(nGram);
         nGram = nGram.replaceAll("_", UNDERSCORE);
         nGram = nGram.replaceAll("[^A-Za-z0-9]", "");
         nGram = nGram.replace(UNDERSCORE, "_");

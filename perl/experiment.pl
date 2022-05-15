@@ -159,7 +159,7 @@ while (defined(my $line = <DAT>)) {
     $CFG->{stopwords}->{$line} = 1;
 }
 close DAT;
-open(DAT, "<$BASEDIR/input/classes_map_de.txt");
+open(DAT, "<$BASEDIR/input/classes_map_$LANGTAG.txt");
 while (defined(my $line = <DAT>)) {
     if ($line =~ m/$className\:(.*)/) {
         $classes->{$className} = $1;}

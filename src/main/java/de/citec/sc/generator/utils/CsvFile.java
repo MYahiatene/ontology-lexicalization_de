@@ -115,6 +115,8 @@ public class CsvFile  implements PredictionPatterns {
         List<String[]> rows = new ArrayList<String[]>();
         String line = null;
         int index = 0;
+        //todo: skip header
+        manualReader.readLine();
         while ((line = manualReader.readLine()) != null) {
             line = this.modifyLine(line);
             try {

@@ -50,9 +50,7 @@ import org.apache.jena.riot.RDFFormat;
  */
 public class ResponseTransfer implements Constants {
 
-    public ResponseTransfer() {
-
-    }
+    public ResponseTransfer(){}
 
     public ResultLex lexicalization(ConfigLex config) {
         String className = null;

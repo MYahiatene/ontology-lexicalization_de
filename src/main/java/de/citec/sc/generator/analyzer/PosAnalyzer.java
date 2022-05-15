@@ -16,10 +16,10 @@ import edu.stanford.nlp.simple.Sentence;
 import edu.stanford.nlp.simple.Token;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.StringReader;
+import java.io.*;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -49,6 +49,8 @@ public class PosAnalyzer implements TextAnalyzer {
     private String fullPosTag = null;
     @JsonIgnore
     List<String> germanStopwords;
+    @JsonIgnore
+    private StanfordCoreNLP nlp;
     /*
         static {
             taggerModel = new MaxentTagger(stanfordModelFile);
@@ -68,24 +70,26 @@ public class PosAnalyzer implements TextAnalyzer {
         this.numberOfSentences = numberOfSentences;
         this.inputText = inputText;
         BufferedReader reader = new BufferedReader(new StringReader(inputText));
-
+        this.nlp = new StanfordCoreNLP("german");
+        // System.out.println(nlp.getProperties());
+        //Properties prop = new Properties()
         if (analysisType.contains(POS_TAGGER_WORDS)) {
-            posTaggerWords(reader);
+            posTaggerWords(reader, nlp);
         }
         stopWords = new StopWords().getGermanStopWords();
 
     }
 
-    private void posTaggerWords(BufferedReader reader) throws Exception {
-        StanfordCoreNLP nlp = new StanfordCoreNLP("german");
-        CoreDocument doc =nlp.processToCoreDocument(reader.lines().collect(Collectors.joining(".")));
+    private void posTaggerWords(BufferedReader reader, StanfordCoreNLP nlp) throws Exception {
+        reader.readLine();
+        CoreDocument doc = nlp.processToCoreDocument(reader.lines().collect(Collectors.joining(".")));
 
         //Document doc = new Document(reader.lines().collect(Collectors.joining(".")));
         Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<Integer, Map<String, Set<String>>>();
         Map<Integer, Set<String>> sentenceWords = new HashMap<Integer, Set<String>>();
         //    Sentence sen = new Sentence(reader.readLine());
         //     sen.lemmas().forEach(e->new Sentence(e).posTags());
-        List<List<CoreLabel>> tSentences = doc.sentences().stream().map(s->s.tokens()).collect(Collectors.toList());
+        List<List<CoreLabel>> tSentences = doc.sentences().stream().map(s -> s.tokens()).collect(Collectors.toList());
         List<List<HasWord>> sentences = MaxentTagger.tokenizeText(reader);
         Integer index = 0;
         for (List<CoreLabel> sentence : tSentences) {
@@ -121,7 +125,8 @@ public class PosAnalyzer implements TextAnalyzer {
 
 
     public Boolean posTaggerText(String inputText) throws Exception {
-        BufferedReader reader = new BufferedReader(new StringReader(inputText));
+        byte[] inputTextBytes = inputText.getBytes(StandardCharsets.UTF_8);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(inputTextBytes)));
         Sentence sen = new Sentence(reader.readLine());
         List<TaggedWord> tSentence = new ArrayList<>();
         for (Token token : sen.tokens()) {

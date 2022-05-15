@@ -11,6 +11,7 @@ use Data::Dumper;
 use FileHandle;
 use File::Basename;
 use utf8;
+#use open qw/ :std :encoding(utf-8) /;
 binmode STDOUT, ':utf8';
 use File::Slurp;
 use JSON::Parse ':all';
@@ -118,8 +119,9 @@ my $num_to_month = {
 my $total = $#ARGV + 1;
 my $counter = 1;
 my $jsonConfig = "";
-my $className = "";  #TODO: Make it so you can use Politician as class instead Politiker
-                    #TODO: Better would be to preprocess the corpus
+my $className = ""; #TODO: Make it so you can use Politician as class instead Politiker
+our $classes = {};
+#TODO: Better would be to preprocess the corpus
 # Use loop to print all args stored in an array called @ARGV
 foreach my $a (@ARGV) {
     #  if($counter == 1){
@@ -157,7 +159,12 @@ while (defined(my $line = <DAT>)) {
     $CFG->{stopwords}->{$line} = 1;
 }
 close DAT;
-
+open(DAT, "<$BASEDIR/input/classes_map_de.txt");
+while (defined(my $line = <DAT>)) {
+    if ($line =~ m/$className\:(.*)/) {
+        $classes->{$className} = $1;}
+}
+close DAT;
 my $folder_length = 4; # length of the name of the subfolder in $BASEDIR/input/data_per_entity/
 
 open(LOG, ">>logfile.txt");
@@ -3094,7 +3101,7 @@ sub parse_NT_into_obj {
     # BNODE URI BNODE
 
     # URI+(Politiker...) URI URI
-    if ($string =~ m/<(.*\($className.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
+    if ($string =~ m/<(.*\($classes->$className.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
         # class =  Politiker
         # <http://de.dbpedia.org/resource/Franziska_Reindl_(Politikerin)> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person> .
         # class = Place

@@ -56,8 +56,7 @@ public class FileFolderUtils {
         FileInputStream fin = new FileInputStream(fileIn);
         BufferedInputStream bis = new BufferedInputStream(fin);
         CompressorInputStream input = new CompressorStreamFactory().createCompressorInputStream(bis);
-
-        return new BufferedReader(new StringReader(new String(input.readAllBytes(), StandardCharsets.ISO_8859_1)));
+        return new BufferedReader(new StringReader(new String(input.readAllBytes(), StandardCharsets.UTF_8)));
     }
 
     public static void delete(File dir) throws Exception {

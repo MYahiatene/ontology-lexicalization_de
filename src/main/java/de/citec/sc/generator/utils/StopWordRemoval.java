@@ -29,9 +29,7 @@ public class StopWordRemoval {
         if (nGramStr.contains("_")) {
             String[] tokens = nGramStr.split("_");
             for (String token : tokens) {
-                if (this.stopWords.contains(token)) {
-                    continue;
-                } else {
+                if (!this.stopWords.contains(token)) {
                     String line = token;
                     tokenStr += line + "_";
                 }

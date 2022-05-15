@@ -229,6 +229,7 @@ public class LineInfo implements PredictionPatterns {
 
     private void getPosTag(String word) throws Exception {
         analyzer = new PosAnalyzer(word, POS_TAGGER_WORDS, 5);
+        // todo: add more word tags
         if (!analyzer.getNouns().isEmpty()) {
             this.posTag = PosAnalyzer.NOUN;
         } else if (!analyzer.getAdjectives().isEmpty()) {

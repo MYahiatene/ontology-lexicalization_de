@@ -7,7 +7,6 @@ package de.citec.generator.core;
  */
 
 /**
- *
  * @author elahi
  */
 /*
@@ -15,6 +14,7 @@ package de.citec.generator.core;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 import de.citec.sc.generator.analyzer.StopWords;
 import de.citec.sc.generator.utils.FileFolderUtils;
 import de.citec.sc.generator.utils.StopWordRemoval;
@@ -25,12 +25,17 @@ import de.citec.sc.generator.analyzer.Lemmatizer;
 import de.citec.generator.config.ConfigDownload;
 import de.citec.generator.config.ConfigLemon;
 import de.citec.generator.config.ConfigLex;
+
 import static de.citec.generator.config.Constants.UNDERSCORE;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+
 import de.citec.sc.lemon.core.Lexicon;
+
 import java.util.logging.Logger;
+
 import de.citec.generator.config.PredictionPatterns;
 
 /**
@@ -38,7 +43,7 @@ import de.citec.generator.config.PredictionPatterns;
  * @author elahi
  */
 public class
-ProcessCsv implements  PredictionPatterns,LemonConstants {
+ProcessCsv implements PredictionPatterns, LemonConstants {
 
     private Lexicon turtleLexicon = null;
     private Integer rankLimit = 0;
@@ -46,15 +51,16 @@ ProcessCsv implements  PredictionPatterns,LemonConstants {
     private Lemmatizer lemmatizer = new Lemmatizer();
 
 
-    public  ProcessCsv(String baseDir,String resourceDir,ConfigLemon config) throws Exception {
-        this.turtleLexicon=new Lexicon(config.getUri_basic());
-        this.rankLimit=config.getRank_limit();
+    public ProcessCsv(String baseDir, String resourceDir, ConfigLemon config) throws Exception {
+        this.turtleLexicon = new Lexicon(config.getUri_basic());
+        this.rankLimit = config.getRank_limit();
         Set<String> posTag = new HashSet<String>();
+        // todo: more pos tags for german
         posTag.add("JJ");
         posTag.add("NN");
         posTag.add("VB");
         String outputDir = resourceDir;
-      
+
         List<String> predictKBGivenLInguistic = new ArrayList<String>(Arrays.asList(
                 predict_l_for_s_given_po,
                 predict_localized_l_for_s_given_po,
@@ -85,25 +91,24 @@ ProcessCsv implements  PredictionPatterns,LemonConstants {
             for (String inter : interestingness) {
                 outputDir = resourceDir + "/" + prediction + "/" + inter + "/";
                 FileFolderUtils.createDirectory(outputDir);
-                  this.generate(inputDir, outputDir, prediction, inter, LOGGER, ".csv");
+                this.generate(inputDir, outputDir, prediction, inter, LOGGER, ".csv");
             }
         }
 
-        
-       
+
     }
 
     public void generate(String rawFileDir, String outputDir, String prediction, String givenInterestingness, Logger givenLOGGER, String fileType) throws Exception {
-        
+
         List<File> files = FileFolderUtils.getSpecificFiles(rawFileDir, prediction + "-", ".csv");
         if (!files.isEmpty()) {
             createExperimentLinesCsv(outputDir, prediction, givenInterestingness, files);
         } else {
-            throw new Exception("NO ontology lexicalization files are found for processing"+". "+"Run lexicalization process first");
+            throw new Exception("NO ontology lexicalization files are found for processing" + ". " + "Run lexicalization process first");
         }
     }
 
-    private  void createExperimentLinesCsv(String outputDir, String prediction, String interestingness, List<File> classFiles) throws Exception {
+    private void createExperimentLinesCsv(String outputDir, String prediction, String interestingness, List<File> classFiles) throws Exception {
 
         List<String[]> rows = new ArrayList<String[]>();
         Integer numberOfClass = 0;
@@ -127,7 +132,7 @@ ProcessCsv implements  PredictionPatterns,LemonConstants {
                         continue;
                     } else if (lineInfo.getProbabilityValue().isEmpty()) {
                         continue;
-                    }else if (!lineInfo.getValidFlag()) {
+                    } else if (!lineInfo.getValidFlag()) {
                         continue;
                     }
 
@@ -135,7 +140,7 @@ ProcessCsv implements  PredictionPatterns,LemonConstants {
 
 
                 try {
-                    String nGram = this.isValidWord(lineInfo.getWord(),lineInfo.getnGramNumber());
+                    String nGram = this.isValidWord(lineInfo.getWord(), lineInfo.getnGramNumber());
 
                     if (nGram != null) {
                         List<LineInfo> results = new ArrayList<LineInfo>();
@@ -149,21 +154,21 @@ ProcessCsv implements  PredictionPatterns,LemonConstants {
 
                         }
                     }
-                   
+
                 } catch (Exception ignored) {
                 }
 
             }
-            LemonCreator lexicon = new LemonCreator(outputDir,turtleLexicon,rankLimit);
+            LemonCreator lexicon = new LemonCreator(outputDir, turtleLexicon, rankLimit);
             lexicon.preparePropertyLexicon(prediction, outputDir, className, interestingness, lineLexicon);
 
         }
-               
+
     }
 
-    private String isValidWord(String word,Integer nGramNumber) throws IOException {
+    private String isValidWord(String word, Integer nGramNumber) throws IOException {
         String nGram = word;
-        StopWordRemoval stopWordRemoval= new StopWordRemoval();
+        StopWordRemoval stopWordRemoval = new StopWordRemoval();
         nGram = nGram.replace("\"", "");
         nGram = nGram.toLowerCase().trim().strip();
         nGram = nGram.replaceAll(" ", "_");
@@ -171,7 +176,7 @@ ProcessCsv implements  PredictionPatterns,LemonConstants {
         nGram = nGram.replaceAll("_", UNDERSCORE);
         nGram = nGram.replaceAll("[^A-Za-z0-9]", "");
         nGram = nGram.replace(UNDERSCORE, "_");
-        
+
         if (nGram.contains("_")) {
             if ((nGram.split("_").length > 2)) {
                 return null;
@@ -185,12 +190,10 @@ ProcessCsv implements  PredictionPatterns,LemonConstants {
         return null;
     }
 
-   
-    public  Lexicon getTurtleLexicon() {
+
+    public Lexicon getTurtleLexicon() {
         return turtleLexicon;
     }
 
-
-    
 
 }

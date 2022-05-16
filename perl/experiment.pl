@@ -4,6 +4,7 @@ use strict;
 use YAML::Syck qw(LoadFile DumpFile Load Dump);
 use IO::Uncompress::Bunzip2 '$Bunzip2Error';
 use URL::Encode qw(url_encode_utf8);
+use Encode qw(decode encode);
 use Number::Bytes::Human qw(format_bytes);
 use Text::CSV;
 use JSON;
@@ -13,7 +14,7 @@ use File::Basename;
 use utf8;
 #use open qw/ :std :encoding(utf-8) /;
 binmode STDOUT, ':utf8';
-binmode STDIN, ':utf8';
+#binmode STDIN, ':utf8';
 use File::Slurp;
 use JSON::Parse ':all';
 use Term::ReadKey;
@@ -44,7 +45,7 @@ use FindBin;
 # for maven my $BASEDIR = "/app/";
 # my $BASEDIR = "/app/"; 
 my $BASEDIR = "$FindBin::Bin/../";
-my $LANGTAG = "de";
+my $LANGTAG = "";
 my $CFG = {
     min_entities_per_class     => 100,
     max_entities_per_class     => 100,
@@ -232,7 +233,7 @@ if (
         print "c $c\n";
 
         ## next if $c !~ m/\/Actor\Z/; # TODO remove
-        next if $c !~ m/\/$className\Z/; # TODO remove
+        next if $c !~ m/\/$className\Z/; # || $c !~ m/\/$classes->$className\Z/ ; # TODO remove
         print "class2 > $c\n";
 
         if (scalar keys %{$frequent_class_to_entities->{$c}} < $CFG->{min_entities_per_class}) {
@@ -3088,7 +3089,7 @@ sub shorten {
 #TODO: check this for german dbpedia
 sub parse_NT_into_obj {
     my $string = shift;
-
+    #$string=decode('utf8',$string);
     return undef if $string =~ m/\A#/;
 
     # URI URI URI
@@ -3102,7 +3103,7 @@ sub parse_NT_into_obj {
     # BNODE URI BNODE
 
     # URI+(Politiker...) URI URI
-    if ($string =~ m/<(.*\($classes->$className.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
+    if ($string =~ m/<(.*\($classes->{$className}.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
         # class =  Politiker
         # <http://de.dbpedia.org/resource/Franziska_Reindl_(Politikerin)> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person> .
         # class = Place

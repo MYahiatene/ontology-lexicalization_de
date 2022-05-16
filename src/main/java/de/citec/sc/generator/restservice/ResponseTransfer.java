@@ -23,11 +23,7 @@ import de.citec.sc.lemon.core.Lexicon;
 import de.citec.sc.lemon.io.LexiconSerialization;
 import edu.stanford.nlp.util.Pair;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -45,12 +41,15 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.RDFFormat;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 /**
  * @author elahi
  */
 public class ResponseTransfer implements Constants {
 
-    public ResponseTransfer(){}
+    public ResponseTransfer() {
+    }
 
     public ResultLex lexicalization(ConfigLex config) {
         String className = null;
@@ -95,7 +94,8 @@ public class ResponseTransfer implements Constants {
             Model model = ModelFactory.createDefaultModel();
             serializer.serialize(turtleLexicon, model);
             System.out.println("lemon creating ends!! ");
-            return this.writeJsonLDtoString(model, scriptName, RDFFormat.JSONLD);
+            //todo: fix utf8- problem
+            return this.writeJsonLDtoString(model, scriptName, RDFFormat.JSONLD_PRETTY);
         } catch (JsonProcessingException ex) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Json creation fails!!" + ex.getMessage());
@@ -129,11 +129,13 @@ public class ResponseTransfer implements Constants {
     }
 
     private String writeJsonLDtoString(Model model, String fileName, RDFFormat type) throws FileNotFoundException, IOException {
-        StringWriter stringWriter = new StringWriter();
-        RDFDataMgr.write(stringWriter, model, type);
-        String jsonLDString = stringWriter.toString();
-        stringWriter.close();
-        return jsonLDString;
+        //StringWriter stringWriter = new StringWriter();
+        PrintStream out = new PrintStream(System.out, true, UTF_8);
+        RDFDataMgr.write(out, model, type);
+        //String jsonLDString = stringWriter.toString();
+        //stringWriter.close();
+        //return jsonLDString;
+        return "";
     }
 
 

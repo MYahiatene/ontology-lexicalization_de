@@ -119,7 +119,7 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                 } else
                     writtenForm = this.modify(writtenForm);
 
-
+                //todo: change language specific
                 de.citec.sc.lemon.core.LexicalEntry entry = new de.citec.sc.lemon.core.LexicalEntry(DE);
                 entry.setCanonicalForm(writtenForm);
                 entry.setPOS(posLexInfo);

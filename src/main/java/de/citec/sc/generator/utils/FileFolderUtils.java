@@ -51,12 +51,13 @@ public class FileFolderUtils {
 
         return selectedFiles;
     }
-
+//todo: decode utf8
     public static BufferedReader getBufferedReaderForCompressedFile(File fileIn) throws IOException, CompressorException {
         FileInputStream fin = new FileInputStream(fileIn);
         BufferedInputStream bis = new BufferedInputStream(fin);
         CompressorInputStream input = new CompressorStreamFactory().createCompressorInputStream(bis);
-        return new BufferedReader(new StringReader(new String(input.readAllBytes(), StandardCharsets.UTF_8)));
+        String decodedInput = new String(input.readAllBytes(), StandardCharsets.UTF_8);
+        return new BufferedReader(new StringReader(decodedInput));
     }
 
     public static void delete(File dir) throws Exception {

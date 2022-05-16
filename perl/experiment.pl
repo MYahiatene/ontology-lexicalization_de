@@ -13,6 +13,7 @@ use File::Basename;
 use utf8;
 #use open qw/ :std :encoding(utf-8) /;
 binmode STDOUT, ':utf8';
+binmode STDIN, ':utf8';
 use File::Slurp;
 use JSON::Parse ':all';
 use Term::ReadKey;
@@ -43,7 +44,7 @@ use FindBin;
 # for maven my $BASEDIR = "/app/";
 # my $BASEDIR = "/app/"; 
 my $BASEDIR = "$FindBin::Bin/../";
-my $LANGTAG = "";
+my $LANGTAG = "de";
 my $CFG = {
     min_entities_per_class     => 100,
     max_entities_per_class     => 100,
@@ -119,7 +120,7 @@ my $num_to_month = {
 my $total = $#ARGV + 1;
 my $counter = 1;
 my $jsonConfig = "";
-my $className = ""; #TODO: Make it so you can use Politician as class instead Politiker
+my $className = "";
 our $classes = {};
 #TODO: Better would be to preprocess the corpus
 # Use loop to print all args stored in an array called @ARGV
@@ -161,7 +162,7 @@ while (defined(my $line = <DAT>)) {
 close DAT;
 open(DAT, "<$BASEDIR/input/classes_map_$LANGTAG.txt");
 while (defined(my $line = <DAT>)) {
-    if ($line =~ m/$className\:(.*)/) {
+    if ($line =~ m/$className\,(.*)/) {
         $classes->{$className} = $1;}
 }
 close DAT;

@@ -48,7 +48,7 @@ public class LexicalEntry {
         /*
         Set default to English
         */
-        Language language = Language.EN;
+        Language language = Language.DE;
 
         
 	

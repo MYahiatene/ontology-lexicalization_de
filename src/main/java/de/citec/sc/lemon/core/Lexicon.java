@@ -247,12 +247,11 @@ public class Lexicon {
 	}
         
         public List<Preposition> getPrepositions(){
-            
-            List<Preposition> prepositions = this.entries.stream()
-                    .filter(e->e.getPreposition()!=null)
-                    .map((LexicalEntry e)->{return e.getPreposition();})
-                    .collect(Collectors.toList());
-            return prepositions;
+
+			return this.entries.stream()
+					.filter(e->e.getPreposition()!=null)
+					.map((LexicalEntry e)->{return e.getPreposition();})
+					.collect(Collectors.toList());
         }
         
         

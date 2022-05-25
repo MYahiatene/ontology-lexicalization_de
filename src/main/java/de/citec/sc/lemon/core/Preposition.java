@@ -33,7 +33,7 @@ import de.citec.sc.lemon.core.Language;
  * @author swalter
  */
 public class Preposition {
-    Language language = Language.EN;
+    Language language = Language.DE;
     String canonical_form = "";
     public Preposition(Language language, String canonical_form) {
         this.language = language;

@@ -130,12 +130,13 @@ public class ResponseTransfer implements Constants {
 
     private String writeJsonLDtoString(Model model, String fileName, RDFFormat type) throws FileNotFoundException, IOException {
         //StringWriter stringWriter = new StringWriter();
-        PrintStream out = new PrintStream(System.out, true, UTF_8);
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
         RDFDataMgr.write(out, model, type);
         //String jsonLDString = stringWriter.toString();
         //stringWriter.close();
         //return jsonLDString;
-        return "";
+        return out.toString(UTF_8);
     }
 
 

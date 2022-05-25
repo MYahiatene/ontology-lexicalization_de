@@ -54,14 +54,14 @@ ProcessCsv implements PredictionPatterns, LemonConstants {
     public ProcessCsv(String baseDir, String resourceDir, ConfigLemon config) throws Exception {
         this.turtleLexicon = new Lexicon(config.getUri_basic());
         this.rankLimit = config.getRank_limit();
-        Set<String> posTag = new HashSet<String>();
+        Set<String> posTag = new HashSet<>();
         // todo: more pos tags for german
         posTag.add("JJ");
         posTag.add("NN");
         posTag.add("VB");
         String outputDir = resourceDir;
 
-        List<String> predictKBGivenLInguistic = new ArrayList<String>(Arrays.asList(
+        List<String> predictKBGivenLInguistic = new ArrayList<>(Arrays.asList(
                 predict_l_for_s_given_po,
                 predict_localized_l_for_s_given_po,
                 predict_l_for_s_given_p,
@@ -84,7 +84,7 @@ ProcessCsv implements PredictionPatterns, LemonConstants {
                 predict_sp_for_o_given_l
         ));
 
-        List<String> interestingness = new ArrayList<String>();
+        List<String> interestingness = new ArrayList<>();
         interestingness.add(Cosine);
         for (String prediction : predictKBGivenLInguistic) {
             String inputDir = baseDir + "/";
@@ -110,12 +110,12 @@ ProcessCsv implements PredictionPatterns, LemonConstants {
 
     private void createExperimentLinesCsv(String outputDir, String prediction, String interestingness, List<File> classFiles) throws Exception {
 
-        List<String[]> rows = new ArrayList<String[]>();
+        List<String[]> rows = new ArrayList<>();
         Integer numberOfClass = 0;
         Integer maximumNumberOflines = 300000;
 
         for (File classFile : classFiles) {
-            Map<String, List<LineInfo>> lineLexicon = new TreeMap<String, List<LineInfo>>();
+            Map<String, List<LineInfo>> lineLexicon = new TreeMap<>();
             String fileName = classFile.getName();
             CsvFile csvFile = new CsvFile(classFile);
             rows = csvFile.getRowsManual();

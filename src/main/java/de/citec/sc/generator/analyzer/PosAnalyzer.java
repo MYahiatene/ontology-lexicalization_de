@@ -9,8 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.ling.TaggedWord;
-import edu.stanford.nlp.pipeline.CoreDocument;
-import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import edu.stanford.nlp.pipeline.*;
 import edu.stanford.nlp.simple.Document;
 import edu.stanford.nlp.simple.Sentence;
 import edu.stanford.nlp.simple.Token;
@@ -71,8 +70,6 @@ public class PosAnalyzer implements TextAnalyzer {
         this.inputText = inputText;
         BufferedReader reader = new BufferedReader(new StringReader(inputText));
         this.nlp = new StanfordCoreNLP("german");
-        // System.out.println(nlp.getProperties());
-        //Properties prop = new Properties()
         if (analysisType.contains(POS_TAGGER_WORDS)) {
             posTaggerWords(reader, nlp);
         }
@@ -83,14 +80,10 @@ public class PosAnalyzer implements TextAnalyzer {
     private void posTaggerWords(BufferedReader reader, StanfordCoreNLP nlp) throws Exception {
         reader.readLine();
         CoreDocument doc = nlp.processToCoreDocument(reader.lines().collect(Collectors.joining(".")));
+        Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<>();
+        Map<Integer, Set<String>> sentenceWords = new HashMap<>();
 
-        //Document doc = new Document(reader.lines().collect(Collectors.joining(".")));
-        Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<Integer, Map<String, Set<String>>>();
-        Map<Integer, Set<String>> sentenceWords = new HashMap<Integer, Set<String>>();
-        //    Sentence sen = new Sentence(reader.readLine());
-        //     sen.lemmas().forEach(e->new Sentence(e).posTags());
         List<List<CoreLabel>> tSentences = doc.sentences().stream().map(s -> s.tokens()).collect(Collectors.toList());
-        List<List<HasWord>> sentences = MaxentTagger.tokenizeText(reader);
         Integer index = 0;
         for (List<CoreLabel> sentence : tSentences) {
             index++;

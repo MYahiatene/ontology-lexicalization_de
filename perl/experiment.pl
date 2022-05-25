@@ -163,7 +163,7 @@ while (defined(my $line = <DAT>)) {
 close DAT;
 open(DAT, "<$BASEDIR/input/classes_map_$LANGTAG.txt");
 while (defined(my $line = <DAT>)) {
-    if ($line =~ m/$className\,(.*)/) {
+    if ($line =~ m/^$className,(.*)/) {
         $classes->{$className} = $1;}
 }
 close DAT;
@@ -1656,13 +1656,13 @@ if (-e $step4_finished_file and not -e $step5_finished_file) {
                 if ($CFG->{rulepattern}->{predict_l_for_s_given_po}) {
                     unlink $filename1_csv if -s $filename1_csv;
                     unlink "$filename1_csv.bz2" if -s "$filename1_csv.bz2";
-                    open $fh1, ">", $filename1_csv or die "$filename1_csv: $!"; # ">:encoding(utf8)"
+                    open $fh1, ">:encoding(utf8)", $filename1_csv or die "$filename1_csv: $!"; # ">:encoding(utf8)"
                     $csv1->say($fh1, $csv_header);
                 }
                 if ($CFG->{rulepattern}->{predict_po_for_s_given_l}) {
                     unlink $filename2_csv if -s $filename2_csv;
                     unlink "$filename2_csv.bz2" if -s "$filename2_csv.bz2";
-                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";
+                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";# ">:encoding(utf8)"
                     $csv2->say($fh2, $csv_header);
                 }
                 foreach my $p (keys %{$I->{pol}}) {
@@ -1747,13 +1747,13 @@ if (-e $step4_finished_file and not -e $step5_finished_file) {
                 if ($CFG->{rulepattern}->{predict_localized_l_for_s_given_po}) {
                     unlink $filename1_csv if -s $filename1_csv;
                     unlink "$filename1_csv.bz2" if -s "$filename1_csv.bz2";
-                    open $fh1, ">", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
+                    open $fh1, ">:encoding(utf8)", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
                     $csv1->say($fh1, $csv_header);
                 }
                 if ($CFG->{rulepattern}->{predict_po_for_s_given_localized_l}) {
                     unlink $filename2_csv if -s $filename2_csv;
                     unlink "$filename2_csv.bz2" if -s "$filename2_csv.bz2";
-                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";
+                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";# ">:encoding(utf8)"
                     $csv2->say($fh2, $csv_header);
                 }
                 foreach my $p (keys %{$I->{poll}}) {
@@ -1840,13 +1840,13 @@ if (-e $step4_finished_file and not -e $step5_finished_file) {
                 if ($CFG->{rulepattern}->{predict_l_for_s_given_p}) {
                     unlink $filename1_csv if -s $filename1_csv;
                     unlink "$filename1_csv.bz2" if -s "$filename1_csv.bz2";
-                    open $fh1, ">", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
+                    open $fh1, ">:encoding(utf8)", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
                     $csv1->say($fh1, $csv_header);
                 }
                 if ($CFG->{rulepattern}->{predict_p_for_s_given_l}) {
                     unlink $filename2_csv if -s $filename2_csv;
                     unlink "$filename2_csv.bz2" if -s "$filename2_csv.bz2";
-                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";
+                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";# ">:encoding(utf8)"
                     $csv2->say($fh2, $csv_header);
                 }
                 foreach my $p (keys %{$I->{pl}}) {
@@ -1929,13 +1929,13 @@ if (-e $step4_finished_file and not -e $step5_finished_file) {
                 if ($CFG->{rulepattern}->{predict_localized_l_for_s_given_p}) {
                     unlink $filename1_csv if -s $filename1_csv;
                     unlink "$filename1_csv.bz2" if -s "$filename1_csv.bz2";
-                    open $fh1, ">", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
+                    open $fh1, ">:encoding(utf8)", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
                     $csv1->say($fh1, $csv_header);
                 }
                 if ($CFG->{rulepattern}->{predict_p_for_s_given_localized_l}) {
                     unlink $filename2_csv if -s $filename2_csv;
                     unlink "$filename2_csv.bz2" if -s "$filename2_csv.bz2";
-                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";
+                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";# ">:encoding(utf8)"
                     $csv2->say($fh2, $csv_header);
                 }
                 foreach my $p (keys %{$I->{pll}}) {
@@ -2020,13 +2020,13 @@ if (-e $step4_finished_file and not -e $step5_finished_file) {
                 if ($CFG->{rulepattern}->{predict_l_for_s_given_o}) {
                     unlink $filename1_csv if -s $filename1_csv;
                     unlink "$filename1_csv.bz2" if -s "$filename1_csv.bz2";
-                    open $fh1, ">", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
+                    open $fh1, ">:encoding(utf8)", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
                     $csv1->say($fh1, $csv_header);
                 }
                 if ($CFG->{rulepattern}->{predict_o_for_s_given_l}) {
                     unlink $filename2_csv if -s $filename2_csv;
                     unlink "$filename2_csv.bz2" if -s "$filename2_csv.bz2";
-                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";
+                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";# ">:encoding(utf8)"
                     $csv2->say($fh2, $csv_header);
                 }
                 foreach my $o (keys %{$I->{ol}}) {
@@ -2279,13 +2279,13 @@ if (-e $step4_finished_file and not -e $step5_finished_file) {
                 if ($CFG->{rulepattern}->{predict_l_for_o_given_sp}) {
                     unlink $filename1_csv if -s $filename1_csv;
                     unlink "$filename1_csv.bz2" if -s "$filename1_csv.bz2";
-                    open $fh1, ">", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
+                    open $fh1, ">:encoding(utf8)", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
                     $csv1->say($fh1, $csv_header);
                 }
                 if ($CFG->{rulepattern}->{predict_sp_for_o_given_l}) {
                     unlink $filename2_csv if -s $filename2_csv;
                     unlink "$filename2_csv.bz2" if -s "$filename2_csv.bz2";
-                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";
+                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";# ">:encoding(utf8)"
                     $csv2->say($fh2, $csv_header);
                 }
                 foreach my $s (keys %{$I->{spl}}) {
@@ -2370,13 +2370,13 @@ if (-e $step4_finished_file and not -e $step5_finished_file) {
                 if ($CFG->{rulepattern}->{predict_localized_l_for_o_given_sp}) {
                     unlink $filename1_csv if -s $filename1_csv;
                     unlink "$filename1_csv.bz2" if -s "$filename1_csv.bz2";
-                    open $fh1, ">", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
+                    open $fh1, ">:encoding(utf8)", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
                     $csv1->say($fh1, $csv_header);
                 }
                 if ($CFG->{rulepattern}->{predict_sp_for_o_given_localized_l}) {
                     unlink $filename2_csv if -s $filename2_csv;
                     unlink "$filename2_csv.bz2" if -s "$filename2_csv.bz2";
-                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";
+                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";# ">:encoding(utf8)"
                     $csv2->say($fh2, $csv_header);
                 }
                 foreach my $s (keys %{$I->{spll}}) {
@@ -2463,13 +2463,13 @@ if (-e $step4_finished_file and not -e $step5_finished_file) {
                 if ($CFG->{rulepattern}->{predict_l_for_o_given_s}) {
                     unlink $filename1_csv if -s $filename1_csv;
                     unlink "$filename1_csv.bz2" if -s "$filename1_csv.bz2";
-                    open $fh1, ">", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
+                    open $fh1, ">:encoding(utf8)", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
                     $csv1->say($fh1, $csv_header);
                 }
                 if ($CFG->{rulepattern}->{predict_s_for_o_given_l}) {
                     unlink $filename2_csv if -s $filename2_csv;
                     unlink "$filename2_csv.bz2" if -s "$filename2_csv.bz2";
-                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";
+                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";# ">:encoding(utf8)"
                     $csv2->say($fh2, $csv_header);
                 }
                 foreach my $s (keys %{$I->{sl}}) {
@@ -2552,13 +2552,13 @@ if (-e $step4_finished_file and not -e $step5_finished_file) {
                 if ($CFG->{rulepattern}->{predict_l_for_o_given_p}) {
                     unlink $filename1_csv if -s $filename1_csv;
                     unlink "$filename1_csv.bz2" if -s "$filename1_csv.bz2";
-                    open $fh1, ">", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
+                    open $fh1, ">:encoding(utf8)", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
                     $csv1->say($fh1, $csv_header);
                 }
                 if ($CFG->{rulepattern}->{predict_p_for_o_given_l}) {
                     unlink $filename2_csv if -s $filename2_csv;
                     unlink "$filename2_csv.bz2" if -s "$filename2_csv.bz2";
-                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";
+                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";# ">:encoding(utf8)"
                     $csv2->say($fh2, $csv_header);
                 }
                 foreach my $p (keys %{$I->{pl}}) {
@@ -2641,13 +2641,13 @@ if (-e $step4_finished_file and not -e $step5_finished_file) {
                 if ($CFG->{rulepattern}->{predict_localized_l_for_o_given_p}) {
                     unlink $filename1_csv if -s $filename1_csv;
                     unlink "$filename1_csv.bz2" if -s "$filename1_csv.bz2";
-                    open $fh1, ">", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
+                    open $fh1, ">:encoding(utf8)", $filename1_csv or die "$filename1_csv: $!";# ">:encoding(utf8)"
                     $csv1->say($fh1, $csv_header);
                 }
                 if ($CFG->{rulepattern}->{predict_p_for_o_given_localized_l}) {
                     unlink $filename2_csv if -s $filename2_csv;
                     unlink "$filename2_csv.bz2" if -s "$filename2_csv.bz2";
-                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";
+                    open $fh2, ">:encoding(utf8)", $filename2_csv or die "$filename2_csv: $!";# ">:encoding(utf8)"
                     $csv2->say($fh2, $csv_header);
                 }
                 foreach my $p (keys %{$I->{pll}}) {

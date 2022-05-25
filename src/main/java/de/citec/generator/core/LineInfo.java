@@ -17,6 +17,7 @@ import de.citec.sc.generator.utils.StopWordRemoval;
 import com.google.common.collect.Sets;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -105,7 +106,7 @@ public class LineInfo implements PredictionPatterns {
             return;
         }
 
-        this.wordOriginal = row[propertyCSV.getLinguisticPatternIndex()];
+        this.wordOriginal = new String(row[propertyCSV.getLinguisticPatternIndex()].getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
 
 
         if (wordOriginal != null) {

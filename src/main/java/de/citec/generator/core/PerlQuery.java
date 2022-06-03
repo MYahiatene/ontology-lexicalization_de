@@ -24,10 +24,10 @@ public class PerlQuery implements Constants {
 
     private Boolean processSuccessFlag = false;
 
-    public PerlQuery(String location, String scriptName, String class_url, String langTag) throws PerlException {
+    public PerlQuery(String location, String scriptName, String class_url, String langTag, String config) throws PerlException {
         try {
             System.out.println("Reading DBpedia abstract and knowledge graph and corpus based lexicalization!!\n");
-            this.runCommandLine(location, scriptName, class_url, langTag);
+            this.runCommandLine(location, scriptName, class_url, langTag, config);
         } catch (InterruptedException ex) {
             Logger.getLogger(PerlQuery.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
@@ -41,9 +41,8 @@ public class PerlQuery implements Constants {
     }
 
 
-    public Boolean runCommandLine(String location, String scriptName, String class_url, String langTag) throws IOException, InterruptedException {
-
-        String command = "perl " + location + scriptName + " " + appDir + " " + class_url + " " + langTag;
+    public Boolean runCommandLine(String location, String scriptName, String class_url, String langTag, String config) throws IOException, InterruptedException {
+        String command = "perl " + location + scriptName + " " + appDir + " " + class_url + " " + langTag + " " + config;
         Runtime runTime = Runtime.getRuntime();
 
         Process process = runTime.exec(command);

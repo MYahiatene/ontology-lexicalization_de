@@ -21,20 +21,16 @@ import de.citec.sc.generator.exceptions.PerlException;
 import de.citec.sc.generator.utils.FileFolderUtils;
 import de.citec.sc.lemon.core.Lexicon;
 import de.citec.sc.lemon.io.LexiconSerialization;
-import edu.stanford.nlp.util.Pair;
 
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
@@ -56,9 +52,12 @@ public class ResponseTransfer implements Constants {
         try {
             FileFolderUtils.delete(new File(interDir));
             FileFolderUtils.delete(new File(resultDir));
+            String class_url_original = config.getClass_url_original();
             String class_url = config.getClass_url();
+            config.setClass_url(class_url_original);
+            String configStr = new ObjectMapper().writeValueAsString(config);
             String langTag = config.getLangTag();
-            PerlQuery perlQuery = new PerlQuery(perlDir, scriptName, class_url, langTag);
+            PerlQuery perlQuery = new PerlQuery(perlDir, scriptName, class_url, langTag,configStr);
             Boolean flag = perlQuery.getProcessSuccessFlag();
             System.out.println("Lexicalization process successfuly ended!!");
             return new ResultLex(className, flag);
@@ -90,11 +89,11 @@ public class ResponseTransfer implements Constants {
         try {
             String resourceDir = resultDir + processData;
             Lexicon turtleLexicon = new ProcessCsv(resultDir, resourceDir, config).getTurtleLexicon();
+            //todo: fix utf8- problem
             LexiconSerialization serializer = new LexiconSerialization();
             Model model = ModelFactory.createDefaultModel();
             serializer.serialize(turtleLexicon, model);
             System.out.println("lemon creating ends!! ");
-            //todo: fix utf8- problem
             return this.writeJsonLDtoString(model, scriptName, RDFFormat.JSONLD_PRETTY);
         } catch (JsonProcessingException ex) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, ex);

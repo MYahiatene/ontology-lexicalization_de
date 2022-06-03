@@ -18,6 +18,7 @@ import java.util.ArrayList;
  * @author elahi
  */
 public interface TextAnalyzer {
+    //Todo: Negra Corpus Pos Tags for german
 
     String POS_TAGGER_WORDS = "POS_TAGGER_WORDS";
     String ADJECTIVE = "JJ";

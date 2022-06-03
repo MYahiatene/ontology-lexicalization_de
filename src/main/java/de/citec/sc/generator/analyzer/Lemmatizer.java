@@ -33,7 +33,7 @@ public class Lemmatizer implements TextAnalyzer {
         //lemmasMap = this.preparePosTagLemmaMap();
         //generalizeLemma = prepareGeneralizePosTagLemmaMap();
     }
-
+// todo: Lemmatizer for german . Stanford core nlp doesn't have a Lemmatizer for german
     private Map<String, String> prepareGeneralizePosTagLemmaMap() {
         Map<String, String> lemmasMap = new TreeMap<>();
         try {

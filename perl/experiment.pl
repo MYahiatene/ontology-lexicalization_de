@@ -153,7 +153,7 @@ foreach my $a (@ARGV) {
 foreach my $key (keys %{$CFG_IMPORT}) {
 
     $CFG->{$key} = $CFG_IMPORT->{$key};
-    print($CFG->{$key}):
+    print($CFG->{$key});
 }
 # my $parsed=parse_json($jsonConfig);
 # print Dumper($parsed);

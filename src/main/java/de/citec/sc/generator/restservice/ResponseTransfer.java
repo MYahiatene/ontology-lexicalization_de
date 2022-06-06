@@ -16,6 +16,7 @@ import de.citec.generator.core.ProcessCsv;
 import de.citec.generator.results.ResultDownload;
 import de.citec.generator.results.ResultJsonLD;
 import de.citec.generator.results.ResultLex;
+import de.citec.sc.generator.exceptions.ClassFileReadException;
 import de.citec.sc.generator.exceptions.ConfigException;
 import de.citec.sc.generator.exceptions.PerlException;
 import de.citec.sc.generator.utils.FileFolderUtils;
@@ -29,6 +30,8 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,7 +60,7 @@ public class ResponseTransfer implements Constants {
             config.setClass_url(class_url_original);
             String configStr = new ObjectMapper().writeValueAsString(config);
             String langTag = config.getLangTag();
-            PerlQuery perlQuery = new PerlQuery(perlDir, scriptName, class_url, langTag,configStr);
+            PerlQuery perlQuery = new PerlQuery(perlDir, scriptName, class_url, langTag, configStr);
             Boolean flag = perlQuery.getProcessSuccessFlag();
             System.out.println("Lexicalization process successfuly ended!!");
             return new ResultLex(className, flag);
@@ -165,5 +168,21 @@ public class ResponseTransfer implements Constants {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+
+    String lexicalizationAndLemonCreate(ConfigLex configLex, ConfigLemon configLemon) throws ClassFileReadException, IOException {
+        List<String> classesList = new ArrayList<>();
+        String line;
+        try (BufferedReader br = new BufferedReader(new FileReader(appDir + "classes/classes.txt"))) {
+            while ((line = br.readLine()) != null) {
+                classesList.add(line);
+            }
+        } catch (IOException e) {
+            throw new ClassFileReadException(e.getMessage());
+        }
+        FileFolderUtils.createDirectory(appDir + "results_classes/");
+
+
+        return null;
+    }
 
 }

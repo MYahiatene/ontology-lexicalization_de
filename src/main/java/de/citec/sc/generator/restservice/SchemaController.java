@@ -7,8 +7,10 @@ import de.citec.generator.config.Constants;
 import de.citec.generator.results.ResultDownload;
 import de.citec.generator.results.ResultJsonLD;
 import de.citec.generator.results.ResultLex;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +21,8 @@ import org.springframework.web.bind.annotation.*;
         produces = MediaType.APPLICATION_JSON_VALUE,
         method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 public class SchemaController {
-    
-    
+
+
     @RequestMapping(path = "/download", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResultDownload downloadData(@RequestBody ConfigDownload conf) {
@@ -39,11 +41,22 @@ public class SchemaController {
     public String createLemon(@RequestBody ConfigLemon conf) {
         return new ResponseTransfer().createLemon(conf);
     }
-    
+
     @RequestMapping(path = "/searchPattern", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String searchLemon(@RequestBody ConfigDownload conf) {
         return new ResponseTransfer().searchLemon(conf);
     }
-  
+
+    @RequestMapping(path = "/searchPattern", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String lexicalizationAndLemonCreation(@RequestBody ConfigDownload conf) {
+        //TODO: merge both configs
+        ResponseTransfer rt = new ResponseTransfer();
+        // rt.lexicalizationAndLemonCreate(conf);
+
+        return null;
+
+    }
+
 }

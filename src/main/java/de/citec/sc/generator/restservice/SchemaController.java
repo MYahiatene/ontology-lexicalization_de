@@ -48,7 +48,7 @@ public class SchemaController {
         return new ResponseTransfer().searchLemon(conf);
     }
 
-    @RequestMapping(path = "/searchPattern", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/lexAndLemon", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String lexicalizationAndLemonCreation(@RequestBody ConfigDownload conf) {
         //TODO: merge both configs

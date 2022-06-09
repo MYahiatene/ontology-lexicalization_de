@@ -55,7 +55,8 @@ public class FileFolderUtils {
     public static BufferedReader getBufferedReaderForCompressedFile(File fileIn) throws IOException, CompressorException {
         FileInputStream fin = new FileInputStream(fileIn);
         BufferedInputStream bis = new BufferedInputStream(fin);
-        CompressorInputStream input = new CompressorStreamFactory().createCompressorInputStream(bis);
+        CompressorInputStream input = new CompressorStreamFactory(true,Integer.MAX_VALUE-16).createCompressorInputStream(bis);
+        //TODO: IF INPUT TOO LARGE
         BufferedReader br2 = new BufferedReader(new InputStreamReader(input));
         return br2;
     }

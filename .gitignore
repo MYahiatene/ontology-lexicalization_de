@@ -10,6 +10,7 @@ inter/
 inter*/
 results/
 input/
+input_old/
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml

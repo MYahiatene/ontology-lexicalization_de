@@ -17,6 +17,7 @@ import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
 import java.io.*;
 import java.net.URISyntaxException;
+import java.net.URLDecoder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -78,12 +79,15 @@ public class PosAnalyzer implements TextAnalyzer {
     }
 
     private void posTaggerWords(BufferedReader reader, StanfordCoreNLP nlp) throws Exception {
-        reader.readLine();
-        CoreDocument doc = nlp.processToCoreDocument(reader.lines().collect(Collectors.joining(".")));
+        //reader.readLine();
+        String docLines =reader.lines().collect(Collectors.joining("."));
+        byte[] bytes =docLines.getBytes(StandardCharsets.UTF_8);
+        String test = new String(bytes,StandardCharsets.UTF_8);
+        CoreDocument doc = nlp.processToCoreDocument(docLines);
         Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<>();
         Map<Integer, Set<String>> sentenceWords = new HashMap<>();
 
-        List<List<CoreLabel>> tSentences = doc.sentences().stream().map(s -> s.tokens()).collect(Collectors.toList());
+        List<List<CoreLabel>> tSentences = doc.sentences().stream().map(CoreSentence::tokens).collect(Collectors.toList());
         Integer index = 0;
         for (List<CoreLabel> sentence : tSentences) {
             index++;

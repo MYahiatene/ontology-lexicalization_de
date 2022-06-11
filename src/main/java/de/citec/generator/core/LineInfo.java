@@ -114,7 +114,7 @@ public class LineInfo implements PredictionPatterns {
         }
         this.nGramNumber = this.setNGram(row, propertyCSV.getPatterntypeIndex());
 
-        if (this.validFlag) {
+        if (this.validFlag ) {
             String str = this.processWords(this.wordOriginal);
             this.getPosTag(str);
             this.setRule();

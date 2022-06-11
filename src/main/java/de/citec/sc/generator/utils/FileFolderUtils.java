@@ -55,9 +55,12 @@ public class FileFolderUtils {
     public static BufferedReader getBufferedReaderForCompressedFile(File fileIn) throws IOException, CompressorException {
         FileInputStream fin = new FileInputStream(fileIn);
         BufferedInputStream bis = new BufferedInputStream(fin);
+        //TODO: Cuts input file if too large. Fix with chunk reading
         CompressorInputStream input = new CompressorStreamFactory(true,Integer.MAX_VALUE-16).createCompressorInputStream(bis);
-        //TODO: IF INPUT TOO LARGE
+
         BufferedReader br2 = new BufferedReader(new InputStreamReader(input));
+        //Skip header
+        br2.readLine();
         return br2;
     }
 

@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 import edu.stanford.nlp.util.Sets;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.tomcat.util.buf.Utf8Decoder;
 
 /**
  * @author elahi
@@ -80,9 +81,8 @@ public class PosAnalyzer implements TextAnalyzer {
 
     private void posTaggerWords(BufferedReader reader, StanfordCoreNLP nlp) throws Exception {
         //reader.readLine();
-        String docLines =reader.lines().collect(Collectors.joining("."));
-        byte[] bytes =docLines.getBytes(StandardCharsets.UTF_8);
-        String test = new String(bytes,StandardCharsets.UTF_8);
+        String docLines =new String(reader.lines().collect(Collectors.joining("."))
+                .getBytes(StandardCharsets.ISO_8859_1));
         CoreDocument doc = nlp.processToCoreDocument(docLines);
         Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<>();
         Map<Integer, Set<String>> sentenceWords = new HashMap<>();

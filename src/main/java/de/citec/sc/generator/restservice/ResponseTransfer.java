@@ -26,6 +26,7 @@ import de.citec.sc.lemon.io.LexiconSerialization;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -138,7 +139,7 @@ public class ResponseTransfer implements Constants {
         //String jsonLDString = stringWriter.toString();
         //stringWriter.close();
         //return jsonLDString;
-        return out.toString(UTF_8);
+        return out.toString(StandardCharsets.ISO_8859_1);
     }
 
 

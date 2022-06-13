@@ -106,7 +106,7 @@ public class LineInfo implements PredictionPatterns {
             return;
         }
 
-        this.wordOriginal = new String(row[propertyCSV.getLinguisticPatternIndex()].getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
+        this.wordOriginal = new String(row[propertyCSV.getLinguisticPatternIndex()].getBytes(StandardCharsets.ISO_8859_1));
 
 
         if (wordOriginal != null) {

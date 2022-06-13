@@ -81,8 +81,7 @@ public class PosAnalyzer implements TextAnalyzer {
 
     private void posTaggerWords(BufferedReader reader, StanfordCoreNLP nlp) throws Exception {
         //reader.readLine();
-        String docLines =new String(reader.lines().collect(Collectors.joining("."))
-                .getBytes(StandardCharsets.ISO_8859_1));
+        String docLines =reader.lines().collect(Collectors.joining("."));
         CoreDocument doc = nlp.processToCoreDocument(docLines);
         Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<>();
         Map<Integer, Set<String>> sentenceWords = new HashMap<>();
@@ -122,7 +121,7 @@ public class PosAnalyzer implements TextAnalyzer {
 
 
     public Boolean posTaggerText(String inputText) throws Exception {
-        byte[] inputTextBytes = inputText.getBytes(StandardCharsets.UTF_8);
+        byte[] inputTextBytes = inputText.getBytes();
         BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(inputTextBytes)));
         Sentence sen = new Sentence(reader.readLine());
         List<TaggedWord> tSentence = new ArrayList<>();

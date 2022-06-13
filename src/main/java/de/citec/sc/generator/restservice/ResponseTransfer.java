@@ -146,7 +146,7 @@ public class ResponseTransfer implements Constants {
         //String jsonLDString = stringWriter.toString();
         //stringWriter.close();
         //return jsonLDString;
-        return out.toString(StandardCharsets.ISO_8859_1);
+        return out.toString();
     }
 
 

@@ -100,7 +100,6 @@ public class PosAnalyzer implements TextAnalyzer {
                 if (isStopWord(word)) {
                     continue;
                 }
-                System.out.println(String.format("Wort: %s, Tag: %s",taggedWord.word(),taggedWord.tag()));
                 if (taggedWord.tag().startsWith(TextAnalyzer.ADJECTIVE)
                         || taggedWord.tag().startsWith(TextAnalyzer.NOUN)
                         || taggedWord.tag().startsWith(TextAnalyzer.VERB)) {

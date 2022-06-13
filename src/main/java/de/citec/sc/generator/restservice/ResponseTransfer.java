@@ -20,6 +20,7 @@ import de.citec.sc.generator.exceptions.ClassFileReadException;
 import de.citec.sc.generator.exceptions.ConfigException;
 import de.citec.sc.generator.exceptions.PerlException;
 import de.citec.sc.generator.utils.FileFolderUtils;
+import de.citec.sc.lemon.core.Language;
 import de.citec.sc.lemon.core.Lexicon;
 import de.citec.sc.lemon.io.LexiconSerialization;
 
@@ -36,10 +37,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.jena.query.DatasetFactory;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.riot.JsonLDWriteContext;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.RDFFormat;
+import org.apache.jena.sparql.core.DatasetGraph;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -133,8 +137,11 @@ public class ResponseTransfer implements Constants {
 
     private String writeJsonLDtoString(Model model, String fileName, RDFFormat type) throws FileNotFoundException, IOException {
         //StringWriter stringWriter = new StringWriter();
+        //model.write(new PrintWriter(System.out));
+        //DatasetGraph g = DatasetFactory.wrap(model).asDatasetGraph();
+        //JsonLDWriteContext ctx = new JsonLDWriteContext();
+        //model.write(stringWriter,"JSON-LD");
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-
         RDFDataMgr.write(out, model, type);
         //String jsonLDString = stringWriter.toString();
         //stringWriter.close();

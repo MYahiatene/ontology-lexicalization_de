@@ -143,7 +143,7 @@ ProcessCsv implements PredictionPatterns, LemonConstants {
                     String nGram = this.isValidWord(lineInfo.getWord(), lineInfo.getnGramNumber());
 
                     if (nGram != null) {
-                        List<LineInfo> results = new ArrayList<LineInfo>();
+                        List<LineInfo> results = new ArrayList<>();
                         if (lineLexicon.containsKey(nGram)) {
                             results = lineLexicon.get(nGram);
                             results.add(lineInfo);

@@ -40,9 +40,7 @@ import java.util.logging.Logger;
 import org.apache.jena.query.DatasetFactory;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.riot.JsonLDWriteContext;
-import org.apache.jena.riot.RDFDataMgr;
-import org.apache.jena.riot.RDFFormat;
+import org.apache.jena.riot.*;
 import org.apache.jena.sparql.core.DatasetGraph;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -51,7 +49,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  * @author elahi
  */
 public class ResponseTransfer implements Constants {
-
     public ResponseTransfer() {
     }
 
@@ -102,7 +99,8 @@ public class ResponseTransfer implements Constants {
             Model model = ModelFactory.createDefaultModel();
             serializer.serialize(turtleLexicon, model);
             System.out.println("lemon creating ends!! ");
-            return this.writeJsonLDtoString(model, scriptName, RDFFormat.JSONLD_PRETTY);
+            String filePath= System.getProperty("user.dir") + "/result.json";
+            return this.writeJsonLDtoString(model, filePath);
         } catch (JsonProcessingException ex) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Json creation fails!!" + ex.getMessage());
@@ -122,31 +120,15 @@ public class ResponseTransfer implements Constants {
     }
 
 
-    private ResultJsonLD makeClass(String jsonString) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(jsonString, ResultJsonLD.class);
-    }
-
-
-    private void writeJsonLDToFile(Model model, String fileName, RDFFormat type) throws FileNotFoundException, IOException {
-        FileOutputStream out = new FileOutputStream(fileName);
-        RDFDataMgr.write(out, model, type);
-        out.close();
-
-    }
-
-    private String writeJsonLDtoString(Model model, String fileName, RDFFormat type) throws FileNotFoundException, IOException {
-        //StringWriter stringWriter = new StringWriter();
-        //model.write(new PrintWriter(System.out));
-        //DatasetGraph g = DatasetFactory.wrap(model).asDatasetGraph();
-        //JsonLDWriteContext ctx = new JsonLDWriteContext();
-        //model.write(stringWriter,"JSON-LD");
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        RDFDataMgr.write(out, model, type);
-        //String jsonLDString = stringWriter.toString();
-        //stringWriter.close();
-        //return jsonLDString;
-        return out.toString();
+    private String writeJsonLDtoString(Model model, String fileName) throws  IOException {
+        String modelToString = RDFWriterBuilder.create().source(model)
+                .lang(Lang.JSONLD).asString();
+        try (FileOutputStream fos = new FileOutputStream(fileName)) {
+            fos.write(modelToString.getBytes(StandardCharsets.ISO_8859_1));
+        } catch (IOException e) {
+            Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return new String(modelToString.getBytes(StandardCharsets.ISO_8859_1));
     }
 
 

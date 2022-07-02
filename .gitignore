@@ -8,7 +8,7 @@ target/
 *.json
 inter/
 inter*/
-results/
+#results/
 input/
 input_old/
 # User-specific stuff

@@ -8,9 +8,22 @@ classes = ["Book", "Film", "River", "Person", "Actor", "Organization", "City", "
 root_path = os.getcwd()
 results_csv_path_src = os.getcwd() + "/results/"
 
+'''def test():
+    class_name = 'test'
+    os.mkdir(root_path + f"/results_csv/{class_name}", mode=0o777)
+    for file_name in os.listdir(results_csv_path_src):
+        # construct full file path
+        source = results_csv_path_src + file_name
+        destination = root_path + f"/results_csv/{class_name}/" + file_name
+        # copy only files
+        if os.path.isfile(source):
+            shutil.copyfile(source, destination)
+            print('copied', file_name)
+'''
+
 
 def lexicalization(class_name):
-    os.mkdir(root_path + f"/results_csv/{class_name}",mode=777)
+    os.mkdir(root_path + f"/results_csv/{class_name}", mode=0o777)
     url = "http://localhost:8080/lexicalization"
     headers = {'Accept': 'application/json', 'Content-type': 'application/json'}
     data = {f"class_url": f"http://dbpedia.org/ontology/{class_name}", "minimum_entities_per_class": 100,
@@ -37,8 +50,8 @@ def lexicalization(class_name):
             destination = root_path + f"/results_csv/{class_name}/" + file_name
             # copy only files
             if os.path.isfile(source):
-                os.chmod(source,0o777)
-                os.chmod(destination,0o777)
+                os.chmod(source, 0o777)
+                os.chmod(destination, 0o777)
                 shutil.copyfile(source, destination)
                 print('copied', file_name)
     return response

@@ -4,57 +4,223 @@ import json
 import os
 import shutil
 
-classes = ["Book", "Film", "River", "Person", "Actor", "Organization", "City", "Place", "Language", "Food"]
+# Food,Oranization class missing ?
+classes = ['AcademicJournal', 'Actor',
+           'AdministrativeRegion', 'AdultActor',
+           'Aircraft', 'Airline',
+           'Airport', 'Album',
+           'AmateurBoxer', 'Ambassador',
+           'AmericanFootballLeague', 'AmericanFootballPlayer',
+           'Amphibian', 'AmusementParkAttraction',
+           'AnatomicalStructure', 'Animal',
+           'Anime', 'Arachnid',
+           'Archaea', 'Archbishop',
+           'Architect', 'ArchitecturalStructure',
+           'Artery', 'Artist',
+           'ArtistDiscography', 'Artwork',
+           'Astronaut', 'Athlete',
+           'AustralianFootballTeam',
+           'AustralianRulesFootballPlayer', 'Automobile',
+           'AutomobileEngine', 'Award',
+           'Bacteria', 'BadmintonPlayer',
+           'Band', 'Bank',
+           'Baronet', 'BaseballLeague',
+           'BaseballPlayer', 'BaseballSeason',
+           'BasketballLeague', 'BasketballPlayer',
+           'BasketballTeam', 'BeachVolleyballPlayer',
+           'BeautyQueen', 'Beverage',
+           'BiologicalDatabase', 'Bird',
+           'BodyOfWater', 'Bodybuilder',
+           'Bone', 'Book', 'Boxer',
+           'Brain', 'Brewery',
+           'Bridge', 'BroadcastNetwork',
+           'Building', 'BusCompany',
+           'BusinessPerson', 'CanadianFootballTeam',
+           'Canal', 'Canoeist',
+           'Cardinal', 'Castle',
+           'Cave', 'Cheese', 'Chef',
+           'ChemicalCompound', 'ChessPlayer',
+           'ChristianBishop', 'Cinema',
+           'City', 'CityDistrict',
+           'ClassicalMusicArtist', 'ClassicalMusicComposition',
+           'Cleric', 'College',
+           'CollegeCoach', 'Colour',
+           'CombinationDrug', 'Comedian',
+           'ComedyGroup', 'Comic',
+           'ComicStrip', 'ComicsCharacter',
+           'ComicsCreator', 'Company',
+           'ConcentrationCamp', 'Congressman',
+           'Convention', 'Country',
+           'Crater', 'CricketGround',
+           'CricketTeam', 'Cricketer',
+           'Criminal', 'Crustacean',
+           'CultivatedVariety', 'Curler',
+           'Currency', 'CyclingRace',
+           'CyclingTeam', 'Cyclist',
+           'Dam', 'DartsPlayer',
+           'Device', 'Diocese',
+           'Disease', 'Drug',
+           'Earthquake', 'Economist',
+           'EducationalInstitution', 'Election',
+           'Embryology', 'Engineer',
+           'Entomologist', 'Enzyme',
+           'EthnicGroup', 'Eukaryote',
+           'EurovisionSongContestEntry', 'Event',
+           'Fashion', 'FashionDesigner',
+           'FictionalCharacter', 'FigureSkater',
+           'Film', 'FilmFestival',
+           'Fish', 'Food',
+           'FootballLeagueSeason', 'FootballMatch',
+           'FormerMunicipality', 'FormulaOneRacer',
+           'FormulaOneTeam', 'Fungus',
+           'GaelicGamesPlayer', 'Galaxy',
+           'Game', 'Garden',
+           'GivenName', 'Glacier',
+           'GolfCourse', 'GolfPlayer',
+           'GolfTournament', 'GovernmentAgency',
+           'Governor', 'GrandPrix',
+           'Grape', 'GreenAlga',
+           'Guitarist', 'Gymnast',
+           'HandballPlayer', 'HandballTeam',
+           'Historian', 'HistoricBuilding',
+           'HistoricPlace', 'HockeyTeam',
+           'Holiday', 'HollywoodCartoon',
+           'Horse', 'HorseRace',
+           'HorseTrainer', 'Hospital',
+           'Hotel', 'HumanGene',
+           'IceHockeyLeague', 'IceHockeyPlayer',
+           'InformationAppliance', 'Insect',
+           'Island', 'Jockey',
+           'Journalist', 'LacrossePlayer',
+           'Lake', 'Language',
+           'LaunchPad', 'LawFirm',
+           'Legislature', 'Library',
+           'Ligament', 'Lighthouse',
+           'Locomotive', 'Magazine',
+           'Mammal', 'Manga',
+           'MartialArtist', 'Mayor',
+           'Medician', 'MemberOfParliament',
+           'MilitaryConflict', 'MilitaryPerson',
+           'MilitaryStructure', 'MilitaryUnit',
+           'Mineral', 'MixedMartialArtsEvent',
+           'Model', 'Mollusca',
+           'MonoclonalAntibody', 'Monument',
+           'Moss', 'Motorcycle',
+           'MotorcycleRider', 'MotorsportSeason',
+           'Mountain', 'MountainPass',
+           'Muscle', 'Museum',
+           'MusicFestival', 'MusicGenre',
+           'Musical', 'MusicalArtist',
+           'MythologicalFigure', 'NCAATeamSeason',
+           'NascarDriver',
+           'NationalCollegiateAthleticAssociationAthlete',
+           'NationalFootballLeagueSeason', 'Nerve',
+           'NetballPlayer', 'Newspaper',
+           'Noble', 'OlympicEvent',
+           'Olympics', 'Organisation',
+           'Outbreak', 'Painter',
+           'Park', 'Person',
+           'Philosopher', 'Photographer',
+           'Place', 'Planet',
+           'Plant', 'Play',
+           'PlayboyPlaymate', 'Poem',
+           'Poet', 'PokerPlayer',
+           'PoliticalParty', 'Politician',
+           'Pope', 'PopulatedPlace',
+           'PowerStation', 'Presenter',
+           'President', 'Priest',
+           'PrimeMinister', 'Prison',
+           'ProgrammingLanguage', 'ProtectedArea',
+           'Protein', 'PublicTransitSystem',
+           'Publisher', 'Racecourse',
+           'RacingDriver', 'RadioHost',
+           'RadioProgram', 'RadioStation',
+           'RailwayLine', 'RailwayStation',
+           'RailwayTunnel', 'RecordLabel',
+           'Religious', 'ReligiousBuilding',
+           'Reptile', 'Restaurant',
+           'River', 'Road',
+           'RoadJunction', 'RoadTunnel',
+           'Rocket', 'RollerCoaster',
+           'Rower', 'Royalty',
+           'RugbyClub', 'RugbyLeague',
+           'RugbyPlayer', 'Saint',
+           'School', 'Scientist',
+           'ScreenWriter', 'Sea',
+           'Senator', 'Settlement',
+           'Ship', 'ShoppingMall',
+           'Single', 'SiteOfSpecialScientificInterest',
+           'Skater', 'SkiArea',
+           'Skier', 'SnookerPlayer',
+           'SoapCharacter', 'SoccerClub',
+           'SoccerClubSeason', 'SoccerLeague',
+           'SoccerManager', 'SoccerPlayer',
+           'SoccerTournament', 'Software',
+           'SolarEclipse', 'Song',
+           'SpaceMission', 'Species',
+           'SpeedwayRider', 'SpeedwayTeam',
+           'Sport', 'SportsEvent',
+           'SportsLeague', 'SportsTeam',
+           'SportsTeamMember', 'SquashPlayer',
+           'Stadium', 'Star',
+           'Station', 'SumoWrestler',
+           'SupremeCourtOfTheUnitedStatesCase', 'Surname',
+           'Swimmer', 'TableTennisPlayer',
+           'TelevisionEpisode', 'TelevisionSeason',
+           'TelevisionShow', 'TelevisionStation',
+           'TennisPlayer', 'TennisTournament',
+           'Theatre', 'TopLevelDomain',
+           'Town', 'TradeUnion',
+           'Train', 'Tunnel',
+           'University', 'Vein',
+           'Venue', 'VideoGame',
+           'Village', 'VoiceActor',
+           'Volcano', 'VolleyballCoach',
+           'VolleyballLeague', 'VolleyballPlayer',
+           'Weapon', 'Website',
+           'WineRegion', 'Winery',
+           'WomensTennisAssociationTournament',
+           'WorldHeritageSite', 'Wrestler',
+           'WrestlingEvent', 'Writer',
+           'WrittenWork', 'Year']
 root_path = os.getcwd()
 results_csv_path_src = os.getcwd() + "/results/"
 
-'''def test():
-    class_name = 'test'
-    os.mkdir(root_path + f"/results_csv/{class_name}", mode=0o777)
-    for file_name in os.listdir(results_csv_path_src):
-        # construct full file path
-        source = results_csv_path_src + file_name
-        destination = root_path + f"/results_csv/{class_name}/" + file_name
-        # copy only files
-        if os.path.isfile(source):
-            shutil.copyfile(source, destination)
-            print('copied', file_name)
-'''
-
 
 def lexicalization(class_name):
-    os.mkdir(root_path + f"/results_csv/{class_name}", mode=0o777)
-    url = "http://localhost:8080/lexicalization"
-    headers = {'Accept': 'application/json', 'Content-type': 'application/json'}
-    data = {f"class_url": f"http://dbpedia.org/ontology/{class_name}", "minimum_entities_per_class": 100,
-            "maximum_entities_per_class": 10000,
-            "minimum_onegram_length": 4,
-            "minimum_pattern_count": 5,
-            "minimum_anchor_count": 10,
-            "minimum_propertyonegram_length": 4,
-            "minimum_propertypattern_count": 5,
-            "minimum_propertystring_length": 5,
-            "maximum_propertystring_length": 50,
-            "minimum_supportA": 5,
-            "minimum_supportB": 5,
-            "minimum_supportAB": 5,
-            "langTag": "de"}
-    data = json.dumps(data)
-    response = requests.post(url=url, data=data, headers=headers)
-    with open(root_path + "/log_classes.txt", 'w+') as f:
-        f.write(f"Class: {class_name} , Status Code:{response.status_code}")
-    if response.status_code == 200:
-        for file_name in os.listdir(results_csv_path_src):
-            # construct full file path
-            source = results_csv_path_src + file_name
-            destination = root_path + f"/results_csv/{class_name}/" + file_name
-            # copy only files
-            if os.path.isfile(source):
-                os.chmod(source, 0o777)
-                os.chmod(destination, 0o777)
-                shutil.copyfile(source, destination)
-                print('copied', file_name)
-    return response
+    try:
+        os.mkdir(root_path + f"/results_csv/{class_name}", mode=0o777)
+        url = "http://localhost:8080/lexicalization"
+        headers = {'Accept': 'application/json', 'Content-type': 'application/json'}
+        data = {f"class_url": f"http://dbpedia.org/ontology/{class_name}", "minimum_entities_per_class": 100,
+                "maximum_entities_per_class": 10000,
+                "minimum_onegram_length": 4,
+                "minimum_pattern_count": 5,
+                "minimum_anchor_count": 10,
+                "minimum_propertyonegram_length": 4,
+                "minimum_propertypattern_count": 5,
+                "minimum_propertystring_length": 5,
+                "maximum_propertystring_length": 50,
+                "minimum_supportA": 5,
+                "minimum_supportB": 5,
+                "minimum_supportAB": 5,
+                "langTag": "de"}
+        data = json.dumps(data)
+        response = requests.post(url=url, data=data, headers=headers)
+        with open(root_path + "/log_classes.txt", 'w+') as f:
+            f.write(f"Class: {class_name} , Status Code:{response.status_code}")
+        if response.status_code == 200:
+            for file_name in os.listdir(results_csv_path_src):
+                # construct full file path
+                source = results_csv_path_src + file_name
+                destination = root_path + f"/results_csv/{class_name}/" + file_name
+                # copy only files
+                if os.path.isfile(source):
+                    shutil.copyfile(source, destination)
+                    print('copied', file_name)
+        return response
+    except FileExistsError:
+        print(class_name + " creation failed!")
 
 
 if __name__ == '__main__':

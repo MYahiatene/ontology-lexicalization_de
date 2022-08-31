@@ -1,4 +1,4 @@
-FROM maven:3.8-jdk-11 AS buildweb
+FROM maven:3.8-openjdk-11 AS buildweb
 
 ADD pom.xml /source/pom.xml
 RUN cd /source && mvn verify clean --fail-never
@@ -6,15 +6,14 @@ RUN cd /source && mvn verify clean --fail-never
 ADD ./src /source/src
 RUN cd /source && mvn -B package -DskipTests
 
-FROM maven:3.8-jdk-11 AS buildconv
-
+FROM maven:3.8-openjdk-11 AS buildconv
 # Update the repository sources list
 RUN apt-get update
 
 # Install compiler and perl stuff
 RUN apt-get install --yes \
  build-essential \
- gcc-multilib \
+ gcc \
  apt-utils \
  perl \
  expat \
@@ -24,7 +23,7 @@ RUN apt-get install --yes \
 RUN apt-get install -y cpanminus
 
 RUN cpanm CPAN::Meta \
- readline \ 
+ readline \
  Term::ReadKey \
  YAML \
  Digest::SHA \
@@ -58,6 +57,8 @@ RUN apt-get update \
  && rm -r /var/lib/apt/lists/*
 
 
+
+
 EXPOSE 8080
 USER root
 
@@ -65,4 +66,5 @@ WORKDIR /app
 COPY ./ /app
 RUN chmod +x /app
 COPY ./openapi.yaml /openapi.yaml
-CMD ["java","-jar","target/rest-service-0.0.1-SNAPSHOT.jar"]
+COPY --from=buildweb /source/target /app/
+CMD ["java","-jar","rest-service-0.0.1-SNAPSHOT.jar"]

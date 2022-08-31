@@ -30,6 +30,11 @@ import edu.stanford.nlp.util.Sets;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.buf.Utf8Decoder;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @author elahi
@@ -81,7 +86,9 @@ public class PosAnalyzer implements TextAnalyzer {
 
     private void posTaggerWords(BufferedReader reader, StanfordCoreNLP nlp) throws Exception {
         //reader.readLine();
-        String docLines =reader.lines().collect(Collectors.joining("."));
+        // Todo: replace stanford java api with fastapi spacy_stanza rest service
+        // sendToNLPPipeline();
+        String docLines = reader.lines().collect(Collectors.joining("."));
         CoreDocument doc = nlp.processToCoreDocument(docLines);
         Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<>();
         Map<Integer, Set<String>> sentenceWords = new HashMap<>();
@@ -111,6 +118,21 @@ public class PosAnalyzer implements TextAnalyzer {
         }
 
         sentenwisePosSeperated(sentenceWords, sentencePosTags);
+    }
+
+    private void sendToNLPPipeline() {
+        RestTemplate template = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        String string = "{\"text\": \"Hallo wie gewählt?\"}";
+        HttpEntity<String> request =
+                new HttpEntity<>(string, headers);
+
+        ResponseEntity<List> res = template.postForEntity("http://localhost:8000/text", request, List.class);
+        List<List<String>> body = res.getBody();
+        for (List<String> s : body) {
+            System.out.println(s);
+        }
     }
 
     private boolean isStopWord(String word) throws URISyntaxException, IOException {

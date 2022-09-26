@@ -104,3 +104,4 @@ fabric.properties
 *.tar.xz
 test.pl
 *.jar
+.idea/

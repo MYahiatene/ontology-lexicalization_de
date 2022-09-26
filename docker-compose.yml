@@ -11,4 +11,4 @@ services:
       context: ./nlp_api
       dockerfile: Dockerfile
     ports:
-      - '8000:8000'
+      - '8000:80'

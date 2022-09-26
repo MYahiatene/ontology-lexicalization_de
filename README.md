@@ -53,7 +53,7 @@ wget -O inputLex.json https://raw.githubusercontent.com/Pret-a-LLOD/ontology-lex
 
 4. run the following command. The process may take nearly 2 hours.
 ```
-curl -H "Accept: application/json" -H "Content-type: application/json"  --data-binary @inputLex.json -X POST  http://localhost:8001/lexicalization
+curl -H "Accept: application/json" -H "Content-type: application/json"  --data-binary @inputLex.json -X POST  http://localhost:8080/lexicalization
 ```
 Output Example:
 ```
@@ -81,7 +81,7 @@ wget -O inputLemon.json https://raw.githubusercontent.com/Pret-a-LLOD/ontology-l
 
 6. run the following command
 ```
-curl -H "Accept: application/json" -H "Content-type: application/json"  --data-binary @inputLemon.json -X POST  http://localhost:8001/createLemon
+curl -H "Accept: application/json" -H "Content-type: application/json"  --data-binary @inputLemon.json -X POST  http://localhost:8080/createLemon
 ```
 - An example of output is [lemon](https://github.com/Pret-a-LLOD/ontology-lexicalization/blob/master/examples/lexicon.json) in Json-LD format.
 

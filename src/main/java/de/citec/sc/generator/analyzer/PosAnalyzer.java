@@ -6,6 +6,9 @@
 package de.citec.sc.generator.analyzer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.citec.generator.config.ConfigLemon;
+import de.citec.generator.config.ConfigLex;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.ling.TaggedWord;
@@ -24,6 +27,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import edu.stanford.nlp.util.Sets;
@@ -62,11 +66,11 @@ public class PosAnalyzer implements TextAnalyzer {
             taggerModel = new MaxentTagger(stanfordModelFile);
         }
     */
-    private Set<String> words = new HashSet<String>();
-    private Set<String> adjectives = new HashSet<String>();
-    private Set<String> nouns = new HashSet<String>();
-    private Set<String> verbs = new HashSet<String>();
-    private Set<String> pronouns = new HashSet<String>();
+    private Set<String> words = new HashSet<>();
+    private Set<String> adjectives = new HashSet<>();
+    private Set<String> nouns = new HashSet<>();
+    private Set<String> verbs = new HashSet<>();
+    private Set<String> pronouns = new HashSet<>();
 
 
     private String inputText = null;
@@ -76,9 +80,10 @@ public class PosAnalyzer implements TextAnalyzer {
         this.numberOfSentences = numberOfSentences;
         this.inputText = inputText;
         BufferedReader reader = new BufferedReader(new StringReader(inputText));
-        this.nlp = new StanfordCoreNLP("german");
+        //this.nlp = new StanfordCoreNLP("german");
         if (analysisType.contains(POS_TAGGER_WORDS)) {
-            posTaggerWords(reader, nlp);
+            // posTaggerWords(reader, nlp);
+            posTaggerWords(reader, null);
         }
         stopWords = new StopWords().getGermanStopWords();
 
@@ -87,20 +92,22 @@ public class PosAnalyzer implements TextAnalyzer {
     private void posTaggerWords(BufferedReader reader, StanfordCoreNLP nlp) throws Exception {
         //reader.readLine();
         // Todo: replace stanford java api with fastapi spacy_stanza rest service
-        // sendToNLPPipeline();
-        String docLines = reader.lines().collect(Collectors.joining("."));
-        CoreDocument doc = nlp.processToCoreDocument(docLines);
-        Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<>();
-        Map<Integer, Set<String>> sentenceWords = new HashMap<>();
-
-        List<List<CoreLabel>> tSentences = doc.sentences().stream().map(CoreSentence::tokens).collect(Collectors.toList());
-        Integer index = 0;
-        for (List<CoreLabel> sentence : tSentences) {
-            index++;
-            Set<String> wordsofSentence = new HashSet<String>();
-            Map<String, Set<String>> posTaggers = new HashMap<String, Set<String>>();
-            List<TaggedWord> tSentence = sentence.stream().map(e -> new TaggedWord(e.word(), e.tag())).collect(Collectors.toList());
-            for (TaggedWord taggedWord : tSentence) {
+        String docLines = reader.lines().collect(Collectors.toList()).get(0);
+        //String docLines = reader.lines().collect(Collectors.joining("."));
+        docLines = !docLines.startsWith("\"") ? "\"" + docLines : docLines;
+        docLines = !docLines.endsWith("\"") ? docLines + "\"" : docLines;
+        docLines = "{\"text\":" + docLines + "}";
+        try {
+            List<List<String>> senList = sendToNLPPipeline(docLines);
+            //CoreDocument doc = nlp.processToCoreDocument(docLines);
+            Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<>();
+            Map<Integer, Set<String>> sentenceWords = new HashMap<>();
+           // List<List<CoreLabel>> tSentences = doc.sentences().stream().map(CoreSentence::tokens).collect(Collectors.toList());
+            Integer index = 1;
+            Set<String> wordsofSentence = new HashSet<>();
+            Map<String, Set<String>> posTaggers = new HashMap<>();
+            for (List<String> stringList : senList) {
+                TaggedWord taggedWord = new TaggedWord(stringList.get(1), stringList.get(2));
                 String word = taggedWord.word();
                 word = this.modifyWord(word);
                 if (isStopWord(word)) {
@@ -112,27 +119,47 @@ public class PosAnalyzer implements TextAnalyzer {
                     posTaggers = this.populateValues(taggedWord.tag(), word, posTaggers);
                 }
                 wordsofSentence.add(word);
+
             }
             sentenceWords.put(index, wordsofSentence);
             sentencePosTags.put(index, posTaggers);
-        }
+            sentenwisePosSeperated(sentenceWords, sentencePosTags);
+          /*  for (List<CoreLabel> sentence : tSentences) {
+                index++;
+                Set<String> wordsofSentence = new HashSet<>();
+                Map<String, Set<String>> posTaggers = new HashMap<>();
+                List<TaggedWord> tSentence = sentence.stream().map(e -> new TaggedWord(e.word(), e.tag())).collect(Collectors.toList());
+                for (TaggedWord taggedWord : tSentence) {
+                    String word = taggedWord.word();
+                    word = this.modifyWord(word);
+                    if (isStopWord(word)) {
+                        continue;
+                    }
+                    if (taggedWord.tag().startsWith(TextAnalyzer.ADJECTIVE)
+                            || taggedWord.tag().startsWith(TextAnalyzer.NOUN)
+                            || taggedWord.tag().startsWith(TextAnalyzer.VERB)) {
+                        posTaggers = this.populateValues(taggedWord.tag(), word, posTaggers);
+                    }
+                    wordsofSentence.add(word);
+                }
+                sentenceWords.put(index, wordsofSentence);
+                sentencePosTags.put(index, posTaggers);
+            }
 
-        sentenwisePosSeperated(sentenceWords, sentencePosTags);
+            sentenwisePosSeperated(sentenceWords, sentencePosTags);*/
+        } catch (Exception e) {
+        }
     }
 
-    private void sendToNLPPipeline() {
+    private List<List<String>> sendToNLPPipeline(String text) {
         RestTemplate template = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        String string = "{\"text\": \"Hallo wie gewählt?\"}";
         HttpEntity<String> request =
-                new HttpEntity<>(string, headers);
-
-        ResponseEntity<List> res = template.postForEntity("http://localhost:8000/text", request, List.class);
-        List<List<String>> body = res.getBody();
-        for (List<String> s : body) {
-            System.out.println(s);
-        }
+                new HttpEntity<>(text, headers);
+        //ResponseEntity<List> res = template.postForEntity("http://nlp/text", request, List.class);
+        ResponseEntity<List> res = template.postForEntity("http://0.0.0.0:80/text", request, List.class);
+        return (List<List<String>>) res.getBody();
     }
 
     private boolean isStopWord(String word) throws URISyntaxException, IOException {
@@ -141,7 +168,7 @@ public class PosAnalyzer implements TextAnalyzer {
         return this.stopWords.contains(word);
     }
 
-
+    // todo: überprüfe ob richtiges Model(tagger)
     public Boolean posTaggerText(String inputText) throws Exception {
         byte[] inputTextBytes = inputText.getBytes();
         BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(inputTextBytes)));

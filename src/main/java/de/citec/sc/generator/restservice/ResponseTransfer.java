@@ -42,6 +42,11 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.*;
 import org.apache.jena.sparql.core.DatasetGraph;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -92,9 +97,9 @@ public class ResponseTransfer implements Constants {
 
     public String createLemon(ConfigLemon config) {
         try {
+            initializeLang();
             String resourceDir = resultDir + processData;
             Lexicon turtleLexicon = new ProcessCsv(resultDir, resourceDir, config).getTurtleLexicon();
-            //todo: fix utf8- problem
             LexiconSerialization serializer = new LexiconSerialization();
             Model model = ModelFactory.createDefaultModel();
             serializer.serialize(turtleLexicon, model);
@@ -119,7 +124,12 @@ public class ResponseTransfer implements Constants {
 
     }
 
-
+    private void initializeLang(){
+        // todo: lang independent
+        RestTemplate template = new RestTemplate();
+        //template.getForEntity("http://nlp/de", String.class);
+        template.getForEntity("http://0.0.0.0:80/de", String.class);
+    }
     private String writeJsonLDtoString(Model model, String fileName) throws  IOException {
         String modelToString = RDFWriterBuilder.create().source(model)
                 .lang(Lang.JSONLD).asString();

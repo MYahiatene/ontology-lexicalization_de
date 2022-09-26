@@ -1,14 +1,12 @@
-import json
 from fastapi import FastAPI
 import stanza
 import spacy_stanza
 from pydantic import BaseModel
 
 # Download the stanza model if necessary
-stanza.download("de")
 
 # Initialize the pipeline
-nlp = spacy_stanza.load_pipeline("de")
+nlp = None
 
 
 class Text(BaseModel):
@@ -19,8 +17,16 @@ app = FastAPI()
 
 
 @app.get("/")
-def read_root():
-    return "This is a small REST Api for Spacy_Stanza."
+def info():
+    return "This is a small REST Api for stanza nlp."
+
+
+@app.get("/{lang}")
+async def read_root(lang: str) -> str:
+    stanza.download(lang)
+    global nlp
+    nlp = spacy_stanza.load_pipeline(lang)
+    return "Language {lang} downloaded and initialized.".format(lang=lang)
 
 
 @app.post("/text")

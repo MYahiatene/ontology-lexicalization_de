@@ -127,8 +127,8 @@ public class ResponseTransfer implements Constants {
     private void initializeLang(){
         // todo: lang independent
         RestTemplate template = new RestTemplate();
-        //template.getForEntity("http://nlp/de", String.class);
-        template.getForEntity("http://0.0.0.0:80/de", String.class);
+        template.getForEntity("http://nlp/de", String.class);
+        //template.getForEntity("http://0.0.0.0:80/de", String.class);
     }
     private String writeJsonLDtoString(Model model, String fileName) throws  IOException {
         String modelToString = RDFWriterBuilder.create().source(model)

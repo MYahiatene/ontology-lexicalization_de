@@ -27,6 +27,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -102,7 +103,7 @@ public class PosAnalyzer implements TextAnalyzer {
             //CoreDocument doc = nlp.processToCoreDocument(docLines);
             Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<>();
             Map<Integer, Set<String>> sentenceWords = new HashMap<>();
-           // List<List<CoreLabel>> tSentences = doc.sentences().stream().map(CoreSentence::tokens).collect(Collectors.toList());
+            // List<List<CoreLabel>> tSentences = doc.sentences().stream().map(CoreSentence::tokens).collect(Collectors.toList());
             Integer index = 1;
             Set<String> wordsofSentence = new HashSet<>();
             Map<String, Set<String>> posTaggers = new HashMap<>();
@@ -159,6 +160,7 @@ public class PosAnalyzer implements TextAnalyzer {
                 new HttpEntity<>(text, headers);
         //ResponseEntity<List> res = template.postForEntity("http://nlp/text", request, List.class);
         ResponseEntity<List> res = template.postForEntity("http://0.0.0.0:80/text", request, List.class);
+        Logger.getLogger(this.getClass().getName()).log(Level.WARNING, ((List<List<String>>) res.getBody()).toString());
         return (List<List<String>>) res.getBody();
     }
 

@@ -48,7 +48,7 @@ ProcessCsv implements PredictionPatterns, LemonConstants {
     private Lexicon turtleLexicon = null;
     private Integer rankLimit = 0;
     private Logger LOGGER = Logger.getLogger(ProcessCsv.class.getName());
-    private Lemmatizer lemmatizer = new Lemmatizer();
+    //private Lemmatizer lemmatizer = new Lemmatizer();
 
 
     public ProcessCsv(String baseDir, String resourceDir, ConfigLemon config) throws Exception {

@@ -67,4 +67,4 @@ COPY ./ /app
 RUN chmod +x /app
 COPY ./openapi.yaml /openapi.yaml
 COPY --from=buildweb /source/target /app/
-CMD ["java","-jar","rest-service-0.0.1-SNAPSHOT.jar"]
+CMD ["java","-Xmx8g","-jar","rest-service-0.0.1-SNAPSHOT.jar"]

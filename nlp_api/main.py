@@ -2,7 +2,15 @@ from fastapi import FastAPI
 import stanza
 import spacy_stanza
 from pydantic import BaseModel
+from fastapi.logger import logger
+import logging
 
+gunicorn_logger = logging.getLogger('gunicorn.error')
+logger.handlers = gunicorn_logger.handlers
+if __name__ != "main":
+    logger.setLevel(gunicorn_logger.level)
+else:
+    logger.setLevel(logging.DEBUG)
 # Download the stanza model if necessary
 
 # Initialize the pipeline
@@ -35,4 +43,5 @@ async def read_item(text: Text):
     nlp_list = []
     for token in doc:
         nlp_list.append([token.text, token.lemma_, token.pos_])
+    logger.error(nlp_list)
     return nlp_list

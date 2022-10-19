@@ -82,7 +82,7 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
         this.writeFileLemon(prediction, posTaggedLex);
 
     }
-
+// TODO: Lemoncreation language specific
     private void writeFileLemon(String prediction, Map<String, List<LexiconUnit>> posTaggedLex) {
         String posLexInfo = null, givenPosTag = null;
         if (prediction.equals(predict_po_for_s_given_localized_l)

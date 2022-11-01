@@ -32,6 +32,8 @@ import java.util.stream.Collectors;
 
 import edu.stanford.nlp.util.Sets;
 
+import edu.stanford.nlp.util.logging.Redwood;
+import edu.stanford.nlp.util.logging.RedwoodConfiguration;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.buf.Utf8Decoder;
 import org.springframework.http.HttpEntity;
@@ -80,10 +82,13 @@ public class PosAnalyzer implements TextAnalyzer {
         this.numberOfSentences = numberOfSentences;
         this.inputText = inputText;
         BufferedReader reader = new BufferedReader(new StringReader(inputText));
-        //this.nlp = new StanfordCoreNLP("german");
+        Properties props = new Properties();
+        props.setProperty("annotators", "tokenize,ssplit,pos,lemma");
+        RedwoodConfiguration.minimal().apply();
+        this.nlp = new StanfordCoreNLP(props);
         if (analysisType.contains(POS_TAGGER_WORDS)) {
-            // posTaggerWords(reader, nlp);
-            posTaggerWords(reader, null);
+            posTaggerWords(reader, nlp);
+            //posTaggerWords(reader, null);
         }
         stopWords = new StopWords().getGermanStopWords();
 
@@ -98,15 +103,15 @@ public class PosAnalyzer implements TextAnalyzer {
         docLines = !docLines.endsWith("\"") ? docLines + "\"" : docLines;
         docLines = "{\"text\":" + docLines + "}";
         try {
-            List<List<String>> senList = sendToNLPPipeline(docLines);
-            //CoreDocument doc = nlp.processToCoreDocument(docLines);
+            //List<List<String>> senList = sendToNLPPipeline(docLines);
+            CoreDocument doc = nlp.processToCoreDocument(docLines);
             Map<Integer, Map<String, Set<String>>> sentencePosTags = new HashMap<>();
             Map<Integer, Set<String>> sentenceWords = new HashMap<>();
-           // List<List<CoreLabel>> tSentences = doc.sentences().stream().map(CoreSentence::tokens).collect(Collectors.toList());
+            List<List<CoreLabel>> tSentences = doc.sentences().stream().map(CoreSentence::tokens).collect(Collectors.toList());
             Integer index = 1;
-            Set<String> wordsofSentence = new HashSet<>();
+            /* Set<String> wordsofSentence = new HashSet<>();
             Map<String, Set<String>> posTaggers = new HashMap<>();
-            for (List<String> stringList : senList) {
+           for (List<String> stringList : senList) {
                 TaggedWord taggedWord = new TaggedWord(stringList.get(1), stringList.get(2));
                 String word = taggedWord.word();
                 word = this.modifyWord(word);
@@ -123,8 +128,8 @@ public class PosAnalyzer implements TextAnalyzer {
             }
             sentenceWords.put(index, wordsofSentence);
             sentencePosTags.put(index, posTaggers);
-            sentenwisePosSeperated(sentenceWords, sentencePosTags);
-          /*  for (List<CoreLabel> sentence : tSentences) {
+            sentenwisePosSeperated(sentenceWords, sentencePosTags);*/
+            for (List<CoreLabel> sentence : tSentences) {
                 index++;
                 Set<String> wordsofSentence = new HashSet<>();
                 Map<String, Set<String>> posTaggers = new HashMap<>();
@@ -146,7 +151,7 @@ public class PosAnalyzer implements TextAnalyzer {
                 sentencePosTags.put(index, posTaggers);
             }
 
-            sentenwisePosSeperated(sentenceWords, sentencePosTags);*/
+            sentenwisePosSeperated(sentenceWords, sentencePosTags);
         } catch (Exception e) {
         }
     }

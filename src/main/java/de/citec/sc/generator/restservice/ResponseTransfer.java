@@ -97,7 +97,7 @@ public class ResponseTransfer implements Constants {
 
     public String createLemon(ConfigLemon config) {
         try {
-            initializeLang();
+            //initializeLang();
             String resourceDir = resultDir + processData;
             Lexicon turtleLexicon = new ProcessCsv(resultDir, resourceDir, config).getTurtleLexicon();
             LexiconSerialization serializer = new LexiconSerialization();

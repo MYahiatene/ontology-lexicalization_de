@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 import stanza
-import spacy_stanza
 from pydantic import BaseModel
 
 # Download the stanza model if necessary
@@ -25,7 +24,7 @@ def info():
 async def read_root(lang: str) -> str:
     stanza.download(lang)
     global nlp
-    nlp = spacy_stanza.load_pipeline(lang)
+    nlp = stanza.Pipeline(lang, processors=["tokenize", "mwt", "lemma", "pos"])
     return "Language {lang} downloaded and initialized.".format(lang=lang)
 
 
@@ -33,6 +32,7 @@ async def read_root(lang: str) -> str:
 async def read_item(text: Text):
     doc = nlp(text.text)
     nlp_list = []
-    for token in doc:
-        nlp_list.append([token.text, token.lemma_, token.pos_])
+    for sentence in doc.sentences:
+        for word in sentence.words:
+            nlp_list.append([word.text, word.lemma, word.upos])
     return nlp_list

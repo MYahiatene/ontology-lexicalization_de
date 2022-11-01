@@ -4,11 +4,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: myahiatene/lex:latest
     ports:
         - '8080:8080'
   nlp:
     build:
       context: ./nlp_api
       dockerfile: Dockerfile
+    image: myahiatene/nlp:latest
     ports:
       - '8000:80'

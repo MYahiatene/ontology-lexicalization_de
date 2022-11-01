@@ -157,8 +157,8 @@ public class PosAnalyzer implements TextAnalyzer {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> request =
                 new HttpEntity<>(text, headers);
-        //ResponseEntity<List> res = template.postForEntity("http://nlp/text", request, List.class);
-        ResponseEntity<List> res = template.postForEntity("http://0.0.0.0:80/text", request, List.class);
+        ResponseEntity<List> res = template.postForEntity("http://nlp/text", request, List.class);
+        //ResponseEntity<List> res = template.postForEntity("http://0.0.0.0:80/text", request, List.class);
         return (List<List<String>>) res.getBody();
     }
 

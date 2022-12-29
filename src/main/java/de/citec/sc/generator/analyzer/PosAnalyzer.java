@@ -9,6 +9,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.citec.generator.config.ConfigLemon;
 import de.citec.generator.config.ConfigLex;
+import de.citec.sc.generator.utils.ProgressSingleton;
+import de.citec.sc.generator.utils.PropertyCSV;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.ling.TaggedWord;
@@ -27,6 +29,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -78,14 +81,29 @@ public class PosAnalyzer implements TextAnalyzer {
     private String inputText = null;
     private List<String> stopWords;
 
-    public PosAnalyzer(String inputText, String analysisType, Integer numberOfSentences) throws Exception {
+    public PosAnalyzer(String inputText, String analysisType, Integer numberOfSentences, PropertyCSV propertyCSV) throws Exception {
+        ProgressSingleton progressSingleton = ProgressSingleton.getInstance();
+        if (!ProgressSingleton.getInstance().getPropertyCsv().equals(propertyCSV.toString())) {
+            ProgressSingleton.getInstance().setPropertyCsv(propertyCSV.toString());
+            Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Processing CSV: {0}", propertyCSV);
+            ProgressSingleton.getInstance().setCount(0);
+        }
+        if (progressSingleton.getCount() == 0) {
+            Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Creating Lemon from association rules! This might take a while!");
+            //this.nlp.getProperties().
+        }
+        progressSingleton.setCount(progressSingleton.getCount() + 1);
         this.numberOfSentences = numberOfSentences;
         this.inputText = inputText;
         BufferedReader reader = new BufferedReader(new StringReader(inputText));
         Properties props = new Properties();
         props.setProperty("annotators", "tokenize,ssplit,pos,lemma");
-        RedwoodConfiguration.minimal().apply();
+        Redwood.stop();
         this.nlp = new StanfordCoreNLP(props);
+
+        if (progressSingleton.getCount() % 1000 == 0) {
+            Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Count: " + progressSingleton.getCount() + "---- Text: " + inputText);
+        }
         if (analysisType.contains(POS_TAGGER_WORDS)) {
             posTaggerWords(reader, nlp);
             //posTaggerWords(reader, null);

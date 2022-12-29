@@ -116,7 +116,7 @@ public class LineInfo implements PredictionPatterns {
 
         if (this.validFlag ) {
             String str = this.processWords(this.wordOriginal);
-            this.getPosTag(str);
+            this.getPosTag(str,propertyCSV);
             this.setRule();
             this.setProbabilityValue(index, interestingness, row, propertyCSV);
         }
@@ -228,8 +228,8 @@ public class LineInfo implements PredictionPatterns {
         return str;
     }
 
-    private void getPosTag(String word) throws Exception {
-        analyzer = new PosAnalyzer(word, POS_TAGGER_WORDS, 5);
+    private void getPosTag(String word,PropertyCSV propertyCSV) throws Exception {
+        analyzer = new PosAnalyzer(word, POS_TAGGER_WORDS, 5,propertyCSV);
         // todo: add more word tags
         if (!analyzer.getNouns().isEmpty()) {
             this.posTag = PosAnalyzer.NOUN;

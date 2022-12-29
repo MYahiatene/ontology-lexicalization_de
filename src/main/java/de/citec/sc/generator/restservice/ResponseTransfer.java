@@ -20,6 +20,7 @@ import de.citec.sc.generator.exceptions.ClassFileReadException;
 import de.citec.sc.generator.exceptions.ConfigException;
 import de.citec.sc.generator.exceptions.PerlException;
 import de.citec.sc.generator.utils.FileFolderUtils;
+import de.citec.sc.generator.utils.ProgressSingleton;
 import de.citec.sc.lemon.core.Language;
 import de.citec.sc.lemon.core.Lexicon;
 import de.citec.sc.lemon.io.LexiconSerialization;
@@ -98,13 +99,14 @@ public class ResponseTransfer implements Constants {
     public String createLemon(ConfigLemon config) {
         try {
             //initializeLang();
+             ProgressSingleton.getInstance();
             String resourceDir = resultDir + processData;
             Lexicon turtleLexicon = new ProcessCsv(resultDir, resourceDir, config).getTurtleLexicon();
             LexiconSerialization serializer = new LexiconSerialization();
             Model model = ModelFactory.createDefaultModel();
             serializer.serialize(turtleLexicon, model);
             System.out.println("lemon creating ends!! ");
-            String filePath= System.getProperty("user.dir") + "/result.json";
+            String filePath = System.getProperty("user.dir") + "/result.json";
             return this.writeJsonLDtoString(model, filePath);
         } catch (JsonProcessingException ex) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,13 +126,14 @@ public class ResponseTransfer implements Constants {
 
     }
 
-    private void initializeLang(){
+    private void initializeLang() {
         // todo: lang independent
         RestTemplate template = new RestTemplate();
         template.getForEntity("http://nlp/de", String.class);
         //template.getForEntity("http://0.0.0.0:80/de", String.class);
     }
-    private String writeJsonLDtoString(Model model, String fileName) throws  IOException {
+
+    private String writeJsonLDtoString(Model model, String fileName) throws IOException {
         String modelToString = RDFWriterBuilder.create().source(model)
                 .lang(Lang.JSONLD).asString();
         try (FileOutputStream fos = new FileOutputStream(fileName)) {

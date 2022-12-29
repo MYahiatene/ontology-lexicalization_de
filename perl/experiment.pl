@@ -233,7 +233,7 @@ if (
 
         # # next if $c !~ m/\/Actor\Z/; # TODO remove
         # todo: change regex
-        next if $c !~ m/\/$className\Z/; # TODO remove
+        next if $c !~ m/\/$className\Z/i; # TODO remove
         print "class1 > $c\n";
 
         $frequent_class_to_entities->{$c}->{$obj->{s}->{value}} = 1 if exists $entities_with_abstract->{$obj->{s}->{value}};
@@ -3110,7 +3110,7 @@ sub parse_NT_into_obj {
     # BNODE URI BNODE
 
     # URI+(Politiker...) URI URI
-    if ($string =~ m/<(.*\($classes->{$className}.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
+    if ( $string =~ m/<(.*\($classes->{$className}.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/i) {
         # class =  Politiker
         # <http://de.dbpedia.org/resource/Franziska_Reindl_(Politikerin)> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person> .
         # class = Place

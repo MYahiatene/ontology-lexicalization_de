@@ -126,6 +126,7 @@ public class ResponseTransfer implements Constants {
 
     }
 
+
     private void initializeLang() {
         // todo: lang independent
         RestTemplate template = new RestTemplate();

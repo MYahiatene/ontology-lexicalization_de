@@ -3282,6 +3282,7 @@ sub identify {
                 or $literal =~ m/\A"(.*)\"\^\^<http:\/\/www.w3.org\/2001\/XMLSchema#positiveInteger>\Z/
                 or $literal =~ m/\A"(.*)\"\^\^<http:\/\/www.w3.org\/2001\/XMLSchema#double>\Z/
                 or $literal =~ m/\A"(.*)\"\^\^<http:\/\/www.w3.org\/2001\/XMLSchema#float>\Z/
+                or $literal =~ m/\A"(.*)\"\^\^<http:\/\/www.w3.org\/1999\/02\/22-rdf-syntax-ns#langString>\Z/
 
         ) {
             my $string = $1;

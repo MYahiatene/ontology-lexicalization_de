@@ -1,3 +1,4 @@
+package de.citec.sc.generator.utils;
 
 import com.github.jsonldjava.utils.Obj;
 import org.json.simple.JSONArray;
@@ -5,19 +6,20 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class GraphExtractor {
 
-    public static void main(String[] args) {
+    public static void extract() {
         List<JSONObject> noun = new ArrayList<>();
         List<JSONObject> adj = new ArrayList<>();
         List<JSONObject> verb = new ArrayList<>();
@@ -60,6 +62,14 @@ public class GraphExtractor {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Files.write(Paths.get(System.getProperty("user.dir") + "/result_noun.json"), JSONArray.toJSONString(noun).getBytes());
+            Files.write(Paths.get(System.getProperty("user.dir") + "/result_verb.json"), JSONArray.toJSONString(verb).getBytes());
+            Files.write(Paths.get(System.getProperty("user.dir") + "/result_adj.json"), JSONArray.toJSONString(adj).getBytes());
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

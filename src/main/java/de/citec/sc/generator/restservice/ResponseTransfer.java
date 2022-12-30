@@ -20,6 +20,7 @@ import de.citec.sc.generator.exceptions.ClassFileReadException;
 import de.citec.sc.generator.exceptions.ConfigException;
 import de.citec.sc.generator.exceptions.PerlException;
 import de.citec.sc.generator.utils.FileFolderUtils;
+import de.citec.sc.generator.utils.GraphExtractor;
 import de.citec.sc.generator.utils.ProgressSingleton;
 import de.citec.sc.lemon.core.Language;
 import de.citec.sc.lemon.core.Lexicon;
@@ -99,7 +100,7 @@ public class ResponseTransfer implements Constants {
     public String createLemon(ConfigLemon config) {
         try {
             //initializeLang();
-             ProgressSingleton.getInstance();
+            ProgressSingleton.getInstance();
             String resourceDir = resultDir + processData;
             Lexicon turtleLexicon = new ProcessCsv(resultDir, resourceDir, config).getTurtleLexicon();
             LexiconSerialization serializer = new LexiconSerialization();
@@ -107,7 +108,9 @@ public class ResponseTransfer implements Constants {
             serializer.serialize(turtleLexicon, model);
             System.out.println("lemon creating ends!! ");
             String filePath = System.getProperty("user.dir") + "/result.json";
-            return this.writeJsonLDtoString(model, filePath);
+            String result = this.writeJsonLDtoString(model, filePath);
+            GraphExtractor.extract();
+            return result;
         } catch (JsonProcessingException ex) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Json creation fails!!" + ex.getMessage());

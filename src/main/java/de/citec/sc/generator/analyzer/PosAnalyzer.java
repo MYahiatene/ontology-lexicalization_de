@@ -65,12 +65,24 @@ public class PosAnalyzer implements TextAnalyzer {
     @JsonIgnore
     List<String> germanStopwords;
     @JsonIgnore
-    private StanfordCoreNLP nlp;
+    private static StanfordCoreNLP nlp;
     /*
         static {
             taggerModel = new MaxentTagger(stanfordModelFile);
         }
     */
+    private String analysisType = "POS_TAGGER_WORDS";
+    private PropertyCSV propertyCSV;
+
+
+    public PropertyCSV getPropertyCSV() {
+        return propertyCSV;
+    }
+
+    public void setPropertyCSV(PropertyCSV propertyCSV) {
+        this.propertyCSV = propertyCSV;
+    }
+
     private Set<String> words = new HashSet<>();
     private Set<String> adjectives = new HashSet<>();
     private Set<String> nouns = new HashSet<>();
@@ -81,6 +93,86 @@ public class PosAnalyzer implements TextAnalyzer {
     private String inputText = null;
     private List<String> stopWords;
 
+    public static String getStanfordModelFile() {
+        return stanfordModelFile;
+    }
+
+    public static void setStanfordModelFile(String stanfordModelFile) {
+        PosAnalyzer.stanfordModelFile = stanfordModelFile;
+    }
+
+    public Integer getNumberOfSentences() {
+        return numberOfSentences;
+    }
+
+    public void setNumberOfSentences(Integer numberOfSentences) {
+        this.numberOfSentences = numberOfSentences;
+    }
+
+    public Boolean getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Boolean flag) {
+        this.flag = flag;
+    }
+
+    public void setFullPosTag(String fullPosTag) {
+        this.fullPosTag = fullPosTag;
+    }
+
+    public List<String> getGermanStopwords() {
+        return germanStopwords;
+    }
+
+    public void setGermanStopwords(List<String> germanStopwords) {
+        this.germanStopwords = germanStopwords;
+    }
+
+    public static StanfordCoreNLP getNlp() {
+        return nlp;
+    }
+
+    public static void setNlp(StanfordCoreNLP nlp) {
+        PosAnalyzer.nlp = nlp;
+    }
+
+    public void setWords(Set<String> words) {
+        this.words = words;
+    }
+
+    public void setAdjectives(Set<String> adjectives) {
+        this.adjectives = adjectives;
+    }
+
+    public void setNouns(Set<String> nouns) {
+        this.nouns = nouns;
+    }
+
+    public void setVerbs(Set<String> verbs) {
+        this.verbs = verbs;
+    }
+
+    public void setPronouns(Set<String> pronouns) {
+        this.pronouns = pronouns;
+    }
+
+    public String getInputText() {
+        return inputText;
+    }
+
+    public void setInputText(String inputText) {
+        this.inputText = inputText;
+    }
+
+    public List<String> getStopWords() {
+        return stopWords;
+    }
+
+    public void setStopWords(List<String> stopWords) {
+        this.stopWords = stopWords;
+    }
+
     public PosAnalyzer(String inputText, String analysisType, Integer numberOfSentences, PropertyCSV propertyCSV) throws Exception {
         ProgressSingleton progressSingleton = ProgressSingleton.getInstance();
         if (!ProgressSingleton.getInstance().getPropertyCsv().equals(propertyCSV.toString())) {
@@ -90,16 +182,18 @@ public class PosAnalyzer implements TextAnalyzer {
         }
         if (progressSingleton.getCount() == 0) {
             Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Creating Lemon from association rules! This might take a while!");
-            //this.nlp.getProperties().
         }
         progressSingleton.setCount(progressSingleton.getCount() + 1);
         this.numberOfSentences = numberOfSentences;
         this.inputText = inputText;
         BufferedReader reader = new BufferedReader(new StringReader(inputText));
         Properties props = new Properties();
-        props.setProperty("annotators", "tokenize,ssplit,pos,lemma");
-        Redwood.stop();
-        this.nlp = new StanfordCoreNLP(props);
+        props.setProperty("annotators", "tokenize,ssplit, pos,lemma");
+        props.put("ssplit.isOneSentence", "true");
+        //Redwood.stop();
+        if (nlp == null) {
+            nlp = new StanfordCoreNLP(props);
+        }
 
         if (progressSingleton.getCount() % 1000 == 0) {
             Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Count: " + progressSingleton.getCount() + "---- Text: " + inputText);
@@ -109,6 +203,10 @@ public class PosAnalyzer implements TextAnalyzer {
             //posTaggerWords(reader, null);
         }
         stopWords = new StopWords().getGermanStopWords();
+
+    }
+
+    private void initializePosAnalyzer() {
 
     }
 
@@ -127,26 +225,7 @@ public class PosAnalyzer implements TextAnalyzer {
             Map<Integer, Set<String>> sentenceWords = new HashMap<>();
             List<List<CoreLabel>> tSentences = doc.sentences().stream().map(CoreSentence::tokens).collect(Collectors.toList());
             Integer index = 1;
-            /* Set<String> wordsofSentence = new HashSet<>();
-            Map<String, Set<String>> posTaggers = new HashMap<>();
-           for (List<String> stringList : senList) {
-                TaggedWord taggedWord = new TaggedWord(stringList.get(1), stringList.get(2));
-                String word = taggedWord.word();
-                word = this.modifyWord(word);
-                if (isStopWord(word)) {
-                    continue;
-                }
-                if (taggedWord.tag().startsWith(TextAnalyzer.ADJECTIVE)
-                        || taggedWord.tag().startsWith(TextAnalyzer.NOUN)
-                        || taggedWord.tag().startsWith(TextAnalyzer.VERB)) {
-                    posTaggers = this.populateValues(taggedWord.tag(), word, posTaggers);
-                }
-                wordsofSentence.add(word);
 
-            }
-            sentenceWords.put(index, wordsofSentence);
-            sentencePosTags.put(index, posTaggers);
-            sentenwisePosSeperated(sentenceWords, sentencePosTags);*/
             for (List<CoreLabel> sentence : tSentences) {
                 index++;
                 Set<String> wordsofSentence = new HashSet<>();

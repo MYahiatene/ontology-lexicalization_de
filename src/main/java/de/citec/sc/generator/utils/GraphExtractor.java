@@ -10,15 +10,14 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class GraphExtractor {
-
+    public static void main(String[] args) {
+        extract();
+    }
     public static void extract() {
         List<JSONObject> noun = new ArrayList<>();
         List<JSONObject> adj = new ArrayList<>();
@@ -66,9 +65,9 @@ public class GraphExtractor {
         }
 
         try {
-            Files.write(Paths.get(System.getProperty("user.dir") + "/result_noun.json"), JSONArray.toJSONString(noun).getBytes());
-            Files.write(Paths.get(System.getProperty("user.dir") + "/result_verb.json"), JSONArray.toJSONString(verb).getBytes());
-            Files.write(Paths.get(System.getProperty("user.dir") + "/result_adj.json"), JSONArray.toJSONString(adj).getBytes());
+            Files.write(Paths.get(System.getProperty("user.dir") + "/result_noun.json"),JSONArray.toJSONString(noun).replace("\\\\","").getBytes());
+            Files.write(Paths.get(System.getProperty("user.dir") + "/result_verb.json"), JSONArray.toJSONString(verb).replace("\\\\","").getBytes());
+            Files.write(Paths.get(System.getProperty("user.dir") + "/result_adj.json"), JSONArray.toJSONString(adj).replace("\\\\","").getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }

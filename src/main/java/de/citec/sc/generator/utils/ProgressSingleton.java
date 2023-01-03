@@ -4,6 +4,15 @@ public class ProgressSingleton {
     private static ProgressSingleton INSTANCE;
     private int count = 0;
     private String propertyCsv = "";
+    private int progress = 0;
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
 
     private ProgressSingleton() {
     }

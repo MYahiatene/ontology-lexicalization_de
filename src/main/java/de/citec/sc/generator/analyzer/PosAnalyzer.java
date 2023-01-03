@@ -177,7 +177,8 @@ public class PosAnalyzer implements TextAnalyzer {
         ProgressSingleton progressSingleton = ProgressSingleton.getInstance();
         if (!ProgressSingleton.getInstance().getPropertyCsv().equals(propertyCSV.toString())) {
             ProgressSingleton.getInstance().setPropertyCsv(propertyCSV.toString());
-            Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Processing CSV: {0}", propertyCSV);
+            progressSingleton.setProgress(progressSingleton.getProgress() + 1);
+            Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Processing CSV: {0}/20", progressSingleton.getProgress());
             ProgressSingleton.getInstance().setCount(0);
         }
         if (progressSingleton.getCount() == 0) {
@@ -188,19 +189,21 @@ public class PosAnalyzer implements TextAnalyzer {
         this.inputText = inputText;
         BufferedReader reader = new BufferedReader(new StringReader(inputText));
         Properties props = new Properties();
-        props.setProperty("annotators", "tokenize,ssplit, pos,lemma");
-        props.put("ssplit.isOneSentence", "true");
+        props.setProperty("annotators", "tokenize, pos");
+        props.put("tokenize.language", "de");
+        props.put("pos.model", "edu/stanford/nlp/models/pos-tagger/german-ud.tagger");
         //Redwood.stop();
+
         if (nlp == null) {
             nlp = new StanfordCoreNLP(props);
         }
 
         if (progressSingleton.getCount() % 1000 == 0) {
-            Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Count: " + progressSingleton.getCount() + "---- Text: " + inputText);
+            Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Count: " + progressSingleton.getCount() +
+                    "---- Text: " + inputText);
         }
         if (analysisType.contains(POS_TAGGER_WORDS)) {
             posTaggerWords(reader, nlp);
-            //posTaggerWords(reader, null);
         }
         stopWords = new StopWords().getGermanStopWords();
 

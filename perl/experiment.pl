@@ -3129,9 +3129,9 @@ sub parse_NT_into_obj {
             o => { type => "uri", value => "$3" },
         };
     }
-
+    # "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
     # URI URI LIT-LANG
-    elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)\"(.*)\"\@(.+) .\n\Z/) {
+    elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)\"(.*)\"\@(.+) .\n\Z/ or $string =~ m/\A"(.*)"\^\^<.*#langString.*\Z/) {
         return {
             s => { type => "uri", value => "$1" },
             p => { type => "uri", value => "$2" },
@@ -3194,7 +3194,7 @@ sub identify {
     foreach my $literal (sort keys %{$literals}) {
         next if $literal eq "\"\"\@$LANGTAG";
 
-        if ($literal =~ m/\A"(.*)"\@de\Z/ or $literal =~ m/\A"(.*)"\Z/) {
+        if ($literal =~ m/\A"(.*)"\@de\Z/ or $literal =~ m/\A"(.*)"\Z/ or $literal =~ m/\A"(.*)\"\^\^<.*#langString>\Z/) {
             next if not length $literal >= 8;
             my $string = quotemeta $1;
 
@@ -3218,7 +3218,7 @@ sub identify {
                     $strings->{quotemeta($num_to_month->{$m} . " $d2, $y")} = 1;
                     $strings->{quotemeta($d2 . " " . $num_to_month->{$m} . " $y")} = 1;
                 }
-
+# <http://de.dbpedia.org/resource/Paddy_DeMarco> <http://de.dbpedia.org/property/todestag> "1997-12-13"^^<http://www.w3.org/2001/XMLSchema#date> .
                 foreach my $string (keys %{$strings}) {
                     while ($text =~ /($string)/g) {
                         my $sub_seq = $1;
@@ -3282,7 +3282,7 @@ sub identify {
                 or $literal =~ m/\A"(.*)\"\^\^<http:\/\/www.w3.org\/2001\/XMLSchema#positiveInteger>\Z/
                 or $literal =~ m/\A"(.*)\"\^\^<http:\/\/www.w3.org\/2001\/XMLSchema#double>\Z/
                 or $literal =~ m/\A"(.*)\"\^\^<http:\/\/www.w3.org\/2001\/XMLSchema#float>\Z/
-                or $literal =~ m/\A"(.*)\"\^\^<http:\/\/www.w3.org\/1999\/02\/22-rdf-syntax-ns#langString>\Z/
+
 
         ) {
             my $string = $1;

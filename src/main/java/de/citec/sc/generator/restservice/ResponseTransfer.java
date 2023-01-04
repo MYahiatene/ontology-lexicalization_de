@@ -35,6 +35,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,6 +45,7 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.*;
 import org.apache.jena.sparql.core.DatasetGraph;
+import org.json.simple.JSONArray;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -176,20 +178,29 @@ public class ResponseTransfer implements Constants {
     }
 
 
-    String lexicalizationAndLemonCreate(ConfigLex configLex, ConfigLemon configLemon) throws ClassFileReadException, IOException {
-        List<String> classesList = new ArrayList<>();
-        String line;
-        try (BufferedReader br = new BufferedReader(new FileReader(appDir + "classes/classes.txt"))) {
-            while ((line = br.readLine()) != null) {
-                classesList.add(line);
-            }
-        } catch (IOException e) {
-            throw new ClassFileReadException(e.getMessage());
+    void lexicalizationAndLemonCreate() throws ClassFileReadException, IOException {
+        List<String> classesList = Arrays.asList("http://dbpedia.org/ontology/Place",
+                "http://dbpedia.org/ontology/Director", "http://dbpedia.org/ontology/Writer",
+                "http://dbpedia.org/ontology/Actor", "http://dbpedia.org/ontology/Politician",
+                "http://dbpedia.org/ontology/City");
+        ConfigLex lex = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLex.json"), ConfigLex.class);
+        ConfigLemon lemon = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLemon.json"), ConfigLemon.class);
+        for (String cl : classesList) {
+            lex.setClass_url(cl);
+            lexicalization(lex);
+            createLemon(lemon);
+            copyFilesToResultsFolder(cl.split("/")[3]);
         }
-        FileFolderUtils.createDirectory(appDir + "results_classes/");
+    }
 
+    void copyFilesToResultsFolder(String className) throws IOException {
+        new File(System.getProperty("user.dir") + "/results_all_classes/" + "result_" + className).mkdirs();
+        List<String> files = Arrays.asList("/results/", "/result_noun.json", "/result_adj.json", "/result_verb.json");
+        for (String f : files) {
+            Files.copy(Path.of(System.getProperty("user.dir") + f),
+                    Path.of(System.getProperty("user.dir") + "/results_all_classes/" + "result_" + className + "/"));
+        }
 
-        return null;
     }
 
 }

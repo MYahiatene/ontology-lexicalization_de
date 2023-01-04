@@ -8,9 +8,11 @@ import de.citec.generator.results.ResultDownload;
 import de.citec.generator.results.ResultJsonLD;
 import de.citec.generator.results.ResultLex;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import de.citec.sc.generator.exceptions.ClassFileReadException;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -50,10 +52,10 @@ public class SchemaController {
 
     @RequestMapping(path = "/lexAndLemon", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String lexicalizationAndLemonCreation(@RequestBody ConfigDownload conf) {
+    public String lexicalizationAndLemonCreation() throws ClassFileReadException, IOException {
         //TODO: merge both configs
         ResponseTransfer rt = new ResponseTransfer();
-        // rt.lexicalizationAndLemonCreate(conf);
+         rt.lexicalizationAndLemonCreate();
 
         return null;
 

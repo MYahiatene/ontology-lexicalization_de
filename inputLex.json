@@ -1,5 +1,5 @@
 {
-  "class_url": "http://dbpedia.org/ontology/Place",
+  "class_url": "http://dbpedia.org/ontology/Writer",
   "minimum_entities_per_class": 100,
   "maximum_entities_per_class": 10000,
   "minimum_onegram_length": 4,

@@ -7,6 +7,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class GraphExtractor {
         List<JSONObject> adj = new ArrayList<>();
         List<JSONObject> verb = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
-        try (FileReader reader = new FileReader(System.getProperty("user.dir") + "/result.json")) {
+        try (FileReader reader = new FileReader(System.getProperty("user.dir") + "/result.json",StandardCharsets.ISO_8859_1)) {
             Object obj = jsonParser.parse(reader);
             JSONArray arr = (JSONArray) ((JSONObject) obj).get("@graph");
             String POS = "partOfSpeech";
@@ -65,9 +66,9 @@ public class GraphExtractor {
         }
 
         try {
-            Files.write(Paths.get(System.getProperty("user.dir") + "/result_noun.json"),JSONArray.toJSONString(noun).replace("\\\\","").getBytes());
-            Files.write(Paths.get(System.getProperty("user.dir") + "/result_verb.json"), JSONArray.toJSONString(verb).replace("\\\\","").getBytes());
-            Files.write(Paths.get(System.getProperty("user.dir") + "/result_adj.json"), JSONArray.toJSONString(adj).replace("\\\\","").getBytes());
+            Files.write(Paths.get(System.getProperty("user.dir") + "/result_noun.json"),JSONArray.toJSONString(noun).replace("\\\\","").getBytes(StandardCharsets.ISO_8859_1));
+            Files.write(Paths.get(System.getProperty("user.dir") + "/result_verb.json"), JSONArray.toJSONString(verb).replace("\\\\","").getBytes(StandardCharsets.ISO_8859_1));
+            Files.write(Paths.get(System.getProperty("user.dir") + "/result_adj.json"), JSONArray.toJSONString(adj).replace("\\\\","").getBytes(StandardCharsets.ISO_8859_1));
         } catch (IOException e) {
             e.printStackTrace();
         }

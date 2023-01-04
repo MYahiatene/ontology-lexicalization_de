@@ -188,18 +188,19 @@ public class PosAnalyzer implements TextAnalyzer {
         this.numberOfSentences = numberOfSentences;
         this.inputText = inputText;
         BufferedReader reader = new BufferedReader(new StringReader(inputText));
-        Properties props = new Properties();
+/*        Properties props = new Properties();
         props.setProperty("annotators", "tokenize, mwt, pos");
         props.put("tokenize.language", "de");
         props.put("tokenize.postProcessor","edu.stanford.nlp.international.german.process.GermanTokenizerPostProcessor"
         );
         props.put("pos.model", "edu/stanford/nlp/models/pos-tagger/german-ud.tagger");
-        props.put("mwt.mappingFile", "edu/stanford/nlp/models/mwt/german/german-mwt.tsv"
-        );
+        props.put("mwt.mappingFile", "edu/stanford/nlp/models/mwt/german/german-mwt.tsv"*/
+        //);
         //Redwood.stop();
 
         if (nlp == null) {
-            nlp = new StanfordCoreNLP(props);
+            //nlp = new StanfordCoreNLP(props);
+            nlp = new StanfordCoreNLP("german");
         }
 
         if (progressSingleton.getCount() % 1000 == 0) {

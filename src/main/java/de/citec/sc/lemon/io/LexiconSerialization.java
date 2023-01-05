@@ -69,7 +69,7 @@ public class LexiconSerialization {
     public void serialize(Lexicon lexicon, Model model) {
 
         this.baseURI = lexicon.getBaseURI();
-
+//http://www.lexinfo.net/ontology/2.0/lexinfo#/
         for (Preposition prep : lexicon.getPrepositions()) {
             model.add(model.createResource(baseURI), LEMON.entry, model.createResource(this.baseURI + "preposition_" + prep.getCanonicalForm()));
             model.add(model.createResource(baseURI + "preposition_" + prep.getCanonicalForm()), LEMON.language, model.createLiteral(prep.getLanguage().toString().toLowerCase()));

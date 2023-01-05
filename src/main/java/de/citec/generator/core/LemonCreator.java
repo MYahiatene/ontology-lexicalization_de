@@ -185,7 +185,8 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                     lineInfo.getPredicateOriginal());
             sense.setReference(ref);
         } else if (posTag.contains(NOUN) || posTag.contains(VERB)) {
-            flag = this.isValidReference(lineInfo.getObjectOriginal());
+            //flag = this.isValidReference(lineInfo.getObjectOriginal());
+            flag = true;
             Reference ref = new SimpleReference(lineInfo.getObjectOriginal());
             sense.setReference(ref);
         }

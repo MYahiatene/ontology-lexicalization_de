@@ -5,7 +5,6 @@ target/
 .Dockerfile.swp
 *.bz2
 *.csv
-*.json
 inter/
 inter*/
 #results/

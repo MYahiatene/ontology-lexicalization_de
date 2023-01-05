@@ -210,8 +210,9 @@ public class PosAnalyzer implements TextAnalyzer {
         if (analysisType.contains(POS_TAGGER_WORDS)) {
             posTaggerWords(reader, nlp);
         }
-        stopWords = new StopWords().getGermanStopWords();
-
+        if(stopWords == null) {
+            stopWords = new StopWords().getGermanStopWords();
+        }
     }
 
     private void initializePosAnalyzer() {
@@ -221,11 +222,12 @@ public class PosAnalyzer implements TextAnalyzer {
     private void posTaggerWords(BufferedReader reader, StanfordCoreNLP nlp) throws Exception {
         //reader.readLine();
         // Todo: replace stanford java api with fastapi spacy_stanza rest service
-        String docLines = reader.lines().collect(Collectors.toList()).get(0);
+        List<String> lines = reader.lines().collect(Collectors.toList());
+        String docLines = lines.get(0);
         //String docLines = reader.lines().collect(Collectors.joining("."));
-        docLines = !docLines.startsWith("\"") ? "\"" + docLines : docLines;
+/*        docLines = !docLines.startsWith("\"") ? "\"" + docLines : docLines;
         docLines = !docLines.endsWith("\"") ? docLines + "\"" : docLines;
-        docLines = "{\"text\":" + docLines + "}";
+        docLines = "{\"text\":" + docLines + "}";*/
         try {
             //List<List<String>> senList = sendToNLPPipeline(docLines);
             CoreDocument doc = nlp.processToCoreDocument(docLines);

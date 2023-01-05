@@ -19,19 +19,20 @@ public class GraphExtractor {
     public static void main(String[] args) {
         extract();
     }
+
     public static void extract() {
         List<JSONObject> noun = new ArrayList<>();
         List<JSONObject> adj = new ArrayList<>();
         List<JSONObject> verb = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
-        try (FileReader reader = new FileReader(System.getProperty("user.dir") + "/result.json",StandardCharsets.ISO_8859_1)) {
+        try (FileReader reader = new FileReader(System.getProperty("user.dir") + "/result.json", StandardCharsets.ISO_8859_1)) {
             Object obj = jsonParser.parse(reader);
             JSONArray arr = (JSONArray) ((JSONObject) obj).get("@graph");
             String POS = "partOfSpeech";
             String NOUN = "http://www.lexinfo.net/ontology/2.0/lexinfo#/noun";
             String ADJ = "http://www.lexinfo.net/ontology/2.0/lexinfo#/adjective";
             String VERB = "http://www.lexinfo.net/ontology/2.0/lexinfo#/verb";
-            int n = arr.size();
+            int n = arr == null ? 0 : arr.size();
             List<JSONObject> l = IntStream.range(1, n).mapToObj(i -> (JSONObject) arr.get(i)).collect(Collectors.toList());
             l.forEach(e -> {
                 String jsonObj = (String) e.get(POS);
@@ -66,9 +67,9 @@ public class GraphExtractor {
         }
 
         try {
-            Files.write(Paths.get(System.getProperty("user.dir") + "/result_noun.json"),JSONArray.toJSONString(noun).replace("\\\\","").getBytes(StandardCharsets.ISO_8859_1));
-            Files.write(Paths.get(System.getProperty("user.dir") + "/result_verb.json"), JSONArray.toJSONString(verb).replace("\\\\","").getBytes(StandardCharsets.ISO_8859_1));
-            Files.write(Paths.get(System.getProperty("user.dir") + "/result_adj.json"), JSONArray.toJSONString(adj).replace("\\\\","").getBytes(StandardCharsets.ISO_8859_1));
+            Files.write(Paths.get(System.getProperty("user.dir") + "/result_noun.json"), JSONArray.toJSONString(noun).replace("\\\\", "").getBytes(StandardCharsets.ISO_8859_1));
+            Files.write(Paths.get(System.getProperty("user.dir") + "/result_verb.json"), JSONArray.toJSONString(verb).replace("\\\\", "").getBytes(StandardCharsets.ISO_8859_1));
+            Files.write(Paths.get(System.getProperty("user.dir") + "/result_adj.json"), JSONArray.toJSONString(adj).replace("\\\\", "").getBytes(StandardCharsets.ISO_8859_1));
         } catch (IOException e) {
             e.printStackTrace();
         }

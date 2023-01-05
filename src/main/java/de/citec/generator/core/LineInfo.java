@@ -236,7 +236,7 @@ public class LineInfo implements PredictionPatterns {
             analyzer.setInputText(word);
             analyzer.setPropertyCSV(propertyCSV);
         }
-        // todo: add more word tags
+        // todo: Wird hier nur noun gesetzt>!
         if (!analyzer.getNouns().isEmpty()) {
             this.posTag = PosAnalyzer.NOUN;
         } else if (!analyzer.getAdjectives().isEmpty()) {

@@ -67,9 +67,9 @@ public class GraphExtractor {
         }
 
         try {
-            Files.write(Paths.get(System.getProperty("user.dir") + "/result_noun.json"), JSONArray.toJSONString(noun).replace("\\\\", "").getBytes(StandardCharsets.ISO_8859_1));
-            Files.write(Paths.get(System.getProperty("user.dir") + "/result_verb.json"), JSONArray.toJSONString(verb).replace("\\\\", "").getBytes(StandardCharsets.ISO_8859_1));
-            Files.write(Paths.get(System.getProperty("user.dir") + "/result_adj.json"), JSONArray.toJSONString(adj).replace("\\\\", "").getBytes(StandardCharsets.ISO_8859_1));
+            Files.writeString(Paths.get(System.getProperty("user.dir") + "/result_noun.json"), JSONArray.toJSONString(noun).replace("\\\\", ""), StandardCharsets.ISO_8859_1);
+            Files.writeString(Paths.get(System.getProperty("user.dir") + "/result_verb.json"), JSONArray.toJSONString(verb).replace("\\\\", ""), StandardCharsets.ISO_8859_1);
+            Files.writeString(Paths.get(System.getProperty("user.dir") + "/result_adj.json"), JSONArray.toJSONString(adj).replace("\\\\", ""), StandardCharsets.ISO_8859_1);
         } catch (IOException e) {
             e.printStackTrace();
         }

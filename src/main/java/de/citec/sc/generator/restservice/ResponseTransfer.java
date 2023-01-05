@@ -189,7 +189,7 @@ public class ResponseTransfer implements Constants {
             lex.setClass_url(cl);
             lexicalization(lex);
             createLemon(lemon);
-            copyFilesToResultsFolder(cl.split("/")[3]);
+            copyFilesToResultsFolder(cl.split("/")[4]);
         }
     }
 

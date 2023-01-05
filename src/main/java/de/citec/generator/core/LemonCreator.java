@@ -249,6 +249,7 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
         return lineInfo.getSubject() + " " + lineInfo.getPredicate() + lineInfo.getObject();
     }
 
+    // Todo: why is it fitlering out verbs too? objectOriginal='o' ->false
     private Boolean isValidReference(String objectOriginal) {
         if (objectOriginal.contains("http://www.w3.org/2001/XMLSchema")
                 || objectOriginal.contains("http://dbpedia.org/datatype/centimetre")) {

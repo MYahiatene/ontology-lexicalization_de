@@ -90,7 +90,7 @@ ProcessCsv implements PredictionPatterns, LemonConstants {
             String inputDir = baseDir + "/";
             for (String inter : interestingness) {
                 outputDir = resourceDir + "/" + prediction + "/" + inter + "/";
-                FileFolderUtils.createDirectory(outputDir);
+                //FileFolderUtils.createDirectory(outputDir);
                 this.generate(inputDir, outputDir, prediction, inter, LOGGER, ".csv");
             }
         }

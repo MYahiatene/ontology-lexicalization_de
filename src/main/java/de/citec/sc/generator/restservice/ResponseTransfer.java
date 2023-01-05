@@ -196,9 +196,14 @@ public class ResponseTransfer implements Constants {
     void copyFilesToResultsFolder(String className) throws IOException {
         new File(System.getProperty("user.dir") + "/results_all_classes/" + "result_" + className).mkdirs();
         List<String> files = Arrays.asList("/results/", "/result_noun.json", "/result_adj.json", "/result_verb.json");
+
         for (String f : files) {
-            Files.copy(Path.of(System.getProperty("user.dir") + f),
-                    Path.of(System.getProperty("user.dir") + "/results_all_classes/" + "result_" + className + "/"));
+            try {
+                Files.copy(Path.of(System.getProperty("user.dir") + f),
+                        Path.of(System.getProperty("user.dir") + "/results_all_classes/" + "result_" + className + "/"));
+            } catch (Exception e) {
+                System.err.println("Error copying " + f);
+            }
         }
 
     }

@@ -176,10 +176,10 @@ public class ResponseTransfer implements Constants {
 
 
     void lexicalizationAndLemonCreate() throws ClassFileReadException, IOException {
-        List<String> classesList = Arrays.asList("http://dbpedia.org/ontology/Place"/*,
-                "http://dbpedia.org/ontology/Director", "http://dbpedia.org/ontology/Writer",
+        List<String> classesList = Arrays.asList("http://dbpedia.org/ontology/Place",
+                "http://dbpedia.org/ontology/Director",
                 "http://dbpedia.org/ontology/Actor", "http://dbpedia.org/ontology/Politician",
-                "http://dbpedia.org/ontology/City"*/);
+                "http://dbpedia.org/ontology/City");
         ConfigLex lex = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLex.json"), ConfigLex.class);
         ConfigLemon lemon = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLemon.json"), ConfigLemon.class);
         for (String cl : classesList) {
@@ -193,14 +193,15 @@ public class ResponseTransfer implements Constants {
     void copyFilesToResultsFolder(String className) throws IOException {
         String workingDirectory = System.getProperty("user.dir");
         Path source = Paths.get(workingDirectory + "/results/");
-        Path destination = Paths.get(workingDirectory + "/results_all_classes/" + "result_" + className+"/results/" );
-        if(!Files.isDirectory(destination)){
-            Files.createDirectories(destination);}
-        List<String> files = Arrays.asList("/result_noun.json", "/result_adj.json", "/result_verb.json");
+        Path destination = Paths.get(workingDirectory + "/results_all_classes/" + "result_" + className + "/results/");
+        if (!Files.isDirectory(destination)) {
+            Files.createDirectories(destination);
+        }
+        List<String> files = Arrays.asList("result.json", "/result_noun.json", "/result_adj.json", "/result_verb.json");
 
         Files.list(source).forEach(src -> {
             try {
-                Files.copy(src, Paths.get(destination+"/"+ src.getFileName().toString()), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(src, Paths.get(destination + "/" + src.getFileName().toString()), StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
                 e.printStackTrace();
             }

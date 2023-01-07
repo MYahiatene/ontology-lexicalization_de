@@ -24,14 +24,15 @@ public class GraphExtractor {
         String className = "test/";
         String workingDirectory = System.getProperty("user.dir");
         Path source = Paths.get(workingDirectory + "/results/");
-        Path destination = Paths.get(workingDirectory + "/results_all_classes/" + "result_" + className+"/results/" );
-        if(!Files.isDirectory(destination)){
-        Files.createDirectories(destination);}
-        List<String> files = Arrays.asList("/result_noun.json", "/result_adj.json", "/result_verb.json");
+        Path destination = Paths.get(workingDirectory + "/results_all_classes/" + "result_" + className + "/results/");
+        if (!Files.isDirectory(destination)) {
+            Files.createDirectories(destination);
+        }
+        List<String> files = Arrays.asList("/result.json", "/result_noun.json", "/result_adj.json", "/result_verb.json");
 
         Files.list(source).forEach(src -> {
             try {
-                 Files.copy(src, Paths.get(destination+"/"+ src.getFileName().toString()), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(src, Paths.get(destination + "/" + src.getFileName().toString()), StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -39,8 +40,7 @@ public class GraphExtractor {
 
         });
 
-
-       for (String f : files) {
+        for (String f : files) {
             try {
                 Files.copy(Paths.get(workingDirectory + f),
                         Paths.get(workingDirectory + "/results_all_classes/" + "result_" + className + "/" + f), StandardCopyOption.REPLACE_EXISTING);
@@ -48,6 +48,8 @@ public class GraphExtractor {
                 System.err.println("Error copying " + f);
             }
         }
+
+
     }
 
     public static void extract() {

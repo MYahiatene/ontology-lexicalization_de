@@ -197,7 +197,7 @@ public class ResponseTransfer implements Constants {
         if (!Files.isDirectory(destination)) {
             Files.createDirectories(destination);
         }
-        List<String> files = Arrays.asList("result.json", "/result_noun.json", "/result_adj.json", "/result_verb.json");
+        List<String> files = Arrays.asList("/result.json", "/result_noun.json", "/result_adj.json", "/result_verb.json");
 
         Files.list(source).forEach(src -> {
             try {
@@ -208,7 +208,6 @@ public class ResponseTransfer implements Constants {
 
 
         });
-
 
         for (String f : files) {
             try {

@@ -2748,7 +2748,6 @@ print "done with step 5. wait.\n"; #<STDIN>;
 print LOG "done.\n";
 close LOG;
 
-
 sub csv_line {
     my $d = shift;
     return [
@@ -2775,7 +2774,6 @@ sub csv_line {
         &rule_to_string($d)
     ];
 }
-
 
 sub rule_to_string {
     my $d = shift;
@@ -3109,8 +3107,18 @@ sub parse_NT_into_obj {
     # BNODE URI LIT-DAT
     # BNODE URI BNODE
 
+
+    # URI URI URI
+    if ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
+        return {
+            s => { type => "uri", value => "$1" },
+            p => { type => "uri", value => "$2" },
+            o => { type => "uri", value => "$3" },
+        };
+    }
+
     # URI+(Politiker...) URI URI
-    if ( $string =~ m/<(.*\($classes->{$className}.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/i) {
+    elsif ($string =~ m/<(.*\($classes->{$className}.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/i) {
         # class =  Politiker
         # <http://de.dbpedia.org/resource/Franziska_Reindl_(Politikerin)> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person> .
         # class = Place
@@ -3121,14 +3129,7 @@ sub parse_NT_into_obj {
             o => { type => "uri", value => "http://dbpedia.org/ontology/$className" }, # http://dbpedia.org/ontology/Politiker -> http://dbpedia.org/ontology/Politician
         };
     }
-    # URI URI URI
-    elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
-        return {
-            s => { type => "uri", value => "$1" },
-            p => { type => "uri", value => "$2" },
-            o => { type => "uri", value => "$3" },
-        };
-    }
+
     # "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
     # URI URI LIT-LANG
     elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)\"(.*)\"\@(.+) .\n\Z/ or $string =~ m/\A"(.*)"\^\^<.*#langString.*\Z/) {
@@ -3183,7 +3184,6 @@ sub LoadFileCompressed {
     return Load($data);
 }
 
-
 sub identify {
     my ($text, $literals) = @_;
 
@@ -3218,7 +3218,7 @@ sub identify {
                     $strings->{quotemeta($num_to_month->{$m} . " $d2, $y")} = 1;
                     $strings->{quotemeta($d2 . " " . $num_to_month->{$m} . " $y")} = 1;
                 }
-# <http://de.dbpedia.org/resource/Paddy_DeMarco> <http://de.dbpedia.org/property/todestag> "1997-12-13"^^<http://www.w3.org/2001/XMLSchema#date> .
+                # <http://de.dbpedia.org/resource/Paddy_DeMarco> <http://de.dbpedia.org/property/todestag> "1997-12-13"^^<http://www.w3.org/2001/XMLSchema#date> .
                 foreach my $string (keys %{$strings}) {
                     while ($text =~ /($string)/g) {
                         my $sub_seq = $1;

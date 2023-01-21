@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class GraphExtractor {
-    public static void main(String[] args) throws IOException {
+/*    public static void main(String[] args) throws IOException {
         //extract();
         String className = "test/";
         String workingDirectory = System.getProperty("user.dir");
@@ -50,14 +50,14 @@ public class GraphExtractor {
         }
 
 
-    }
+    }*/
 
     public static void extract() {
         List<JSONObject> noun = new ArrayList<>();
         List<JSONObject> adj = new ArrayList<>();
         List<JSONObject> verb = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
-        try (FileReader reader = new FileReader(System.getProperty("user.dir") + "/result.json", StandardCharsets.ISO_8859_1)) {
+        try (FileReader reader = new FileReader(System.getProperty("user.dir") + "/result.json", StandardCharsets.UTF_8)) {
             Object obj = jsonParser.parse(reader);
             JSONArray arr = (JSONArray) ((JSONObject) obj).get("@graph");
             String POS = "partOfSpeech";
@@ -99,9 +99,9 @@ public class GraphExtractor {
         }
 
         try {
-            Files.writeString(Paths.get(System.getProperty("user.dir") + "/result_noun.json"), JSONArray.toJSONString(noun).replace("\\\\", ""), StandardCharsets.ISO_8859_1);
-            Files.writeString(Paths.get(System.getProperty("user.dir") + "/result_verb.json"), JSONArray.toJSONString(verb).replace("\\\\", ""), StandardCharsets.ISO_8859_1);
-            Files.writeString(Paths.get(System.getProperty("user.dir") + "/result_adj.json"), JSONArray.toJSONString(adj).replace("\\\\", ""), StandardCharsets.ISO_8859_1);
+            Files.writeString(Paths.get(System.getProperty("user.dir") + "/result_noun.json"), JSONArray.toJSONString(noun).replace("\\\\", ""), StandardCharsets.UTF_8);
+            Files.writeString(Paths.get(System.getProperty("user.dir") + "/result_verb.json"), JSONArray.toJSONString(verb).replace("\\\\", ""), StandardCharsets.UTF_8);
+            Files.writeString(Paths.get(System.getProperty("user.dir") + "/result_adj.json"), JSONArray.toJSONString(adj).replace("\\\\", ""), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }

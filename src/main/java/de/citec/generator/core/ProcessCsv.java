@@ -39,7 +39,6 @@ import java.util.logging.Logger;
 import de.citec.generator.config.PredictionPatterns;
 
 /**
- *
  * @author elahi
  */
 public class
@@ -62,7 +61,7 @@ ProcessCsv implements PredictionPatterns, LemonConstants {
         String outputDir = resourceDir;
 //predict_p_for_o_given_l
         List<String> predictKBGivenLInguistic = new ArrayList<>(Arrays.asList(
-               predict_l_for_s_given_po,
+    /*           predict_l_for_s_given_po,
                 predict_localized_l_for_s_given_po,
                 predict_l_for_s_given_p,
                 predict_localized_l_for_s_given_p,
@@ -71,17 +70,17 @@ ProcessCsv implements PredictionPatterns, LemonConstants {
                 predict_localized_l_for_o_given_sp,
                 predict_l_for_o_given_s,
                 predict_l_for_o_given_p,
-                predict_localized_l_for_o_given_p,
+                predict_localized_l_for_o_given_p,*/
                 predict_p_for_s_given_l,
-                predict_o_for_s_given_l,
+                /*predict_o_for_s_given_l,*/
                 predict_p_for_o_given_l,
                 predict_po_for_s_given_l,
-                predict_s_for_o_given_l,
+                /*predict_s_for_o_given_l,*/
                 predict_po_for_s_given_localized_l,
                 predict_p_for_s_given_localized_l,
-                predict_p_for_o_given_localized_l,
-                predict_sp_for_o_given_localized_l,
-                predict_sp_for_o_given_l
+                predict_p_for_o_given_localized_l
+                /*predict_sp_for_o_given_localized_l,*/
+                /*predict_sp_for_o_given_l*/
         ));
 
         List<String> interestingness = new ArrayList<>();

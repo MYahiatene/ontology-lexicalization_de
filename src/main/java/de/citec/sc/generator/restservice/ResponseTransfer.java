@@ -140,11 +140,11 @@ public class ResponseTransfer implements Constants {
         String modelToString = RDFWriterBuilder.create().source(model)
                 .lang(Lang.JSONLD).asString();
         try (FileOutputStream fos = new FileOutputStream(fileName)) {
-            fos.write(modelToString.getBytes(StandardCharsets.ISO_8859_1));
+            fos.write(modelToString.getBytes(UTF_8));
         } catch (IOException e) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, e);
         }
-        return new String(modelToString.getBytes(StandardCharsets.ISO_8859_1));
+        return new String(modelToString.getBytes(UTF_8));
     }
 
 
@@ -179,7 +179,7 @@ public class ResponseTransfer implements Constants {
         List<String> classesList = Arrays.asList(/*"http://dbpedia.org/ontology/Place",
                 "http://dbpedia.org/ontology/Director",
                 "http://dbpedia.org/ontology/Actor", "http://dbpedia.org/ontology/Politician",
-                "http://dbpedia.org/ontology/City",*/"http://dbpedia.org/ontology/Game");
+                "http://dbpedia.org/ontology/City",*/"http://dbpedia.org/ontology/Person");
         ConfigLex lex = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLex.json"), ConfigLex.class);
         ConfigLemon lemon = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLemon.json"), ConfigLemon.class);
         for (String cl : classesList) {

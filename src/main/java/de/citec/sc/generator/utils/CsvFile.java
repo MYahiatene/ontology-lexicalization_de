@@ -138,7 +138,7 @@ public class CsvFile  implements PredictionPatterns {
         manualReader.close();
         return rows;
     }
-
+    // Todo: change only for predict_p.*
     private String modifyLine(String line) {
         line = line.replace("c_s,ll_s => po", predict_po_for_s_given_l);
         line = line.replace("c_s,l_s => po", predict_po_for_s_given_localized_l);

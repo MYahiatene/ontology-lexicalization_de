@@ -6,6 +6,7 @@
 package de.citec.generator.core;
 
 import de.citec.generator.config.LemonConstants;
+import de.citec.sc.generator.analyzer.PosAnalyzer;
 import de.citec.sc.generator.analyzer.TextAnalyzer;
 
 import static de.citec.sc.lemon.core.Language.DE;
@@ -87,9 +88,9 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
         String posLexInfo = null, givenPosTag = null;
         if (prediction.equals(predict_po_for_s_given_localized_l)
                 || prediction.equals(predict_po_for_s_given_l)) {
-            //System.out.println("prediction::" + prediction);
             posLexInfo = lexinfo_adjective;
             givenPosTag = ADJECTIVE;
+            // TODO: No resource !! check condition (noun && verb)
         } else if (prediction.equals(PredictionPatterns.predict_p_for_o_given_localized_l)
                 || prediction.equals(PredictionPatterns.predict_p_for_o_given_l)
                 || prediction.equals(PredictionPatterns.predict_p_for_s_given_localized_l)
@@ -97,11 +98,11 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
             //System.out.println("prediction::" + prediction);
             posLexInfo = lexinfo_verb;
             givenPosTag = TextAnalyzer.VERB;
-        } else if (prediction.equals(PredictionPatterns.predict_o_for_s_given_l)) {
+        }/* else if (prediction.equals(PredictionPatterns.predict_o_for_s_given_l)) {
             //System.out.println("prediction::" + prediction);
             posLexInfo = lexinfo_noun;
             givenPosTag = TextAnalyzer.NOUN;
-        } else {
+        }*/ else {
             return;
         }
 
@@ -122,9 +123,8 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                 //todo: change language specific
                 de.citec.sc.lemon.core.LexicalEntry entry = new de.citec.sc.lemon.core.LexicalEntry(DE);
                 entry.setCanonicalForm(writtenForm);
-                entry.setPOS(posLexInfo);
+                entry.setPOS(lexiconUnit.getPartsOfSpeech().equals(PosAnalyzer.VERB) ? lexinfo_verb : lexinfo_noun);
                 entry.setURI(this.turtleLexicon.getBaseURI() + writtenForm);
-                entry.setPOS(posLexInfo);
                 Set<Sense> senses = new HashSet<Sense>();
 
                 Integer index = 0;
@@ -185,8 +185,7 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                     lineInfo.getPredicateOriginal());
             sense.setReference(ref);
         } else if (posTag.contains(NOUN) || posTag.contains(VERB)) {
-            //flag = this.isValidReference(lineInfo.getObjectOriginal());
-            flag = true;
+            flag = this.isValidReference(lineInfo.getObjectOriginal());
             Reference ref = new SimpleReference(lineInfo.getObjectOriginal());
             sense.setReference(ref);
         }
@@ -252,9 +251,9 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
     // Todo: why is it fitlering out verbs too? objectOriginal='o' ->false
     private Boolean isValidReference(String objectOriginal) {
         if (objectOriginal.contains("http://www.w3.org/2001/XMLSchema")
-                || objectOriginal.contains("http://dbpedia.org/datatype/centimetre")) {
+                || objectOriginal.contains("http://dbpedia.org/datatype/centimetre") || objectOriginal.contains("http://www.w3.org/")) {
             return false;
-        } else if (objectOriginal.contains("http") && objectOriginal.contains("http")) {
+        } else if (objectOriginal.contains("http")) {
             return true;
         } else {
             return false;

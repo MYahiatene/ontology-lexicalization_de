@@ -20,6 +20,9 @@ import java.util.logging.Logger;
 import org.apache.commons.compress.compressors.CompressorException;
 import org.apache.commons.compress.compressors.CompressorInputStream;
 import org.apache.commons.compress.compressors.CompressorStreamFactory;
+import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 
 /**
  * @author elahi
@@ -51,9 +54,10 @@ public class FileFolderUtils {
 
         return selectedFiles;
     }
-//todo: decode utf8
+
+    //todo: decode utf8
     public static BufferedReader getBufferedReaderForCompressedFile(File fileIn) throws IOException, CompressorException {
-        FileInputStream fin = new FileInputStream(fileIn);
+/*        FileInputStream fin = new FileInputStream(fileIn);
         BufferedInputStream bis = new BufferedInputStream(fin);
         //TODO: Cuts input file if too large. Fix with chunk reading
         CompressorInputStream input = new CompressorStreamFactory(true,Integer.MAX_VALUE-16).createCompressorInputStream(bis);
@@ -61,7 +65,13 @@ public class FileFolderUtils {
         BufferedReader br2 = new BufferedReader(new InputStreamReader(input));
         //Skip header
         br2.readLine();
-        return br2;
+        return br2;*/
+        FileInputStream fin = new FileInputStream(fileIn);
+        BZip2CompressorInputStream bzIn = new BZip2CompressorInputStream(fin);
+        InputStreamReader isr = new InputStreamReader(bzIn, StandardCharsets.ISO_8859_1);
+        BufferedReader br = new BufferedReader(isr);
+        br.readLine();
+        return br;
     }
 
     public static void delete(File dir) throws Exception {

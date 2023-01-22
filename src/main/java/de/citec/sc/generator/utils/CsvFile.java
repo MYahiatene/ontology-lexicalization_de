@@ -6,6 +6,7 @@
 package de.citec.sc.generator.utils;
 
 import de.citec.sc.generator.analyzer.PosAnalyzer;
+
 import static de.citec.sc.generator.analyzer.TextAnalyzer.OBJECT;
 import static de.citec.generator.config.PredictionPatterns.predict_l_for_o_given_p;
 import static de.citec.generator.config.PredictionPatterns.predict_l_for_o_given_s;
@@ -27,9 +28,11 @@ import static de.citec.generator.config.PredictionPatterns.predict_po_for_s_give
 import static de.citec.generator.config.PredictionPatterns.predict_s_for_o_given_l;
 import static de.citec.generator.config.PredictionPatterns.predict_sp_for_o_given_l;
 import static de.citec.generator.config.PredictionPatterns.predict_sp_for_o_given_localized_l;
+
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -51,17 +54,17 @@ import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.compress.compressors.CompressorException;
 import de.citec.generator.config.PredictionPatterns;
 
 /**
- *
  * @author elahi
  */
-public class CsvFile  implements PredictionPatterns {
+public class CsvFile implements PredictionPatterns {
 
     private File csvFile = null;
-    private BufferedReader bufferedReader=null;
+    private BufferedReader bufferedReader = null;
     public String[] qaldHeader = null;
     private Map<String, List<String[]>> wordRows = new TreeMap<String, List<String[]>>();
 
@@ -71,10 +74,10 @@ public class CsvFile  implements PredictionPatterns {
             this.bufferedReader = FileFolderUtils.getBufferedReaderForCompressedFile(csvFile);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CsvFile.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("input file not found::"+ex.getMessage());
+            System.err.println("input file not found::" + ex.getMessage());
         } catch (CompressorException ex) {
             Logger.getLogger(CsvFile.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("the output file needs to be compressed::"+ex.getMessage());
+            System.err.println("the output file needs to be compressed::" + ex.getMessage());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -88,28 +91,20 @@ public class CsvFile  implements PredictionPatterns {
         } catch (IOException ex) {
             Logger.getLogger(CsvFile.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("The file is not found!!!" + ex.getMessage());
-        }
-        catch (CompressorException ex) {
+        } catch (CompressorException ex) {
             Logger.getLogger(CsvFile.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println( "The system can read only compressed file!!" + ex.getMessage());
-        }
-        catch (NullPointerException ex) {
+            System.err.println("The system can read only compressed file!!" + ex.getMessage());
+        } catch (NullPointerException ex) {
             Logger.getLogger(CsvFile.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println( "The system can read only compressed file!!" + ex.getMessage());
-        }
-        catch (Exception ex) {
+            System.err.println("The system can read only compressed file!!" + ex.getMessage());
+        } catch (Exception ex) {
             Logger.getLogger(CsvFile.class.getName()).log(Level.SEVERE, null, ex);
-           System.err.println( "The file reading is failed!!" + ex.getMessage());
+            System.err.println("The file reading is failed!!" + ex.getMessage());
         }
 
         return rows;
     }
-    
-     
 
-
-
-  
 
     private List<String[]> generateLinebyLine(BufferedReader manualReader, Integer lineLimit) throws FileNotFoundException, IOException, Exception {
         List<String[]> rows = new ArrayList<String[]>();
@@ -118,17 +113,19 @@ public class CsvFile  implements PredictionPatterns {
         //todo: skip header
         //manualReader.readLine();
         while ((line = manualReader.readLine()) != null) {
-            line = this.modifyLine(line);
+            String decodedLine =   new String(new String(line.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8)
+                    .getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+            line = this.modifyLine(decodedLine);
             try {
                 if (line.contains(",")) {
                     String[] data = line.split(",");
                     rows.add(data);
                 } else {
-                    throw new Exception("the line does not contain comma:"  + line);
+                    throw new Exception("the line does not contain comma:" + line);
                 }
 
             } catch (Exception ex) {
-                throw new Exception("invalid lin in CSV ::" + line+" "+ex.getMessage());
+                throw new Exception("invalid lin in CSV ::" + line + " " + ex.getMessage());
             }
             index = index + 1;
             if (index > lineLimit) {
@@ -138,6 +135,7 @@ public class CsvFile  implements PredictionPatterns {
         manualReader.close();
         return rows;
     }
+
     // Todo: change only for predict_p.*
     private String modifyLine(String line) {
         line = line.replace("c_s,ll_s => po", predict_po_for_s_given_l);

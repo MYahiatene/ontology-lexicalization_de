@@ -113,9 +113,10 @@ public class CsvFile implements PredictionPatterns {
         //todo: skip header
         //manualReader.readLine();
         while ((line = manualReader.readLine()) != null) {
-            String decodedLine =   new String(new String(line.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8)
+/*            String decodedLine =   new String(new String(line.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8)
                     .getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
-            line = this.modifyLine(decodedLine);
+            line = this.modifyLine(decodedLine);*/
+            line = this.modifyLine(line);
             try {
                 if (line.contains(",")) {
                     String[] data = line.split(",");

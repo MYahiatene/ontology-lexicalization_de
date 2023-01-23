@@ -57,21 +57,15 @@ public class FileFolderUtils {
 
     //todo: decode utf8
     public static BufferedReader getBufferedReaderForCompressedFile(File fileIn) throws IOException, CompressorException {
-/*        FileInputStream fin = new FileInputStream(fileIn);
+        FileInputStream fin = new FileInputStream(fileIn);
         BufferedInputStream bis = new BufferedInputStream(fin);
         //TODO: Cuts input file if too large. Fix with chunk reading
-        CompressorInputStream input = new CompressorStreamFactory(true,Integer.MAX_VALUE-16).createCompressorInputStream(bis);
+        CompressorInputStream input = new CompressorStreamFactory(true, Integer.MAX_VALUE - 16).createCompressorInputStream(bis);
 
-        BufferedReader br2 = new BufferedReader(new InputStreamReader(input));
+        BufferedReader br2 = new BufferedReader(new InputStreamReader(input,StandardCharsets.UTF_8));
         //Skip header
         br2.readLine();
-        return br2;*/
-        FileInputStream fin = new FileInputStream(fileIn);
-        BZip2CompressorInputStream bzIn = new BZip2CompressorInputStream(fin);
-        InputStreamReader isr = new InputStreamReader(bzIn, StandardCharsets.ISO_8859_1);
-        BufferedReader br = new BufferedReader(isr);
-        br.readLine();
-        return br;
+        return br2;
     }
 
     public static void delete(File dir) throws Exception {

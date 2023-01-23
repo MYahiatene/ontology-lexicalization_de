@@ -21,10 +21,13 @@ public class Test {
     public static void main(String[] args) throws Exception {
         String text = "grün, gelb, heiß";
         String test = "KÃ\u0083Â¶nigreich";
+        StanfordCoreNLP nlp = new StanfordCoreNLP("german");
         //System.out.println(Charset.defaultCharset().displayName());
         //System.out.println(Cha.decode(test, StandardCharsets.US_ASCII));
-        System.out.println(
+        String decoded =
                 new String(new String(test.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8)
-                        .getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+                        .getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+        CoreDocument doc =nlp.processToCoreDocument(decoded);
+        System.out.println(doc.tokens().get(0).tag());
     }
 }

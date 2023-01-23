@@ -123,7 +123,18 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                 //todo: change language specific
                 de.citec.sc.lemon.core.LexicalEntry entry = new de.citec.sc.lemon.core.LexicalEntry(DE);
                 entry.setCanonicalForm(writtenForm);
-                entry.setPOS(lexiconUnit.getPartsOfSpeech().equals(PosAnalyzer.VERB) ? lexinfo_verb : lexinfo_noun);
+                String pos = "";
+                if (lexiconUnit.getPartsOfSpeech().equals(PosAnalyzer.VERB)) {
+                    pos = lexinfo_verb;
+                }
+                if (lexiconUnit.getPartsOfSpeech().equals(PosAnalyzer.NOUN)) {
+                    pos = lexinfo_noun;
+
+                }
+                if (lexiconUnit.getPartsOfSpeech().equals(PosAnalyzer.VERB)) {
+                    pos = lexinfo_adjective;
+                }
+                entry.setPOS(pos);
                 entry.setURI(this.turtleLexicon.getBaseURI() + writtenForm);
                 Set<Sense> senses = new HashSet<Sense>();
 

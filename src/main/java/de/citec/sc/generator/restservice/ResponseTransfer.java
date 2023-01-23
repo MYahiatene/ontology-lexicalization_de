@@ -37,11 +37,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.jena.graph.Graph;
+import org.apache.jena.graph.Node;
+import org.apache.jena.graph.Triple;
 import org.apache.jena.query.DatasetFactory;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.*;
 import org.apache.jena.riot.*;
 import org.apache.jena.sparql.core.DatasetGraph;
+import org.apache.xpath.operations.Mod;
 import org.json.simple.JSONArray;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -49,6 +52,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import static java.nio.charset.StandardCharsets.ISO_8859_1;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
@@ -136,15 +140,17 @@ public class ResponseTransfer implements Constants {
         //template.getForEntity("http://0.0.0.0:80/de", String.class);
     }
 
+
     private String writeJsonLDtoString(Model model, String fileName) throws IOException {
+
         String modelToString = RDFWriterBuilder.create().source(model)
                 .lang(Lang.JSONLD).asString();
         try (FileOutputStream fos = new FileOutputStream(fileName)) {
-            fos.write(modelToString.getBytes(UTF_8));
+            fos.write(modelToString.getBytes(ISO_8859_1));
         } catch (IOException e) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, e);
         }
-        return new String(modelToString.getBytes(UTF_8));
+        return new String(modelToString.getBytes(ISO_8859_1));
     }
 
 

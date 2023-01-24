@@ -146,10 +146,12 @@ public class ResponseTransfer implements Constants {
         String modelToString = RDFWriterBuilder.create().source(model)
                 .lang(Lang.JSONLD).asString();
         try (FileOutputStream fos = new FileOutputStream(fileName)) {
+            //todo: check encoding probably model or serializer in the step before breaks encoding
             fos.write(modelToString.getBytes(ISO_8859_1));
         } catch (IOException e) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, e);
         }
+        //todo: check encoding probably model or serializer in the step before breaks encoding
         return new String(modelToString.getBytes(ISO_8859_1));
     }
 

@@ -95,14 +95,9 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                 || prediction.equals(PredictionPatterns.predict_p_for_o_given_l)
                 || prediction.equals(PredictionPatterns.predict_p_for_s_given_localized_l)
                 || prediction.equals(PredictionPatterns.predict_p_for_s_given_l)) {
-            //System.out.println("prediction::" + prediction);
             posLexInfo = lexinfo_verb;
             givenPosTag = TextAnalyzer.VERB;
-        }/* else if (prediction.equals(PredictionPatterns.predict_o_for_s_given_l)) {
-            //System.out.println("prediction::" + prediction);
-            posLexInfo = lexinfo_noun;
-            givenPosTag = TextAnalyzer.NOUN;
-        }*/ else {
+        } else {
             return;
         }
 
@@ -110,6 +105,7 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
             if (!postag.contains(givenPosTag)) {
                 continue;
             }
+            System.out.println("POSTAG: " + postag);
             List<LexiconUnit> lexiconUnts = posTaggedLex.get(postag);
             for (LexiconUnit lexiconUnit : lexiconUnts) {
                 LinkedHashMap<Integer, List<LineInfo>> ranks = lexiconUnit.getLineInfos();
@@ -124,19 +120,16 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                 de.citec.sc.lemon.core.LexicalEntry entry = new de.citec.sc.lemon.core.LexicalEntry(DE);
                 entry.setCanonicalForm(writtenForm);
                 String pos = "";
-                if (lexiconUnit.getPartsOfSpeech().equals(PosAnalyzer.VERB)) {
-                    pos = lexinfo_verb;
-                }
-                if (lexiconUnit.getPartsOfSpeech().equals(PosAnalyzer.NOUN)) {
-                    pos = lexinfo_noun;
+                if (givenPosTag.equals(TextAnalyzer.VERB)) {
+                    pos = postag.equals(TextAnalyzer.VERB) ? lexinfo_verb : lexinfo_noun;
+                } else {
+                    pos = lexinfo_adjective;
 
                 }
-                if (lexiconUnit.getPartsOfSpeech().equals(PosAnalyzer.VERB)) {
-                    pos = lexinfo_adjective;
-                }
+
                 entry.setPOS(pos);
                 entry.setURI(this.turtleLexicon.getBaseURI() + writtenForm);
-                Set<Sense> senses = new HashSet<Sense>();
+                Set<Sense> senses = new HashSet<>();
 
                 Integer index = 0;
                 for (Integer rank : ranks.keySet()) {

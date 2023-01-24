@@ -121,7 +121,12 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                 entry.setCanonicalForm(writtenForm);
                 String pos = "";
                 if (givenPosTag.equals(TextAnalyzer.VERB)) {
-                    pos = postag.equals(TextAnalyzer.VERB) ? lexinfo_verb : lexinfo_noun;
+                    if (lexiconUnit.getPartsOfSpeech().equals(TextAnalyzer.VERB)) {
+                        pos = lexinfo_verb;
+                    }
+                    if (lexiconUnit.getPartsOfSpeech().equals(TextAnalyzer.NOUN)) {
+                        pos = lexinfo_noun;
+                    }
                 } else {
                     pos = lexinfo_adjective;
 

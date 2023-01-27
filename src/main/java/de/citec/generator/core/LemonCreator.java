@@ -105,7 +105,6 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
             if (!postag.contains(givenPosTag)) {
                 continue;
             }
-            System.out.println("POSTAG: " + postag);
             List<LexiconUnit> lexiconUnts = posTaggedLex.get(postag);
             for (LexiconUnit lexiconUnit : lexiconUnts) {
                 LinkedHashMap<Integer, List<LineInfo>> ranks = lexiconUnit.getLineInfos();
@@ -116,7 +115,7 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                 } else
                     writtenForm = this.modify(writtenForm);
 
-                //todo: change language specific
+                //todo: change language specific . check why only adjective is working
                 de.citec.sc.lemon.core.LexicalEntry entry = new de.citec.sc.lemon.core.LexicalEntry(DE);
                 entry.setCanonicalForm(writtenForm);
                 String pos = "";
@@ -221,7 +220,7 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
     }
 
     private Map<String, List<LexiconUnit>> setPartsOfSpeech(String postagOfWord, LexiconUnit LexiconUnit, Map<String, List<LexiconUnit>> lexicon) {
-        List<LexiconUnit> temp = new ArrayList<LexiconUnit>();
+        List<LexiconUnit> temp = new ArrayList<>();
         if (lexicon.containsKey(postagOfWord)) {
             temp = lexicon.get(postagOfWord);
         }
@@ -260,7 +259,7 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
     // Todo: why is it fitlering out verbs too? objectOriginal='o' ->false
     private Boolean isValidReference(String objectOriginal) {
         if (objectOriginal.contains("http://www.w3.org/2001/XMLSchema")
-                || objectOriginal.contains("http://dbpedia.org/datatype/centimetre") || objectOriginal.contains("http://www.w3.org/")) {
+                || objectOriginal.contains("http://dbpedia.org/datatype/centimetre")) {
             return false;
         } else if (objectOriginal.contains("http")) {
             return true;

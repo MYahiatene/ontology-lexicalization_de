@@ -119,7 +119,7 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                 de.citec.sc.lemon.core.LexicalEntry entry = new de.citec.sc.lemon.core.LexicalEntry(DE);
                 entry.setCanonicalForm(writtenForm);
                 String pos = "";
-                if (givenPosTag.equals(TextAnalyzer.VERB)) {
+/*                if (givenPosTag.equals(TextAnalyzer.VERB)) {
                     if (lexiconUnit.getPartsOfSpeech().equals(TextAnalyzer.VERB)) {
                         pos = lexinfo_verb;
                     }
@@ -129,8 +129,16 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                 } else {
                     pos = lexinfo_adjective;
 
+                }*/
+                if (lexiconUnit.getPartsOfSpeech().equals(TextAnalyzer.NOUN)) {
+                    pos = lexinfo_noun;
                 }
-
+                if (lexiconUnit.getPartsOfSpeech().equals(TextAnalyzer.VERB)) {
+                    pos = lexinfo_verb;
+                }
+                if (lexiconUnit.getPartsOfSpeech().equals(TextAnalyzer.ADJECTIVE)) {
+                    pos = lexinfo_adjective;
+                }
                 entry.setPOS(pos);
                 entry.setURI(this.turtleLexicon.getBaseURI() + writtenForm);
                 Set<Sense> senses = new HashSet<>();

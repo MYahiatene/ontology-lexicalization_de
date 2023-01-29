@@ -63,30 +63,30 @@ my $CFG = {
     min_supAB                  => 5, #5
 
     rulepattern                => {
-        predict_l_for_s_given_po           => 0,
+        predict_l_for_s_given_po           => 1,
         predict_po_for_s_given_l           => 1,
-        predict_localized_l_for_s_given_po => 0,
+        predict_localized_l_for_s_given_po => 1,
         predict_po_for_s_given_localized_l => 1,
 
-        predict_l_for_s_given_p            => 0,
+        predict_l_for_s_given_p            => 1,
         predict_p_for_s_given_l            => 1,
-        predict_localized_l_for_s_given_p  => 0,
+        predict_localized_l_for_s_given_p  => 1,
         predict_p_for_s_given_localized_l  => 1,
 
-        predict_l_for_s_given_o            => 0,
-        predict_o_for_s_given_l            => 0,
+        predict_l_for_s_given_o            => 1,
+        predict_o_for_s_given_l            => 1,
 
-        predict_l_for_o_given_sp           => 0,
-        predict_sp_for_o_given_l           => 0,
-        predict_localized_l_for_o_given_sp => 0,
-        predict_sp_for_o_given_localized_l => 0,
+        predict_l_for_o_given_sp           => 1,
+        predict_sp_for_o_given_l           => 1,
+        predict_localized_l_for_o_given_sp => 1,
+        predict_sp_for_o_given_localized_l => 1,
 
-        predict_l_for_o_given_s            => 0,
-        predict_s_for_o_given_l            => 0,
+        predict_l_for_o_given_s            => 1,
+        predict_s_for_o_given_l            => 1,
 
-        predict_l_for_o_given_p            => 0,
+        predict_l_for_o_given_p            => 1,
         predict_p_for_o_given_l            => 1,
-        predict_localized_l_for_o_given_p  => 0,
+        predict_localized_l_for_o_given_p  => 1,
         predict_p_for_o_given_localized_l  => 1,
     },
 

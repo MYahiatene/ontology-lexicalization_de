@@ -49,44 +49,44 @@ my $LANGTAG = "";
 my $CFG = {
     min_entities_per_class     => 100,
     max_entities_per_class     => 10000,
-    min_onegram_length         => 4,
-    min_pattern_count          => 5,
+    min_onegram_length         => 1,
+    min_pattern_count          => 1,
 
     min_anchor_count           => 10, #was 10 before
     min_propertyonegram_length => 4,
     min_propertypattern_count  => 5,
     min_propertystring_length  => 5,
-    max_propertystring_length  => 50, # was 100 before
+    max_propertystring_length  => 100, # was 100 before
 
-    min_supA                   => 5, #5
-    min_supB                   => 5, #5
-    min_supAB                  => 5, #5
+    min_supA                   => 1, #5
+    min_supB                   => 1, #5
+    min_supAB                  => 1, #5
 
     rulepattern                => {
-        predict_l_for_s_given_po           => 1,
+        predict_l_for_s_given_po           => 0,
         predict_po_for_s_given_l           => 1,
-        predict_localized_l_for_s_given_po => 1,
+        predict_localized_l_for_s_given_po => 0,
         predict_po_for_s_given_localized_l => 1,
 
-        predict_l_for_s_given_p            => 1,
+        predict_l_for_s_given_p            => 0,
         predict_p_for_s_given_l            => 1,
-        predict_localized_l_for_s_given_p  => 1,
+        predict_localized_l_for_s_given_p  => 0,
         predict_p_for_s_given_localized_l  => 1,
 
-        predict_l_for_s_given_o            => 1,
-        predict_o_for_s_given_l            => 1,
+        predict_l_for_s_given_o            => 0,
+        predict_o_for_s_given_l            => 0,
 
-        predict_l_for_o_given_sp           => 1,
-        predict_sp_for_o_given_l           => 1,
-        predict_localized_l_for_o_given_sp => 1,
-        predict_sp_for_o_given_localized_l => 1,
+        predict_l_for_o_given_sp           => 0,
+        predict_sp_for_o_given_l           => 0,
+        predict_localized_l_for_o_given_sp => 0,
+        predict_sp_for_o_given_localized_l => 0,
 
-        predict_l_for_o_given_s            => 1,
-        predict_s_for_o_given_l            => 1,
+        predict_l_for_o_given_s            => 0,
+        predict_s_for_o_given_l            => 0,
 
-        predict_l_for_o_given_p            => 1,
+        predict_l_for_o_given_p            => 0,
         predict_p_for_o_given_l            => 1,
-        predict_localized_l_for_o_given_p  => 1,
+        predict_localized_l_for_o_given_p  => 0,
         predict_p_for_o_given_localized_l  => 1,
     },
 
@@ -3108,17 +3108,8 @@ sub parse_NT_into_obj {
     # BNODE URI BNODE
 
 
-    # URI URI URI
-    if ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
-        return {
-            s => { type => "uri", value => "$1" },
-            p => { type => "uri", value => "$2" },
-            o => { type => "uri", value => "$3" },
-        };
-    }
-
     # URI+(Politiker...) URI URI
-    elsif ($string =~ m/<(.*\($classes->{$className}.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/i) {
+    if ($string =~ m/<(.*\($classes->{$className}.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/i) {
         # class =  Politiker
         # <http://de.dbpedia.org/resource/Franziska_Reindl_(Politikerin)> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person> .
         # class = Place
@@ -3129,7 +3120,14 @@ sub parse_NT_into_obj {
             o => { type => "uri", value => "http://dbpedia.org/ontology/$className" }, # http://dbpedia.org/ontology/Politiker -> http://dbpedia.org/ontology/Politician
         };
     }
-
+    # URI URI URI
+    elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
+        return {
+            s => { type => "uri", value => "$1" },
+            p => { type => "uri", value => "$2" },
+            o => { type => "uri", value => "$3" },
+        };
+    }
     # "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
     # URI URI LIT-LANG
     elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)\"(.*)\"\@(.+) .\n\Z/ or $string =~ m/\A"(.*)"\^\^<.*#langString.*\Z/) {

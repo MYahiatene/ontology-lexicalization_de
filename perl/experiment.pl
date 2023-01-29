@@ -48,45 +48,45 @@ my $BASEDIR = "$FindBin::Bin/../";
 my $LANGTAG = "";
 my $CFG = {
     min_entities_per_class     => 100,
-    max_entities_per_class     => 1000,
-    min_onegram_length         => 1,
-    min_pattern_count          => 1,
+    max_entities_per_class     => 10000,
+    min_onegram_length         => 4,
+    min_pattern_count          => 5,
 
     min_anchor_count           => 10, #was 10 before
     min_propertyonegram_length => 4,
     min_propertypattern_count  => 5,
     min_propertystring_length  => 5,
-    max_propertystring_length  => 100, # was 100 before
+    max_propertystring_length  => 50, # was 100 before
 
-    min_supA                   => 1, #5
-    min_supB                   => 1, #5
-    min_supAB                  => 1, #5
+    min_supA                   => 5, #5
+    min_supB                   => 5, #5
+    min_supAB                  => 5, #5
 
     rulepattern                => {
-        predict_l_for_s_given_po           => 1,
+        predict_l_for_s_given_po           => 0,
         predict_po_for_s_given_l           => 1,
-        predict_localized_l_for_s_given_po => 1,
+        predict_localized_l_for_s_given_po => 0,
         predict_po_for_s_given_localized_l => 1,
 
-        predict_l_for_s_given_p            => 1,
+        predict_l_for_s_given_p            => 0,
         predict_p_for_s_given_l            => 1,
-        predict_localized_l_for_s_given_p  => 1,
+        predict_localized_l_for_s_given_p  => 0,
         predict_p_for_s_given_localized_l  => 1,
 
-        predict_l_for_s_given_o            => 1,
-        predict_o_for_s_given_l            => 1,
+        predict_l_for_s_given_o            => 0,
+        predict_o_for_s_given_l            => 0,
 
-        predict_l_for_o_given_sp           => 1,
-        predict_sp_for_o_given_l           => 1,
-        predict_localized_l_for_o_given_sp => 1,
-        predict_sp_for_o_given_localized_l => 1,
+        predict_l_for_o_given_sp           => 0,
+        predict_sp_for_o_given_l           => 0,
+        predict_localized_l_for_o_given_sp => 0,
+        predict_sp_for_o_given_localized_l => 0,
 
-        predict_l_for_o_given_s            => 1,
-        predict_s_for_o_given_l            => 1,
+        predict_l_for_o_given_s            => 0,
+        predict_s_for_o_given_l            => 0,
 
-        predict_l_for_o_given_p            => 1,
+        predict_l_for_o_given_p            => 0,
         predict_p_for_o_given_l            => 1,
-        predict_localized_l_for_o_given_p  => 1,
+        predict_localized_l_for_o_given_p  => 0,
         predict_p_for_o_given_localized_l  => 1,
     },
 

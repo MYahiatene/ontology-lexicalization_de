@@ -88,19 +88,18 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
         String posLexInfo = null, givenPosTag = null;
         if (prediction.equals(predict_po_for_s_given_localized_l)
                 || prediction.equals(predict_po_for_s_given_l)) {
-            posLexInfo = lexinfo_adjective;
-            givenPosTag = ADJECTIVE;
+            createLemonEntry(posTaggedLex, ADJECTIVE);
             // TODO: No resource !! check condition (noun && verb)
         } else if (prediction.equals(PredictionPatterns.predict_p_for_o_given_localized_l)
                 || prediction.equals(PredictionPatterns.predict_p_for_o_given_l)
                 || prediction.equals(PredictionPatterns.predict_p_for_s_given_localized_l)
                 || prediction.equals(PredictionPatterns.predict_p_for_s_given_l)) {
-            posLexInfo = lexinfo_verb;
-            givenPosTag = TextAnalyzer.VERB;
-        } else {
-            return;
+            createLemonEntry(posTaggedLex, VERB);
+            createLemonEntry(posTaggedLex, NOUN);
         }
+    }
 
+    private void createLemonEntry(Map<String, List<LexiconUnit>> posTaggedLex, String givenPosTag) {
         for (String postag : posTaggedLex.keySet()) {
             if (!postag.contains(givenPosTag)) {
                 continue;
@@ -119,17 +118,7 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                 de.citec.sc.lemon.core.LexicalEntry entry = new de.citec.sc.lemon.core.LexicalEntry(DE);
                 entry.setCanonicalForm(writtenForm);
                 String pos = "";
-/*                if (givenPosTag.equals(TextAnalyzer.VERB)) {
-                    if (lexiconUnit.getPartsOfSpeech().equals(TextAnalyzer.VERB)) {
-                        pos = lexinfo_verb;
-                    }
-                    if (lexiconUnit.getPartsOfSpeech().equals(TextAnalyzer.NOUN)) {
-                        pos = lexinfo_noun;
-                    }
-                } else {
-                    pos = lexinfo_adjective;
 
-                }*/
                 if (lexiconUnit.getPartsOfSpeech().equals(TextAnalyzer.NOUN)) {
                     pos = lexinfo_noun;
                 }
@@ -187,7 +176,6 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
                 }
             }
         }
-
     }
 
     private Pair<Boolean, Sense> addSenseToEntry(String baseUri, String writtenForm, LineInfo lineInfo, String posTag) throws FileNotFoundException, IOException {

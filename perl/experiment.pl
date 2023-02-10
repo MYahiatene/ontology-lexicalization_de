@@ -3133,13 +3133,13 @@ sub parse_NT_into_obj {
     }
     # "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
     # URI URI LIT-LANG
-    #elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)\"(.*)\"\@(.+) .\n\Z/ or $string =~ m/\A"(.*)"\^\^<.*#langString.*\Z/) {
-    #return {
-    #    s => { type => "uri", value => "$1" },
-    #     p => { type => "uri", value => "$2" },
-    #      o => { type => "literal", value => "\"$3\"\@" . $4 },
-    #   };
-    #}
+    elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)\"(.*)\"\@(.+) .\n\Z/ or $string =~ m/\A"(.*)"\^\^<.*#langString.*\Z/) {
+        return {
+            s => { type => "uri", value => "$1" },
+            p => { type => "uri", value => "$2" },
+            o => { type => "literal", value => "\"$3\"\@" . $4 },
+        };
+    }
 
     # URI URI LIT-DAT
     elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)\"(.+)\"\^\^<(.*)> .\n\Z/) {

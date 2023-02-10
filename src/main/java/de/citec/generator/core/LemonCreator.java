@@ -86,17 +86,10 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
 
     private void writeFileLemon(String prediction, Map<String, List<LexiconUnit>> posTaggedLex) {
         String posLexInfo = null, givenPosTag = null;
-        if (prediction.equals(predict_po_for_s_given_localized_l)
-                || prediction.equals(predict_po_for_s_given_l)) {
             createLemonEntry(posTaggedLex, ADJECTIVE);
-            // TODO: No resource !! check condition (noun && verb)
-        } else if (prediction.equals(PredictionPatterns.predict_p_for_o_given_localized_l)
-                || prediction.equals(PredictionPatterns.predict_p_for_o_given_l)
-                || prediction.equals(PredictionPatterns.predict_p_for_s_given_localized_l)
-                || prediction.equals(PredictionPatterns.predict_p_for_s_given_l)) {
             createLemonEntry(posTaggedLex, VERB);
             createLemonEntry(posTaggedLex, NOUN);
-        }
+
     }
 
     private void createLemonEntry(Map<String, List<LexiconUnit>> posTaggedLex, String givenPosTag) {

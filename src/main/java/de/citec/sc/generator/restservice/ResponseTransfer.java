@@ -187,7 +187,7 @@ public class ResponseTransfer implements Constants {
         List<String> classesList = Arrays.asList(/*"http://dbpedia.org/ontology/Place",
                 "http://dbpedia.org/ontology/Director",
                 "http://dbpedia.org/ontology/Actor", "http://dbpedia.org/ontology/Politician",
-                "http://dbpedia.org/ontology/City",*/"http://dbpedia.org/ontology/Person");
+                "http://dbpedia.org/ontology/City",*/"http://dbpedia.org/ontology/Director");
         ConfigLex lex = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLex.json"), ConfigLex.class);
         ConfigLemon lemon = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLemon.json"), ConfigLemon.class);
         for (String cl : classesList) {

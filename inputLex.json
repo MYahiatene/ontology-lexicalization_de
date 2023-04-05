@@ -1,5 +1,5 @@
 {
-  "class_url"   : "http://dbpedia.org/ontology/Actor",
+  "class_url"   : "http://dbpedia.org/ontology/Director",
   "minimum_entities_per_class": 100,
   "maximum_entities_per_class": 10000,
   "minimum_onegram_length": 4,

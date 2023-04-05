@@ -12,13 +12,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class GraphExtractor {
+    private static final String POS = "partOfSpeech";
+    private static final String NOUN = "http://www.lexinfo.net/ontology/2.0/lexinfo#/noun";
+    private static final String ADJ = "http://www.lexinfo.net/ontology/2.0/lexinfo#/adjective";
+    private static final String VERB = "http://www.lexinfo.net/ontology/2.0/lexinfo#/verb";
+
     /*    public static void main(String[] args) throws IOException {
             //extract();
             String className = "test/";
@@ -52,6 +55,21 @@ public class GraphExtractor {
 
         }*/
     public static void main(String[] args) {
+/*        List<JSONObject> noun = new ArrayList<>();
+        List<JSONObject> adj = new ArrayList<>();
+        List<JSONObject> verb = new ArrayList<>();
+        JSONParser jsonParser = new JSONParser();
+        try (FileReader reader = new FileReader(System.getProperty("user.dir") + "/result.json", StandardCharsets.UTF_8)) {
+            Object obj = jsonParser.parse(reader);
+            JSONArray arr = (JSONArray) ((JSONObject) obj).get("@graph");
+
+            int n = arr == null ? 0 : arr.size();
+            List<JSONObject> l = IntStream.range(1, n).mapToObj(i -> (JSONObject) arr.get(i)).collect(Collectors.toList());
+            //createLemons(l, noun, verb, adj,100);
+            System.out.println(l.get(0).get("sense").getClass());
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
+        }*/
         extract();
     }
 
@@ -63,41 +81,12 @@ public class GraphExtractor {
         try (FileReader reader = new FileReader(System.getProperty("user.dir") + "/result.json", StandardCharsets.UTF_8)) {
             Object obj = jsonParser.parse(reader);
             JSONArray arr = (JSONArray) ((JSONObject) obj).get("@graph");
-            String POS = "partOfSpeech";
-            String NOUN = "http://www.lexinfo.net/ontology/2.0/lexinfo#/noun";
-            String ADJ = "http://www.lexinfo.net/ontology/2.0/lexinfo#/adjective";
-            String VERB = "http://www.lexinfo.net/ontology/2.0/lexinfo#/verb";
+
             int n = arr == null ? 0 : arr.size();
-            List<JSONObject> l = IntStream.range(1, n).mapToObj(i -> (JSONObject) arr.get(i)).collect(Collectors.toList());
-            l.forEach(e -> {
-                String jsonObj = (String) e.get(POS);
-                JSONObject lemonJson = new JSONObject();
-                lemonJson.put("label", e.get("label"));
-                lemonJson.put(POS, e.get(POS));
-                if (jsonObj != null && jsonObj.equals(NOUN)) {
+            List<JSONObject> l = IntStream.range(1, n).mapToObj(i -> (JSONObject) arr.get(i)).toList();
+            createLemons(l, noun, verb, adj, 100);
 
-                    lemonJson.put("reference", l.stream().filter(x -> x.get("@id").equals("http://localhost:8080/" + e.get("label") + "#Sense1")).findFirst().get().get("reference"));
-                    noun.add(lemonJson);
-                }
-                if (jsonObj != null && jsonObj.equals(VERB)) {
-
-                    lemonJson.put("reference", l.stream().filter(x -> x.get("@id").equals("http://localhost:8080/" + e.get("label") + "#Sense1")).findFirst().get().get("reference"));
-                    verb.add(lemonJson);
-                }
-                if (jsonObj != null && jsonObj.equals(ADJ)) {
-                    String adjRef = (String) l.stream().filter(x -> x.get("@id").equals("http://localhost:8080/" + e.get("label") + "#Sense1")).findFirst().get().get("reference");
-                    lemonJson.put("hasValue", l.stream().filter(x -> x.get("@id").equals(adjRef)).findFirst().get().get("hasValue"));
-                    lemonJson.put("onProperty", l.stream().filter(x -> x.get("@id").equals(adjRef)).findFirst().get().get("onProperty"));
-                    adj.add(lemonJson);
-                }
-            });
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
 
@@ -109,6 +98,70 @@ public class GraphExtractor {
             e.printStackTrace();
         }
 
+
+    }
+
+
+    private static void createLemons(List<JSONObject> l, List<JSONObject> noun, List<JSONObject> verb, List<JSONObject> adj, long numberOfLemons) {
+        l.forEach(e -> {
+            String jsonObj = (String) e.get(POS);
+            JSONObject lemonJson = new JSONObject();
+            lemonJson.put("label", e.get("label"));
+            lemonJson.put(POS, e.get(POS));
+            // System.out.println(e.get("sense"));
+            if (e.get("sense") instanceof String) {
+                String sense = (String) e.get("sense");
+                if (e.get("sense") != null) {
+                    List<Object> senses = l.stream().filter(x -> x.get("@id").equals(sense)).limit(numberOfLemons).map(sense2 -> sense2.get("reference")).toList();
+                    List referenceList = senses.stream().map(sense2 -> {
+                        Object tmp = l.stream().filter(x -> x.get("@id").equals(sense2)).findFirst().orElse(new JSONObject()).get("reference");
+                        if (sense2 == null || tmp == null) {
+                            return null;
+                        } else
+                            return Map.of(sense2, tmp);
+                    }).toList();
+                    lemonJson.put("references", referenceList);
+                    if (jsonObj != null && jsonObj.equals(NOUN)) {
+                        noun.add(lemonJson);
+                    }
+                    if (jsonObj != null && jsonObj.equals(VERB)) {
+                        verb.add(lemonJson);
+                    }
+                    if (jsonObj != null && jsonObj.equals(ADJ)) {
+                        List<Object> hasValueList = referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("hasValue")).toList();
+                        List<Object> onPropertyList = referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("onProperty")).toList();
+                        lemonJson.put("hasValueList", hasValueList);
+                        lemonJson.put("onPropertyList", onPropertyList);
+                        adj.add(lemonJson);
+                    }
+                }
+            } else {
+                JSONArray senses = (JSONArray) e.get("sense");
+                if (e.get("sense") != null) {
+                    List referenceList = senses.stream().map(sense2 -> {
+                        Object tmp = l.stream().filter(x -> x.get("@id").equals(sense2)).findFirst().orElse(new JSONObject()).get("reference");
+                        if (sense2 == null || tmp == null) {
+                            return null;
+                        } else
+                            return Map.of(sense2, tmp);
+                    }).toList();
+                    lemonJson.put("references", referenceList);
+                    if (jsonObj != null && jsonObj.equals(NOUN)) {
+                        noun.add(lemonJson);
+                    }
+                    if (jsonObj != null && jsonObj.equals(VERB)) {
+                        verb.add(lemonJson);
+                    }
+                    if (jsonObj != null && jsonObj.equals(ADJ)) {
+                        List<Object> hasValueList = referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("hasValue")).toList();
+                        List<Object> onPropertyList = referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("onProperty")).toList();
+                        lemonJson.put("hasValueList", hasValueList);
+                        lemonJson.put("onPropertyList", onPropertyList);
+                        adj.add(lemonJson);
+                    }
+                }
+            }
+        });
 
     }
 

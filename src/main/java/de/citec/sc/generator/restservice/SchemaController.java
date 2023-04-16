@@ -9,6 +9,7 @@ import de.citec.generator.results.ResultJsonLD;
 import de.citec.generator.results.ResultLex;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,7 +42,7 @@ public class SchemaController {
     @RequestMapping(path = "/createLemon", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String createLemon(@RequestBody ConfigLemon conf) {
-        return new ResponseTransfer().createLemon(conf);
+        return new ResponseTransfer().createLemon(conf, "");
     }
 
     @RequestMapping(path = "/searchPattern", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -52,10 +53,10 @@ public class SchemaController {
 
     @RequestMapping(path = "/lexAndLemon", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String lexicalizationAndLemonCreation() throws ClassFileReadException, IOException {
+    public String lexicalizationAndLemonCreation() throws ClassFileReadException, IOException, URISyntaxException {
         //TODO: merge both configs
         ResponseTransfer rt = new ResponseTransfer();
-         rt.lexicalizationAndLemonCreate();
+        rt.lexicalizationAndLemonCreate();
 
         return null;
 

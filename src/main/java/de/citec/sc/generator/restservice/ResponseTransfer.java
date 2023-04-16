@@ -14,54 +14,35 @@ import de.citec.generator.config.Constants;
 import de.citec.generator.core.PerlQuery;
 import de.citec.generator.core.ProcessCsv;
 import de.citec.generator.results.ResultDownload;
-import de.citec.generator.results.ResultJsonLD;
 import de.citec.generator.results.ResultLex;
-import de.citec.sc.generator.exceptions.ClassFileReadException;
 import de.citec.sc.generator.exceptions.ConfigException;
 import de.citec.sc.generator.exceptions.PerlException;
 import de.citec.sc.generator.utils.FileFolderUtils;
-import de.citec.sc.generator.utils.GraphExtractor;
+import de.citec.sc.generator.utils.graphextractor.GraphExtractor;
 import de.citec.sc.generator.utils.ProgressSingleton;
-import de.citec.sc.lemon.core.Language;
 import de.citec.sc.lemon.core.Lexicon;
 import de.citec.sc.lemon.io.LexiconSerialization;
 
 import java.io.*;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.apache.jena.graph.Graph;
-import org.apache.jena.graph.Node;
-import org.apache.jena.graph.Triple;
-import org.apache.jena.query.DatasetFactory;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.riot.*;
-import org.apache.jena.sparql.core.DatasetGraph;
-import org.apache.xpath.operations.Mod;
-import org.json.simple.JSONArray;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import static java.nio.charset.StandardCharsets.ISO_8859_1;
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
  * @author elahi
  */
 public class ResponseTransfer implements Constants {
-    public ResponseTransfer() {
-    }
-
     public ResultLex lexicalization(ConfigLex config) {
         String className = null;
         try {
@@ -100,19 +81,18 @@ public class ResponseTransfer implements Constants {
 
     }
 
-    public String createLemon(ConfigLemon config) {
+    public String createLemon(ConfigLemon config, String clazz) {
         try {
-            //initializeLang();
             ProgressSingleton.getInstance();
             String resourceDir = resultDir + processData;
             Lexicon turtleLexicon = new ProcessCsv(resultDir, resourceDir, config).getTurtleLexicon();
             LexiconSerialization serializer = new LexiconSerialization();
             Model model = ModelFactory.createDefaultModel();
             serializer.serialize(turtleLexicon, model);
+            String filePostfix = "_" + clazz + ".json";
             System.out.println("lemon creating ends!! ");
-            String filePath = System.getProperty("user.dir") + "/result.json";
+            String filePath = System.getProperty("user.dir") + "/result" + filePostfix;
             String result = this.writeJsonLDtoString(model, filePath);
-            GraphExtractor.extract();
             return result;
         } catch (JsonProcessingException ex) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, ex);
@@ -183,7 +163,7 @@ public class ResponseTransfer implements Constants {
     }
 
 
-    void lexicalizationAndLemonCreate() throws ClassFileReadException, IOException {
+    void lexicalizationAndLemonCreate() throws IOException, URISyntaxException {
         List<String> classesList = Arrays.asList(/*"http://dbpedia.org/ontology/Place",
                 "http://dbpedia.org/ontology/Director",
                 "http://dbpedia.org/ontology/Actor", "http://dbpedia.org/ontology/Politician",
@@ -191,21 +171,34 @@ public class ResponseTransfer implements Constants {
         ConfigLex lex = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLex.json"), ConfigLex.class);
         ConfigLemon lemon = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLemon.json"), ConfigLemon.class);
         for (String cl : classesList) {
+            GraphExtractor extractor = new GraphExtractor(cl);
             lex.setClass_url(cl);
             lexicalization(lex);
-            createLemon(lemon);
-            copyFilesToResultsFolder(cl.split("/")[4]);
+            String className = cl.split("/")[4];
+            createLemon(lemon, className);
+            copyFilesToResultsFolder(className);
+            extractor.extract(className);
         }
     }
 
-    void copyFilesToResultsFolder(String className) throws IOException {
+    public static void main(String[] args) throws IOException, URISyntaxException {
+        String cl = "http://dbpedia.org/ontology/Director";
+        String className = cl.split("/")[4];
+        System.out.println(className);
+        GraphExtractor extractor = new GraphExtractor(className);
+        extractor.setClazz(className);
+        copyFilesToResultsFolder(className);
+        extractor.extract("Director");
+    }
+
+    static void copyFilesToResultsFolder(String className) throws IOException {
         String workingDirectory = System.getProperty("user.dir");
         Path source = Paths.get(workingDirectory + "/results/");
         Path destination = Paths.get(workingDirectory + "/results_all_classes/" + "result_" + className + "/results/");
+        String postfix = "_" + className + ".json";
         if (!Files.isDirectory(destination)) {
             Files.createDirectories(destination);
         }
-        List<String> files = Arrays.asList("/result.json", "/result_noun.json", "/result_adj.json", "/result_verb.json");
 
         Files.list(source).forEach(src -> {
             try {
@@ -216,14 +209,13 @@ public class ResponseTransfer implements Constants {
 
 
         });
-
-        for (String f : files) {
-            try {
-                Files.copy(Paths.get(workingDirectory + f),
-                        Paths.get(workingDirectory + "/results_all_classes/" + "result_" + className + "/" + f), StandardCopyOption.REPLACE_EXISTING);
-            } catch (Exception e) {
-                System.err.println("Error copying " + f);
-            }
+        String src = workingDirectory + "/result" + postfix;
+        String dest = workingDirectory + "/results_all_classes/" + "result_" + className + "/result" + postfix;
+        try {
+            Files.copy(Paths.get(src), Paths.get(dest), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(String.format("Couldn't copy files from %s to %s", src, dest));
         }
 
     }

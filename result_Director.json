@@ -54,13 +54,13 @@
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Director",
     "http://www.w3.org/2002/07/owl#hasValue" : [ "\"\"\"britischer Filmregisseur\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"" ],
-    "onProperty" : [ "http://dbpedia.org/ontology/deathPlace", "http://de.dbpedia.org/property/kurzbeschreibung", "http://de.dbpedia.org/property/gndfehlt", "p", "http://de.dbpedia.org/property/typ" ]
+    "onProperty" : [ "http://dbpedia.org/ontology/birthPlace", "http://de.dbpedia.org/property/kurzbeschreibung", "http://de.dbpedia.org/property/gndfehlt", "p", "http://de.dbpedia.org/property/typ" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_deutsche",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Director",
     "http://www.w3.org/2002/07/owl#hasValue" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"",
-    "onProperty" : [ "http://www.w3.org/2002/07/owl#sameAs", "p", "http://de.dbpedia.org/property/typ" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace", "http://de.dbpedia.org/property/typ" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_deutschen",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -72,7 +72,7 @@
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "http://www.w3.org/2002/07/owl#hasValue" : [ "\"\"\"deutscher Regisseur\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"deutscher Regisseur und Drehbuchautor\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"deutscher Filmregisseur und Drehbuchautor\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"deutscher Filmregisseur\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"deutscher Regisseur und Autor\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"deutscher Theaterregisseur\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"" ],
     "hasValue" : "http://dbpedia.org/ontology/Director",
-    "onProperty" : [ "p", "http://de.dbpedia.org/property/kurzbeschreibung", "http://de.dbpedia.org/property/gndfehlt", "http://dbpedia.org/ontology/deathPlace", "http://de.dbpedia.org/property/typ" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/kurzbeschreibung", "http://de.dbpedia.org/property/gndfehlt", "http://dbpedia.org/ontology/birthPlace", "http://de.dbpedia.org/property/typ" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_ehemaliger",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -89,31 +89,37 @@
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Director",
     "http://www.w3.org/2002/07/owl#hasValue" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"",
-    "onProperty" : [ "http://www.w3.org/2002/07/owl#sameAs", "p", "http://de.dbpedia.org/property/typ" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace", "http://de.dbpedia.org/property/typ" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_inszenierte",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Director",
     "http://www.w3.org/2002/07/owl#hasValue" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"",
-    "onProperty" : [ "http://dbpedia.org/ontology/deathPlace", "p", "http://de.dbpedia.org/property/typ" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace", "http://de.dbpedia.org/property/typ" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_italienischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "http://www.w3.org/2002/07/owl#hasValue" : [ "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"italienischer Filmregisseur und Drehbuchautor\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"" ],
     "hasValue" : "http://dbpedia.org/ontology/Director",
-    "onProperty" : [ "http://de.dbpedia.org/property/gndfehlt", "http://dbpedia.org/ontology/deathPlace", "p", "http://de.dbpedia.org/property/kurzbeschreibung", "http://de.dbpedia.org/property/typ" ]
+    "onProperty" : [ "http://de.dbpedia.org/property/gndfehlt", "http://dbpedia.org/ontology/birthPlace", "p", "http://de.dbpedia.org/property/kurzbeschreibung", "http://de.dbpedia.org/property/typ" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_kanadischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Director",
     "http://www.w3.org/2002/07/owl#hasValue" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"",
-    "onProperty" : [ "http://www.w3.org/2002/07/owl#sameAs", "p", "http://de.dbpedia.org/property/typ" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace", "http://de.dbpedia.org/property/typ" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_nominiert",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Director",
     "http://www.w3.org/2002/07/owl#hasValue" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"",
     "onProperty" : [ "p", "http://de.dbpedia.org/property/typ" ]
+  }, {
+    "@id" : "http://localhost:8080/RestrictionClass_produzent",
+    "@type" : "http://www.w3.org/2002/07/owl#Restriction",
+    "hasValue" : "http://dbpedia.org/ontology/Director",
+    "http://www.w3.org/2002/07/owl#hasValue" : [ "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"" ],
+    "onProperty" : [ "http://dbpedia.org/ontology/birthPlace", "http://de.dbpedia.org/property/typ", "http://de.dbpedia.org/property/gndfehlt" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_roduzent",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -124,19 +130,19 @@
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Director",
     "http://www.w3.org/2002/07/owl#hasValue" : [ "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"" ],
-    "onProperty" : [ "http://dbpedia.org/ontology/deathPlace", "p", "http://de.dbpedia.org/property/typ", "http://de.dbpedia.org/property/gndfehlt" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace", "http://de.dbpedia.org/property/typ", "http://de.dbpedia.org/property/gndfehlt" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_ttig",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Director",
     "http://www.w3.org/2002/07/owl#hasValue" : [ "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"" ],
-    "onProperty" : [ "http://www.w3.org/2002/07/owl#sameAs", "p", "http://de.dbpedia.org/property/typ", "http://de.dbpedia.org/property/gndfehlt" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace", "http://de.dbpedia.org/property/typ", "http://de.dbpedia.org/property/gndfehlt" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_usamerikanischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "http://www.w3.org/2002/07/owl#hasValue" : [ "\"\"\"US-amerikanischer Regisseur\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"", "\"\"\"US-amerikanischer Filmregisseur\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\"" ],
     "hasValue" : "http://dbpedia.org/ontology/Director",
-    "onProperty" : [ "http://dbpedia.org/ontology/deathPlace", "http://de.dbpedia.org/property/kurzbeschreibung", "p", "http://de.dbpedia.org/property/typ", "http://de.dbpedia.org/property/gndfehlt" ]
+    "onProperty" : [ "http://dbpedia.org/ontology/birthPlace", "http://de.dbpedia.org/property/kurzbeschreibung", "p", "http://de.dbpedia.org/property/typ", "http://de.dbpedia.org/property/gndfehlt" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_zahlreiche",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -374,10 +380,10 @@
     "writtenRep" : "basel@de"
   }, {
     "@id" : "http://localhost:8080/basel#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/basel#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/becker",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -516,10 +522,10 @@
     "writtenRep" : "bhnenbildner@de"
   }, {
     "@id" : "http://localhost:8080/bhnenbildner#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/bhnenbildner#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/britische",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -591,10 +597,10 @@
     "writtenRep" : "carl@de"
   }, {
     "@id" : "http://localhost:8080/carl#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/carl#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/chicago",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -1029,10 +1035,10 @@
     "writtenRep" : "eigentlich@de"
   }, {
     "@id" : "http://localhost:8080/eigentlich#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/eigentlich#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/england",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -1259,10 +1265,10 @@
     "writtenRep" : "filmeditor@de"
   }, {
     "@id" : "http://localhost:8080/filmeditor#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/filmeditor#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/filmeditor#Sense3",
     "reference" : "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
@@ -1279,10 +1285,10 @@
     "writtenRep" : "filmemacher@de"
   }, {
     "@id" : "http://localhost:8080/filmemacher#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/filmemacher#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/filmen",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -1365,10 +1371,10 @@
     "writtenRep" : "filmregisseurin@de"
   }, {
     "@id" : "http://localhost:8080/filmregisseurin#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/filmregisseurin#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/fischer",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -1430,10 +1436,10 @@
     "writtenRep" : "fotograf@de"
   }, {
     "@id" : "http://localhost:8080/fotograf#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/fotograf#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/frank",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -1447,10 +1453,10 @@
     "writtenRep" : "frank@de"
   }, {
     "@id" : "http://localhost:8080/frank#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/frank#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/frankreich",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -1609,10 +1615,10 @@
     "writtenRep" : "hochschule@de"
   }, {
     "@id" : "http://localhost:8080/hochschule#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/hochschule#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/hollywood",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -1957,10 +1963,10 @@
     "writtenRep" : "leiter@de"
   }, {
     "@id" : "http://localhost:8080/leiter#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/leiter#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/london",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -2008,10 +2014,10 @@
     "writtenRep" : "martin@de"
   }, {
     "@id" : "http://localhost:8080/martin#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/martin#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/mehreren",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -2093,10 +2099,10 @@
     "writtenRep" : "mitte@de"
   }, {
     "@id" : "http://localhost:8080/mitte#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/mitte#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/mller",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -2110,10 +2116,10 @@
     "writtenRep" : "mller@de"
   }, {
     "@id" : "http://localhost:8080/mller#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/mller#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/mnchen",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -2164,10 +2170,10 @@
     "writtenRep" : "musikvideos@de"
   }, {
     "@id" : "http://localhost:8080/musikvideos#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/musikvideos#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/namen",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -2321,20 +2327,29 @@
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
     "canonicalForm" : "http://localhost:8080/produzent#CanonicalForm",
     "language" : "de",
-    "sense" : [ "http://localhost:8080/produzent#Sense3", "http://localhost:8080/produzent#Sense2", "http://localhost:8080/produzent#Sense1" ],
-    "partOfSpeech" : "http://www.lexinfo.net/ontology/2.0/lexinfo#/noun",
+    "sense" : [ "http://localhost:8080/produzent#Sense5", "http://localhost:8080/produzent#Sense6", "http://localhost:8080/produzent#Sense1", "http://localhost:8080/produzent#Sense2", "http://localhost:8080/produzent#Sense3", "http://localhost:8080/produzent#Sense4" ],
+    "partOfSpeech" : "http://www.lexinfo.net/ontology/2.0/lexinfo#/adjective",
     "label" : "produzent"
   }, {
     "@id" : "http://localhost:8080/produzent#CanonicalForm",
     "writtenRep" : "produzent@de"
   }, {
     "@id" : "http://localhost:8080/produzent#Sense1",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "http://localhost:8080/RestrictionClass_produzent"
   }, {
     "@id" : "http://localhost:8080/produzent#Sense2",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://localhost:8080/RestrictionClass_produzent"
   }, {
     "@id" : "http://localhost:8080/produzent#Sense3",
+    "reference" : "http://localhost:8080/RestrictionClass_produzent"
+  }, {
+    "@id" : "http://localhost:8080/produzent#Sense4",
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+  }, {
+    "@id" : "http://localhost:8080/produzent#Sense5",
+    "reference" : "http://dbpedia.org/ontology/Director"
+  }, {
+    "@id" : "http://localhost:8080/produzent#Sense6",
     "reference" : "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/produziert",
@@ -2684,10 +2699,10 @@
     "writtenRep" : "sohn@de"
   }, {
     "@id" : "http://localhost:8080/sohn#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/sohn#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/spielfilm",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -2858,10 +2873,10 @@
     "writtenRep" : "theaterschauspieler@de"
   }, {
     "@id" : "http://localhost:8080/theaterschauspieler#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/theaterschauspieler#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/thomas",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -2924,10 +2939,10 @@
     "writtenRep" : "universitt@de"
   }, {
     "@id" : "http://localhost:8080/universitt#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/universitt#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/university",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -2996,10 +3011,10 @@
     "writtenRep" : "walter@de"
   }, {
     "@id" : "http://localhost:8080/walter#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/walter#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/weber",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -3013,10 +3028,10 @@
     "writtenRep" : "weber@de"
   }, {
     "@id" : "http://localhost:8080/weber#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/weber#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/werner",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -3067,10 +3082,10 @@
     "writtenRep" : "wilhelm@de"
   }, {
     "@id" : "http://localhost:8080/wilhelm#Sense1",
-    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
+    "reference" : "http://dbpedia.org/ontology/Director"
   }, {
     "@id" : "http://localhost:8080/wilhelm#Sense2",
-    "reference" : "http://dbpedia.org/ontology/Director"
+    "reference" : "\"\"\"p\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
   }, {
     "@id" : "http://localhost:8080/william",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",

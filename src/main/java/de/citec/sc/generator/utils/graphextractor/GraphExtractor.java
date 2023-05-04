@@ -2,6 +2,7 @@ package de.citec.sc.generator.utils.graphextractor;
 
 import com.github.jsonldjava.utils.Obj;
 import com.opencsv.CSVWriter;
+import edu.stanford.nlp.pipeline.CoreDocument;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.apache.jena.base.Sys;
@@ -94,7 +95,9 @@ public class GraphExtractor {
             writer.writeNext(NounPPFrameHeader);
 
             for (JSONObject n : noun) {
-                String[] line = {(String) n.get("label"), "noun", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+                String label = (String)n.get("label");
+//                doc.annotation()
+                String[] line = {label, "noun", "masculine",label , label, label, label, label, label, "von", "", "", "", "", "", "", "", "", "", "", ""};
                 writer.writeNext(line);
             }
 

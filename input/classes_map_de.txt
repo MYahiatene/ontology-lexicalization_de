@@ -1,0 +1,2248 @@
+DeathDate,Sterbedatum
+BirthDate,Geburtsdatum
+FuelCapacity,Kraftstoffkapazität (μ³)
+FuelConsumption,Kraftstoffverbrauch
+MarketCapitalisation,Marktkapitalisierung ($)
+RestingDate,Bestattungsdatum
+ZipCode,Postleitzahl
+Acceleration,Beschleunigung (s)
+BirthYear,Geburtsjahr
+DeathYear,Sterbejahr
+Diameter,Durchmesser (μ)
+Height,Höhe (μ)
+Length,Länge (μ)
+NetIncome,Nettoergebnis ($)
+OperatingIncome,Betriebsergebnis ($)
+PopulationTotal,Einwohnerzahl
+PowerOutput,Ausgangsleistung (W)
+TopSpeed,Höchstgeschwindigkeit (kmh)
+Weight,Gewicht (g)
+Wheelbase,Radstand (μ)
+Width,Breite (μ)
+Company,Unternehmen
+Activity,Aktivität
+Name,Name
+Person,Person
+Actor,Schauspieler
+Place,Ort
+Publisher,Herausgeber
+Genre,Genre
+Language,Sprache
+Department,Distrikt
+Software,Software
+School,Schule
+Type,Typ
+Non-ProfitOrganisation,gemeinnützige Organisation
+Agent,Agent
+Biomolecule,Biomolekül
+Broadcaster,Rundfunkveranstalter
+Case,Sache
+CelestialBody,Himmelskörper
+ChemicalSubstance,chemische Substanz
+Document,Dokument
+Gene,Gen
+GridironFootballPlayer,Gridiron Footballspieler
+Group,Gruppe
+Identifier,Bezeichner
+Infrastructure,Infrastruktur
+LegalCase,Rechtsfall
+MeanOfTransportation,Transportmittel
+MotorsportRacer,Motorsport Fahrer
+NaturalEvent,Naturereignis
+NaturalPlace,natürlicher Ort
+OrganisationMember,Organisationsmitglied
+PeriodicalLiterature,Periodikum
+Project,Projekt
+Race,Rennen
+Region,Region
+RouteOfTransportation,Transportweg
+SocietalEvent,gesellschatliches Ereignis
+SportsClub,Sportverein
+SportsTeamSeason,Sport Team Saison
+Tournament,Turnier
+UnitOfWork,Arbeitseinheit
+Work,Werk
+FloweringPlant,bedecktsamige Pflanze
+ClericalAdministrativeRegion,klerikale Verwaltungsregion
+Gnetophytes,Gnetophyta
+Conifer,Konifere
+InlineHockeyLeague,Inlinehockey Liga
+Image,Bild
+AustralianFootballTeam,Australian Football Team
+SportsTeam,Sportmannschaft
+Database,Datenbank
+SportFacility,Sportanlage
+Stream,Bach
+BowlingLeague,Bowling-Liga
+TopicalConcept,thematisches Konzept
+GovernmentalAdministrativeRegion,staatliche Verwaltungsregion
+Municipality,Gemeinde
+RaceTrack,Rennstrecke
+Tower,Turm
+SportCompetitionResult,Ergebnisse eines Sportwettbewerbs
+AcademicConference,wissenschaftliche Konferenz
+AdultActor,pornographischer Schauspieler
+AmateurBoxer,Amateurboxer
+Ambassador,Botschafter
+Amphibian,Amphibie
+AnatomicalStructure,anatomischen Struktur
+Animal,Tier
+Arachnid,Spinnentier
+Archaea,Archaeen
+Archbishop,Erzbischof
+Architect,Architekt
+Artery,Arterie
+Astronaut,Astronaut
+Athlete,Athlet
+AustralianFootballLeague,Australian Football League
+AustralianRulesFootballPlayer,Australian Rules Football-Spieler
+AutoRacingLeague,Auto Racing League
+Bacteria,bakterium
+BadmintonPlayer,Badmintonspieler
+BaseballLeague,Baseball-Liga
+BaseballPlayer,Baseballspieler
+BasketballPlayer,Basketballspieler
+BeachVolleyballPlayer,Beachvolleyballspieler
+BeautyQueen,Schönheitskönigin
+BiologicalDatabase,Biologische Datenbank
+Bodybuilder,Bodybuilder
+Bone,Knochen
+Boxer,Boxer
+Brain,Gehirn
+Brewery,Brauerei
+BusinessPerson,Unternehmer
+Canal,Kanal
+Canoeist,Kanute
+Cardinal,Kardinal
+CareerStation,Karrierestation
+Castle,burg
+Cave,Höhle
+Cheese,Käse
+Chef,Koch
+ChessPlayer,Schachspieler
+ChristianBishop,christlicher  Bischof
+Cinema,Theater
+ClassicalMusicArtist,Künstler der klassischen Musik
+Cleric,geistlicher
+CollegeCoach,College-Trainer
+Colour,Farbe
+CombinationDrug,Kombinationspräparat
+Comedian,Komiker
+ComicStrip,Comicstrip
+ComicsCreator,Comicautor
+Congressman,Abgeordneter
+Crater,Krater
+CricketGround,Cricketfeld
+Cricketer,Cricketspieler
+Crustacean,Krebstier
+Curler,Curlingspieler
+Currency,Währung
+Cyclist,Radfahrer
+Dam,Damm
+Dancer,Tänzer
+DartsPlayer,Dartspieler
+Deity,Gottheit
+Economist,Ökonom
+EducationalInstitution,Bildungseinrichtung
+Engineer,Ingenieur
+Entomologist,Entomologe
+Eukaryote,Eukaryoten
+FashionDesigner,Modedesigner
+FigureSkater,Eiskunstläufer
+Fish,Fisch
+FormerMunicipality,ehemalige Gemeinde
+FormulaOneTeam,Formel-1 Team
+Fungus,Pilz
+GaelicGamesPlayer,gälischen Sportspieler
+Garden,Garten
+GivenName,Vorname
+Glacier,Gletscher
+GolfCourse,Golfplatz
+GolfPlayer,Golfspieler
+Governor,Gouverneur
+Grape,Weintraube
+Gymnast,Turner
+HandballPlayer,Handballspieler
+HandballTeam,Handballmannschaft
+Historian,Historiker
+HistoricalEvent,historisches Ereignis
+Horse,Pferd
+HorseTrainer,Pferdetrainer
+IceHockeyPlayer,Eishockeyspieler
+Island,Insel
+Jockey,Jockey (Pferderennprofi)
+Journalist,Journalist
+LacrossePlayer,Lacrossespieler
+Lighthouse,Leuchtturm
+Mammal,säugetier
+Mayor,Bürgermeister
+Medician,Mediziner
+MemberOfParliament,Parlamentsmitglied
+MilitaryService,Militärdienst
+Mineral,mineral
+MixedMartialArtsLeague,Mixed  Kampfkunst Liga
+Model,model
+Mollusca,Weichtiere
+MonoclonalAntibody,monoklonaler Antikörper
+Motorcycle,Motorrad
+MotorcycleRider,Motorradfahrer
+MountainPass,Bergpass
+Muscle,Muskel
+MythologicalFigure,mythologische Gestalt
+NascarDriver,NASCAR Fahrer
+NationalFootballLeagueEvent,NFL Game day
+Nerve,Nerv
+NetballPlayer,نیٹ بال کھلاڑی
+Noble,Adliger
+Painter,Maler
+Photographer,Fotograf
+Poem,Gedicht
+Poet,Dichter
+PokerPlayer,Pokerspieler
+PoloLeague,Polo-Liga
+PopulatedPlace,bewohnter Ort
+President,Präsident
+Priest,priester
+PrimeMinister,Premierminister
+Prison,gefängnis
+PublicTransitSystem,Öffentliches Personenverkehrssystem
+Racecourse,Rennbahn
+RailwayStation,Bahnhof
+RailwayTunnel,Eisenbahntunnel
+Rocket,Rakete
+Scientist,Wissenschaftler
+ScreenWriter,Drehbuchautor
+Sea,Meer
+SiteOfSpecialScientificInterest,wissenschaftliche Interessenvertretung für Denkmalschutz
+Skater,Schlittschuhläufer
+SkiArea,Skigebiet
+Skier,skifahrer
+Skyscraper,Hochhaus
+SnookerPlayer,Snookerspieler
+SoapCharacter,Soapoper Charakter
+SoccerManager,Fußballmanager
+SoccerPlayer,Fußballspieler
+Species,Spezie
+SpeedwayRider,Speedway Fahrer
+Sport,Sportart
+SquashPlayer,Squashspieler
+SumoWrestler,Sumo-Ringer
+Swimmer,Schwimmer
+TableTennisPlayer,Tischtennisspieler
+TelevisionHost,Fernsehmoderator
+TennisPlayer,Tennisspieler
+Tunnel,Tunnel
+Vein,Vene
+Volcano,Vulkan
+VolleyballPlayer,Volleyballspieler
+WineRegion,Weinregion
+Winery,Weinkellerei
+WorldHeritageSite,Weltkulturerbe
+GreenAlga,Grünalge
+AnimangaCharacter,Manga-Charakter
+MusicalWork,musikalisches Werk
+WaterwayTunnel,Kanaltunnel
+AmericanFootballCoach,American-Football-Trainer
+CricketTeam,Cricketmannschaft
+MilitaryPerson,militärische Person
+SpeedwayTeam,Speedwayteam
+VolleyballLeague,Volleyball-Liga
+BroadcastNetwork,Sendergruppe
+Fashion,Mode
+Galaxy,Galaxie
+LawFirm,Anwaltskanzlei
+MartialArtist,Kampfkünstler
+River,Fluss
+Stadium,Stadion
+Vaccine,Impfstoff
+Wrestler,Ringer
+Youtuber,Youtuber
+ArchitecturalStructure,Bauwerk
+ChristianPatriarch,christlicher Patriarch
+College,College
+ConcentrationCamp,Konzentrationslager
+Continent,Kontinent
+FormulaOneRacer,Formel-1 Rennfahrer
+Guitarist,Gitarrist
+Judge,richter
+Ligament,Band (Anatomie)
+Lymph,Lymphe
+NationalCollegiateAthleticAssociationAthlete,NCAA
+Rower,Ruderer
+Senator,Senator
+Surname,Nachname
+VoiceActor,Synchronsprecher
+Bay,Bucht
+CanadianFootballLeague,Kanadische Footballliga
+Diocese,Diözese
+Embryology,Embryologie
+HorseRider,Reiter
+PlayboyPlaymate,Playboy Playmate
+SnookerChamp,Snookerweltmeister
+VolleyballCoach,Volleyballtrainer
+Battery,Batterie
+Chancellor,Kanzler
+CricketLeague,Cricket-Liga
+GolfLeague,Golfliga
+LacrosseLeague,Lacrosse-Liga
+OlympicEvent,olympische Veranstaltung
+Presenter,Moderator
+SpeedwayLeague,Speedway Liga
+TimePeriod,Zeitraum
+WaterRide,Wasserbahn
+ClubMoss,Bärlapp
+HollywoodCartoon,Hollywood Cartoon
+Coach,Trainer
+SportsManager,Sportmanager
+WinterSportPlayer,Wintersportspieler
+Moss,Laubmoss
+VideogamesLeague,Videospiele-Liga
+Cycad,Palmfarn
+BoxingLeague,Box-Liga
+AmericanFootballLeague,American-Football-Liga
+MusicFestival,Musikfestival
+Constellation,Sternbild
+MedicalSpecialty,طبی خصوصیت
+Fern,farn
+LaunchPad,Startrampe
+SoftballLeague,Softball Liga
+SpaceStation,Raumstation
+TennisLeague,Tennisliga
+AcademicJournal,Wissenschaftliche Fachzeitschrift
+AdministrativeRegion,Verwaltungsregion
+Aircraft,Flugzeug
+Airport,Flughafen
+Album,Album
+AmericanFootballPlayer,American Footballspieler
+AmusementParkAttraction,Vergnügungsparkattraktion
+Anime,anime
+Artist,Künstler
+ArtistDiscography,Künstler Diskografie
+Artwork,Kunstwerk
+Asteroid,Asteroid
+Automobile,Automobil
+AutomobileEngine,Fahrzeugmotor
+Award,Auszeichnung
+Band,Musikgruppe
+Bank,Bank
+BaseballSeason,Baseballsaison
+BasketballTeam,Basketballmannschaft
+Beverage,Getränk
+BodyOfWater,Gewässer
+Book,Buch
+Bridge,Brücke
+Building,Gebäude
+BusCompany,Busunternehmen
+ChemicalCompound,chemische Verbindung
+City,Stadt
+CityDistrict,Stadtviertel
+ClassicalMusicComposition,Komposition klassischer Musik
+ComedyGroup,Komikergruppe
+Comic,Comic
+ComicsCharacter,Comic Charakter
+Convention,Konvention
+Criminal,Verbrecher
+CultivatedVariety,Sorte ( kultivierte Sorte )
+CyclingRace,Radrennen
+CyclingTeam,Radsportteam
+Device,Gerät
+Disease,Krankheit
+Drug,Droge
+Earthquake,Erdbeben
+Election,Wahl
+Engine,Motor
+Enzyme,Enzym
+EthnicGroup,ethnie
+EurovisionSongContestEntry,Vorentscheid Eurovision song contest
+Event,Ereignis
+Film,Film
+FilmFestival,Filmfestival
+Food,Lebensmittel
+FootballLeagueSeason,Football Liga Saison
+FootballMatch,Fußballspiel
+Game,Spiel
+GolfTournament,Golfturnier
+GovernmentAgency,Behörde
+GrandPrix,grosser Preis
+HistoricBuilding,historisches Gebäude
+HistoricPlace,historischer Ort
+HockeyTeam,Hockeymannschaft
+Holiday,Feiertag
+HorseRace,Pferderennen
+Hospital,Krankenhaus
+Hotel,Hotel
+HumanGene,Humangen
+InformationAppliance,Datengerät
+Insect,Insekt
+Lake,See
+Legislature,Legislative
+Library,Bibliothek
+Locomotive,Lokomotive
+Magazine,Publikumszeitschrift
+Manga,manga
+MilitaryConflict,militärischer Konflikt
+MilitaryStructure,militärisches Bauwerk
+MilitaryUnit,Militäreinheit
+Monument,Denkmal
+MotorsportSeason,Motorsportsaison
+Mountain,Berg
+Museum,Museum
+Musical,Musical
+MusicalArtist,musikalischer Künstler
+NCAATeamSeason,NCAA Team Saison
+NationalFootballLeagueSeason,NFL Saison
+Newspaper,Zeitung
+Olympics,Olympiade
+Organisation,Organisation
+Park,Park
+PersonFunction,Funktion einer Person
+Philosopher,Philosoph
+Planet,Planet
+Plant,pflanze
+Play,Theaterstück
+PoliticalFunction,politische Funktion
+PoliticalParty,politische Partei
+Politician,Politiker
+PowerStation,Kraftwerk
+ProgrammingLanguage,Programmiersprache
+ProtectedArea,Schutzgebiet
+Protein,Protein
+RacingDriver,Rennfahrer
+RadioHost,Radiomoderator
+RadioProgram,radio programm
+RadioStation,Radiosender
+RailwayLine,Eisenbahnlinie
+RecordLabel,Plattenlabel
+Religious,religiös
+Reptile,reptil
+ResearchProject,Forschungsprojekt
+Restaurant,Restaurant
+Road,Straße
+RoadJunction,Straßenkreuzung
+RollerCoaster,Achterbahn
+Royalty,Königtum
+RugbyClub,Rugby-Club
+RugbyLeague,Rugby-Liga
+RugbyPlayer,Rugbyspieler
+Sales,Vertrieb
+Settlement,Siedlung
+Ship,Schiff
+ShoppingMall,Einkaufszentrum
+Single,Single
+SoccerClub,Fußballverein
+SoccerClubSeason,Fußballverein Saison
+SoccerLeague,Fußball Liga
+SoccerTournament,Fußballturnier
+Song,lied
+Sound,Lied
+SpaceMission,Weltraummission
+SportsEvent,Sportereignis
+SportsLeague,Sportliga
+SportsSeason,Sportsaison
+SportsTeamMember,Sport Team Mitglied
+Star,Stern
+Station,Bahnhof
+SupremeCourtOfTheUnitedStatesCase,Fall Oberster Gerichtshof der Vereinigten
+TelevisionEpisode,Fernsehfolge
+TelevisionSeason,Fernsehstaffel
+TelevisionShow,Fernsehsendung
+TelevisionStation,Fernsehsender
+TennisTournament,Tennisturnier
+Tenure,Amtszeit
+Theatre,Theater
+TopLevelDomain,top level domain
+Town,Stadt
+TradeUnion,Gewerkschaft
+Train,Zug
+University,Universität
+Venue,Veranstaltungsort
+VideoGame,Videospiel
+Village,dorf
+Weapon,Waffe
+Website,Webseite
+WomensTennisAssociationTournament,WTA Turnier
+WrestlingEvent,Wrestling-Veranstaltung
+Writer,schriftsteller
+WrittenWork,geschriebenes Erzeugnis
+Year,Jahr
+YearInSpaceflight,Zeitraum Raumflug
+Airline,Fluggesellschaft
+BasketballLeague,Basketball-Liga
+Country,Staat
+FictionalCharacter,fiktiver Charakter
+HandballLeague,Handball-Liga
+IceHockeyLeague,Eishockey-Liga
+MixedMartialArtsEvent,Mixed Kampfkunst Veranstaltung
+MusicGenre,musik genre
+ReligiousBuilding,religiöses Gebäude
+RoadTunnel,Straßentunnel
+Saint,Heilige
+SpaceShuttle,Raumfähre
+AmericanFootballTeam,American-Football-Team
+Baronet,Baronet
+BaseballTeam,Baseballmannschaft
+Bird,Vogel
+FieldHockeyLeague,Feldhockey-Liga
+Novel,Roman
+Pope,Papst
+Ginkgo,ginkgo
+BritishRoyalty,Britisches Königshaus
+SnookerWorldRanking,Snookerweltrangliste
+SolarEclipse,Sonnenfinsternis
+CurlingLeague,Curling-Liga
+Instrumentalist,Musiker
+ArtificialSatellite,künstlicher Satellit
+Monarch,monarch
+MountainRange,Bergkette
+OfficeHolder,Amtsinhaber
+Spacecraft,Raumfahrzeug
+Valley,tal
+AcademicSubject,akademisches Fach
+Agglomeration,Ballungsgebiet
+Algorithm,Algorithmus
+Altitude,Höhe
+Annotation,Randglosse
+Archeologist,Archäologe
+ArcherPlayer,Bogenschütze
+Archipelago,Archipel
+Archive,Archiv
+Area,Bereich
+Aristocrat,Aristokrat
+Arrondissement,arrondissement
+Article,Artikle
+ArtisticGenre,Kunstgattung
+Athletics,Leichtathletik
+AthleticsPlayer,Athlet
+Atoll,Atoll
+Attack,Angriff, Anschlag
+BackScene,Backround-Chor
+Beach,Strand
+Beer,Bier
+Biathlete,Biathlete
+Biologist,Biologe
+Blazon,Wappen
+BoardGame,Brettspiel
+BobsleighAthlete,Bobsportler
+BrownDwarf,Brauner Zwerg
+Browser,Browser
+BullFighter,Stierkämpfer
+Camera,Kamera
+CanadianFootballTeam,kanadische Footballmannschaft
+Canton,Kanton
+Capital,Hauptstadt
+CapitalOfRegion,Hauptstadt der Region
+CardGame,Kartenspiel
+CardinalDirection,Windrichtung
+Casino,Kasino
+Cat,Katze
+Caterer,Partyservice
+Cemetery,Friedhof
+ChartsPlacements,Chartplatzierungen
+ChemicalElement,chemisches Element
+ChristianDoctrine,Christliche Lehre
+Church,Kirche
+ClericalOrder,klerikaler Orden
+CoalPit,Kohlengrube
+CollectionOfValuables,Kunst- und Wertsachenversammlung
+Competition,Wettbewerb
+Contest,Wettbewerb
+ControlledDesignationOfOriginWine,kontrollierte Ursprungsbezeichnung für Qualitätsweine
+ConveyorSystem,Fördersystem
+CountrySeat,Landgut
+CrossCountrySkier,Skilangläufer
+CyclingCompetition,Radrennen
+CyclingLeague,Rad-Liga
+DTMRacer,DTM Rennfahrer
+Deanery,Dekanat
+Decoration,Auszeichnung
+Demographics,Demografie
+Depth,Tiefe
+Deputy,Stellvertreter
+Desert,Wüste
+DigitalCamera,Digitalkamera
+Diploma,Diplom
+DisneyCharacter,Disneyfigur
+District,Bezirk
+DistrictWaterBoard,Bezirkwasserwirtschaftsamt
+DocumentType,Dokumentenart
+Dog,Hund
+Drama,Drama
+Egyptologist,Ägyptologe
+ElectionDiagram,Wahldiagram
+Employer,Arbeitgeber
+EmployersOrganisation,Arbeitgeberverbände
+Escalator,Rolltreppe
+Factory,Fabrik
+Family,Familie
+Farmer,Bauer
+Fencer,Fechter
+File,Datei
+FileSystem,Dateisystem
+Flag,Flagge
+Forest,Wald
+FormulaOneRacing,Formel-1 Rennen
+GatedCommunity,bewachte Wohnanlage / Siedlung
+GeneLocation,Gen Lokation
+GeologicalPeriod,geologische Periode
+GeopoliticalOrganisation,geopolitische Organisation
+Globularswarm,Kugelschwarm
+GovernmentType,Regierungsform
+GraveMonument,Grabdenkmal
+GrossDomesticProduct,Bruttoinlandsprodukt
+GrossDomesticProductPerCapita,Bruttoinlandsprodukt pro Kopf
+Guitar,Gitarre
+HighDiver,Turmspringer
+HistoricalCountry,historischer Land
+HistoricalDistrict,historischer Kreis / Bezirk
+HistoricalPeriod,historische Periode
+HistoricalProvince,historischer Provinz
+HistoricalRegion,historischer Region
+HistoricalSettlement,historischer Siedlung
+HockeyClub,Hockeyverein
+HotSpring,heiße Quelle
+HumanGeneLocation,Humangen Lokation
+Humorist,Humorist
+Ideology,Ideologie
+Instrument,musikinstrument
+Intercommunality,Interkommunalität
+InternationalFootballLeagueEvent,International Football Liga Veranstaltung
+Law,Gesetz
+Lawyer,Anwalt
+Letter,Buchstabe
+Lieutenant,Leutnant
+LifeCycleEvent,Lebenszyklus Ereignis
+LightNovel,Light novel
+LineOfFashion,Modelinie
+Linguist,Sprachwissenschaftler
+Lipid,lipid
+List,Liste
+LiteraryGenre,Literaturgattung
+Locality,Gegend
+Lock,Schleuse
+LunarCrater,Mondkrater
+Man,Mann
+Manhua,manhua
+Manhwa,manhwa
+Manor,Grundherrschaft
+MathematicalConcept,mathematisches Konzept
+Media,Medien
+Medicine,Medizin
+Meeting,Treffen
+MemberResistanceMovement,Mitglied einer Widerstandorganisation
+Memorial,Denkmal
+MetroStation,U-Bahn Station
+MicroRegion,Mikroregion
+MilitaryAircraft,Militärmaschine
+MilitaryVehicle,Militärfahrzeug
+Mill,Mühle
+Mine,Mine (Bergwerk)
+Minister,Minister
+MobilePhone,Mobiltelefon (Handy)
+Monastery,Kloster
+Mosque,Moschee
+MotocycleRacer,Motorrad-Rennfahrer
+MotorRace,Motorradrennen
+MouseGeneLocation,Mausgenom Lokation
+MovieDirector,Filmregisseur
+MovieGenre,Filmgenre
+MovingImage,Bewegtbilder
+MovingWalkway,Rollsteig
+MultiVolumePublication,mehrbändige Publikation
+Murderer,Mörder
+MusicComposer,Komponist
+MusicDirector,Dirigent
+NarutoCharacter,Naruto Charakter
+NationalAnthem,Nationalhymne
+NationalSoccerClub,nationaler Fußballverein
+NaturalRegion,Naturraum
+NobelPrize,Nobelpreis
+NobleFamily,Adelsfamilie
+NordicCombined,Nordischer Kombinierer
+NuclearPowerStation,Kernkraftwerk
+Ocean,Ozean
+OldTerritory,alten Länder
+OlympicResult,olympisches Ergebnis
+On-SiteTransportation,Vorortbeförderungsmittel
+Openswarm,Open Swarm
+Opera,oper
+Organ,Orgel
+OverseasDepartment,Übersee-Departement
+PaintballLeague,Paintball-Liga
+Painting,Gemälde
+Parish,Gemeinde
+Parliament,Parlament
+PenaltyShootOut,Elfmeterschießen
+PeriodOfArtisticStyle,Kunst Zeitstil
+PersonalEvent,Ereignis im persönlichen Leben
+PhilosophicalConcept,philosophisch Konzept
+PlayWright,Dramatiker
+PoliticalConcept,politische Konzept
+PoliticianSpouse,Ehepartner eines Politiker
+Polysaccharide,Polysaccharide
+Population,Bevölkerung
+Port,Hafen
+Prefecture,Präfektur
+PrehistoricalPeriod,prähistorisch Zeitalter
+Producer,Produzent
+Profession,Beruf
+Professor,Professor
+Protocol,Protokoll
+ProtohistoricalPeriod,proto-historisch Zeitalter
+Province,Provinz
+Psychologist,Psychologe
+PublicService,öffentlicher Dienst
+Pyramid,Pyramide
+Quote,Zitat
+RadioControlledRacingLeague,RC-Renn Liga
+RallyDriver,Rallyefahrer
+Rebellion,Aufstand
+RecordOffice,Amtsarchiv
+Referee,schiedsrichter
+Reference,Referenz
+Regency,Regentschaft
+Reign,Regentschaft
+ReligiousOrganisation,Religionsorganisation
+RestArea,Rasthof
+Resume,Lebenslauf
+RocketEngine,Raketmotor
+RomanEmperor,römischer Kaiser
+RouteStop,Haltestelle
+SambaSchool,Sambaschule
+Satellite,Satellite
+ScientificConcept,wissenschaftliche Theorie
+Sculptor,Bildhauer
+Sculpture,Skulptur
+SerialKiller,Serienmörder
+Shrine,schrein
+Singer,Sänger
+SkiResort,Skigebiet
+Ski_jumper,Skispringer
+SoccerLeagueSeason,Fußball-Liga Saison
+SongWriter,Liedschreiber
+SpeedSkater,Eisschnellläufer
+Square,Platz
+State,Staat
+StatedResolution,Angenommen Beschluß
+Statistic,statistisch
+StillImage,Standbild
+StormSurge,Sturmflut
+Street,Straße
+SubMunicipality,Teilgemeinde
+Surfer,Surfer
+Swarm,schwarm
+Synagogue,Synagoge
+SystemOfLaw,Rechtssystem
+Tax,Steuer
+Taxon,taxonomische Gruppe
+TeamMember,Teammitglied
+TelevisionDirector,TV-Regisseur
+Temple,tempel
+TermOfOffice,Amtsdauer
+Territory,Territorium
+TheatreDirector,Theaterdirektor
+TheologicalConcept,Theologisch Konzept
+TrackList,Titelliste
+Tram,Straßenbahn
+Treadmill,Tretmühle
+Treaty,Vertrag
+UndergroundJournal,Underground Zeitschrift
+Unknown,unbekannt
+Vicar,Pfarrer
+VicePresident,Vizepräsident
+Vodka,Wodka
+WaterPoloPlayer,Wasserpolo Spieler
+WaterTower,Wasserturm
+Watermill,Wassermühle
+WikimediaTemplate,Wikimedia-Vorlage
+WindMotor,Windkraft
+Windmill,Windmühle
+Wine,Wein
+Woman,Frauen
+Zoo,Zoo
+بائیتھلیٹ,Biathlete
+بلیزن,Wappen
+طبی_خصوصیت,طبی خصوصیت
+قبرستان,Friedhof
+مقامی_تھنگ,Objektraum
+موٹر_سائیکل_ریسنگ_لیگ,Motorradrennen Liga
+نیٹ_بال_کھلاڑی,نیٹ بال کھلاڑی
+گرم_پانی_کاقدرتی_چشم,heiße Quelle
+Location,Standort
+BirthPlace,Geburtsort
+DeathPlace,Sterbeort
+Building,Gebäude
+Parish,Gemeinde
+Spokesperson,Sprecher
+VehiclesInFleet,Fahrzeugtypen der Flotte
+VicePrimeMinister,Vizeministerpräsident
+FirstWin,erster Sieg
+FirstWinner,erster Gewinner
+LargestSettlement,größte Siedlung
+LastWin,letzter Sieg
+MostWins,die meisten Siege
+RecentWinner,letzter Gewinner
+RuralMunicipality,Landgemeinde
+SubsequentInfrastructure,spätere Infrastruktur
+Superintendent,Leiter
+Anthem,Hymne
+AutomobilePlatform,Automobilplattform
+Breeder,Züchter
+CareerStation,Karrierestation
+Ceo,Geschäftsführer
+Chef,Koch
+Citizenship,Staatsangehörigkeit
+College,College
+County,Bezirk
+Currency,Währung
+Dam,Hirschkalb
+Dean,Dekan
+Diocese,Diözese
+DoctoralAdvisor,Doktorvater
+DoctoralStudent,Doktorand
+Equipment,Ausrüstung
+Father,Vater
+FoundationPlace,Gründungsort
+FuelSystem,Kraftstoffsystem
+FuelType,Kraftstofftyp
+Highschool,Gymnasium
+Honours,Ehrungen
+ImportantStation,wichtiger Verkehrsknotenpunkt
+Institution,Institution
+LanguageFamily,Familie
+ManagerClub,Clubmanager
+MilitaryService,service militaire
+Minister,Minister
+Mother,Mutter
+Movement,Bewegung
+Part,Teil
+Partner,Partner
+PersonFunction,Amt
+Photographer,Fotograf
+PictureFormat,Bildformat
+Profession,Beruf
+Race,Rennen
+RailwayLineUsingTunnel,Tunnel benutzende Eisenbahnlinie
+RailwayRollingStock,Operierende Schienenfahrzeuge
+Relation,Beziehung
+RivalSchool,Rivale
+River,Fluss
+RiverMouth,Flussmündung
+RouteEndLocation,Ort des Wegendes
+RouteStartLocation,Ort des Weganfangs
+School,schule
+SecretaryGeneral,Sekretärin
+SignificantBuilding,bedeutendes Gebäude
+Species,Spezies
+Sport,Sport
+Trainer,Trainer
+AdministrativeCenter,Verwaltungszentrum
+AdministrativeDistrict,Verwaltungsbezirk
+Agency,Agentur
+Alliance,Allianz
+Alumni,Alumni
+Archipelago,Archipel
+AreaOfSearch,Suchgebiet
+Canton,Kanton
+Chairperson,Vorsitzender
+Chancellor,Kanzler
+ChiefEditor,Chefredakteur
+Choreographer,Choreograph
+Club,Verein
+ConstructionMaterial,Baumaterial
+CoolingSystem,Kühlsystem
+CountryOrigin,Land Herkunft
+CurrentPartner,aktueller Partner
+Destination,Ziel
+FederalState,Bundesland
+FormerBroadcastNetwork,ehemalige Sendergruppe
+FormerCoach,Ex-Trainer
+FormerPartner,ehemaliger Partner
+Inflow,Zufluss
+LaunchSite,Startplatz
+LeaderParty,Regierungspartei
+Lieutenant,Leutnant
+Management,Management
+Manufactory,Fabrik
+Mayor,Bürgermeister
+MedicalCause,medizinische Ursache
+Medication,Medikation
+MilitaryRank,militärischer Rang
+MusicSubgenre,Musik Subgenre
+NationalTeam,Nationalmannschaft
+NeighboringMunicipality,Nachbargemeinde
+OilSystem,Ölsystem
+Outflow,Abfluss
+RaceHorse,Rennpferd
+Rector,Rektor
+SignificantDesign,bedeutendes Design
+SignificantProject,bedeutendes Projekt
+SportCountry,Sportnation
+Symptom,Symptome
+TelevisionSeries,Fernsehserie
+Training,Ausbildung
+Treatment,Behandlung
+TwinTown,Partnerstadt
+University,Universität
+VariantOf,Variante oder Variation
+VicePresident,Vizepräsident
+BodyDiscovered,Leiche entdeckt
+BronzeMedalist,Bronzemedaillengewinner
+CommitteeInLegislature,Ausschuss in der Legislative
+Curator,Kurator
+FormerHighschool,ehemalige Highschool
+GoldMedalist,Goldmedaillengewinner
+Jockey,Jockey
+NextEvent,nächste Veranstaltung
+SilverMedalist,Silbermedaillengewinner
+Comparable,vergleichbar
+Focus,Fokus
+Specialization,Spezialisierung
+MajorShrine,bedeutender Schrein
+MilitaryUnit,Militäreinheit
+SpokenIn,gesprochen in
+AddressInRoad,Adresse in Straße
+Administrator,Verwalter
+Artery,Arterie
+Authority,Behörde
+Binomial,Doppelbenennung
+Border,Grenze
+Department,Abteilung
+FirstAscentPerson,Person , die zuerst einen Berg bestiegen hat
+Gender,Geschlecht
+Highest,höchster
+IsPartOfAnatomicalStructure,ist ein Teil von anatomischer Struktur
+LegalForm,Rechtsform
+Legislature,Gesetzgeber
+MedicalSpecialty,medizinisches Fachgebiet
+Mission,Mission
+Monarch,Monarch
+Municipality,Gemeinde
+Mythology,Mythologie
+Nerve,Nerv
+NobelLaureates,Nobelpreisträger
+Opponent,Gegner
+OtherParty,andere Partei
+PlaceOfBurial,Ort der Bestattung
+PrincipalArea,Hauptbereich
+Saint,Heiliger
+Selection,Auswahl
+Specialist,Spezialist
+TypeOfElectrification,Art der Elektrifizierung
+Vein,Vene
+ViceChancellor,Vizekanzler
+WineRegion,Weinregion
+AdministrativeCollectivity,Verwaltungsgemeinschaft
+Battery,Batterie
+Borough,Bezirk
+EthnicGroup,ethnie
+FirstRace,erstes Rennen
+FormerChoreographer,ehemaliger Choreograph
+HighestPlace,höchster Platz
+IsPartOfWineRegion,ist ein Teil der Weinregion
+Island,Insel
+LastRace,letztes Rennen
+Precursor,Vorläufer
+RegionalLanguage,Regionalsprache
+Sales,Vertrieb
+Varietals,Rebsorten
+AcademyAward,Academy Award
+Achievement,Leistung
+Activity,Aktivität
+AgglomerationArea,Ballungsraum
+AircraftUser,Flugzeugnutzer
+Altitude,Höhe
+Animal,Tier
+ArchitectualBureau,Architekturbüro
+AspectRatio,Seitenverhältnis
+AstrologicalSign,Sternzeichen
+Athletics,Leichtathletik
+AthleticsDiscipline,Leichtathletikdisziplin
+AttorneyGeneral,Generalstaatsanwalt
+Aunt,Tante
+Autonomy,Autonomie
+AvailableSmartCard,benutzbare Chipkarte
+BaftaAward,BAFTA Award
+BiggestCity,größte Stadt
+Bird,Vogel
+BirthSign,Sternzeichen
+BloodType,Blutgruppe
+Boiler,Kessel
+BoilerPressure,Kesseldruck
+BoxerStyle,Boxstil
+BritishComedyAwards,British Comedy Awards
+Brother,Bruder
+CapitalCountry,Hauptstadt Land
+CapitalRegion,Hauptstadtregion
+Cemetery,Friedhof
+Chaplain,Kaplan
+Climate,klima
+CoProducer,Co-Produzent
+CoatOfArms,bild wappen
+Collaboration,Zusammenarbeit
+CollectionSize,Land
+Commandant,Kommandant
+Commune,Kommune
+Competition,Wettbewerb
+CompetitionTitle,Sterbeort
+Component,Komponente
+Conflict,Konflikt
+Connotation,Konnotation
+Constellation,Sternbild
+Construction,Konstruktion
+Contest,Wettbewerb
+Continent,Kontinent
+Contractor,Auftragnehmer
+Copilote,Copilot
+Created,erstellt
+Crest,Wappen
+Crew,Crew
+CurrentCity,aktuelle Stadt
+CurrentLeague,aktuelle Liga
+CurrentTeam,aktuelle Mannschaft
+CurrentWorldChampion,aktueller Weltmeister
+Custodian,Aufsichtsperson
+Daughter,Tochter
+DaylightSavingTimeZone,Sommerzeitzone
+Deanery,Dekanat
+Demographics,Demografie
+Detractor,Kritiker
+Diploma,Diplom
+Drama,Drama
+Drugs.com,drugs.com
+Dynasty,Dynastie
+EducationPlace,Bildungsstätte
+EmmyAward,Emmy Award
+EndPoint,Endpunkt
+Enemy,Feind
+Entourage,Gefolge
+Ethnicity,ethnische zugehörigkeit
+Existence,Existenz
+Explorer,Erforscher
+FamilyMember,Familienmitglied
+Federation,Verband
+Film,film
+FirstFlight,erster Flug
+FirstOwner,erster Besitzer
+FirstPublisher,erster Herausgeber
+FlagBearer,Fahnenträger
+Flower,Blume
+FollowedBy,gefolgt von
+Follows,folgt
+Friend,Freund
+Fuel,Treibstoff
+FundedBy,gefördert durch
+GalleryItem,Galerieelement
+Government,Regierung
+GrammyAward,Grammy Award
+Guest,Gast
+GymApparatus,Fitnessgerät
+Hand,Hand
+HeadOfFamily,Familienoberhaupt
+Headteacher,Schulleiter
+Heir,Erbe
+HighestMountain,höchster Berg
+HighestPoint,höchste Erhebung
+HighestPosition,Höchststand
+HomeArena,Heimarena
+Judge,Richter
+LastFamilyMember,letztes Familienmitglied
+LastFlight,letzter Flug
+LaunchPad,Startrampe
+LeftTributary,linker Nebenfluss
+LinkedTo,verknüpft
+LunarRover,Mondfahrzeug
+MainArticleForCategory,Hauptartikel fuer Kategorie
+MainIsland,Hauptinsel
+MajorIsland,große Insel
+Map,Landkarte
+Massif,Massiv
+Medalist,Medaillengewinner
+Media,Medien
+MediaItem,Multimediaelement
+MeetingBuilding,Tagungsgebäude
+MemberOfParliament,Abgeordnete
+Mentor,Mentor
+Minority,Minderheit
+Movie,Film
+Musicians,Musiker
+NationalFilmAward,Nationaler Filmpreis
+NationalOlympicCommittee,Nationales Olympisches Komitee
+NationalSelection,nationale Auswahl
+Newspaper,Zeitung
+Novel,Roman
+OldDistrict,Altstadt
+OldProvince,alte Provinz
+OlympicGames,olympische Spiele
+OlympicOathSwornBy,Olympischer Eid
+Opponents,Gegner
+OrganisationMember,Organisationsmitglied
+OriginalStartPoint,ursprünglicher Ausgangspunkt
+OtherFunction,andere Funktion
+OtherMedia,andere Medien
+Painter,Maler
+Parliament,Parlament
+ParticipatingIn,nimmt Teil an
+Patent,Patent
+Percentage,Prozent
+Performer,Künstler
+Period,Veranstaltungsdauer
+Perpetrator,Täter
+PictureDescription,Bildbeschreibung
+PlaceOfWorship,Kultstätte
+Plant,Pflanze
+PlayerInTeam,Spieler im Team
+PolishFilmAward,Polnischer Filmpreis
+PoliticalMajority,politische Mehrheit
+PrefaceBy,Autor des Vorworts
+Prefect,Präfekt
+Prefecture,Präfektur
+PresentMunicipality,aktuelle Gemeinde
+PreviousDemographics,frühere Demografie
+PreviousInfrastructure,vorherige Infrastruktur
+ProducedBy,hergestellt durch
+Produces,produziert
+Project,Projekt
+Provides,bietet
+RaceTrack,Rennstrecke
+Radio,Radio
+Regency,Regentschaft
+RegionalCouncil,Gemeinderat
+Resolution,Auflösung
+RightTributary,rechter Nebenfluss
+Rocket,Rakete
+Sea,Meer
+Senator,Senator
+SetDesigner,Bühnenbildner
+Settlement,Siedlung
+SexualOrientation,sexuelle Orientierung
+ShipCrew,Crew
+Show,Sendung
+Sibling,Geschwister
+Sister,Schwester
+Skills,Fähigkeiten
+SoccerLeagueRelegated,Absteiger
+SoccerLeagueSeason,Saison
+SoccerLeagueWinner,Liga-Meister
+SoccerTournamentLastChampion,letzter Sieger
+SoccerTournamentMostSuccesfull,am erfolgreichsten
+SoccerTournamentTopScorer,Torschützenkönig
+SolicitorGeneral,Generalstaatsanwalt
+Solvent,Lösungsmittel
+SolventWithBadSolubility,Lösungsmittel mit schlechter Löslichkeit
+SolventWithGoodSolubility,Lösungsmittel mit guter Löslichkeit
+SolventWithMediocreSolubility,Lösungsmittel mit mittelmäßiger Löslichkeit
+Son,Sohn
+Source,Quelle
+SovereignCountry,souveräner Staat
+Spacestation,raumstation
+SpecialEffects,Spezialeffekte
+SportDiscipline,Sportdisziplin
+StartPoint,Startpunkt
+Statistic,statistisch
+Style,stil
+SubFamily,Unterfamilie
+SubGenus,Untergattung
+SystemOfLaw,Rechtssystem
+TeamCoached,Team gecoacht
+TeamManager,Team-Manager
+TorchBearer,Fackelträger
+Tree,Baum
+Tribus,Stämme
+TvShow,Fernsehsendung
+Uncle,Onkel
+Vehicle,Vehikel
+Version,Version
+ViceLeaderParty,stellvertretender Parteivorsitzende
+VoiceType,Stimmlage
+WaterwayThroughTunnel,Wasserweg durch Tunnel
+Weapon,Waffe
+WholeArea,gesamter Bereich
+WikiPageUsesTemplate,Wikiseite verwendet Template
+WinsInEurope,Siege in Europa
+World,Welt
+WorldTournament,Weltturnier
+YouthClub,Jugendclub
+DifferentialDiagnosis,Differentialdiagnose
+Jurisdiction,Zuständigkeit
+OfficialLanguage,Amtssprache
+RestingPlace,Ruhestätte
+State,Staat
+StylisticOrigin,stilistische Herkunft
+Incumbent,Amtsinhaber
+Nominee,Kandidat
+President,Präsident
+GeneralManager,Hauptgeschäftsführer
+CrewMember,Besatzungsmitglied
+Trustee,Treuhänder
+Victim,das Opfer (resource)
+TwinCountry,Partnerland
+DeathCause,Todesursache
+Capital,Hauptstadt
+Employer,Arbeitgeber
+LargestCity,größte Stadt
+AcademicDiscipline,wissenschaftliche Disziplin
+AircraftAttack,Flugzeugangriff
+AircraftHelicopter,Hubschrauber
+AircraftHelicopterAttack,Hubschrauberangriff
+AircraftHelicopterMultirole,Mehrzweck-Hubschrauber
+Album,Album
+Architect,Architekt
+Artist,Interpret
+Assembly,Montage
+Author,autor
+Award,Auszeichnung
+BandMember,Bandmitglied
+BasedOn,basierend auf
+Battle,Schlacht
+BroadcastArea,Empfangsgebiet
+BroadcastNetwork,Sendergruppe
+Builder,Baumeister
+Campus,Campus
+Category,Kategorie
+Chain,Kette
+Chairman,Vorsitzender
+Champion,Meister
+Channel,Kanal
+Child,Kind
+Cinematography,Kinematografie
+City,Stadt
+Class,Klasse
+Coach,Trainer
+Colour,Farbe
+CommandStructure,Kommandostruktur
+Commander,Befehlshaber
+Company,Firma
+Composer,Komponist
+ConstituencyDistrict,Whalbezirk
+ConvictionPenalty,Strafe
+Country,Land
+Cpu,CPU
+Creator,Urheber
+CurrentMember,aktuelles Mitglied
+Deputy,Stellvertreter
+Developer,Entwickler
+Director,regisseur
+Discipline,Disziplin
+Discoverer,Entdecker
+Disease,Krankheit
+District,Bezirk
+Editing,Bearbeitung
+Editor,Herausgeber
+Education,Bildung
+Engine,Motor
+Engineer,Ingenieur
+Event,Veranstaltung
+ExecutiveProducer,Ausführender Produzent
+Family,familie
+FastestDriver,schnellster Fahrer
+FastestDriverCountry,schnellster Fahrer Land
+FastestDriverTeam,schnellster Fahrer Team
+Field,Feld
+FirstDriver,erster Fahrer
+FirstDriverTeam,Siegerteam
+Format,Format
+FormerBandMember,ehemaliges Bandmitglied
+FoundedBy,gegründet von
+Founder,Gründer
+Garrison,Garnison
+Genre,Genre
+Genus,Gattung
+GoverningBody,Verwaltungsgremium
+GovernmentType,Staatsform
+Governor,Gouverneur
+HasVariant,Variante oder Variation
+HeadChef,Küchenchef
+Headquarter,Hauptsitz
+HomeStadium,Heimstadion
+Hometown,Heimatort
+Ideology,Ideologie
+Illustrator,Illustrator
+Industry,Industrie
+Influenced,beeinflusst
+InfluencedBy,beeinflusst durch
+Ingredient,Zutat
+Instrument,Instrument
+IsPartOf,ist ein Teil von
+IsPartOfMilitaryConflict,ist Teil des militärischen Konflikts
+KeyPerson,Schlüsselperson
+Kingdom,reich
+KnownFor,bekannt für
+Language,Sprache
+Leader,Führer
+League,Liga
+License,Lizenz
+LiteraryGenre,literarische Gattung
+Magazine,Magazin
+MaintainedBy,gewartet von
+Manager,Manager
+Manufacturer,Hersteller
+March,Marsch
+Material,Material
+MediaType,Medientyp
+MedicalDiagnosis,medizinische Diagnose
+MeetingRoad,zusammentreffende Straße
+MergedWith,zusammengeschlossen
+MountainRange,Gebirge
+Museum,museum
+MusicBy,Musik von
+MusicComposer,komponist
+NamedAfter,benannt nach
+Narrator,Erzähler
+Nationality,Nationalität
+NearestCity,nächstgelegene Stadt
+Network,Sendergruppe
+NextMission,nächste Mission
+Occupation,Beschäftigung
+OpeningFilm,Eröffnungsfilm
+OperatingSystem,Betriebssystem
+Operator,Betreiber
+Order,Ordnung
+Organisation,Organisation
+Origin,Herkunft
+OriginalLanguage,Originalsprache
+Owner,Eigentümer
+OwningCompany,Besitzerfirma
+Parent,Elternteil
+ParentCompany,Muttergesellschaft
+Party,Partei
+Patron,Patron
+Person,Person
+Picture,bild
+PoliticalLeader,politischer Führer
+PoliticalPartyInLegislature,politische Partei in der Legislative
+PoliticalPartyOfLeader,politische Partei des Vorsitzenden
+Politician,Politiker
+Position,Position
+Predecessor,Vorgänger
+Presenter,Moderator
+PreviousEvent,Vorveranstaltung
+PreviousMission,frührere Mission
+PreviousWork,früheren Arbeiten
+PrimeMinister,Premierminister
+Producer,Produzent
+Product,Produkt
+ProductionCompany,Produktionsfirma
+ProgrammingLanguage,Programmiersprache
+ProjectCoordinator,Projektkoordinator
+ProjectParticipant,Projektteilnehmer
+Promotion,Förderung
+Province,Provinz
+Publisher,Herausgeber
+Region,Region
+Related,verbunden
+Relative,Verwandter
+Religion,Religion
+Residence,Residenz
+RouteEnd,Wegende
+RouteJunction,Wegabzweigung
+RouteStart,Weganfang
+Season,Saison
+SecondCommander,zweiter Kommandant
+SecondDriver,zweiter Fahrer
+SecondTeam,zweites Team
+Series,Serie
+Service,Dienst
+ServingRailwayLine,angebundene Eisenbahnlinie
+Similar,ähnlich
+Spacecraft,Raumfahrzeug
+SplitFromParty,Abspaltung von Partei
+Spouse,Ehepartner
+Stadium,Stadion
+StructuralSystem,Tragsystem
+SubsequentWork,nachfolgende Arbeiten
+Successor,Nachfolger
+Team,Team
+Tenant,Mieter
+Territory,Gebiet
+ThirdDriver,dritter Fahrer
+ThirdTeam,dritte Mannschaft
+TimeZone,Zeitzone
+Translator,Übersetzer
+Type,Typ
+UsedInWar,im Krieg eingesetzt
+Voice,Stimme
+Webcast,webcast
+Writer,schriftsteller
+DeathDate,Sterbedatum
+BirthDate,Geburtsdatum
+Work,Arbeit
+Abstract,abstract
+Inchi,Internationale chemische Bezeichnung der IUPAC
+FinalPublicationYear,Jahr der finalen Ausgabe
+ImpactFactor,Impact Factor
+ImpactFactorAsOf,Impact Factor ist von
+LineLength,Linienlänge (μ)
+MaximumDepth,maximale Tiefe (μ)
+NumberOfLawyers,Anzahl Rechtsanwälte
+NumberOfStations,Anzahl der Stationen
+NumberOfStudents,Zahl der Studierenden
+NumberOfVolunteers,Anzahl der Freiwilligen
+OpenAccessContent,frei zugänglicher Inhalten
+Toll,Maut ($)
+TradingName,Handelsname
+NumberOfVineyards,Anzahl von Weinbergen
+Apprehended,gefasst
+CriminalCharge,Strafantrag
+FirstLaunch,erster Start
+LastLaunch,letzter Start
+Motive,Motiv
+Chromosome,Chromosom
+Depth,Tiefe (μ)
+Icd9,ICD9
+NumberOfLanes,Anzahl der Fahrstreifen
+NumberOfStores,Anzahl an Geschäften
+OfficialSchoolColour,offizielle Schulfarbe
+SpeedLimit,Tempolimit (kmh)
+ElectionDate,Wahltermin
+AreaOfCatchment,Einzugsgebiet (m2)
+AreaUrban,Stadtgebiet (m2)
+AverageDepth,durchschnittliche Tiefe (μ)
+BestFinish,beste Platzierung im Ranglistenturnier
+Block,Block
+CensusYear,Zensusjahr
+Closed,geschlossen
+Committee,Ausschuss
+CommonName,gewöhnlicher Name
+Complications,Komplikationen
+CountryCode,Ländervorwahl
+CurrencyCode,Währungscode
+EruptionYear,Jahr des letzten Ausbruchs
+FinalFlight,letzter Flug
+FirstAscentYear,Jahr der Erstbesteigung
+GdpPerCapita,Bruttoinlandsprodukt pro Einwohner
+GreekName,griechische Name
+GrossDomesticProduct,Bruttoinlandsprodukt
+HighestRank,höchster Ranglistenplatz
+MaidenFlight,Jungfernflug
+MunicipalityCode,Gemeindecode
+NumberOfGraduateStudents,Zahl der Studenten
+NumberOfPiersInWater,Anzahl der Pfeiler in Wasser
+NumberOfVehicles,Anzahl der Fahrzeuge
+PopulationUrban,Stadtbevölkerung
+RailGauge,Spurweite Eisenbahn (μ)
+Ranking,Rangliste
+Rating,Wertung
+Reservations,Reservierungen
+ShoreLength,Uferlänge (μ)
+Spike,schmettern
+TimeInSpace,Gesamtzeit welche die Person im Weltraum verbracht hat (s)
+VoltageOfElectrification,Voltzahl der Elektrifizierung (V)
+Watershed,Wasserscheide (m2)
+Wins,Siege
+ActiveYears,aktive Jahre
+Frozen,gefroren
+IntroductionDate,Einführungsdatum
+OriginallyUsedFor,ursprünglich verwendet für
+Portfolio,Portfolio
+Victims,die Opfer (string)
+Crews,Besatzungen
+Missions,Missionen
+Orbits,Bahnen
+ProjectBudgetTotal,Gesamtprojektbudget ($)
+Astronaut/timeInSpace,Gesamtzeit welche die Person im Weltraum verbracht hat (m)
+Automobile/fuelCapacity,Kraftstoffkapazität (l)
+Automobile/wheelbase,Radstand (mm)
+ChemicalSubstance/boilingPoint,Siedepunkt (K)
+ChemicalSubstance/density,Dichte (μ3)
+ChemicalSubstance/meltingPoint,Schmelzpunkt (K)
+ConveyorSystem/diameter,Durchmesser (μ)
+ConveyorSystem/height,Höhe (mm)
+ConveyorSystem/length,Länge (mm)
+ConveyorSystem/mass,Masse (kg)
+ConveyorSystem/weight,Gewicht (kg)
+ConveyorSystem/width,Breite (mm)
+Drug/boilingPoint,Siedepunkt (K)
+Drug/meltingPoint,Schmelzpunkt (K)
+Engine/acceleration,Beschleunigung (s)
+Engine/diameter,Durchmesser (mm)
+Engine/height,Höhe (mm)
+Engine/length,Länge (mm)
+Engine/powerOutput,Ausgangsleistung (kW)
+Engine/topSpeed,Höchstgeschwindigkeit (kmh)
+Engine/weight,Gewicht (kg)
+Engine/width,Breite (mm)
+Escalator/diameter,Durchmesser (μ)
+Escalator/height,Höhe (mm)
+Escalator/length,Länge (mm)
+Escalator/mass,Masse (kg)
+Escalator/weight,Gewicht (kg)
+Escalator/width,Breite (mm)
+Galaxy/apoapsis,Apoapsisdistanz (km)
+Galaxy/averageSpeed,Durchschnittsgeschwindigkeit (km/s)
+Galaxy/density,Dichte (μ3)
+Galaxy/mass,Masse (kg)
+Galaxy/maximumTemperature,Maximaltemperatur (K)
+Galaxy/meanRadius,durchschnittlicher Radius (km)
+Galaxy/meanTemperature,Durchschnittstemperatur (K)
+Galaxy/minimumTemperature,geringste Temperatur (K)
+Galaxy/orbitalPeriod,Umlaufzeit (μ)
+Galaxy/periapsis,Periapsisdistanz (km)
+Galaxy/surfaceArea,Oberfläche (km2)
+Galaxy/temperature,Temperatur (K)
+Galaxy/volume,Volumen (km3)
+GeopoliticalOrganisation/populationDensity,Bevölkerungsdichte (/sqkm)
+GrandPrix/distance,Entfernung (km)
+Infrastructure/length,Länge (km)
+Lake/areaOfCatchment,Einzugsgebiet (km2)
+Lake/shoreLength,Uferlänge (km)
+Lake/volume,Volumen (μ³)
+LunarCrater/diameter,Durchmesser (km)
+MeanOfTransportation/diameter,Durchmesser (μ)
+MeanOfTransportation/height,Höhe (mm)
+MeanOfTransportation/length,Länge (mm)
+MeanOfTransportation/mass,Masse (kg)
+MeanOfTransportation/weight,Gewicht (kg)
+MeanOfTransportation/width,Breite (mm)
+MovingWalkway/diameter,Durchmesser (μ)
+MovingWalkway/height,Höhe (mm)
+MovingWalkway/length,Länge (mm)
+MovingWalkway/mass,Masse (kg)
+MovingWalkway/weight,Gewicht (kg)
+MovingWalkway/width,Breite (mm)
+On-SiteTransportation/diameter,Durchmesser (μ)
+On-SiteTransportation/height,Höhe (mm)
+On-SiteTransportation/length,Länge (mm)
+On-SiteTransportation/mass,Masse (kg)
+On-SiteTransportation/weight,Gewicht (kg)
+On-SiteTransportation/width,Breite (mm)
+Person/height,Höhe (cm)
+Person/weight,Gewicht (kg)
+Planet/apoapsis,Apoapsisdistanz (km)
+Planet/averageSpeed,Durchschnittsgeschwindigkeit (km/s)
+Planet/density,Dichte (μ3)
+Planet/mass,Masse (kg)
+Planet/maximumTemperature,Maximaltemperatur (K)
+Planet/meanRadius,durchschnittlicher Radius (km)
+Planet/meanTemperature,Durchschnittstemperatur (K)
+Planet/minimumTemperature,geringste Temperatur (K)
+Planet/orbitalPeriod,Umlaufzeit (μ)
+Planet/periapsis,Periapsisdistanz (km)
+Planet/surfaceArea,Oberfläche (km2)
+Planet/temperature,Temperatur (K)
+Planet/volume,Volumen (km3)
+PopulatedPlace/area,Fläche (km2)
+PopulatedPlace/areaTotal,Fläche (km2)
+PopulatedPlace/areaUrban,Stadtgebiet (km2)
+PopulatedPlace/populationDensity,Bevölkerungsdichte (/sqkm)
+Rocket/mass,Masse (kg)
+Software/fileSize,Dateigröße (MB)
+SpaceMission/distanceTraveled,Zurückgelegte Entfernung (km)
+SpaceMission/lunarOrbitTime,Mondumlaufzeit (ω)
+SpaceMission/mass,Masse (kg)
+SpaceMission/missionDuration,Missionsdauer (μ)
+SpaceShuttle/distance,Entfernung (km)
+SpaceShuttle/timeInSpace,Gesamtzeit welche die Person im Weltraum verbracht hat (μ)
+SpaceStation/volume,Volumen (μ³)
+Spacecraft/apoapsis,Apoapsisdistanz (km)
+Spacecraft/dryCargo,Trockenfracht (kg)
+Spacecraft/periapsis,Periapsisdistanz (km)
+Spacecraft/totalMass,Gesamtmasse (kg)
+Stream/watershed,Wasserscheide (km2)
+Weapon/diameter,Durchmesser (mm)
+Weapon/height,Höhe (mm)
+Weapon/length,Länge (mm)
+Weapon/weight,Gewicht (kg)
+Weapon/width,Breite (mm)
+Work/runtime,Laufzeit (m)
+ASide,Single
+AbbeychurchBlessing,Abteikirche weihe
+AbleToGrind,mahlenfähig
+Abstentions,Anzahl der Enthaltungen nach der Abstimmung
+Access,Zugriff
+AccessDate,Zugriffsdatum
+AdministrativeStatus,administrativer Status
+AfdbId,AFDB ID
+Age,Alter
+AircraftType,Flugzeugtyp
+AirportUsing,Unterschiedliche Nutzung eines Flughafens
+AlbumRuntime,Album Länge (s)
+AlternativeTitle,alternativer Titel
+AmateurTitle,Amateurtitel
+AnnualTemperature,Jahrestemperatur (K)
+Appearance,Erscheinungsbild
+ArchitecturalMovement,Architekturbewegung
+Army,Armee
+Ascent,Aufstieg
+AtPage,Seitenzahl
+AtRowNumber,Zeilennummer
+AtomicNumber,Ordnungszahl
+Average,Durchschnitt
+AwayColourHexCode,Farben Hex Code des Auswärtstrikots oder Teile dieses
+Backhand,Rückhand
+BadGuy,Bösewicht
+Believers,Gläubige
+BestLap,beste Runde
+Bioclimate,Bioklima
+Blazon,Wappen
+BloodGroup,Blutgruppe
+BronzeMedalDouble,Bronzemedaille Doppel
+BronzeMedalMixed,Bronzemedaille gemischt
+BronzeMedalSingle,Bronzemedaille Einzel
+BudgetYear,Haushaltsjahr
+CableCar,Drahtseilbahn
+CanBaggageChecked,Gepäckkontrolle möglich
+CapitalCoordinates,Hauptstadt Koordinaten
+Carcinogen,Karzinogen
+Case,Fall
+CauseOfDeath,Todesursache
+CenturyBreaks,Century Breaks
+Circle,Region
+CityRank,Rang Stadt
+ClothingSize,Konfektionsgröße
+Coalition,Koalition
+CoastLength,Länge einer Küste
+CoastLine,Küste (μ)
+CodeBook,Gesetzbuch
+CodeListOfHonour,Code Ehrenliste
+ColonialName,Kolonialname
+Command,Befehl
+Comment,Kommentar
+Commissioner,Kommissar
+Consecration,Weihe
+ContinentRank,Rang Kontinent
+CountryRank,Rang Land
+CreationYear,Entstehungsjahr
+CrewSize,Besatzungsstärke
+Criteria,Kriterien
+CurrentRank,aktueller Ranglistenplatz
+DateConstruction,Bauzeit
+DateLastUpdated,Datum der letzten Aktualisierung
+DateOfBurial,Datum der Beerdigung
+DeathAge,Sterbealter
+Debut,Debüt
+Defeat,Niederlage
+DefeatAsMgr,Niederlage als Trainer
+DerivedWord,abgeleitetes Wort
+Discovery,Datum als die Insel entdeckt wurde
+DistanceToCapital,entfernung zur hauptstadt (μ)
+DistanceTraveled,Zurückgelegte Entfernung (μ)
+DocumentNumber,Dokumentnummer
+DryCargo,Trockenfracht (g)
+ElementBlock,Block des Periodensystems
+ElementGroup,Gruppe des Periodensystems
+ElementPeriod,Periode des Periodensystems
+EndYear,Startjahr
+EndangeredSince,gefährdet seit
+Episode,Folge
+Eruption,Ausbruch
+EuropeanChampionship,Europameisterschaft
+EventDate,Veranstaltungstermin
+Expedition,Expedition
+EyeColour,Augenfarbe
+Eyes,Augen
+Fauna,Fauna
+Fight,Kampf
+Fighter,Kämpfer
+FilmRuntime,Filmlaufzeit (s)
+FinalLost,Finale verloren
+FinalPublicationDate,Datum der finalen Ausgabe
+FirstAscent,Erstbesteigung
+FirstBroadcast,Erstausstrahlung
+FirstLaunchDate,erster Starttermin
+FirstMention,erste Erwähnung
+FirstPlace,erster Platz
+FirstProMatch,erstes Profispiel
+Flag,Flagge
+Flora,Flora
+Forces,Streitkräfte
+Formula,Formel
+Foundation,Gründung
+FuelCapacity,Kraftstoffkapazität (μ³)
+FuelConsumption,Kraftstoffverbrauch
+Geology,Geologie
+GoalsInLeague,Tore in der Liga
+GoalsInNationalTeam,Tore in der Nationalmannschaft
+Grave,Grab
+Gun,Flugabwehrkanone
+HairColour,Haarfarbe
+HighestBreak,Höchstes Break
+HighestPointIsland,höchste Erhebung der Insel
+HipSize,Hüftumfang (μ)
+HistoricalMap,historische Karte
+HistoricalName,historischer Name
+HistoricalRegion,historische Region
+Homage,Huldigung
+HomeColourHexCode,Farben Hex Code des Heimtrikots oder Teile dieses
+Icd1,ICD1
+Illiteracy,Analphabetismus
+Income,Einkommen
+IndividualisedGnd,Gemeinsame Normdatei
+IndividualisedPnd,Personennamendatei
+InfantMortality,Säuglingssterblichkeit
+Information,Informationen
+InitiallyUsedFor,anfänglich verwendet
+InternationalPhonePrefix,internationale Vorwahl
+Internationally,international
+IsCityState,ist ein Stadtstaat
+IsoCode,ISO-Code eines Ortes
+KilledBy,getötet von
+KindOfRock,Art von Gestein
+LandingSite,Landeplatz
+LanguageCode,Sprachcode
+LastLaunchDate,letzter Starttermin
+LastProMatch,erstes Profispiel
+Leadership,Führung
+LifeExpectancy,Lebenserwartung
+LocalPhonePrefix,lokale Vorwahl
+LunarModule,Mondfähre
+LunarOrbitTime,Mondumlaufzeit (s)
+MainBuilding,Hauptgebäude
+MainIslands,Hauptinseln
+Mandate,politisches Mandat
+MarketCapitalisation,Marktkapitalisierung ($)
+MaxAbsoluteMagnitude,maximale absolute Helligkeit
+MaxApparentMagnitude,maximale scheinbare Helligkeit
+MaximumArea,maximale Fläche
+Measurements,Messungen
+MeltingPoint,Schmelzpunkt (K)
+Member,Mitglied
+MilitaryFunction,militärische Funktion
+MilitaryGovernment,Militärregierung
+MinimumArea,Mindestfläche
+ModelLineVehicle,Baureihe
+MolarMass,Molare Masse
+MolecularWeight,Molekulargewicht
+Mood,Stimmung
+MunicipalityRenamedTo,neuer Name einer Gemeinde
+MunicipalityType,Gemeindetyp
+MusicFormat,musikFormate
+MusicalKey,Tonart
+NameAsOf,so genannt seit
+NameInJapanese,Name auf japanisch
+Names,Namen
+Nation,Nation
+NationalChampionship,nationale Meisterschaft
+NciId,NCI
+NeighbourRegion,Nachbarregion
+NotifyDate,Benachrichtigungsdatum
+NumberOfAcademicStaff,Anzahl der wissenschaftlichen Mitarbeiter
+NumberOfAlbums,Anzahl der Alben
+NumberOfBombs,Anzahl der Bomben
+NumberOfBronzeMedalsWon,Anzahl der gewonnenen Bronzemedaillen
+NumberOfClubs,Anzahl der Clubs
+NumberOfCollectionItems,Anzahl der Elemente in der Sammlung
+NumberOfCompetitors,Anzahl der Wettbewerber
+NumberOfCounties,Anzahl der Landkreise
+NumberOfDistricts,Anzahl der Bezirke
+NumberOfFederalDeputies,Anzahl der Bundesabgeordneten
+NumberOfFilms,Anzahl der Filme
+NumberOfGoldMedalsWon,Anzahl der Goldmedaillen
+NumberOfGraves,Anzahl der Gräber
+NumberOfHouses,Anzahl der vorhandenen Häuser
+NumberOfIsland,Anzahl der Inseln
+NumberOfIslands,Anzahl der Inseln
+NumberOfLaps,Anzahl der Runden
+NumberOfLaunches,Anzahl von Starts
+NumberOfLiveAlbums,Anzahl von Live-Alben
+NumberOfMinistries,Zahl der Ministerien
+NumberOfMunicipalities,Anzahl der Gemeinden
+NumberOfOfficials,Zahl der Beamten
+NumberOfParticipatingAthletes,Anzahl der teilnehmenden Athleten
+NumberOfParticipatingFemaleAthletes,Zahl der teilnehmenden Sportlerinnen
+NumberOfParticipatingMaleAthletes,Anzahl der teilnehmenden männlichen Athleten
+NumberOfParticipatingNations,Anzahl der teilnehmenden Nationen
+NumberOfPeopleAttending,Zahl der Teilnehmer
+NumberOfPixels,Anzahl der Pixel (Millionen)
+NumberOfPlayers,Anzahl der Spieler
+NumberOfProfessionals,Anzahl von Fachleuten
+NumberOfReactors,Anzahl der Reaktoren
+NumberOfRockets,Anzahl der Raketen
+NumberOfSeats,Anzahl der Sitze
+NumberOfSeatsInParliament,Anzahl der Sitze im Parlament
+NumberOfSettlement,Zahl der Siedlungen
+NumberOfSilverMedalsWon,Anzahl der Silbermedaillen
+NumberOfSpeakers,Anzahl Sprecher
+NumberOfSportsEvents,Anzahl der Sportveranstaltungen
+NumberOfStars,Anzahl der Sterne
+NumberOfStudioAlbums,Zahl der Studio-Alben
+NumberOfVillages,Anzahl der Dörfer
+Observatory,Observatorium
+Odor,Geruch
+OfficialName,offizieller Name
+OldName,alter Name
+OrbitalInclination,Bahnneigung
+Orientation,Orientierung
+OriginalTitle,Originaltitel
+OtherActivity,andere Aktivität
+OtherInformation,andere Informationen einer Siedlung
+OtherLanguage,anderen Sprache einer Siedlung
+OtherName,anderer Name
+OtherWins,Sonstige Siege
+ParliamentaryGroup,Fraktion
+PartitionCoefficient,Verteilungskoeffizient
+PerCapitaIncome,Pro-Kopf-Einkommen ($)
+PercentageAlcohol,Anteil von Alkohol
+PercentageFat,Fettgehalt
+PhonePrefix,Telefonvorwahl
+Piercing,Piercing
+PlayerStatus,Spielerstatus
+PlayingTime,Spielzeit (s)
+Pluviometry,Regenmessung
+Podium,Podest
+Pole,Pol
+PoliticalFunction,politische Funktion
+PopularVote,Anzahl der Stimmen für Kandidaten
+Power,Macht
+Prefix,Präfix
+PresentName,heutiger Name einer Gemeinde
+PreviousName,früheren Namen
+Price,Preis ($)
+Procedure,Verfahren
+ProductionYears,Produktionsjahre
+ProjectEndDate,Projektende
+ProjectObjective,Projektziel
+ProjectType,Projekttyp
+Publication,Veröffentlichung
+PubliclyAccessible,öffentlich zugänglich
+Quotation,Zitat
+RaceLength,Rennlänge (μ)
+RaceWins,Siege
+Rank,Platzierung
+RankingsDoubles,Doppelrangliste
+RankingsSingles,Einzelrangliste
+Refgen,Referenz für allgemeine Daten
+Refgeo,Referenz für geographische Daten
+Refpol,Referenz für politische Daten
+RegionalPrefecture,regionale Präfektur
+Registration,Anmeldung
+RegistryNumber,Registrierungsnummer
+Reopened,wieder eröffnet
+Representative,Zahl der Vertreter
+Requirement,Anforderung
+RestingDate,Bestattungsdatum
+Review,Rezension
+RoofHeight,Höhe Dach
+Route,Route
+RouteDirection,Himmelsrichtung des Verkehrsweges
+Ruling,Entscheidung
+Salary,Gehalt ($)
+SameName,gleicher Name
+Satellite,Satellit
+Scale,Maßstab
+Scene,Szene
+ScientificName,wissenschaftlicher Name
+SecondPlace,zweiter Platz
+Security,Sicherheit
+SelectionYear,Auswahljahr
+Sentence,Satz
+ShareOfAudience,Anteil der Zuschauer/Zuhörer
+ShoeSize,Schuhgröße
+SilverMedalDouble,Silbermedaille Doppel
+SilverMedalMixed,Silbermedaille gemischt
+SilverMedalSingle,Silbermedaille Einzel
+SixthFormStudents,Schüler der Oberstufe
+SizeMap,Größe der Karte
+SkiLift,Skilift
+SkiPisteKilometre,Skipiste km (μ)
+SkiPisteNumber,Skipistennummer
+Solubility,Löslichkeit
+Space,Raum
+SpacewalkBegin,Beginn Weltraumspaziergang
+SpacewalkEnd,Ende Weltraumspaziergang
+Speciality,Spezialität
+SpouseName,Name des Ehepartners
+SubMunicipalityType,Art der Gemeinde
+Subsystem,Teilsystem
+SwimmingStyle,Schwimmstil
+SystemRequirements,Mindestsystemanforderungen
+Taste,Geschmack oder Aroma
+Tattoo,Tätowierung
+Technique,technisch
+TempPlace,vorläufige Chartplatzierung
+TemplateName,Templatename
+Temple,Tempel
+TermOfOffice,Amtszeit
+Theology,Theologie
+ThirdPlace,dritter Platz
+Tie,Unentschieden
+TitleDouble,Doppeltitel
+TitleSingle,Einzeltitel
+TopFloorHeight,Höhe der höchsten Etage
+Topic,Thema
+TotalMass,Gesamtmasse (g)
+TournamentOfChampions,Turnier der Meister
+TowerHeight,Turmhöhe
+TrackNumber,Titelnummer
+TypeOfGrain,Getreideart (Weizen usw.)
+TypeOfStorage,Art der Lagerung
+TypeOfYeast,Hefearte
+UnNumber,UN Nummer
+Unicode,Unicode
+UrbanArea,Stadtgebiet
+Usk,zugelassene Bewertung der Unterhaltungssoftware Selbstkontrolle in Deutschland
+Value,Wert
+VehicleCode,KFZ-Kennzeichen
+Victory,Sieg
+VisitorsPerDay,Besucher pro Tag
+VisitorsPerYear,Besucher pro Jahr
+VisitorsTotal,Gesamtbesucher
+VolcanicActivity,vulkanische Aktivität
+VolcanicType,Vulkantyp
+VonKlitzingConstant,von Klitzing elektromagnetisch Konstant (RK)
+VotesAgainst,Stimmen gegen die Resolution
+VotesFor,Anzahl der Stimmen für die Resolution
+WaistSize,Taillenumfang (μ)
+War,Kriege
+Water,Wasser
+WaterPercentage,Wasseranteil von einem Ort
+Watercourse,Wasserlauf
+WeddingParentsDate,Hochzeitstag der Eltern
+WineYear,Weinjahr
+WingArea,Flügelfläche (m2)
+Wingspan,Spannweite (μ)
+WinterTemperature,Wintertemperatur (K)
+WorkArea,Arbeitsplätze (m2)
+YearElevationIntoNobility,Jahr der Erhebung in den Adelsstand
+YouthYears,Jugendjahre
+ZipCode,Postleitzahl
+آبادی_والی_جگہ/area,Fläche (km2)
+آبادی_والی_جگہ/areaTotal,Fläche (km2)
+آبادی_والی_جگہ/areaUrban,Stadtgebiet (km2)
+آبادی_والی_جگہ/populationDensity,Bevölkerungsdichte (/sqkm)
+انجن/acceleration,Beschleunigung (s)
+انجن/diameter,Durchmesser (mm)
+انجن/height,Höhe (mm)
+انجن/length,Länge (mm)
+انجن/powerOutput,Ausgangsleistung (kW)
+انجن/topSpeed,Höchstgeschwindigkeit (kmh)
+انجن/weight,Gewicht (kg)
+انجن/width,Breite (mm)
+تحریری_پروگراموں_کا_مجموعہ/fileSize,Dateigröße (MB)
+جُغرافیائی_سیاسیات_تنظیم/populationDensity,Bevölkerungsdichte (/sqkm)
+جھیل/areaOfCatchment,Einzugsgebiet (km2)
+جھیل/shoreLength,Uferlänge (km)
+جھیل/volume,Volumen (μ³)
+حرکت_پذیر_پیدل_چلنے_کا_راستہ/diameter,Durchmesser (μ)
+حرکت_پذیر_پیدل_چلنے_کا_راستہ/height,Höhe (mm)
+حرکت_پذیر_پیدل_چلنے_کا_راستہ/length,Länge (mm)
+حرکت_پذیر_پیدل_چلنے_کا_راستہ/mass,Masse (kg)
+حرکت_پذیر_پیدل_چلنے_کا_راستہ/weight,Gewicht (kg)
+حرکت_پذیر_پیدل_چلنے_کا_راستہ/width,Breite (mm)
+حصول_کی_تاریخ,Anschaffungszeitpunkt
+خلا_باز/timeInSpace,Gesamtzeit welche die Person im Weltraum verbracht hat (m)
+خلائی_اڈہ/volume,Volumen (μ³)
+خلائی_جہاز/distance,Entfernung (km)
+خلائی_جہاز/timeInSpace,Gesamtzeit welche die Person im Weltraum verbracht hat (μ)
+خلائی_مہم/distanceTraveled,Zurückgelegte Entfernung (km)
+خلائی_مہم/lunarOrbitTime,Mondumlaufzeit (ω)
+خلائی_مہم/mass,Masse (kg)
+خلائی_مہم/missionDuration,Missionsdauer (μ)
+رواں_زینہ/diameter,Durchmesser (μ)
+رواں_زینہ/height,Höhe (mm)
+رواں_زینہ/length,Länge (mm)
+رواں_زینہ/mass,Masse (kg)
+رواں_زینہ/weight,Gewicht (kg)
+رواں_زینہ/width,Breite (mm)
+سیارہ/apoapsis,Apoapsisdistanz (km)
+سیارہ/averageSpeed,Durchschnittsgeschwindigkeit (km/s)
+سیارہ/density,Dichte (μ3)
+سیارہ/mass,Masse (kg)
+سیارہ/maximumTemperature,Maximaltemperatur (K)
+سیارہ/meanRadius,durchschnittlicher Radius (km)
+سیارہ/meanTemperature,Durchschnittstemperatur (K)
+سیارہ/minimumTemperature,geringste Temperatur (K)
+سیارہ/orbitalPeriod,Umlaufzeit (μ)
+سیارہ/periapsis,Periapsisdistanz (km)
+سیارہ/surfaceArea,Oberfläche (km2)
+سیارہ/temperature,Temperatur (K)
+سیارہ/volume,Volumen (km3)
+شخص/height,Höhe (cm)
+شخص/weight,Gewicht (kg)
+طَنابی_گاڑی,Drahtseilbahn
+قمری_گڑھا/diameter,Durchmesser (km)
+موٹر_کار_کی_دوڑ/distance,Entfernung (km)
+ندی/watershed,Wasserscheide (km2)
+نشے_کی_دوا/boilingPoint,Siedepunkt (K)
+نشے_کی_دوا/meltingPoint,Schmelzpunkt (K)
+نقل_و_حمل_کے_ذرائع/diameter,Durchmesser (μ)
+نقل_و_حمل_کے_ذرائع/height,Höhe (mm)
+نقل_و_حمل_کے_ذرائع/length,Länge (mm)
+نقل_و_حمل_کے_ذرائع/mass,Masse (kg)
+نقل_و_حمل_کے_ذرائع/weight,Gewicht (kg)
+نقل_و_حمل_کے_ذرائع/width,Breite (mm)
+نقل_و_حمل_کے_نظام/diameter,Durchmesser (μ)
+نقل_و_حمل_کے_نظام/height,Höhe (mm)
+نقل_و_حمل_کے_نظام/length,Länge (mm)
+نقل_و_حمل_کے_نظام/mass,Masse (kg)
+نقل_و_حمل_کے_نظام/weight,Gewicht (kg)
+نقل_و_حمل_کے_نظام/width,Breite (mm)
+پیسنے_کے_قابل,mahlenfähig
+کام/runtime,Laufzeit (m)
+کِسی_موقع_مقام_پر_نقل_و_حمل/diameter,Durchmesser (μ)
+کِسی_موقع_مقام_پر_نقل_و_حمل/height,Höhe (mm)
+کِسی_موقع_مقام_پر_نقل_و_حمل/length,Länge (mm)
+کِسی_موقع_مقام_پر_نقل_و_حمل/mass,Masse (kg)
+کِسی_موقع_مقام_پر_نقل_و_حمل/weight,Gewicht (kg)
+کِسی_موقع_مقام_پر_نقل_و_حمل/width,Breite (mm)
+کہکشاں/apoapsis,Apoapsisdistanz (km)
+کہکشاں/averageSpeed,Durchschnittsgeschwindigkeit (km/s)
+کہکشاں/density,Dichte (μ3)
+کہکشاں/mass,Masse (kg)
+کہکشاں/maximumTemperature,Maximaltemperatur (K)
+کہکشاں/meanRadius,durchschnittlicher Radius (km)
+کہکشاں/meanTemperature,Durchschnittstemperatur (K)
+کہکشاں/minimumTemperature,geringste Temperatur (K)
+کہکشاں/orbitalPeriod,Umlaufzeit (μ)
+کہکشاں/periapsis,Periapsisdistanz (km)
+کہکشاں/surfaceArea,Oberfläche (km2)
+کہکشاں/temperature,Temperatur (K)
+کہکشاں/volume,Volumen (km3)
+کیمیائی_مادہ/boilingPoint,Siedepunkt (K)
+کیمیائی_مادہ/density,Dichte (μ3)
+کیمیائی_مادہ/meltingPoint,Schmelzpunkt (K)
+کیمیائی_مادہ۔/boilingPoint,Siedepunkt (K)
+کیمیائی_مادہ۔/density,Dichte (μ3)
+کیمیائی_مادہ۔/meltingPoint,Schmelzpunkt (K)
+گاڑی/fuelCapacity,Kraftstoffkapazität (l)
+گاڑی/wheelbase,Radstand (mm)
+ہتھیار/diameter,Durchmesser (mm)
+ہتھیار/height,Höhe (mm)
+ہتھیار/length,Länge (mm)
+ہتھیار/weight,Gewicht (kg)
+ہتھیار/width,Breite (mm)
+NumberOfEntrances,Anzahl der Eingänge
+WorstDefeat,höchste Niederlage
+Acceleration,Beschleunigung (s)
+BSide,B-Seite
+Games,Spiele
+FirstGame,erstes Spiel
+StartYear,Startjahr
+Abbreviation,Abkürzung
+AbsoluteMagnitude,absolute Helligkeit
+Address,Adresse
+AgencyStationCode,Stationsabkürzung
+AlternativeName,alternativer Name
+Anniversary,Jubiläum
+Apoapsis,Apoapsisdistanz (μ)
+ApparentMagnitude,scheinbare Helligkeit
+Area,Fläche (m2)
+AreaCode,Vorwahl
+AreaTotal,Fläche (m2)
+Assets,Aktiva ($)
+AutomobileModel,Automobilmodell
+AverageSpeed,Durchschnittsgeschwindigkeit (kmh)
+Background,Hintergrund
+BedCount,Anzahl Betten
+BicycleInformation,Fahrradinformationen
+BirthName,Geburtsname
+BirthYear,Geburtsjahr
+BoilingPoint,Siedepunkt (K)
+Budget,Etat ($)
+Capacity,Kapazität
+Casualties,Verluste
+Classification,catégorie
+ClosingYear,Schließungsjahr
+ColourName,Farbenname
+Combatant,Kombattant
+CompletionDate,Fertigstellungstermin
+Configuration,Konfiguration
+Cost,Kosten ($)
+Cuisine,Küche
+CurrentStatus,aktueller Status
+Date,Datum
+DeathYear,Sterbejahr
+Demonym,Volksbezeichnung
+Density,Dichte (μ3)
+Description,Beschreibung
+DetectionMethod,Verfahren zur Entdeckung
+Diameter,Durchmesser (μ)
+Discovered,entdeckt
+DiseasesDB,DiseasesDB
+Distance,Entfernung (μ)
+Duration,Dauer (s)
+ElectionDateLeader,Wahldatum des Vorsitzenden
+Elevation,Höhe (μ)
+ElevatorCount,Aufzüge
+End,Ende
+EndDate,Enddatum
+Equity,Gerechtigkeit ($)
+FareZone,Tarifzone
+Fate,Schicksal
+FileSize,Dateigröße (B)
+Filename,dateiname
+FirstAirDate,Sendebeginn
+FirstPublicationDate,Datum der Erstausgabe
+FirstPublicationYear,Jahr der Erstausgabe
+FormerName,früherer Name
+FoundingDate,Gründungsdatum
+FoundingYear,Gründungsjahr
+Frequency,Frequenz (Hz)
+FrequencyOfPublication,Erscheinungsweise
+Height,Höhe (μ)
+ImageSize,Bildgröße (px)
+Introduced,eingeführt
+IsHandicappedAccessible,ist rollstuhlgerecht
+IsPartOfName,ist Teil
+IsoCodeRegion,ISO-Ländercode
+Issn,ISSN
+LandingDate,Landedatum
+LastPublicationDate,letztes Veröffentlichungsdatum
+LaunchDate,Starttermin
+LegislativePeriodName,Name in der Legislaturperiode
+Length,Länge (μ)
+Licensee,Lizenzinhaber
+LoadLimit,Belastungsgrenze (g)
+Mascot,Maskottchen
+Mass,Masse (g)
+MaximumTemperature,Maximaltemperatur (K)
+MeanRadius,durchschnittlicher Radius (μ)
+MeanTemperature,Durchschnittstemperatur (K)
+Meaning,Bedeutung
+Membership,Mitgliedschaft
+MinimumTemperature,geringste Temperatur (K)
+MissionDuration,Missionsdauer (s)
+Motto,Motto
+Name,Name
+NetIncome,Nettoergebnis ($)
+Notes,Anmerkungen
+Number,Anzahl
+NumberBuilt,Anzahl gebaut
+NumberOfEmployees,Anzahl der Mitarbeiter
+NumberOfEpisodes,Anzahl der Episoden
+NumberOfGoals,Anzahl der erzielten Tore
+NumberOfLines,Anzahl der Linien
+NumberOfLocations,Anzahl der Standorte
+NumberOfMembers,Anzahl der Mitglieder
+NumberOfPages,Anzahl der Seiten
+NumberOfParkingSpaces,Anzahl der Parkplätze
+NumberOfRestaurants,Anzahl der Restaurants
+NumberOfRooms,Anzahl der Zimmer
+NumberOfSeasons,Anzahl der Staffeln
+NumberOfSpans,Anzahl der Bögen
+NumberOfStaff,Personalbestand
+NumberOfTeams,Anzahl der Teams
+NumberOfTracks,Anzahl der Gleise
+NumberOfVisitors,Besucherzahl
+Office,(politisches) Amt
+OpeningDate,Eröffnungsdatum
+OpeningYear,Eröffnungsjahr
+OperatingIncome,Betriebsergebnis ($)
+OrbitalPeriod,Umlaufzeit (s)
+OriginalName,ursprünglicher Namen
+Orpha,ORPHA
+OtherServingLines,andere Verbindungen
+ParkingInformation,Parkplatzinformationen
+Participant,Teilnehmer
+PassengersPerYear,Passagiere pro Jahr
+Periapsis,Periapsisdistanz (μ)
+PopulationDensity,Bevölkerungsdichte (/sqkm)
+PopulationTotal,Einwohnerzahl
+PostalCode,Postleitzahl
+PowerOutput,Ausgangsleistung (W)
+PublicationDate,Veröffentlichungsdatum
+Purpose,Zweck
+RailwayPlatforms,Bahnsteige
+RecordDate,Stichtag
+Reference,Referenz
+Registry,Register
+Restriction,Beschränkung
+Result,Folge
+Revenue,Einnahmen ($)
+Role,Rolle
+RouteEndDirection,Himmelsrichtung des Wegendes
+RouteNumber,Routennummer
+RouteStartDirection,Himmelsrichtung des Wegstarts
+Runtime,Laufzeit (s)
+RunwayLength,Start- und Landebahnlänge (μ)
+Satcat,SATCAT
+SeatingCapacity,Sitzplatzkapazität
+ShipDisplacement,Deplacement (g)
+Start,Start
+StartDate,Startdatum
+Status,Status
+Strength,Stärke
+Subtitle,Untertitel
+SuccessfulLaunches,erfolgreiche Starts
+Symbol,Symbol
+Synonym,Synonym
+TeamName,Teamname
+Temperature,Temperatur (K)
+Time,Zeit
+Title,Titel
+TopSpeed,Höchstgeschwindigkeit (kmh)
+TotalPopulation,Gesamtbevölkerung
+Transmission,Getriebe
+VehiclesPerDay,Fahrzeuge pro Tag
+VisitorsPercentageChange,prozentuale Veränderung der Besucherzahl
+Volume,Volumen (μ³)
+Weight,Gewicht (g)
+Wheelbase,Radstand (μ)
+Width,Breite (μ)
+Year,Jahr
+YearOfConstruction,Baujahr
+YearOfElectrification,Jahr der Elektrifizierung
+AcquirementDate,Anschaffungszeitpunkt
+AgeRange,Altersgruppe
+AnalogChannel,Analogkanal
+AverageClassSize,durchschnittliche Klassengröße
+BattingSide,Schlagarm
+Bbr,BBR
+BowlingSide,Werfarm
+Classes,Klasse
+Code,Code
+Collection,Sammlung
+CompressionRatio,Kompressionsverhältnis
+DigitalChannel,Digitalkanal
+Draft,Entwurf
+EyeColor,Augenfarbe
+HairColor,Haarfarbe
+HumanDevelopmentIndex,Index für menschliche Entwicklung (HDI)
+Interest,Interesse
+LastAirDate,Sendeschluss
+LatinName,lateinische Name
+MilitaryCommand,Militärkommando
+Note,Anmerkung
+NumberOfDoctoralStudents,Anzahl der Doktoranden
+NumberOfOffices,Anzahl Büros
+NumberOfOrbits,Anzahl der Bahnen
+NumberOfUndergraduateStudents,Zahl der Studenten
+OverallRecord,Gesamtbilanz
+PassengersUsedSystem,benutztes System der Passagiere
+Production,Produktion
+Pronunciation,Aussprache
+Pseudonym,Pseudonym
+RocketStages,Anzahl von Raketenstufen
+Sex,Geschlecht
+ShipDraft,Schiffsentwurf (μ)
+Signature,Unterschrift
+Slogan,Slogan
+Staff,Personal
+SurfaceArea,Oberfläche (m2)
+TeamSize,Teamgröße
+TournamentRecord,Turnierrekord
+TrackLength,Streckenlänge (μ)
+Tuition,Schulgeld ($)
+UnitCost,Stückkosten ($)
+Valvetrain,Ventilsteuerung
+Years,Jahre
+Established,etabliert
+FeastDay,Festtag
+GiniCoefficient,Gini-Koeffizient
+RankingWins,Siege in Ranglistenturnieren
+ReopeningDate,Wiedereröffnungdatum
+AoCloassification,AO
+ApproximateCalories,ungefähre Kalorien (J)
+Wavelength,Wellenlänge (μ)
+Championships,gewonnene Title
+ColourHexCode,Farben Hex Code
+Day,Tag
+FastestLap,schnellste Runde
+Fees,Gebühren ($)
+FrequentlyUpdated,häufig aktualisiert
+GradName,GARDName
+GradNum,GARDNum
+HallOfFame,Ruhmeshalle
+Nord,NORD
+PassengersPerDay,Passagiere pro Tag
+Podiums,Podestplätze
+Poles,Pole
+Races,Rennen
+StatisticValue,Statistikwert
+UsSales,US-Verkäufe
+FlyingHours,Flugstunden (s)
+NumberOfDeaths,Totenzahl
+ProductionStartDate,Produktionsbeginn
+Model,Modell
+Month,Monat
+NeighbourConstellations,Nachbarsternbilder
+ProjectStartDate,Projektstart

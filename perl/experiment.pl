@@ -177,7 +177,7 @@ close DAT;
 open(DAT, "<$BASEDIR/input/classes_map_$LANGTAG.txt");
 while (defined(my $line = <DAT>)) {
     if ($line =~ m/^$className,(.*)/) {
-        $classes->{$className} = $1;}
+        $classes->{$className} = ucfirst $1;}
 }
 close DAT;
 my $folder_length = 4; # length of the name of the subfolder in $BASEDIR/input/data_per_entity/
@@ -3133,7 +3133,7 @@ sub parse_NT_into_obj {
     }
     # "\"\"\"ja\"\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>\""
     # URI URI LIT-LANG
-    elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)\"(.*)\"\@(.+) .\n\Z/){# or $string =~ m/\A"(.*)"\^\^<.*#langString.*\Z/) {
+    elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)\"(.*)\"\@(.+) .\n\Z/) { # or $string =~ m/\A"(.*)"\^\^<.*#langString.*\Z/) {
         return {
             s => { type => "uri", value => "$1" },
             p => { type => "uri", value => "$2" },

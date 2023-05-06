@@ -41,7 +41,7 @@ public class GraphExtractor {
         String folder = System.getProperty("user.dir") + "/results_all_classes/result_" + clazz;
         Path classResultCSVDir = Paths.get(folder + "/results_csv/");
         String filePostFix = "_" + clazz + ".json";
-        if(clazz.isEmpty()){
+        if (clazz.isEmpty()) {
             throw new RuntimeException("Class name empty!");
         }
         String resultFile = folder + "/result" + filePostFix;
@@ -58,6 +58,11 @@ public class GraphExtractor {
             int n = arr == null ? 0 : arr.size();
             List<JSONObject> l = IntStream.range(1, n).mapToObj(i -> (JSONObject) arr.get(i)).toList();
             createLemons(l, noun, verb, adj, 0);
+            noun = noun.stream().filter(no -> !((List) no.get("references")).isEmpty()).toList();
+            verb = verb.stream().filter(ve -> !((List) ve.get("references")).isEmpty()).toList();
+            adj = adj.stream().filter(ad -> !((List) ad.get("references")).isEmpty()
+                    && !((List) ad.get("hasValueList")).isEmpty()
+                    && !((List) ad.get("onPropertyList")).isEmpty()).toList();
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
@@ -76,13 +81,13 @@ public class GraphExtractor {
 
     private static void writeToCsv(List<JSONObject> noun, List<JSONObject> verb, List<JSONObject> adj, String clazz) throws URISyntaxException, IOException {
         createNounPPFrame(noun, clazz);
+        createTransitiveIntransitiveFrame(verb, clazz);
+        createGradableAttributeAdjective(adj, clazz);
 
     }
 
+    //TODO:
     private static void createNounPPFrame(List<JSONObject> noun, String clazz) throws IOException {
-        //nounppframe
-        // LemonEntry	partOfSpeech	gender	writtenFormNominative(singular)	writtenFormNominative (plural)	writtenFormSingular (accusative)	writtenFormSingular (dative)	writtenFormSingular (genetive)	preposition	SyntacticFrame	copulativeArg	prepositionalAdjunct	sense	reference	domain	range	domain_article	domain_written_singular	domain_written_plural	rangeArticle	range_written_singular	range_written_plural
-        // question_1	sparql_1	question_2	sparql_2	question_3	sparql_3	question_4	sparql_4	question_5	sparql_5	comment
         String folder = System.getProperty("user.dir") + "/results_all_classes/result_" + clazz + "/results_csv";
         Path pathNoun = Paths.get(
                 folder + "/NounPPFrame.csv"
@@ -98,34 +103,74 @@ public class GraphExtractor {
             writer.writeNext(nounPPFrameHeader);
 
             for (JSONObject n : noun) {
-                String label = (String)n.get("label");
-                JSONArray senses = (JSONArray) n.get("references");
-                for (Object o :senses){
-                    String senseVal =((JSONObject) o ).values().stream().findFirst().orElseThrow().toString();
-                    String senseKey = ((JSONObject) o ).keySet().stream().findFirst().orElseThrow().toString().split("\\\\")[3];
-                    String[] line = {senseKey, "noun", "masculine",label , label, label, label, label, label, "von", "", "", "", "", "", "", "", "", "", "", ""};
+                String label = (String) n.get("label");
+                List senses = (List) n.get("references");
+                for (Object o : senses) {
+                    String senseVal = ((Map) o).values().stream().findFirst().orElseThrow().toString();
+                    String senseKey = ((Map) o).keySet().stream().findFirst().orElseThrow().toString().split("/")[3];
+                    String[] line = {senseKey, "noun", "masculine", label, label, label, label, label, label, "von", "", "", "", "", "", "", "", "", "", "", ""};
                     writer.writeNext(line);
                 }
-//                doc.annotation()
-
             }
 
         }
     }
-    // VERB //
-    // transitive frame
-    // LemonEntry	partOfSpeech	writtenFormInfinitive	writtenForm3rdPresent	writtenFormPast	writtenFormPerfect	SyntacticFrame	subject	directObject	sense	reference	domain	range	passivePreposition
 
-    // intransitive frame
-    // LemonEntry	partOfSpeech	writtenFormInfinitive	writtenFormThridPerson	writtenFormPast	writtenFormPerfect	preposition	SyntacticFrame	subject	prepositionalAdjunct	sense	reference	domain	range	domainArticle	domainWrittenSingular	domainWrittenPlural	rangeArticle	rangeWrittenSingular	rangeWrittenPlural
+    //TODO:
+    private static void createTransitiveIntransitiveFrame(List<JSONObject> verb, String clazz) throws IOException {
+        String folder = System.getProperty("user.dir") + "/results_all_classes/result_" + clazz + "/results_csv";
+        Path pathVerb = Paths.get(
+                folder + "/TransitiveIntransitiveFrame.csv"
+        );
 
+        try (CSVWriter writer = new CSVWriter(new FileWriter(pathVerb.toString()))) {
+            String[] transitiveFrameHeader = {"LemonEntry", "partOfSpeech", "writtenFormInfinitive", "writtenForm3rdPresent", "writtenFormPast", "writtenFormPerfect", "SyntacticFrame", "subject", "directObject", "sense", "reference", "domain", "range", "passivePreposition"
+            };
+            String[] intransitiveFrameHeader = {"LemonEntry", "partOfSpeech", "writtenFormInfinitive", "writtenFormThridPerson", "writtenFormPast", "writtenFormPerfect", "preposition", "SyntacticFrame", "subject", "prepositionalAdjunct", "sense", "reference", "domain", "range", "domainArticle", "domainWrittenSingular", "domainWrittenPlural", "rangeArticle", "rangeWrittenSingular", "rangeWrittenPlural"
+            };
+            writer.writeNext(transitiveFrameHeader);
 
-    // ADJ //
-    // gradable adj
-    // LemonEntry	partOfSpeech	writtenForm	comparative	superlative_singular	superlative_plural	SyntacticFrame	predFrame	sense	reference	oils:boundTo	oils:degree	domain	range	preposition
+            for (JSONObject v : verb) {
+                String label = (String) v.get("label");
+                List senses = (List) v.get("references");
+                for (Object o : senses) {
+                    String senseVal = ((Map) o).values().stream().findFirst().orElseThrow().toString();
+                    String senseKey = ((Map) o).keySet().stream().findFirst().orElseThrow().toString().split("/")[3];
+                    String[] line = {senseKey, "verb", "masculine", label, label, label, label, label, label, "von", "", "", "", "", "", "", "", "", "", "", ""};
+                    writer.writeNext(line);
+                }
+            }
 
-    // attribute adj
-    // LemonEntry	partOfSpeech	writtenForm	SyntacticFrame	copulativeSubject	attributiveArg	sense	reference	owl:onProperty	owl:hasValue	domain	range
+        }
+    }
+
+    //TODO:
+    private static void createGradableAttributeAdjective(List<JSONObject> adj, String clazz) throws IOException {
+        String folder = System.getProperty("user.dir") + "/results_all_classes/result_" + clazz + "/results_csv";
+        Path pathVerb = Paths.get(
+                folder + "/GradableAttributeAdjective.csv"
+        );
+
+        try (CSVWriter writer = new CSVWriter(new FileWriter(pathVerb.toString()))) {
+            String[] gradableAdjectiveHeader = {"LemonEntry", "partOfSpeech", "writtenForm", "comparative", "superlative_singular", "superlative_plural", "SyntacticFrame", "predFrame", "sense", "reference", "oils:boundTo", "oils:degree", "domain", "range", "preposition"
+            };
+            String[] attributeAdjectiveHeader = {"LemonEntry", "partOfSpeech", "writtenForm", "SyntacticFrame", "copulativeSubject", "attributiveArg", "sense", "reference", "owl:onProperty", "owl:hasValue", "domain", "range"
+            };
+            writer.writeNext(gradableAdjectiveHeader);
+
+            for (JSONObject a : adj) {
+                String label = (String) a.get("label");
+                List senses = (List) a.get("references");
+                for (Object o : senses) {
+                    String senseVal = ((Map) o).values().stream().findFirst().orElseThrow().toString();
+                    String senseKey = ((Map) o).keySet().stream().findFirst().orElseThrow().toString().split("/")[3];
+                    String[] line = {senseKey, "verb", "masculine", label, label, label, label, label, label, "von", "", "", "", "", "", "", "", "", "", "", ""};
+                    writer.writeNext(line);
+                }
+            }
+
+        }
+    }
 
 
     private void createLemons(List<JSONObject> l, List<JSONObject> noun, List<JSONObject> verb, List<JSONObject> adj, long numberOfLemons) {

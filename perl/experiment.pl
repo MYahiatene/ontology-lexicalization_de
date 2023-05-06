@@ -3195,7 +3195,7 @@ sub identify {
     foreach my $literal (sort keys %{$literals}) {
         next if $literal eq "\"\"\@$LANGTAG";
 
-        if ($literal =~ m/\A"(.*)"\@de\Z/ or $literal =~ m/\A"(.*)"\Z/ or $literal =~ m/\A"(.*)\"\^\^<.*#langString>\Z/) {
+        if ($literal =~ m/\A"(.*)"\@de\Z/ or $literal =~ m/\A"(.*)"\Z/) { # or $literal =~ m/\A"(.*)\"\^\^<.*#langString>\Z/) {
             next if not length $literal >= 8;
             my $string = quotemeta $1;
 

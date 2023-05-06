@@ -41,6 +41,9 @@ public class GraphExtractor {
         String folder = System.getProperty("user.dir") + "/results_all_classes/result_" + clazz;
         Path classResultCSVDir = Paths.get(folder + "/results_csv/");
         String filePostFix = "_" + clazz + ".json";
+        if(clazz.isEmpty()){
+            throw new RuntimeException("Class name empty!");
+        }
         String resultFile = folder + "/result" + filePostFix;
         if (Files.notExists(Path.of(resultFile))) {
             throw new FileNotFoundException("Result file " + resultFile + " does not exist!");
@@ -96,9 +99,15 @@ public class GraphExtractor {
 
             for (JSONObject n : noun) {
                 String label = (String)n.get("label");
+                JSONArray senses = (JSONArray) n.get("references");
+                for (Object o :senses){
+                    String senseVal =((JSONObject) o ).values().stream().findFirst().orElseThrow().toString();
+                    String senseKey = ((JSONObject) o ).keySet().stream().findFirst().orElseThrow().toString().split("\\\\")[3];
+                    String[] line = {senseKey, "noun", "masculine",label , label, label, label, label, label, "von", "", "", "", "", "", "", "", "", "", "", ""};
+                    writer.writeNext(line);
+                }
 //                doc.annotation()
-                String[] line = {label, "noun", "masculine",label , label, label, label, label, label, "von", "", "", "", "", "", "", "", "", "", "", ""};
-                writer.writeNext(line);
+
             }
 
         }

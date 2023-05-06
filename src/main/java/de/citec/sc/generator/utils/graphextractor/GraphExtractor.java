@@ -86,13 +86,13 @@ public class GraphExtractor {
         );
 
         try (CSVWriter writer = new CSVWriter(new FileWriter(pathNoun.toString()))) {
-            String[] NounPPFrameHeader = {"LemonEntry", "partOfSpeech", "gender", "writtenFormNominative(singular)",
+            String[] nounPPFrameHeader = {"LemonEntry", "partOfSpeech", "gender", "writtenFormNominative(singular)",
                     "writtenFormNominative (plural)", "writtenFormSingular (accusative)", "writtenFormSingular (dative)",
                     "writtenFormSingular (genetive)", "preposition", "SyntacticFrame", "copulativeArg", "prepositionalAdjunct", "sense", "reference",
                     "domain", "range", "domain_article", "domain_written_singular", "domain_written_plural", "rangeArticle", "range_written_singular",
                     "range_written_plural"
             };
-            writer.writeNext(NounPPFrameHeader);
+            writer.writeNext(nounPPFrameHeader);
 
             for (JSONObject n : noun) {
                 String label = (String)n.get("label");

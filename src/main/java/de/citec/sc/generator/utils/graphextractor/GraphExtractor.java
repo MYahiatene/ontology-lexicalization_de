@@ -56,13 +56,13 @@ public class GraphExtractor {
             JSONArray arr = (JSONArray) ((JSONObject) obj).get("@graph");
 
             int n = arr == null ? 0 : arr.size();
-            List<JSONObject> l = IntStream.range(1, n).mapToObj(i -> (JSONObject) arr.get(i)).toList();
+            List<JSONObject> l = IntStream.range(1, n).mapToObj(i -> (JSONObject) arr.get(i)).collect(Collectors.toList());
             createLemons(l, noun, verb, adj, 0);
-            noun = noun.stream().filter(no -> !((List) no.get("references")).isEmpty()).toList();
-            verb = verb.stream().filter(ve -> !((List) ve.get("references")).isEmpty()).toList();
+            noun = noun.stream().filter(no -> !((List) no.get("references")).isEmpty()).collect(Collectors.toList());
+            verb = verb.stream().filter(ve -> !((List) ve.get("references")).isEmpty()).collect(Collectors.toList());
             adj = adj.stream().filter(ad -> !((List) ad.get("references")).isEmpty()
                     && !((List) ad.get("hasValueList")).isEmpty()
-                    && !((List) ad.get("onPropertyList")).isEmpty()).toList();
+                    && !((List) ad.get("onPropertyList")).isEmpty()).collect(Collectors.toList());
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
@@ -182,14 +182,14 @@ public class GraphExtractor {
             if (e.get("sense") instanceof String) {
                 String sense = (String) e.get("sense");
                 if (e.get("sense") != null) {
-                    List<Object> senses = l.stream().filter(x -> x.get("@id").equals(sense)).limit(numberOfLemons).map(sense2 -> sense2.get("reference")).toList();
+                    List<Object> senses = l.stream().filter(x -> x.get("@id").equals(sense)).limit(numberOfLemons).map(sense2 -> sense2.get("reference")).collect(Collectors.toList());
                     List referenceList = senses.stream().map(sense2 -> {
                         Object tmp = l.stream().filter(x -> x.get("@id").equals(sense2)).findFirst().orElse(new JSONObject()).get("reference");
                         if (sense2 == null || tmp == null) {
                             return null;
                         } else
                             return Map.of(sense2, tmp);
-                    }).toList();
+                    }).collect(Collectors.toList());
                     lemonJson.put("references", referenceList);
                     if (jsonObj != null && jsonObj.equals(NOUN)) {
                         noun.add(lemonJson);
@@ -198,8 +198,8 @@ public class GraphExtractor {
                         verb.add(lemonJson);
                     }
                     if (jsonObj != null && jsonObj.equals(ADJ)) {
-                        List<Object> hasValueList = referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("hasValue")).toList();
-                        List<Object> onPropertyList = referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("onProperty")).toList();
+                        List<Object> hasValueList = (List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("hasValue")).collect(Collectors.toList());
+                        List<Object> onPropertyList =(List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("onProperty")).collect(Collectors.toList());
                         lemonJson.put("hasValueList", hasValueList);
                         lemonJson.put("onPropertyList", onPropertyList);
                         adj.add(lemonJson);
@@ -208,13 +208,13 @@ public class GraphExtractor {
             } else {
                 JSONArray senses = (JSONArray) e.get("sense");
                 if (e.get("sense") != null) {
-                    List referenceList = senses.stream().map(sense2 -> {
+                    List referenceList =(List) senses.stream().map(sense2 -> {
                         Object tmp = l.stream().filter(x -> x.get("@id").equals(sense2)).findFirst().orElse(new JSONObject()).get("reference");
                         if (sense2 == null || tmp == null) {
                             return null;
                         } else
                             return Map.of(sense2, tmp);
-                    }).toList();
+                    }).collect(Collectors.toList());
                     lemonJson.put("references", referenceList);
                     if (jsonObj != null && jsonObj.equals(NOUN)) {
                         noun.add(lemonJson);
@@ -223,8 +223,8 @@ public class GraphExtractor {
                         verb.add(lemonJson);
                     }
                     if (jsonObj != null && jsonObj.equals(ADJ)) {
-                        List<Object> hasValueList = referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("hasValue")).toList();
-                        List<Object> onPropertyList = referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("onProperty")).toList();
+                        List<Object> hasValueList = (List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("hasValue")).collect(Collectors.toList());
+                        List<Object> onPropertyList =(List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("onProperty")).collect(Collectors.toList());
                         lemonJson.put("hasValueList", hasValueList);
                         lemonJson.put("onPropertyList", onPropertyList);
                         adj.add(lemonJson);

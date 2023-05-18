@@ -166,10 +166,10 @@ public class ResponseTransfer implements Constants {
     void lexicalizationAndLemonCreate() throws IOException, URISyntaxException {
         //String file =Files.readString(Path.of(System.getProperty("user.dir")+"/input/classes.txt"))
         //List<String> classesList = Arrays.stream(file.split("\n")).toList();
-        List<String> classesList = Arrays.asList("http://dbpedia.org/ontology/Place",
+        List<String> classesList = Arrays.asList(/*"http://dbpedia.org/ontology/Place",
                 "http://dbpedia.org/ontology/Director",
                 "http://dbpedia.org/ontology/Actor", "http://dbpedia.org/ontology/Politician",
-                "http://dbpedia.org/ontology/City");
+                "http://dbpedia.org/ontology/City",*/ "http://dbpedia.org/ontology/ProgrammingLanguage");
         ConfigLex lex = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLex.json"), ConfigLex.class);
         ConfigLemon lemon = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLemon.json"), ConfigLemon.class);
         for (String cl : classesList) {

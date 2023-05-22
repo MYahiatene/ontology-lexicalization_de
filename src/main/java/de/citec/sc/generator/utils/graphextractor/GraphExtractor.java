@@ -46,7 +46,8 @@ public class GraphExtractor {
         }
         String resultFile = folder + "/result" + filePostFix;
         if (Files.notExists(Path.of(resultFile))) {
-            throw new FileNotFoundException("Result file " + resultFile + " does not exist!");
+            System.out.println("Result file " + resultFile + " does not exist!");
+            return;
         }
         if (Files.notExists(classResultCSVDir)) {
             Files.createDirectories(classResultCSVDir);
@@ -199,7 +200,7 @@ public class GraphExtractor {
                     }
                     if (jsonObj != null && jsonObj.equals(ADJ)) {
                         List<Object> hasValueList = (List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("hasValue")).collect(Collectors.toList());
-                        List<Object> onPropertyList =(List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("onProperty")).collect(Collectors.toList());
+                        List<Object> onPropertyList = (List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("onProperty")).collect(Collectors.toList());
                         lemonJson.put("hasValueList", hasValueList);
                         lemonJson.put("onPropertyList", onPropertyList);
                         adj.add(lemonJson);
@@ -208,7 +209,7 @@ public class GraphExtractor {
             } else {
                 JSONArray senses = (JSONArray) e.get("sense");
                 if (e.get("sense") != null) {
-                    List referenceList =(List) senses.stream().map(sense2 -> {
+                    List referenceList = (List) senses.stream().map(sense2 -> {
                         Object tmp = l.stream().filter(x -> x.get("@id").equals(sense2)).findFirst().orElse(new JSONObject()).get("reference");
                         if (sense2 == null || tmp == null) {
                             return null;
@@ -224,7 +225,7 @@ public class GraphExtractor {
                     }
                     if (jsonObj != null && jsonObj.equals(ADJ)) {
                         List<Object> hasValueList = (List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("hasValue")).collect(Collectors.toList());
-                        List<Object> onPropertyList =(List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("onProperty")).collect(Collectors.toList());
+                        List<Object> onPropertyList = (List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("onProperty")).collect(Collectors.toList());
                         lemonJson.put("hasValueList", hasValueList);
                         lemonJson.put("onPropertyList", onPropertyList);
                         adj.add(lemonJson);

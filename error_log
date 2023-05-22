@@ -1,0 +1,1084 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.3)
+
+2023-05-19 13:38:10.159  INFO 3374 --- [           main] d.c.s.g.r.RestServiceApplication         : Starting RestServiceApplication v0.0.1-SNAPSHOT using Java 17.0.6 on MacYahiatene.local with PID 3374 (/Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/target/rest-service-0.0.1-SNAPSHOT.jar started by myahiatene in /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de)
+2023-05-19 13:38:10.161  INFO 3374 --- [           main] d.c.s.g.r.RestServiceApplication         : No active profile set, falling back to default profiles: default
+2023-05-19 13:38:10.712  INFO 3374 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-05-19 13:38:10.717  INFO 3374 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-19 13:38:10.718  INFO 3374 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2023-05-19 13:38:10.750  INFO 3374 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-19 13:38:10.750  INFO 3374 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 559 ms
+2023-05-19 13:38:10.870  INFO 3374 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2023-05-19 13:38:11.382  INFO 3374 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-19 13:38:11.391  INFO 3374 --- [           main] d.c.s.g.r.RestServiceApplication         : Started RestServiceApplication in 1.455 seconds (JVM running for 1.742)
+2023-05-19 13:38:14.718  INFO 3374 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-19 13:38:14.718  INFO 3374 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-19 13:38:14.718  INFO 3374 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+Reading DBpedia abstract and knowledge graph and corpus based lexicalization!!
+
+Arg # 1 : /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/
+Arg # 2 : AcademicJournal
+Arg # 3 : de
+55de10000510555450AcademicJournalAcademicJournal45551 < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputAbstract/short-abstracts_lang=de.ttl.bz2 202M
+ < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 14M
+step 1 - 100000
+step 1 - 200000
+step 1 - 300000
+step 1 - 400000
+step 1 - 500000
+step 1 - 600000
+step 1 - 700000
+step 1 - 800000
+step 1 - 900000
+step 1 - 1000000
+step 1 - 1100000
+step 1 - 1200000
+step 1 - 1300000
+step 1 - 1400000
+step 1 - 1500000
+step 1 - 1600000
+step 1 - 1700000
+step 1 - 1800000
+step 1 - 1900000
+ > /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//inter/frequent_class_to_entities-100-10000.yml
+ > /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//inter/entity_to_frequent_classes-100-10000.yml
+done with step 1. wait.
+ < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/labels_lang=de.ttl.bz2 43M
+ labels 100000
+ labels 200000
+ labels 300000
+ labels 400000
+ labels 500000
+ labels 600000
+ labels 700000
+ labels 800000
+ labels 900000
+ labels 1000000
+ labels 1100000
+ labels 1200000
+ labels 1300000
+ labels 1400000
+ labels 1500000
+ labels 1600000
+ labels 1700000
+ labels 1800000
+ labels 1900000
+ labels 2000000
+ labels 2100000
+ labels 2200000
+ labels 2300000
+ labels 2400000
+ labels 2500000
+ labels 2600000
+ labels 2700000
+ labels 2800000
+ labels 2900000
+ labels 3000000
+ labels 3100000
+ labels 3200000
+ labels 3300000
+ labels 3400000
+ labels 3500000
+ labels 3600000
+ labels 3700000
+ labels 3800000
+ labels 3900000
+ labels 4000000
+ labels 4100000
+ labels 4200000
+ labels 4300000
+ labels 4400000
+Error of the command (if any):
+
+Lexicalization process successfuly ended!!
+2023-05-19 13:40:00.860 ERROR 3374 --- [nio-8080-exec-1] d.c.s.g.restservice.ResponseTransfer     : null
+
+java.lang.Exception: NO ontology lexicalization files are found for processing. Run lexicalization process first
+	at de.citec.generator.core.ProcessCsv.generate(ProcessCsv.java:106) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.generator.core.ProcessCsv.<init>(ProcessCsv.java:93) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.ResponseTransfer.createLemon(ResponseTransfer.java:89) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.ResponseTransfer.lexicalizationAndLemonCreate(ResponseTransfer.java:181) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.SchemaController.lexicalizationAndLemonCreation(SchemaController.java:59) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:887) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1684) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-05-19 13:40:00.914 ERROR 3374 --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: Couldn't copy files from /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/result_AcademicJournal.json to /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/results_all_classes/result_AcademicJournal/result_AcademicJournal.json] with root cause
+
+java.lang.RuntimeException: Couldn't copy files from /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/result_AcademicJournal.json to /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/results_all_classes/result_AcademicJournal/result_AcademicJournal.json
+	at de.citec.sc.generator.restservice.ResponseTransfer.copyFilesToResultsFolder(ResponseTransfer.java:221) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.ResponseTransfer.lexicalizationAndLemonCreate(ResponseTransfer.java:182) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.SchemaController.lexicalizationAndLemonCreation(SchemaController.java:59) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:887) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1684) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-05-19 13:41:57.515  INFO 3374 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.3)
+
+2023-05-19 13:42:00.482  INFO 3695 --- [           main] d.c.s.g.r.RestServiceApplication         : Starting RestServiceApplication v0.0.1-SNAPSHOT using Java 17.0.6 on MacYahiatene.local with PID 3695 (/Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/target/rest-service-0.0.1-SNAPSHOT.jar started by myahiatene in /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de)
+2023-05-19 13:42:00.483  INFO 3695 --- [           main] d.c.s.g.r.RestServiceApplication         : No active profile set, falling back to default profiles: default
+2023-05-19 13:42:01.039  INFO 3695 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-05-19 13:42:01.046  INFO 3695 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-19 13:42:01.046  INFO 3695 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2023-05-19 13:42:01.078  INFO 3695 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-19 13:42:01.079  INFO 3695 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 566 ms
+2023-05-19 13:42:01.196  INFO 3695 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2023-05-19 13:42:01.329  INFO 3695 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-19 13:42:01.337  INFO 3695 --- [           main] d.c.s.g.r.RestServiceApplication         : Started RestServiceApplication in 1.067 seconds (JVM running for 1.352)
+2023-05-19 13:42:05.039  INFO 3695 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-19 13:42:05.039  INFO 3695 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-19 13:42:05.039  INFO 3695 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+Reading DBpedia abstract and knowledge graph and corpus based lexicalization!!
+
+Arg # 1 : /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/
+Arg # 2 : AcademicJournal
+Arg # 3 : de
+55de5455554AcademicJournal5AcademicJournal11051000050 < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputAbstract/short-abstracts_lang=de.ttl.bz2 202M
+ < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 14M
+step 1 - 100000
+step 1 - 200000
+step 1 - 300000
+step 1 - 400000
+step 1 - 500000
+step 1 - 600000
+step 1 - 700000
+step 1 - 800000
+step 1 - 900000
+step 1 - 1000000
+step 1 - 1100000
+step 1 - 1200000
+step 1 - 1300000
+step 1 - 1400000
+step 1 - 1500000
+step 1 - 1600000
+step 1 - 1700000
+step 1 - 1800000
+step 1 - 1900000
+ > /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//inter/frequent_class_to_entities-100-10000.yml
+ > /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//inter/entity_to_frequent_classes-100-10000.yml
+done with step 1. wait.
+ < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/labels_lang=de.ttl.bz2 43M
+ labels 100000
+ labels 200000
+ labels 300000
+ labels 400000
+ labels 500000
+ labels 600000
+ labels 700000
+ labels 800000
+ labels 900000
+ labels 1000000
+ labels 1100000
+ labels 1200000
+ labels 1300000
+ labels 1400000
+ labels 1500000
+ labels 1600000
+ labels 1700000
+ labels 1800000
+ labels 1900000
+ labels 2000000
+ labels 2100000
+ labels 2200000
+ labels 2300000
+ labels 2400000
+ labels 2500000
+ labels 2600000
+ labels 2700000
+ labels 2800000
+ labels 2900000
+ labels 3000000
+ labels 3100000
+ labels 3200000
+ labels 3300000
+ labels 3400000
+ labels 3500000
+ labels 3600000
+ labels 3700000
+ labels 3800000
+ labels 3900000
+ labels 4000000
+ labels 4100000
+ labels 4200000
+ labels 4300000
+ labels 4400000
+ anchors 100000
+ anchors 200000
+ anchors 300000
+ anchors 400000
+ anchors 500000
+ anchors 600000
+ anchors 700000
+ anchors 800000
+ anchors 900000
+ anchors 1000000
+ anchors 1100000
+ anchors 1200000
+ anchors 1300000
+ anchors 1400000
+ anchors 1500000
+ anchors 1600000
+ anchors 1700000
+ < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 326M
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 1000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 1100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 1200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 1300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 1400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 1500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 1600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 1700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 1800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 1900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 2000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 2100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 2200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 2300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 2400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 2500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 2600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 2700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 2800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 2900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 3000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 3100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 3200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 3300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 3400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 3500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 3600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 3700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 3800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 3900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 4000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 4100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 4200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 4300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 4400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 4500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 4600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 4700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 4800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 4900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 5000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 5100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 5200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 5300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 5400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 5500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 5600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 5700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 5800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 5900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 6000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 6100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 6200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 6300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 6400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 6500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 6600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 6700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 6800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 6900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 7000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 7100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 7200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 7300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 7400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 7500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 7600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 7700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 7800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 7900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 8000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 8100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 8200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 8300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 8400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 8500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 8600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 8700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 8800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 8900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 9000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 9100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 9200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 9300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 9400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 9500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 9600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 9700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 9800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 9900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 10000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 10100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 10200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 10300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 10400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 10500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 10600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 10700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 10800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 10900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 11000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 11100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 11200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 11300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 11400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 11500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 11600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 11700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 11800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 11900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 12000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 12100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 12200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 12300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 12400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 12500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 12600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 12700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 12800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 12900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 13000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 13100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 13200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 13300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 13400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 13500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 13600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 13700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 13800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 13900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 14000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 14100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 14200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 14300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 14400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 14500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 14600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 14700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 14800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 14900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 15000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 15100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 15200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 15300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 15400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 15500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 15600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 15700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 15800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 15900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 16000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 16100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 16200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 16300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 16400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 16500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 16600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 16700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 16800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 16900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 17000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 17100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 17200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 17300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 17400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 17500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 17600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 17700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 17800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 17900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 18000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 18100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 18200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 18300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 18400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 18500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 18600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 18700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 18800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 18900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 19000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 19100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 19200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 19300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 19400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 19500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 19600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 19700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 19800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 19900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 20000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 20100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 20200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 20300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 20400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 20500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 20600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 20700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 20800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 20900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 21000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 21100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 21200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 21300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 21400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 21500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 21600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 21700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 21800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 21900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 22000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 22100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 22200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 22300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 22400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 22500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 22600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 22700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 22800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 22900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 23000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 23100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 23200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 23300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 23400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 23500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 23600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 23700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 23800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 23900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 24000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 24100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 24200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 24300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 24400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 24500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 24600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 24700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 24800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 24900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 25000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 25100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 25200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 25300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 25400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 25500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 25600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 25700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 25800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 25900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 26000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 26100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 26200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 26300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 26400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 26500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 26600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 26700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 26800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 26900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 27000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 27100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 27200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 27300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 27400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 27500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 27600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 27700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 27800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 27900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 28000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 28100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 28200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 28300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 28400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 28500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 28600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 28700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 28800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 28900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 29000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 29100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 29200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 29300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 29400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 29500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 29600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 29700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 29800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 29900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 30000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 30100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 30200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 30300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 30400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 30500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 30600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 30700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 30800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 30900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 31000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 31100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 31200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 31300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 31400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 31500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 31600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 31700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 31800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 31900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 32000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 32100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 32200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 32300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 32400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 32500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 32600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 32700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 32800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 32900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 33000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 33100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 33200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 33300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 33400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 33500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 33600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 33700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 33800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 33900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 34000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 34100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 34200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 34300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 34400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 34500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 34600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 34700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 34800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 34900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 35000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 35100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 35200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 35300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 35400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 35500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 35600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 35700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 35800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 35900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 36000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 36100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 36200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 36300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 36400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 36500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 36600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 36700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 36800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 36900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 37000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 37100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 37200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 37300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 37400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 37500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 37600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 37700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 37800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 37900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 38000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 38100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 38200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 38300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 38400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 38500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 38600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 38700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 38800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 38900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 39000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 39100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 39200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 39300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputProperty/infobox-properties_lang=de.ttl.bz2 - 39400000
+ < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 45M
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 1000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 1100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 1200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 1300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 1400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 1500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 1600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 1700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 1800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 1900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 2000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 2100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 2200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 2300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 2400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 2500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 2600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 2700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 2800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 2900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 3000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 3100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 3200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 3300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 3400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 3500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 3600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 3700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 3800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 3900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 4000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 4100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 4200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 4300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 4400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 4500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 4600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 4700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 4800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 4900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-objects_lang=de.ttl.bz2 - 5000000
+ < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 78M
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 1000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 1100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 1200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 1300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 1400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 1500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 1600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 1700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 1800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 1900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 2000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 2100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 2200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 2300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 2400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 2500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 2600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 2700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 2800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 2900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 3000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 3100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 3200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 3300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 3400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 3500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 3600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 3700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 3800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 3900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 4000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 4100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 4200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 4300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 4400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 4500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 4600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 4700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 4800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 4900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 5000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 5100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 5200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 5300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 5400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 5500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 5600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 5700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 5800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 5900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 6000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 6100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 6200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 6300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 6400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 6500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 6600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 6700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 6800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 6900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 7000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 7100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 7200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 7300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 7400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 7500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 7600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 7700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 7800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 7900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 8000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 8100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 8200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 8300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 8400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 8500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 8600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 8700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 8800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 8900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/mappingbased-literals_lang=de.ttl.bz2 - 9000000
+ < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 14M
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 900000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 1000000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 1100000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 1200000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 1300000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 1400000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 1500000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 1600000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 1700000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 1800000
+step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 1900000
+done with step 2. wait.
+ < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputAbstract/short-abstracts_lang=de.ttl.bz2 202M
+step 3 - 100000
+step 3 - 200000
+step 3 - 300000
+step 3 - 400000
+step 3 - 500000
+step 3 - 600000
+step 3 - 700000
+step 3 - 800000
+step 3 - 900000
+step 3 - 1000000
+step 3 - 1100000
+step 3 - 1200000
+step 3 - 1300000
+step 3 - 1400000
+step 3 - 1500000
+step 3 - 1600000
+step 3 - 1700000
+step 3 - 1800000
+step 3 - 1900000
+step 3 - 2000000
+step 3 - 2100000
+step 3 - 2200000
+step 3 - 2300000
+done with step 3. wait.
+done with step 4. wait.
+done with step 5. wait.
+Error of the command (if any):
+
+Lexicalization process successfuly ended!!
+2023-05-19 13:57:01.974 ERROR 3695 --- [nio-8080-exec-1] d.c.s.g.restservice.ResponseTransfer     : null
+
+java.lang.Exception: NO ontology lexicalization files are found for processing. Run lexicalization process first
+	at de.citec.generator.core.ProcessCsv.generate(ProcessCsv.java:106) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.generator.core.ProcessCsv.<init>(ProcessCsv.java:93) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.ResponseTransfer.createLemon(ResponseTransfer.java:89) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.ResponseTransfer.lexicalizationAndLemonCreate(ResponseTransfer.java:181) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.SchemaController.lexicalizationAndLemonCreation(SchemaController.java:59) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:887) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1684) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-05-19 13:57:02.002 ERROR 3695 --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: Couldn't copy files from /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/result_AcademicJournal.json to /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/results_all_classes/result_AcademicJournal/result_AcademicJournal.json] with root cause
+
+java.lang.RuntimeException: Couldn't copy files from /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/result_AcademicJournal.json to /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/results_all_classes/result_AcademicJournal/result_AcademicJournal.json
+	at de.citec.sc.generator.restservice.ResponseTransfer.copyFilesToResultsFolder(ResponseTransfer.java:221) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.ResponseTransfer.lexicalizationAndLemonCreate(ResponseTransfer.java:182) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.SchemaController.lexicalizationAndLemonCreation(SchemaController.java:59) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:887) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1684) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-05-19 13:57:18.695  INFO 3695 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.3)
+
+2023-05-19 13:57:22.528  INFO 4267 --- [           main] d.c.s.g.r.RestServiceApplication         : Starting RestServiceApplication v0.0.1-SNAPSHOT using Java 17.0.6 on MacYahiatene.local with PID 4267 (/Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/target/rest-service-0.0.1-SNAPSHOT.jar started by myahiatene in /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de)
+2023-05-19 13:57:22.529  INFO 4267 --- [           main] d.c.s.g.r.RestServiceApplication         : No active profile set, falling back to default profiles: default
+2023-05-19 13:57:23.079  INFO 4267 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-05-19 13:57:23.087  INFO 4267 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-19 13:57:23.087  INFO 4267 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2023-05-19 13:57:23.121  INFO 4267 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-19 13:57:23.121  INFO 4267 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 561 ms
+2023-05-19 13:57:23.244  INFO 4267 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2023-05-19 13:57:23.383  INFO 4267 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-19 13:57:23.391  INFO 4267 --- [           main] d.c.s.g.r.RestServiceApplication         : Started RestServiceApplication in 1.087 seconds (JVM running for 1.374)
+2023-05-19 13:57:27.057  INFO 4267 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-19 13:57:27.057  INFO 4267 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-19 13:57:27.058  INFO 4267 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+Reading DBpedia abstract and knowledge graph and corpus based lexicalization!!
+
+2023-05-19 13:59:31.793  INFO 4267 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.3)
+
+2023-05-19 13:59:58.066  INFO 4470 --- [           main] d.c.s.g.r.RestServiceApplication         : Starting RestServiceApplication v0.0.1-SNAPSHOT using Java 17.0.6 on MacYahiatene.local with PID 4470 (/Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/target/rest-service-0.0.1-SNAPSHOT.jar started by myahiatene in /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de)
+2023-05-19 13:59:58.068  INFO 4470 --- [           main] d.c.s.g.r.RestServiceApplication         : No active profile set, falling back to default profiles: default
+2023-05-19 13:59:58.631  INFO 4470 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-05-19 13:59:58.638  INFO 4470 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-19 13:59:58.639  INFO 4470 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2023-05-19 13:59:58.676  INFO 4470 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-19 13:59:58.676  INFO 4470 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 578 ms
+2023-05-19 13:59:58.800  INFO 4470 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2023-05-19 13:59:58.942  INFO 4470 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-19 13:59:58.950  INFO 4470 --- [           main] d.c.s.g.r.RestServiceApplication         : Started RestServiceApplication in 1.104 seconds (JVM running for 1.384)
+2023-05-19 14:00:02.601  INFO 4470 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-19 14:00:02.601  INFO 4470 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-19 14:00:02.601  INFO 4470 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+Reading DBpedia abstract and knowledge graph and corpus based lexicalization!!
+
+2023-05-19 14:02:24.937  INFO 4470 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

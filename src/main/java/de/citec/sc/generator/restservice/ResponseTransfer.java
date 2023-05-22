@@ -171,6 +171,7 @@ public class ResponseTransfer implements Constants {
         //        "http://dbpedia.org/ontology/Director",
         //        "http://dbpedia.org/ontology/Actor", "http://dbpedia.org/ontology/Politician",
        //         "http://dbpedia.org/ontology/City",*/ "http://dbpedia.org/ontology/ProgrammingLanguage");
+        classesList.forEach(System.out::println);
         ConfigLex lex = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLex.json"), ConfigLex.class);
         ConfigLemon lemon = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLemon.json"), ConfigLemon.class);
         for (String cl : classesList) {
@@ -178,6 +179,7 @@ public class ResponseTransfer implements Constants {
             lex.setClass_url(cl);
             lexicalization(lex);
             String className = cl.split("/")[4];
+            System.out.println("classname: "+className);
             createLemon(lemon, className);
             copyFilesToResultsFolder(className);
             extractor.extract(className);
@@ -185,7 +187,7 @@ public class ResponseTransfer implements Constants {
     }
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        String cl = "http://dbpedia.org/ontology/Director";
+        String cl = "http://dbpedia.org/ontology/AcademicJournal";
         String className = cl.split("/")[4];
         System.out.println(className);
         GraphExtractor extractor = new GraphExtractor(className);
@@ -218,7 +220,8 @@ public class ResponseTransfer implements Constants {
             Files.copy(Paths.get(src), Paths.get(dest), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException(String.format("Couldn't copy files from %s to %s", src, dest));
+            System.out.println(String.format("Couldn't copy files from %s to %s", src, dest));
+            return;
         }
 
     }

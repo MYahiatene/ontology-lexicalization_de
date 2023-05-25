@@ -77,8 +77,8 @@ public class GraphExtractor {
 
     private static void writeToCsv(List<JSONObject> noun, List<JSONObject> verb, List<JSONObject> adj, String clazz) throws URISyntaxException, IOException {
         createNounPPFrame(noun, clazz);
-        //createTransitiveIntransitiveFrame(verb, clazz);
-        //createGradableAttributeAdjective(adj, clazz);
+        createTransitiveIntransitiveFrame(verb, clazz);
+        createGradableAttributeAdjective(adj, clazz);
 
     }
 
@@ -98,33 +98,29 @@ public class GraphExtractor {
             };
             writer.writeNext(nounPPFrameHeader);
             CSVExtractor csvExtractor = new CSVExtractor();
-            //System.out.println(noun.size());
-            int count = 0;
             for (JSONObject n : noun) {
-                if (count == 10) {
-                    break;
-                }
-                count++;
                 //TODO: check
                 if (n == null) {
                     continue;
                 }
                 String label = (String) n.get("label");
-                Map<String, String> contentMap = csvExtractor.getNounDataFromWiktionary(label.toUpperCase());
+                String labelUpper = label.substring(0, 1).toUpperCase() + label.substring(1);
+                Map<String, String> contentMap = csvExtractor.getNounDataFromWiktionary(labelUpper);
                 if (n.get("sense") instanceof List) {
                     List senses = (List) n.get("sense");
                     for (Object o : senses) {
                         if (o == null) {
                             continue;
                         }
-                        String[] line = {(String) o, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "von", "von", "von", "von", "von", "von", "von", "von", "von", "von", "von", "von"};
+                        String[] line = {(String) o, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "NounPPFrame", "range", "domain", "1", (String) n.get("reference"), (String) n.get("reference"), (String) n.get("reference"), "von", "von", "von", "von", "von"};
                         writer.writeNext(line);
                     }
                 } else {
                     String sense = (String) n.get("sense");
-                    String[] line = {sense, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "von", "von", "von", "von", "von", "von", "von", "von", "von", "von", "von", "von"};
+                    System.out.println(n.get("reference"));
+                    String reference = (String) ((List) n.get("reference")).get(0);
+                    String[] line = {sense, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "NounPPFrame", "range", "domain", "1", reference, reference, reference, "von", "von", "von", "von", "von"};
                     writer.writeNext(line);
-
                 }
 
             }
@@ -147,15 +143,29 @@ public class GraphExtractor {
             };
             writer.writeNext(transitiveFrameHeader);
 
+            CSVExtractor csvExtractor = new CSVExtractor();
             for (JSONObject v : verb) {
+                //TODO: check
+                if (v == null) {
+                    continue;
+                }
                 String label = (String) v.get("label");
-                List senses = (List) v.get("references");
-                for (Object o : senses) {
-                    String senseVal = ((Map) o).values().stream().findFirst().orElseThrow().toString();
-                    String senseKey = ((Map) o).keySet().stream().findFirst().orElseThrow().toString().split("/")[3];
-                    String[] line = {senseKey, "verb", "masculine", label, label, label, label, label, label, "von", "", "", "", "", "", "", "", "", "", "", ""};
+                Map<String, String> contentMap = csvExtractor.getNounDataFromWiktionary(label);
+                if (v.get("sense") instanceof List) {
+                    List senses = (List) v.get("sense");
+                    for (Object o : senses) {
+                        if (o == null) {
+                            continue;
+                        }
+                        String[] line = {(String) o, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "NounPPFrame", "range", "domain", "1", (String) v.get("reference"), (String) v.get("reference"), (String) v.get("reference"), "von", "von", "von", "von", "von"};
+                        writer.writeNext(line);
+                    }
+                } else {
+                    String sense = (String) v.get("sense");
+                    String[] line = {sense, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "NounPPFrame", "range", "domain", "1", (String) v.get("reference"), (String) v.get("reference"), (String) v.get("reference"), "von", "von", "von", "von", "von"};
                     writer.writeNext(line);
                 }
+
             }
 
         }
@@ -175,15 +185,30 @@ public class GraphExtractor {
             };
             writer.writeNext(gradableAdjectiveHeader);
 
+            CSVExtractor csvExtractor = new CSVExtractor();
             for (JSONObject a : adj) {
+                //TODO: check
+                if (a == null) {
+                    continue;
+                }
                 String label = (String) a.get("label");
-                List senses = (List) a.get("references");
-                for (Object o : senses) {
-                    String senseVal = ((Map) o).values().stream().findFirst().orElseThrow().toString();
-                    String senseKey = ((Map) o).keySet().stream().findFirst().orElseThrow().toString().split("/")[3];
-                    String[] line = {senseKey, "verb", "masculine", label, label, label, label, label, label, "von", "", "", "", "", "", "", "", "", "", "", ""};
+                String labelUpper = label.substring(0, 1).toUpperCase() + label.substring(1);
+                Map<String, String> contentMap = csvExtractor.getNounDataFromWiktionary(labelUpper);
+                if (a.get("sense") instanceof List) {
+                    List senses = (List) a.get("sense");
+                    for (Object o : senses) {
+                        if (o == null) {
+                            continue;
+                        }
+                        String[] line = {(String) o, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "NounPPFrame", "range", "domain", "1", (String) a.get("reference"), (String) a.get("reference"), (String) a.get("reference"), "von", "von", "von", "von", "von"};
+                        writer.writeNext(line);
+                    }
+                } else {
+                    String sense = (String) a.get("sense");
+                    String[] line = {sense, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "NounPPFrame", "range", "domain", "1", (String) a.get("reference"), (String) a.get("reference"), (String) a.get("reference"), "von", "von", "von", "von", "von"};
                     writer.writeNext(line);
                 }
+
             }
 
         }

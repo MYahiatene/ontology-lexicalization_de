@@ -58,12 +58,7 @@ public class GraphExtractor {
 
             int n = arr == null ? 0 : arr.size();
             List<JSONObject> l = IntStream.range(1, n).mapToObj(i -> (JSONObject) arr.get(i)).collect(Collectors.toList());
-            createLemons(l, noun, verb, adj, 0);
-            noun = noun.stream().filter(no -> !((List) no.get("references")).isEmpty()).collect(Collectors.toList());
-            verb = verb.stream().filter(ve -> !((List) ve.get("references")).isEmpty()).collect(Collectors.toList());
-            adj = adj.stream().filter(ad -> !((List) ad.get("references")).isEmpty()
-                    && !((List) ad.get("hasValueList")).isEmpty()
-                    && !((List) ad.get("onPropertyList")).isEmpty()).collect(Collectors.toList());
+            createLemons(l, noun, verb, adj, 100);
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
@@ -75,15 +70,15 @@ public class GraphExtractor {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        //System.out.println("NOUN:" + noun);
         writeToCsv(noun, verb, adj, clazz);
 
     }
 
     private static void writeToCsv(List<JSONObject> noun, List<JSONObject> verb, List<JSONObject> adj, String clazz) throws URISyntaxException, IOException {
         createNounPPFrame(noun, clazz);
-        createTransitiveIntransitiveFrame(verb, clazz);
-        createGradableAttributeAdjective(adj, clazz);
+        //createTransitiveIntransitiveFrame(verb, clazz);
+        //createGradableAttributeAdjective(adj, clazz);
 
     }
 
@@ -102,17 +97,38 @@ public class GraphExtractor {
                     "range_written_plural"
             };
             writer.writeNext(nounPPFrameHeader);
-
+            CSVExtractor csvExtractor = new CSVExtractor();
+            //System.out.println(noun.size());
+            int count = 0;
             for (JSONObject n : noun) {
-                String label = (String) n.get("label");
-                List senses = (List) n.get("references");
-                for (Object o : senses) {
-                    String senseVal = ((Map) o).values().stream().findFirst().orElseThrow().toString();
-                    String senseKey = ((Map) o).keySet().stream().findFirst().orElseThrow().toString().split("/")[3];
-                    String[] line = {senseKey, "noun", "masculine", label, label, label, label, label, label, "von", "", "", "", "", "", "", "", "", "", "", ""};
-                    writer.writeNext(line);
+                if (count == 10) {
+                    break;
                 }
+                count++;
+                //TODO: check
+                if (n == null) {
+                    continue;
+                }
+                String label = (String) n.get("label");
+                Map<String, String> contentMap = csvExtractor.getNounDataFromWiktionary(label.toUpperCase());
+                if (n.get("sense") instanceof List) {
+                    List senses = (List) n.get("sense");
+                    for (Object o : senses) {
+                        if (o == null) {
+                            continue;
+                        }
+                        String[] line = {(String) o, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "von", "von", "von", "von", "von", "von", "von", "von", "von", "von", "von", "von"};
+                        writer.writeNext(line);
+                    }
+                } else {
+                    String sense = (String) n.get("sense");
+                    String[] line = {sense, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "von", "von", "von", "von", "von", "von", "von", "von", "von", "von", "von", "von"};
+                    writer.writeNext(line);
+
+                }
+
             }
+
 
         }
     }
@@ -173,25 +189,19 @@ public class GraphExtractor {
         }
     }
 
-
+    //TODO: FIX THIS
     private void createLemons(List<JSONObject> l, List<JSONObject> noun, List<JSONObject> verb, List<JSONObject> adj, long numberOfLemons) {
         l.forEach(e -> {
-            String jsonObj = (String) e.get(POS);
-            JSONObject lemonJson = new JSONObject();
-            lemonJson.put("label", e.get("label"));
-            lemonJson.put(POS, e.get(POS));
             if (e.get("sense") instanceof String) {
+                String jsonObj = (String) e.get(POS);
+                JSONObject lemonJson = new JSONObject();
+                lemonJson.put("label", e.get("label"));
+                lemonJson.put(POS, e.get(POS));
                 String sense = (String) e.get("sense");
                 if (e.get("sense") != null) {
-                    List<Object> senses = l.stream().filter(x -> x.get("@id").equals(sense)).limit(numberOfLemons).map(sense2 -> sense2.get("reference")).collect(Collectors.toList());
-                    List referenceList = senses.stream().map(sense2 -> {
-                        Object tmp = l.stream().filter(x -> x.get("@id").equals(sense2)).findFirst().orElse(new JSONObject()).get("reference");
-                        if (sense2 == null || tmp == null) {
-                            return null;
-                        } else
-                            return Map.of(sense2, tmp);
-                    }).collect(Collectors.toList());
-                    lemonJson.put("references", referenceList);
+                    List<Object> singleReference = l.stream().filter(x -> x.get("@id").equals(sense)).map(obj -> obj.get("reference")).limit(numberOfLemons).collect(Collectors.toList());
+                    lemonJson.put("reference", singleReference);
+                    lemonJson.put("sense", sense);
                     if (jsonObj != null && jsonObj.equals(NOUN)) {
                         noun.add(lemonJson);
                     }
@@ -199,37 +209,33 @@ public class GraphExtractor {
                         verb.add(lemonJson);
                     }
                     if (jsonObj != null && jsonObj.equals(ADJ)) {
-                        List<Object> hasValueList = (List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("hasValue")).collect(Collectors.toList());
-                        List<Object> onPropertyList = (List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("onProperty")).collect(Collectors.toList());
-                        lemonJson.put("hasValueList", hasValueList);
-                        lemonJson.put("onPropertyList", onPropertyList);
                         adj.add(lemonJson);
                     }
                 }
             } else {
                 JSONArray senses = (JSONArray) e.get("sense");
-                if (e.get("sense") != null) {
-                    List referenceList = (List) senses.stream().map(sense2 -> {
-                        Object tmp = l.stream().filter(x -> x.get("@id").equals(sense2)).findFirst().orElse(new JSONObject()).get("reference");
-                        if (sense2 == null || tmp == null) {
-                            return null;
-                        } else
-                            return Map.of(sense2, tmp);
-                    }).collect(Collectors.toList());
-                    lemonJson.put("references", referenceList);
-                    if (jsonObj != null && jsonObj.equals(NOUN)) {
-                        noun.add(lemonJson);
+                if (senses != null) {
+                    for (Object sense : senses
+                    ) {
+                        JSONObject obj = new JSONObject();
+                        obj.put("sense", sense);
+                        String ref = l.stream().filter(el -> el.get("@id").equals(sense)).findFirst().get().toString();
+                        obj.put("reference", ref);
+                        obj.put("label", e.get("label"));
+                        String posTag = (String) e.get(POS);
+                        obj.put(POS, posTag);
+                        if (posTag != null && posTag.equals(NOUN)) {
+                            noun.add(obj);
+                        }
+                        if (posTag != null && posTag.equals(VERB)) {
+                            verb.add(obj);
+
+                        }
+                        if (posTag != null && posTag.equals(ADJ)) {
+                            adj.add(obj);
+                        }
                     }
-                    if (jsonObj != null && jsonObj.equals(VERB)) {
-                        verb.add(lemonJson);
-                    }
-                    if (jsonObj != null && jsonObj.equals(ADJ)) {
-                        List<Object> hasValueList = (List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("hasValue")).collect(Collectors.toList());
-                        List<Object> onPropertyList = (List<Object>) referenceList.stream().map(reference -> l.stream().filter(x -> x.get("@id").equals(reference)).findFirst().orElse(new JSONObject()).get("onProperty")).collect(Collectors.toList());
-                        lemonJson.put("hasValueList", hasValueList);
-                        lemonJson.put("onPropertyList", onPropertyList);
-                        adj.add(lemonJson);
-                    }
+
                 }
             }
         });

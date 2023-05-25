@@ -6,7 +6,7 @@ import java.net.URISyntaxException;
 public class main {
 
     public static void main(String[] args) {
-        String clazz = "AcademicJournal";
+        String clazz = "Actor";
         GraphExtractor gr = new GraphExtractor(clazz);
         gr.setClazz(clazz);
         try {

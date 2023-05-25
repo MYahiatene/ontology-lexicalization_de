@@ -7,6 +7,7 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.4.3)
 
+<<<<<<< HEAD
 2023-05-22 16:56:25.409  INFO 7066 --- [           main] d.c.s.g.r.RestServiceApplication         : Starting RestServiceApplication v0.0.1-SNAPSHOT using Java 17.0.6 on MacYahiatene.local with PID 7066 (/Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/target/rest-service-0.0.1-SNAPSHOT.jar started by myahiatene in /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de)
 2023-05-22 16:56:25.411  INFO 7066 --- [           main] d.c.s.g.r.RestServiceApplication         : No active profile set, falling back to default profiles: default
 2023-05-22 16:56:25.957  INFO 7066 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
@@ -374,12 +375,31 @@ http://dbpedia.org/ontology/WrestlingEvent
 http://dbpedia.org/ontology/Writer
 http://dbpedia.org/ontology/WrittenWork
 http://dbpedia.org/ontology/Year
+=======
+2023-05-19 13:38:10.159  INFO 3374 --- [           main] d.c.s.g.r.RestServiceApplication         : Starting RestServiceApplication v0.0.1-SNAPSHOT using Java 17.0.6 on MacYahiatene.local with PID 3374 (/Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/target/rest-service-0.0.1-SNAPSHOT.jar started by myahiatene in /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de)
+2023-05-19 13:38:10.161  INFO 3374 --- [           main] d.c.s.g.r.RestServiceApplication         : No active profile set, falling back to default profiles: default
+2023-05-19 13:38:10.712  INFO 3374 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-05-19 13:38:10.717  INFO 3374 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-19 13:38:10.718  INFO 3374 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2023-05-19 13:38:10.750  INFO 3374 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-19 13:38:10.750  INFO 3374 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 559 ms
+2023-05-19 13:38:10.870  INFO 3374 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2023-05-19 13:38:11.382  INFO 3374 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-19 13:38:11.391  INFO 3374 --- [           main] d.c.s.g.r.RestServiceApplication         : Started RestServiceApplication in 1.455 seconds (JVM running for 1.742)
+2023-05-19 13:38:14.718  INFO 3374 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-19 13:38:14.718  INFO 3374 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-19 13:38:14.718  INFO 3374 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+>>>>>>> d24593ee95a6312fa627bb4a33b4349f400eb3f9
 Reading DBpedia abstract and knowledge graph and corpus based lexicalization!!
 
 Arg # 1 : /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/
 Arg # 2 : AcademicJournal
 Arg # 3 : de
+<<<<<<< HEAD
 555555100005AcademicJournaldeAcademicJournal105445051 < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputAbstract/short-abstracts_lang=de.ttl.bz2 202M
+=======
+55de10000510555450AcademicJournalAcademicJournal45551 < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputAbstract/short-abstracts_lang=de.ttl.bz2 202M
+>>>>>>> d24593ee95a6312fa627bb4a33b4349f400eb3f9
  < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 14M
 step 1 - 100000
 step 1 - 200000
@@ -448,6 +468,7 @@ done with step 1. wait.
  labels 4200000
  labels 4300000
  labels 4400000
+<<<<<<< HEAD
  anchors 100000
  anchors 200000
  anchors 300000
@@ -1055,12 +1076,22 @@ Error of the command (if any):
 Lexicalization process successfuly ended!!
 classname: AcademicJournal
 2023-05-22 17:11:13.530 ERROR 7066 --- [nio-8080-exec-1] d.c.s.g.restservice.ResponseTransfer     : null
+=======
+Error of the command (if any):
+
+Lexicalization process successfuly ended!!
+2023-05-19 13:40:00.860 ERROR 3374 --- [nio-8080-exec-1] d.c.s.g.restservice.ResponseTransfer     : null
+>>>>>>> d24593ee95a6312fa627bb4a33b4349f400eb3f9
 
 java.lang.Exception: NO ontology lexicalization files are found for processing. Run lexicalization process first
 	at de.citec.generator.core.ProcessCsv.generate(ProcessCsv.java:106) ~[classes!/:0.0.1-SNAPSHOT]
 	at de.citec.generator.core.ProcessCsv.<init>(ProcessCsv.java:93) ~[classes!/:0.0.1-SNAPSHOT]
 	at de.citec.sc.generator.restservice.ResponseTransfer.createLemon(ResponseTransfer.java:89) ~[classes!/:0.0.1-SNAPSHOT]
+<<<<<<< HEAD
 	at de.citec.sc.generator.restservice.ResponseTransfer.lexicalizationAndLemonCreate(ResponseTransfer.java:183) ~[classes!/:0.0.1-SNAPSHOT]
+=======
+	at de.citec.sc.generator.restservice.ResponseTransfer.lexicalizationAndLemonCreate(ResponseTransfer.java:181) ~[classes!/:0.0.1-SNAPSHOT]
+>>>>>>> d24593ee95a6312fa627bb4a33b4349f400eb3f9
 	at de.citec.sc.generator.restservice.SchemaController.lexicalizationAndLemonCreation(SchemaController.java:59) ~[classes!/:0.0.1-SNAPSHOT]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
@@ -1113,6 +1144,7 @@ java.lang.Exception: NO ontology lexicalization files are found for processing. 
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
 	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
 
+<<<<<<< HEAD
 Couldn't copy files from /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/result_AcademicJournal.json to /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/results_all_classes/result_AcademicJournal/result_AcademicJournal.json
 Result file /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/results_all_classes/result_AcademicJournal/result_AcademicJournal.json does not exist!
 Reading DBpedia abstract and knowledge graph and corpus based lexicalization!!
@@ -4251,6 +4283,114 @@ class1 > http://dbpedia.org/ontology/Actor
 class1 > http://dbpedia.org/ontology/Actor
 c http://dbpedia.org/ontology/Actor
 class2 > http://dbpedia.org/ontology/Actor
+=======
+2023-05-19 13:40:00.914 ERROR 3374 --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: Couldn't copy files from /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/result_AcademicJournal.json to /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/results_all_classes/result_AcademicJournal/result_AcademicJournal.json] with root cause
+
+java.lang.RuntimeException: Couldn't copy files from /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/result_AcademicJournal.json to /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/results_all_classes/result_AcademicJournal/result_AcademicJournal.json
+	at de.citec.sc.generator.restservice.ResponseTransfer.copyFilesToResultsFolder(ResponseTransfer.java:221) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.ResponseTransfer.lexicalizationAndLemonCreate(ResponseTransfer.java:182) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.SchemaController.lexicalizationAndLemonCreation(SchemaController.java:59) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:887) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1684) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-05-19 13:41:57.515  INFO 3374 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.3)
+
+2023-05-19 13:42:00.482  INFO 3695 --- [           main] d.c.s.g.r.RestServiceApplication         : Starting RestServiceApplication v0.0.1-SNAPSHOT using Java 17.0.6 on MacYahiatene.local with PID 3695 (/Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/target/rest-service-0.0.1-SNAPSHOT.jar started by myahiatene in /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de)
+2023-05-19 13:42:00.483  INFO 3695 --- [           main] d.c.s.g.r.RestServiceApplication         : No active profile set, falling back to default profiles: default
+2023-05-19 13:42:01.039  INFO 3695 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-05-19 13:42:01.046  INFO 3695 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-19 13:42:01.046  INFO 3695 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2023-05-19 13:42:01.078  INFO 3695 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-19 13:42:01.079  INFO 3695 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 566 ms
+2023-05-19 13:42:01.196  INFO 3695 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2023-05-19 13:42:01.329  INFO 3695 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-19 13:42:01.337  INFO 3695 --- [           main] d.c.s.g.r.RestServiceApplication         : Started RestServiceApplication in 1.067 seconds (JVM running for 1.352)
+2023-05-19 13:42:05.039  INFO 3695 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-19 13:42:05.039  INFO 3695 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-19 13:42:05.039  INFO 3695 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+Reading DBpedia abstract and knowledge graph and corpus based lexicalization!!
+
+Arg # 1 : /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/
+Arg # 2 : AcademicJournal
+Arg # 3 : de
+55de5455554AcademicJournal5AcademicJournal11051000050 < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputAbstract/short-abstracts_lang=de.ttl.bz2 202M
+ < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 14M
+step 1 - 100000
+step 1 - 200000
+step 1 - 300000
+step 1 - 400000
+step 1 - 500000
+step 1 - 600000
+step 1 - 700000
+step 1 - 800000
+step 1 - 900000
+step 1 - 1000000
+step 1 - 1100000
+step 1 - 1200000
+step 1 - 1300000
+step 1 - 1400000
+step 1 - 1500000
+step 1 - 1600000
+step 1 - 1700000
+step 1 - 1800000
+step 1 - 1900000
+>>>>>>> d24593ee95a6312fa627bb4a33b4349f400eb3f9
  > /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//inter/frequent_class_to_entities-100-10000.yml
  > /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//inter/entity_to_frequent_classes-100-10000.yml
 done with step 1. wait.
@@ -4875,6 +5015,7 @@ step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//in
 step 2 - /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputSemantic/instance-types_lang=de_specific.ttl.bz2 - 1900000
 done with step 2. wait.
  < /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//input/inputAbstract/short-abstracts_lang=de.ttl.bz2 202M
+<<<<<<< HEAD
 "Aaron Hill (Schauspieler)"@de > /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//inter/data_per_entity/r%29/dbr-Aaron_Hill_%28Schauspieler%29-propertypatterns-100-10000-4-10-4-5-50.yml
  > /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//inter/data_per_entity/r%29/dbr-Aaron_Hill_%28Schauspieler%29-patterns-100-10000-4.yml
 "Aaron Keller (Schauspieler)"@de > /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//inter/data_per_entity/r%29/dbr-Aaron_Keller_%28Schauspieler%29-propertypatterns-100-10000-4-10-4-5-50.yml
@@ -11058,10 +11199,38 @@ dbo-Actor sub predict_l_for_o_given_p and predict_p_for_o_given_l ...
 dbo-Actor sub predict_localized_l_for_o_given_p and predict_p_for_o_given_localized_l ...
  > /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//results/rules-predict_localized_l_for_o_given_p-dbo-Actor-100-10000-10-4-5-5-50-5-5-5.csv
  > /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de//results/rules-predict_p_for_o_given_localized_l-dbo-Actor-100-10000-10-4-5-5-50-5-5-5.csv
+=======
+step 3 - 100000
+step 3 - 200000
+step 3 - 300000
+step 3 - 400000
+step 3 - 500000
+step 3 - 600000
+step 3 - 700000
+step 3 - 800000
+step 3 - 900000
+step 3 - 1000000
+step 3 - 1100000
+step 3 - 1200000
+step 3 - 1300000
+step 3 - 1400000
+step 3 - 1500000
+step 3 - 1600000
+step 3 - 1700000
+step 3 - 1800000
+step 3 - 1900000
+step 3 - 2000000
+step 3 - 2100000
+step 3 - 2200000
+step 3 - 2300000
+done with step 3. wait.
+done with step 4. wait.
+>>>>>>> d24593ee95a6312fa627bb4a33b4349f400eb3f9
 done with step 5. wait.
 Error of the command (if any):
 
 Lexicalization process successfuly ended!!
+<<<<<<< HEAD
 classname: Actor
 2023-05-22 17:27:54.686  INFO 7066 --- [nio-8080-exec-1] d.c.sc.generator.analyzer.PosAnalyzer    : Processing CSV: 1/20
 2023-05-22 17:27:54.686  INFO 7066 --- [nio-8080-exec-1] d.c.sc.generator.analyzer.PosAnalyzer    : Creating Lemon from association rules! This might take a while!
@@ -11315,3 +11484,172 @@ classname: Actor
 2023-05-22 17:44:50.806  INFO 7066 --- [nio-8080-exec-1] d.c.sc.generator.analyzer.PosAnalyzer    : Count: 234000---- Text: "war französische"
 2023-05-22 17:44:56.290  INFO 7066 --- [nio-8080-exec-1] d.c.sc.generator.analyzer.PosAnalyzer    : Count: 235000---- Text: "Hills Kalifornien"
 2023-05-22 17:45:01.474  INFO 7066 --- [nio-8080-exec-1] d.c.sc.generator.analyzer.PosAnalyzer    : Count: 236000---- Text: Jackson
+=======
+2023-05-19 13:57:01.974 ERROR 3695 --- [nio-8080-exec-1] d.c.s.g.restservice.ResponseTransfer     : null
+
+java.lang.Exception: NO ontology lexicalization files are found for processing. Run lexicalization process first
+	at de.citec.generator.core.ProcessCsv.generate(ProcessCsv.java:106) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.generator.core.ProcessCsv.<init>(ProcessCsv.java:93) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.ResponseTransfer.createLemon(ResponseTransfer.java:89) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.ResponseTransfer.lexicalizationAndLemonCreate(ResponseTransfer.java:181) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.SchemaController.lexicalizationAndLemonCreation(SchemaController.java:59) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:887) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1684) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-05-19 13:57:02.002 ERROR 3695 --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: Couldn't copy files from /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/result_AcademicJournal.json to /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/results_all_classes/result_AcademicJournal/result_AcademicJournal.json] with root cause
+
+java.lang.RuntimeException: Couldn't copy files from /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/result_AcademicJournal.json to /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/results_all_classes/result_AcademicJournal/result_AcademicJournal.json
+	at de.citec.sc.generator.restservice.ResponseTransfer.copyFilesToResultsFolder(ResponseTransfer.java:221) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.ResponseTransfer.lexicalizationAndLemonCreate(ResponseTransfer.java:182) ~[classes!/:0.0.1-SNAPSHOT]
+	at de.citec.sc.generator.restservice.SchemaController.lexicalizationAndLemonCreation(SchemaController.java:59) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.4.jar!/:5.3.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.43.jar!/:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar!/:5.3.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:887) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1684) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.43.jar!/:9.0.43]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-05-19 13:57:18.695  INFO 3695 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.3)
+
+2023-05-19 13:57:22.528  INFO 4267 --- [           main] d.c.s.g.r.RestServiceApplication         : Starting RestServiceApplication v0.0.1-SNAPSHOT using Java 17.0.6 on MacYahiatene.local with PID 4267 (/Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/target/rest-service-0.0.1-SNAPSHOT.jar started by myahiatene in /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de)
+2023-05-19 13:57:22.529  INFO 4267 --- [           main] d.c.s.g.r.RestServiceApplication         : No active profile set, falling back to default profiles: default
+2023-05-19 13:57:23.079  INFO 4267 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-05-19 13:57:23.087  INFO 4267 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-19 13:57:23.087  INFO 4267 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2023-05-19 13:57:23.121  INFO 4267 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-19 13:57:23.121  INFO 4267 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 561 ms
+2023-05-19 13:57:23.244  INFO 4267 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2023-05-19 13:57:23.383  INFO 4267 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-19 13:57:23.391  INFO 4267 --- [           main] d.c.s.g.r.RestServiceApplication         : Started RestServiceApplication in 1.087 seconds (JVM running for 1.374)
+2023-05-19 13:57:27.057  INFO 4267 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-19 13:57:27.057  INFO 4267 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-19 13:57:27.058  INFO 4267 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+Reading DBpedia abstract and knowledge graph and corpus based lexicalization!!
+
+2023-05-19 13:59:31.793  INFO 4267 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.3)
+
+2023-05-19 13:59:58.066  INFO 4470 --- [           main] d.c.s.g.r.RestServiceApplication         : Starting RestServiceApplication v0.0.1-SNAPSHOT using Java 17.0.6 on MacYahiatene.local with PID 4470 (/Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/target/rest-service-0.0.1-SNAPSHOT.jar started by myahiatene in /Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de)
+2023-05-19 13:59:58.068  INFO 4470 --- [           main] d.c.s.g.r.RestServiceApplication         : No active profile set, falling back to default profiles: default
+2023-05-19 13:59:58.631  INFO 4470 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-05-19 13:59:58.638  INFO 4470 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-19 13:59:58.639  INFO 4470 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2023-05-19 13:59:58.676  INFO 4470 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-19 13:59:58.676  INFO 4470 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 578 ms
+2023-05-19 13:59:58.800  INFO 4470 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2023-05-19 13:59:58.942  INFO 4470 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-19 13:59:58.950  INFO 4470 --- [           main] d.c.s.g.r.RestServiceApplication         : Started RestServiceApplication in 1.104 seconds (JVM running for 1.384)
+2023-05-19 14:00:02.601  INFO 4470 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-19 14:00:02.601  INFO 4470 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-19 14:00:02.601  INFO 4470 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+Reading DBpedia abstract and knowledge graph and corpus based lexicalization!!
+
+2023-05-19 14:02:24.937  INFO 4470 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+>>>>>>> d24593ee95a6312fa627bb4a33b4349f400eb3f9

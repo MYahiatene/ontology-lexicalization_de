@@ -175,14 +175,14 @@ public class ResponseTransfer implements Constants {
         ConfigLex lex = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLex.json"), ConfigLex.class);
         ConfigLemon lemon = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLemon.json"), ConfigLemon.class);
         for (String cl : classesList) {
-            GraphExtractor extractor = new GraphExtractor(cl);
+            //GraphExtractor extractor = new GraphExtractor(cl);
             lex.setClass_url(cl);
             lexicalization(lex);
             String className = cl.split("/")[4];
             System.out.println("classname: "+className);
             createLemon(lemon, className);
             copyFilesToResultsFolder(className);
-            extractor.extract(className);
+            //extractor.extract(className);
         }
     }
 

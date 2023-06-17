@@ -158,12 +158,12 @@
     "@id" : "http://localhost:8080/RestrictionClass_1950er",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_1960er",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_1970er",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -183,12 +183,12 @@
     "@id" : "http://localhost:8080/RestrictionClass_aktiv",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://www.w3.org/2002/07/owl#sameAs" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_amerikanischen",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/geburtsort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_amerikanischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -223,7 +223,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_bekannteste",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_bekanntesten",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -233,7 +233,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_beste",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://www.w3.org/2002/07/owl#sameAs" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_bester",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -248,27 +248,27 @@
     "@id" : "http://localhost:8080/RestrictionClass_brgerlich",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_britischamerikanische",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://www.w3.org/2002/07/owl#sameAs" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_britische",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_britischen",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_britischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_chinesisch",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -288,17 +288,12 @@
     "@id" : "http://localhost:8080/RestrictionClass_deutsche",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://de.dbpedia.org/property/url" ]
-  }, {
-    "@id" : "http://localhost:8080/RestrictionClass_deutschen",
-    "@type" : "http://www.w3.org/2002/07/owl#Restriction",
-    "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_deutscher",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://de.dbpedia.org/property/url" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_deutschsprachigen",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -313,7 +308,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_dnischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_ehemalige",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -353,22 +348,22 @@
     "@id" : "http://localhost:8080/RestrictionClass_franzsischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_frhen",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_geborene",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_gebrtig",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_gelegentlich",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -378,17 +373,17 @@
     "@id" : "http://localhost:8080/RestrictionClass_grere",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://www.w3.org/2002/07/owl#sameAs" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_grten",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://www.w3.org/2002/07/owl#sameAs" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_hauptschlich",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_hufig",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -418,7 +413,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_irischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_italienische",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -433,7 +428,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_italienischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_kanadische",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -443,7 +438,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_kanadischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_kubanischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -458,7 +453,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_mexikanischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_neuseelndischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -478,7 +473,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_populrsten",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://www.w3.org/2002/07/owl#sameAs" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_regelmig",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -498,7 +493,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_schwedische",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://www.w3.org/2002/07/owl#sameAs" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_sdafrikanischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -513,7 +508,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_spanische",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://www.w3.org/2002/07/owl#sameAs" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_spanischen",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -523,7 +518,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_spanischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_spten",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -538,27 +533,27 @@
     "@id" : "http://localhost:8080/RestrictionClass_sterreichischdeutscher",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_sterreichische",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_sterreichischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_tschechischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_ttig",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_ungarischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -568,7 +563,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_usamerikanische",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_usamerikanischen",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -578,7 +573,7 @@
     "@id" : "http://localhost:8080/RestrictionClass_usamerikanischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_verheiratet",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
@@ -598,12 +593,12 @@
     "@id" : "http://localhost:8080/RestrictionClass_walisischer",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://www.w3.org/2002/07/owl#sameAs" ]
+    "onProperty" : [ "p", "http://dbpedia.org/ontology/birthPlace" ]
   }, {
     "@id" : "http://localhost:8080/RestrictionClass_zahlreichen",
     "@type" : "http://www.w3.org/2002/07/owl#Restriction",
     "hasValue" : "http://dbpedia.org/ontology/Actor",
-    "onProperty" : [ "p", "http://dbpedia.org/ontology/deathPlace" ]
+    "onProperty" : [ "p", "http://de.dbpedia.org/property/sterbeort" ]
   }, {
     "@id" : "http://localhost:8080/abitur",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
@@ -3108,18 +3103,15 @@
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",
     "canonicalForm" : "http://localhost:8080/deutschen#CanonicalForm",
     "language" : "de",
-    "sense" : [ "http://localhost:8080/deutschen#Sense2", "http://localhost:8080/deutschen#Sense1" ],
-    "partOfSpeech" : "http://www.lexinfo.net/ontology/2.0/lexinfo#/adjective",
+    "sense" : "http://localhost:8080/deutschen#Sense1",
+    "partOfSpeech" : "http://www.lexinfo.net/ontology/2.0/lexinfo#/noun",
     "label" : "deutschen"
   }, {
     "@id" : "http://localhost:8080/deutschen#CanonicalForm",
     "writtenRep" : "deutschen@de"
   }, {
     "@id" : "http://localhost:8080/deutschen#Sense1",
-    "reference" : "http://localhost:8080/RestrictionClass_deutschen"
-  }, {
-    "@id" : "http://localhost:8080/deutschen#Sense2",
-    "reference" : "http://localhost:8080/RestrictionClass_deutschen"
+    "reference" : "http://dbpedia.org/ontology/Actor"
   }, {
     "@id" : "http://localhost:8080/deutscher",
     "@type" : "http://lemon-model.net/lemon#LexicalEntry",

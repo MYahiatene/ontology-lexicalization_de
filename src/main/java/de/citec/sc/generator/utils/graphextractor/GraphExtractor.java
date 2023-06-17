@@ -5,6 +5,7 @@ import com.opencsv.CSVWriter;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.apache.commons.text.StringEscapeUtils;
 import org.apache.jena.base.Sys;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -37,6 +38,18 @@ public class GraphExtractor {
         List<JSONObject> adj = new ArrayList<>();
         List<JSONObject> verb = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
+        String domainAndRangePath = System.getProperty("user.dir") + "/input/domainAndRange.csv";
+        List<List<String>> records = new ArrayList<>();
+        Map<String, List<String>> domainAndRange = new HashMap<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(domainAndRangePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                List<String> tmpList = Arrays.asList(values);
+                domainAndRange.put(tmpList.get(0), tmpList.subList(1, tmpList.size()));
+            }
+        }
+        System.out.println("DOMAINANDRANGE: " + domainAndRange);
         this.clazz = clazz;
         String folder = System.getProperty("user.dir") + "/results_all_classes/result_" + clazz;
         Path classResultCSVDir = Paths.get(folder + "/results_csv/");
@@ -55,7 +68,6 @@ public class GraphExtractor {
         try (FileReader reader = new FileReader(resultFile, StandardCharsets.UTF_8)) {
             Object obj = jsonParser.parse(reader);
             JSONArray arr = (JSONArray) ((JSONObject) obj).get("@graph");
-
             int n = arr == null ? 0 : arr.size();
             List<JSONObject> l = IntStream.range(1, n).mapToObj(i -> (JSONObject) arr.get(i)).collect(Collectors.toList());
             createLemons(l, noun, verb, adj, 100);
@@ -106,6 +118,8 @@ public class GraphExtractor {
                 String label = (String) n.get("label");
                 String labelUpper = label.substring(0, 1).toUpperCase() + label.substring(1);
                 Map<String, String> contentMap = csvExtractor.getNounDataFromWiktionary(labelUpper);
+
+
                 if (n.get("sense") instanceof List) {
                     List senses = (List) n.get("sense");
                     for (Object o : senses) {
@@ -117,11 +131,11 @@ public class GraphExtractor {
                     }
                 } else {
                     String sense = (String) n.get("sense");
-                    System.out.println(n.get("reference"));
-                    String reference = (String) ((List) n.get("reference")).get(0);
+                    String reference = n.get("reference") instanceof String ? StringEscapeUtils.unescapeJson("http:"+((String) n.get("reference")).split(",")[0].split(":")[2].replace("\"", "")) : (String) ((List) n.get("reference")).get(0);
                     String[] line = {sense, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "NounPPFrame", "range", "domain", "1", reference, reference, reference, "von", "von", "von", "von", "von"};
                     writer.writeNext(line);
                 }
+
 
             }
 
@@ -162,7 +176,8 @@ public class GraphExtractor {
                     }
                 } else {
                     String sense = (String) v.get("sense");
-                    String[] line = {sense, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "NounPPFrame", "range", "domain", "1", (String) v.get("reference"), (String) v.get("reference"), (String) v.get("reference"), "von", "von", "von", "von", "von"};
+                    String reference = v.get("reference") instanceof String ? StringEscapeUtils.unescapeJson("http:"+((String) v.get("reference")).split(",")[0].split(":")[2].replace("\"", "")) : (String) ((List) v.get("reference")).get(0);
+                    String[] line = {sense, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "NounPPFrame", "range", "domain", "1", reference, reference, reference, "von", "von", "von", "von", "von"};
                     writer.writeNext(line);
                 }
 
@@ -205,7 +220,8 @@ public class GraphExtractor {
                     }
                 } else {
                     String sense = (String) a.get("sense");
-                    String[] line = {sense, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "NounPPFrame", "range", "domain", "1", (String) a.get("reference"), (String) a.get("reference"), (String) a.get("reference"), "von", "von", "von", "von", "von"};
+                    String reference = a.get("reference") instanceof String ? StringEscapeUtils.unescapeJson("http:"+((String) a.get("reference")).split(",")[0].split(":")[2].replace("\"", "")) : (String) ((List) a.get("reference")).get(0);
+                    String[] line = {sense, "noun", contentMap.get("Genus"), contentMap.get("Nominativ Singular"), contentMap.get("Nominativ Plural"), contentMap.get("Akkusativ Singular"), contentMap.get("Dativ Singular"), contentMap.get("Genetiv Singular"), "von", "NounPPFrame", "range", "domain", "1", reference, reference, reference, "von", "von", "von", "von", "von"};
                     writer.writeNext(line);
                 }
 

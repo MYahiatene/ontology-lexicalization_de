@@ -17,9 +17,10 @@ input_old/
 .idea/**/dictionaries
 .idea/**/shelf
 # *.bin
-
+results_all_classes/
 # AWS User-specific
 .idea/**/aws.xml
+
 
 # Generated files
 .idea/**/contentModel.xml
@@ -103,3 +104,7 @@ test.pl
 *.jar
 .idea/
 .DS_Store
+*.json
+#results_all_classes_proccessed/*
+node_modules/
+*.xml

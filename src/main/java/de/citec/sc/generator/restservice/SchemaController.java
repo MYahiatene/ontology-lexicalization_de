@@ -42,7 +42,7 @@ public class SchemaController {
     @RequestMapping(path = "/createLemon", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String createLemon(@RequestBody ConfigLemon conf) {
-        return new ResponseTransfer().createLemon(conf, "");
+        return new ResponseTransfer().createLemon(conf, "Country");
     }
 
     @RequestMapping(path = "/searchPattern", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

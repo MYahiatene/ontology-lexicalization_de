@@ -86,9 +86,9 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
 
     private void writeFileLemon(String prediction, Map<String, List<LexiconUnit>> posTaggedLex) {
         String posLexInfo = null, givenPosTag = null;
-            createLemonEntry(posTaggedLex, ADJECTIVE);
-            createLemonEntry(posTaggedLex, VERB);
-            createLemonEntry(posTaggedLex, NOUN);
+        createLemonEntry(posTaggedLex, ADJECTIVE);
+        createLemonEntry(posTaggedLex, VERB);
+        createLemonEntry(posTaggedLex, NOUN);
 
     }
 
@@ -175,14 +175,14 @@ public class LemonCreator implements PredictionPatterns, LemonConstants, TextAna
         Sense sense = new Sense();
         Boolean flag = false;
         if (posTag.contains(ADJECTIVE)) {
-            flag = this.isValidReference(lineInfo.getObjectOriginal());
+            flag = true;//this.isValidReference(lineInfo.getObjectOriginal());
 
             Reference ref = new Restriction(baseUri + "RestrictionClass" + "_" + writtenForm,
                     lineInfo.getObjectOriginal(),
                     lineInfo.getPredicateOriginal());
             sense.setReference(ref);
         } else if (posTag.contains(NOUN) || posTag.contains(VERB)) {
-            flag = this.isValidReference(lineInfo.getObjectOriginal());
+            flag = true;//this.isValidReference(lineInfo.getObjectOriginal());
             Reference ref = new SimpleReference(lineInfo.getObjectOriginal());
             sense.setReference(ref);
         }

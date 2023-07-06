@@ -114,25 +114,16 @@ public class ResponseTransfer implements Constants {
     }
 
 
-    private void initializeLang() {
-        // todo: lang independent
-        RestTemplate template = new RestTemplate();
-        template.getForEntity("http://nlp/de", String.class);
-        //template.getForEntity("http://0.0.0.0:80/de", String.class);
-    }
-
 
     private String writeJsonLDtoString(Model model, String fileName) throws IOException {
 
         String modelToString = RDFWriterBuilder.create().source(model)
                 .lang(Lang.JSONLD).asString();
         try (FileOutputStream fos = new FileOutputStream(fileName)) {
-            //todo: check encoding probably model or serializer in the step before breaks encoding
             fos.write(modelToString.getBytes(ISO_8859_1));
         } catch (IOException e) {
             Logger.getLogger(ResponseTransfer.class.getName()).log(Level.SEVERE, null, e);
         }
-        //todo: check encoding probably model or serializer in the step before breaks encoding
         return new String(modelToString.getBytes(ISO_8859_1));
     }
 
@@ -165,12 +156,55 @@ public class ResponseTransfer implements Constants {
 
 
     void lexicalizationAndLemonCreate() throws IOException, URISyntaxException {
-        String file =Files.readString(Path.of(System.getProperty("user.dir")+"/input/classes.txt"));
-        List<String> classesList = Arrays.stream(file.split("\n")).collect(Collectors.toList());
-        //List<String> classesList = Arrays.asList(/*"http://dbpedia.org/ontology/Place",
-        //        "http://dbpedia.org/ontology/Director",
-        //        "http://dbpedia.org/ontology/Actor", "http://dbpedia.org/ontology/Politician",
-       //         "http://dbpedia.org/ontology/City",*/ "http://dbpedia.org/ontology/ProgrammingLanguage");
+        String file = Files.readString(Path.of(System.getProperty("user.dir") + "/input/classes.txt"));
+        //List<String> classesList = Arrays.stream(file.split("\n")).collect(Collectors.toList());
+        List<String> classesList = Arrays.asList(
+                "http://dbpedia.org/ontology/SportsEvent",
+                "http://dbpedia.org/ontology/SportsLeague",
+                "http://dbpedia.org/ontology/SportsTeam",
+                "http://dbpedia.org/ontology/SportsTeamMember",
+                "http://dbpedia.org/ontology/SquashPlayer",
+                "http://dbpedia.org/ontology/Stadium",
+                "http://dbpedia.org/ontology/Star",
+                "http://dbpedia.org/ontology/Station",
+                "http://dbpedia.org/ontology/SumoWrestler",
+                "http://dbpedia.org/ontology/SupremeCourtOfTheUnitedStatesCase",
+                "http://dbpedia.org/ontology/Surname",
+                "http://dbpedia.org/ontology/Swimmer",
+                "http://dbpedia.org/ontology/TableTennisPlayer",
+                "http://dbpedia.org/ontology/TelevisionEpisode",
+                "http://dbpedia.org/ontology/TelevisionSeason",
+                "http://dbpedia.org/ontology/TelevisionShow",
+                "http://dbpedia.org/ontology/TelevisionStation",
+                "http://dbpedia.org/ontology/TennisPlayer",
+                "http://dbpedia.org/ontology/TennisTournament",
+                "http://dbpedia.org/ontology/Theatre",
+                "http://dbpedia.org/ontology/TopLevelDomain",
+                "http://dbpedia.org/ontology/Town",
+                "http://dbpedia.org/ontology/TradeUnion",
+                "http://dbpedia.org/ontology/Train",
+                "http://dbpedia.org/ontology/Tunnel",
+                "http://dbpedia.org/ontology/University",
+                "http://dbpedia.org/ontology/Vein",
+                "http://dbpedia.org/ontology/Venue",
+                "http://dbpedia.org/ontology/VideoGame",
+                "http://dbpedia.org/ontology/Village",
+                "http://dbpedia.org/ontology/VoiceActor",
+                "http://dbpedia.org/ontology/Volcano",
+                "http://dbpedia.org/ontology/VolleyballCoach",
+                "http://dbpedia.org/ontology/VolleyballLeague",
+                "http://dbpedia.org/ontology/VolleyballPlayer",
+                "http://dbpedia.org/ontology/Weapon",
+                "http://dbpedia.org/ontology/Website",
+                "http://dbpedia.org/ontology/WineRegion",
+                "http://dbpedia.org/ontology/Winery",
+                "http://dbpedia.org/ontology/WomensTennisAssociationTournament",
+                "http://dbpedia.org/ontology/WorldHeritageSite",
+                "http://dbpedia.org/ontology/Wrestler",
+                "http://dbpedia.org/ontology/WrestlingEvent",
+                "http://dbpedia.org/ontology/Writer",
+                "http://dbpedia.org/ontology/WrittenWork",
+                "http://dbpedia.org/ontology/Year");
         classesList.forEach(System.out::println);
         ConfigLex lex = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLex.json"), ConfigLex.class);
         ConfigLemon lemon = new ObjectMapper().readValue(new File(System.getProperty("user.dir") + "/inputLemon.json"), ConfigLemon.class);
@@ -179,7 +213,7 @@ public class ResponseTransfer implements Constants {
             lex.setClass_url(cl);
             lexicalization(lex);
             String className = cl.split("/")[4];
-            System.out.println("classname: "+className);
+            System.out.println("classname: " + className);
             createLemon(lemon, className);
             copyFilesToResultsFolder(className);
             //extractor.extract(className);
@@ -190,17 +224,17 @@ public class ResponseTransfer implements Constants {
         String cl = "http://dbpedia.org/ontology/AcademicJournal";
         String className = cl.split("/")[4];
         System.out.println(className);
-        GraphExtractor extractor = new GraphExtractor(className);
-        extractor.setClazz(className);
+        //GraphExtractor extractor = new GraphExtractor(className);
+        //extractor.setClazz(className);
         copyFilesToResultsFolder(className);
-        extractor.extract("Director");
+        //extractor.extract("Director");
     }
 
     static void copyFilesToResultsFolder(String className) throws IOException {
         String workingDirectory = System.getProperty("user.dir");
         Path source = Paths.get(workingDirectory + "/results/");
         Path destination = Paths.get(workingDirectory + "/results_all_classes/" + "result_" + className + "/results/");
-        String postfix = "_" + className + ".json";
+        // String postfix = "_" + className + ".json";
         if (!Files.isDirectory(destination)) {
             Files.createDirectories(destination);
         }
@@ -214,15 +248,15 @@ public class ResponseTransfer implements Constants {
 
 
         });
-        String src = workingDirectory + "/result" + postfix;
-        String dest = workingDirectory + "/results_all_classes/" + "result_" + className + "/result" + postfix;
-        try {
-            Files.copy(Paths.get(src), Paths.get(dest), StandardCopyOption.REPLACE_EXISTING);
+        //String src = workingDirectory + "/result" + postfix;
+        //String dest = workingDirectory + "/results_all_classes/" + "result_" + className + "/result" + postfix;
+       /* try {
+            // Files.copy(Paths.get(src), Paths.get(dest), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println(String.format("Couldn't copy files from %s to %s", src, dest));
+            // System.out.println(String.format("Couldn't copy files from %s to %s", src, dest));
             return;
-        }
+        }*/
 
     }
 

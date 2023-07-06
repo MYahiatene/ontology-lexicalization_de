@@ -1,4 +1,18 @@
+import bz2
 import os
+import shutil
+import glob
+import bz2
+
+csv_files = glob.glob(
+  '/Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/results_all_classes_processed/result_Actor/results/rules-predict_l_for_[o|s]_given_p-dbo-Actor-100-10000-4-5-5-5-5.csv.bz2')
+
+print(csv_files)
+for file in csv_files:
+  with bz2.open(file, mode='rt', encoding='utf-8') as f:
+
+
+'''mport os
 import shutil
 import pandas as pd
 from pandas.errors import EmptyDataError
@@ -20,7 +34,7 @@ def read_csv(class_dir, word_type_dir, skip_header):
 
 
 dump_file_path = "/Users/myahiatene/Desktop/results_all_classes_processed/kaikki.org-dictionary-German.json"
-
+'''
 # download link https://kaikki.org/dictionary/German/index.html
 
 """lst = []
@@ -93,7 +107,7 @@ with open(dump_file_path, "rb") as f:
     except Exception:
       None"""
 
-for dir in subDir:
+'''for dir in subDir:
   srcDir = path + dir + "/" + "new_" + dir + "/"
   destDir = '/Users/myahiatene/Desktop/results_all_classes_processed/new_results_all_classes' + "/" + srcDir.split('/')[
     -2]
@@ -102,3 +116,13 @@ for dir in subDir:
     shutil.copytree(srcDir, destDir)
   except Exception as e:
     print(e)
+'''
+'''import ijson
+
+noun_path = '/Users/myahiatene/Desktop/Bachelorarbeit/ontology-lexicalization_de/results_all_classes_processed/kaikki_dot_org-dictionary-German-by-pos-noun.json'
+
+with open(noun_path, "rb") as f:
+  for record in ijson.items(f, "", multiple_values=True):
+    if record['word'] == 'Haus':
+      print(record)
+'''

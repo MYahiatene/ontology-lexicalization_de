@@ -4,7 +4,6 @@ use strict;
 use YAML::Syck qw(LoadFile DumpFile Load Dump);
 use IO::Uncompress::Bunzip2 '$Bunzip2Error';
 use URL::Encode qw(url_encode_utf8);
-use Encode qw(decode encode);
 use Number::Bytes::Human qw(format_bytes);
 use Text::CSV;
 use JSON;
@@ -2115,6 +2114,7 @@ if (-e $step4_finished_file and not -e $step5_finished_file) {
 
 
         #         ####   #####        #
+        #         ####   #####        #
         #        #    #  #    #       #
         #        #    #  #####        #
         #        #    #  #    #       #
@@ -3195,7 +3195,8 @@ sub identify {
     foreach my $literal (sort keys %{$literals}) {
         next if $literal eq "\"\"\@$LANGTAG";
 
-        if ($literal =~ m/\A"(.*)"\@de\Z/ or $literal =~ m/\A"(.*)"\Z/) { # or $literal =~ m/\A"(.*)\"\^\^<.*#langString>\Z/) {
+        if ($literal =~ m/\A"(.*)"\@de\Z/ or $literal =~ m/\A"(.*)"\Z/) {
+            # or $literal =~ m/\A"(.*)\"\^\^<.*#langString>\Z/) {
             next if not length $literal >= 8;
             my $string = quotemeta $1;
 

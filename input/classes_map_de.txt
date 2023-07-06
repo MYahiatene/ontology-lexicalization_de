@@ -1,24 +1,24 @@
 DeathDate,Sterbedatum
 BirthDate,Geburtsdatum
-FuelCapacity,Kraftstoffkapazität (μ³)
+FuelCapacity,Kraftstoffkapazität
 FuelConsumption,Kraftstoffverbrauch
-MarketCapitalisation,Marktkapitalisierung ($)
+MarketCapitalisation,Marktkapitalisierung
 RestingDate,Bestattungsdatum
 ZipCode,Postleitzahl
-Acceleration,Beschleunigung (s)
+Acceleration,Beschleunigung
 BirthYear,Geburtsjahr
 DeathYear,Sterbejahr
-Diameter,Durchmesser (μ)
-Height,Höhe (μ)
-Length,Länge (μ)
-NetIncome,Nettoergebnis ($)
-OperatingIncome,Betriebsergebnis ($)
+Diameter,Durchmesser
+Height,Höhe
+Length,Länge
+NetIncome,Nettoergebnis
+OperatingIncome,Betriebsergebnis
 PopulationTotal,Einwohnerzahl
-PowerOutput,Ausgangsleistung (W)
-TopSpeed,Höchstgeschwindigkeit (kmh)
-Weight,Gewicht (g)
-Wheelbase,Radstand (μ)
-Width,Breite (μ)
+PowerOutput,Ausgangsleistung
+TopSpeed,Höchstgeschwindigkeit
+Weight,Gewicht
+Wheelbase,Radstand
+Width,Breite
 Company,Unternehmen
 Activity,Aktivität
 Name,Name
@@ -32,60 +32,60 @@ Department,Distrikt
 Software,Software
 School,Schule
 Type,Typ
-Non-ProfitOrganisation,gemeinnützige Organisation
+Non-ProfitOrganisation,gemeinnützige_Organisation
 Agent,Agent
 Biomolecule,Biomolekül
 Broadcaster,Rundfunkveranstalter
 Case,Sache
 CelestialBody,Himmelskörper
-ChemicalSubstance,chemische Substanz
+ChemicalSubstance,chemische_Substanz
 Document,Dokument
 Gene,Gen
-GridironFootballPlayer,Gridiron Footballspieler
+GridironFootballPlayer,Gridiron_Footballspieler
 Group,Gruppe
 Identifier,Bezeichner
 Infrastructure,Infrastruktur
 LegalCase,Rechtsfall
 MeanOfTransportation,Transportmittel
-MotorsportRacer,Motorsport Fahrer
+MotorsportRacer,Motorsportler
 NaturalEvent,Naturereignis
-NaturalPlace,natürlicher Ort
+NaturalPlace,natürlicher_Ort
 OrganisationMember,Organisationsmitglied
 PeriodicalLiterature,Periodikum
 Project,Projekt
 Race,Rennen
 Region,Region
 RouteOfTransportation,Transportweg
-SocietalEvent,gesellschatliches Ereignis
+SocietalEvent,gesellschatliches_Ereignis
 SportsClub,Sportverein
-SportsTeamSeason,Sport Team Saison
+SportsTeamSeason,Sport_Team_Saison
 Tournament,Turnier
 UnitOfWork,Arbeitseinheit
 Work,Werk
-FloweringPlant,bedecktsamige Pflanze
-ClericalAdministrativeRegion,klerikale Verwaltungsregion
+FloweringPlant,bedecktsamige_Pflanze
+ClericalAdministrativeRegion,klerikale_Verwaltungsregion
 Gnetophytes,Gnetophyta
 Conifer,Konifere
-InlineHockeyLeague,Inlinehockey Liga
+InlineHockeyLeague,Inlinehockey_Liga
 Image,Bild
-AustralianFootballTeam,Australian Football Team
+AustralianFootballTeam,Australian_Football_Team
 SportsTeam,Sportmannschaft
 Database,Datenbank
 SportFacility,Sportanlage
 Stream,Bach
 BowlingLeague,Bowling-Liga
-TopicalConcept,thematisches Konzept
-GovernmentalAdministrativeRegion,staatliche Verwaltungsregion
+TopicalConcept,thematisches_Konzept
+GovernmentalAdministrativeRegion,staatliche_Verwaltungsregion
 Municipality,Gemeinde
 RaceTrack,Rennstrecke
 Tower,Turm
-SportCompetitionResult,Ergebnisse eines Sportwettbewerbs
-AcademicConference,wissenschaftliche Konferenz
-AdultActor,pornographischer Schauspieler
+SportCompetitionResult,Ergebnisse_eines_Sportwettbewerbs
+AcademicConference,wissenschaftliche_Konferenz
+AdultActor,pornographischer_Schauspieler
 AmateurBoxer,Amateurboxer
 Ambassador,Botschafter
 Amphibian,Amphibie
-AnatomicalStructure,anatomischen Struktur
+AnatomicalStructure,anatomische_Struktur
 Animal,Tier
 Arachnid,Spinnentier
 Archaea,Archaeen
@@ -240,7 +240,7 @@ Winery,Weinkellerei
 WorldHeritageSite,Weltkulturerbe
 GreenAlga,Grünalge
 AnimangaCharacter,Manga-Charakter
-MusicalWork,musikalisches Werk
+MusicalWork,musikalisches_Werk
 WaterwayTunnel,Kanaltunnel
 AmericanFootballCoach,American-Football-Trainer
 CricketTeam,Cricketmannschaft
@@ -258,7 +258,7 @@ Vaccine,Impfstoff
 Wrestler,Ringer
 Youtuber,Youtuber
 ArchitecturalStructure,Bauwerk
-ChristianPatriarch,christlicher Patriarch
+ChristianPatriarch,christlicher_Patriarch
 College,College
 ConcentrationCamp,Konzentrationslager
 Continent,Kontinent
@@ -285,7 +285,7 @@ Chancellor,Kanzler
 CricketLeague,Cricket-Liga
 GolfLeague,Golfliga
 LacrosseLeague,Lacrosse-Liga
-OlympicEvent,olympische Veranstaltung
+OlympicEvent,olympische_Veranstaltung
 Presenter,Moderator
 SpeedwayLeague,Speedway Liga
 TimePeriod,Zeitraum
@@ -302,7 +302,7 @@ BoxingLeague,Box-Liga
 AmericanFootballLeague,American-Football-Liga
 MusicFestival,Musikfestival
 Constellation,Sternbild
-MedicalSpecialty,طبی خصوصیت
+MedicalSpecialty,medizinisches_Spezialgebiet
 Fern,farn
 LaunchPad,Startrampe
 SoftballLeague,Softball Liga

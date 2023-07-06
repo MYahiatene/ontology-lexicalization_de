@@ -1,6 +1,6 @@
 {
-  "class_url"   : "http://dbpedia.org/ontology/Director",
-  "minimum_entities_per_class": 1,
+  "class_url"   : "http://dbpedia.org/ontology/Country",
+  "minimum_entities_per_class": 100,
   "maximum_entities_per_class": 10000,
   "minimum_onegram_length": 4,
   "minimum_pattern_count": 5,

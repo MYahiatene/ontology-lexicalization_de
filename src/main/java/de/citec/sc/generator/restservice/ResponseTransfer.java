@@ -214,7 +214,7 @@ public class ResponseTransfer implements Constants {
             lexicalization(lex);
             String className = cl.split("/")[4];
             System.out.println("classname: " + className);
-            createLemon(lemon, className);
+            //createLemon(lemon, className);
             copyFilesToResultsFolder(className);
             //extractor.extract(className);
         }

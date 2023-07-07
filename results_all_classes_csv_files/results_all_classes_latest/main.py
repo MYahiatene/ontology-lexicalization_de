@@ -10,8 +10,7 @@ import pandas as pd
 import ijson
 from request import get_wiktionary_data
 from nounMap import nounMap
-from transitiveFrameMap import transitiveFrameMap
-from intransitiveFrameMap import intransitiveFrameMap
+from verbFrameMap import verbFrameMap
 from headers import nounHeader, transitiveVerbHeader, intransitiveVerbHeader, attributeAdjHeader, gradableAdjHeader
 
 corp = nltk.corpus.ConllCorpusReader('.', 'tiger_release_aug07.corrected.16012013.conll09',
@@ -118,10 +117,16 @@ records_adj = ijson.items(
         "rb"),
     '', multiple_values=True)
 
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', -1)
+
 noun_df = pd.DataFrame
 verb_transitive_df = pd.DataFrame
 verb_intransitive_df = pd.DataFrame
 adj_df = pd.DataFrame
+pd.set_option('display.max_colwidth', None)
 
 lemmata_pos = []
 if os.path.exists('adj_test.csv'):
@@ -148,6 +153,7 @@ for directory in class_dirs:
             word = lemmata_pos_word[0][0]
             pos_tag = lemmata_pos_word[0][1][0][1]
             if pos_tag.startswith('ADJ'):
+                print(line)
                 with open('adj_test.csv', 'a') as file:
                     writer = csv.DictWriter(file, fieldnames=['LemonEntry', 'partOfSpeech', 'writtenForm', 'reference'])
                     writer.writerow({'LemonEntry': word, 'partOfSpeech': 'adjective',
@@ -182,8 +188,8 @@ for directory in class_dirs:
                             writer.writerow(noun_row)
                     if pos == 'verb':
                         if wiktionary_data[4] == "transitive":
-                            domain = transitiveFrameMap[reference][0]
-                            range = transitiveFrameMap[reference][1]
+                            domain = verbFrameMap[reference][0]
+                            range = verbFrameMap[reference][1]
                             with open('verb_test_transitive.csv', 'a') as file:
                                 writer = csv.DictWriter(file, fieldnames=transitiveVerbHeader)
                                 verb_row = {'LemonEntry': word,
@@ -202,8 +208,8 @@ for directory in class_dirs:
                                             'passivePreposition': 'von', }
                                 writer.writerow(verb_row)
                         if wiktionary_data[4] == "intransitive":
-                            domain = intransitiveFrameMap[reference][0]
-                            range = intransitiveFrameMap[reference][1]
+                            domain = verbFrameMap[reference][0]
+                            range = verbFrameMap[reference][1]
                             with open('verb_test_intransitive.csv', 'a') as file:
                                 writer = csv.DictWriter(file, fieldnames=intransitiveVerbHeader)
                                 verb_row = {'LemonEntry': word,
@@ -223,7 +229,6 @@ for directory in class_dirs:
                                 writer.writerow(verb_row)
                 except Exception:
                     continue
-
 
 """ADJA
 ADJD

@@ -135,10 +135,10 @@ $CFG_IMPORT = read_json($INPUTLEX);
 
 $className = (split '/', $CFG_IMPORT->{'class_url'})[-1];
 $LANGTAG = $CFG_IMPORT->{'langTag'};
-print($BASEDIR);
-print($className);
-print($LANGTAG);
-print($INPUTLEX);
+print($BASEDIR . \n);
+print($className . \n);
+print($LANGTAG . \n);
+print($INPUTLEX . \n);
 foreach my $key (keys %{$CFG_IMPORT}) {
 
     $CFG->{$key} = $CFG_IMPORT->{$key};

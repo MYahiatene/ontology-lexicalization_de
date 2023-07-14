@@ -1,4 +1,0 @@
-LemonEntry,partOfSpeech,writtenFormInfinitive,writtenForm3rdPresent,writtenFormPast,writtenFormPerfect,SyntacticFrame,subject,directObject,sense,reference,domain,range,passivePreposition
-grenzen,verb,grenzen,grenzt,grenzte,gegrenzt,TransitiveFrame,range,domain,1,http://dbpedia.org/ontology/city,http://dbpedia.org/ontology/River,http://dbpedia.org/ontology/City,von
-starten,verb,starten,startet,startete,gestartet,TransitiveFrame,range,domain,1,http://dbpedia.org/ontology/birthPlace,http://dbpedia.org/ontology/Person,http://dbpedia.org/ontology/Place,von
-münden,verb,münden,mündet,mündete,gemündet,TransitiveFrame,range,domain,1,http://dbpedia.org/ontology/locatedInArea,http://dbpedia.org/ontology/Mountain,http://dbpedia.org/ontology/Country,von

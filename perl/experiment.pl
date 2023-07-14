@@ -6,7 +6,7 @@ use IO::Uncompress::Bunzip2 '$Bunzip2Error';
 use URL::Encode qw(url_encode_utf8);
 use Number::Bytes::Human qw(format_bytes);
 use Text::CSV;
-use JSON;
+use JSON::Parse 'read_json';
 use Data::Dumper;
 use FileHandle;
 use File::Basename;
@@ -18,6 +18,7 @@ use File::Slurp;
 use JSON::Parse ':all';
 use Term::ReadKey;
 use FindBin;
+use lib "$FindBin::Bin/../lib";
 
 # Note 1. The code makes use of shortened class names and shortened entity names.
 # Why? then the filenames are shorter.
@@ -44,6 +45,7 @@ use FindBin;
 # for maven my $BASEDIR = "/app/";
 # my $BASEDIR = "/app/"; 
 my $BASEDIR = "$FindBin::Bin/../";
+my $INPUTLEX = $BASEDIR . "/inputLex.json";
 my $LANGTAG = "";
 my $CFG = {
     min_entities_per_class     => 100,
@@ -128,30 +130,15 @@ our $classes = {};
 my $CFG_IMPORT = {};
 #TODO: Better would be to preprocess the corpus
 # Use loop to print all args stored in an array called @ARGV
-foreach my $a (@ARGV) {
-    #  if($counter == 1){
-    #    $jsonConfig = $a;
-    #   print "Arg # $counter : $a\n";
-    #  }
-    if ($counter == 1) {
-        $BASEDIR = $a;
-        print "Arg # $counter : $a\n";
-    }
-    if ($counter == 2) {
-        $className = $a;
-        print "Arg # $counter : $a\n";
-    }
-    if ($counter == 3) {
-        $LANGTAG = $a;
-        print "Arg # $counter : $a\n";
-    }
-    if ($counter == 4) {
-        $CFG_IMPORT = decode_json($a);
-        #print "Arg # $counter : " . Dumper($a) . "\n";
-    }
-    $counter++;
-}
 
+$CFG_IMPORT = read_json($INPUTLEX);
+
+$className = (split '/', $CFG_IMPORT->{'class_url'})[-1];
+$LANGTAG = $CFG_IMPORT->{'langTag'};
+print($BASEDIR);
+print($className);
+print($LANGTAG);
+print($INPUTLEX);
 foreach my $key (keys %{$CFG_IMPORT}) {
 
     $CFG->{$key} = $CFG_IMPORT->{$key};

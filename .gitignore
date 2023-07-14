@@ -1,23 +1,16 @@
-app/input/
-app/inter/
-app/results/
-target/
-.Dockerfile.swp
 *.bz2
 *.csv
 inter/
-inter*/
-#results/
+results/
+results_classes/
 input/
-input_old/
+target/
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-# *.bin
-results_all_classes/
 # AWS User-specific
 .idea/**/aws.xml
 
@@ -95,7 +88,6 @@ fabric.properties
 !.idea/codeStyles
 !.idea/runConfigurations
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all
-*.txt
 *.iml
 *.pm
 *.bin
@@ -108,3 +100,6 @@ test.pl
 #results_all_classes_proccessed/*
 node_modules/
 *.xml
+!AttributeAdjective.csv
+!NounPPFrame.csv
+!TransitiveFrame.csv

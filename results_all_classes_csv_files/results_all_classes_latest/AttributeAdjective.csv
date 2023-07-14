@@ -1,5 +1,0 @@
-LemonEntry,partOfSpeech,writtenForm,SyntacticFrame,copulativeSubject,attributiveArg,sense,reference,owl:onProperty,owl:hasValue,domain,range
-spezialisiert,adjective,spezialisiert,AdjectiveAttributiveFrame,PredSynArg,AttrSynArg,1,owl:Restriction,http://dbpedia.org/ontology/nationality,res:Germany,dbo:Person,dbo:Athlete
-deutsch,adjective,deutsch,AdjectiveAttributiveFrame,PredSynArg,AttrSynArg,1,owl:Restriction,http://dbpedia.org/ontology/birthPlace,res:Germany,dbo:Person,dbo:Bank
-deutsch,adjective,deutsch,AdjectiveAttributiveFrame,PredSynArg,AttrSynArg,1,owl:Restriction,http://dbpedia.org/ontology/birthPlace,res:Germany,dbo:Person,dbo:Engineer
-deutsch,adjective,deutsch,AdjectiveAttributiveFrame,PredSynArg,AttrSynArg,1,owl:Restriction,http://dbpedia.org/ontology/birthPlace,res:Germany,dbo:Person,dbo:Medician

@@ -355,26 +355,28 @@ classes=("http://dbpedia.org/ontology/AcademicJournal"
   "http://dbpedia.org/ontology/WrittenWork"
   "http://dbpedia.org/ontology/Year"
 )
-  DIR="results_classes/"
-  if [ ! -d "$DIR" ]; then
+DIR="results_classes/"
+if [ ! -d "$DIR" ]; then
     mkdir results_classes/
-  fi
+fi
 
 for class in "${classes[@]}"; do
-  echo "{ 'class_url': $class,
-             'minimum_entities_per_class': 100,
-             'maximum_entities_per_class': 10000,
-             'minimum_onegram_length': 4,
-             'minimum_pattern_count': 5,
-             'minimum_anchor_count': 10,
-             'minimum_propertyonegram_length': 4,
-             'minimum_propertypattern_count': 5,
-             'minimum_propertystring_length': 5,
-             'maximum_propertystring_length': 50,
-             'minimum_supportA': 5,
-             'minimum_supportB': 5,
-             'minimum_supportAB':5,
-             'langTag': 'de'}" >inputLex.json
-  ./perl/experiment.pl
-  cp -r ./results/* results_classes/
+    cat << EOF > inputLex.json  
+    {"class_url": "$class",
+             "minimum_entities_per_class": 100,
+             "maximum_entities_per_class": 10000,
+             "minimum_onegram_length": 4,
+             "minimum_pattern_count": 5,
+             "minimum_anchor_count": 10,
+             "minimum_propertyonegram_length": 4,
+             "minimum_propertypattern_count": 5,
+             "minimum_propertystring_length": 5,
+             "maximum_propertystring_length": 50,
+             "minimum_supportA": 5,
+             "minimum_supportB": 5,
+             "minimum_supportAB":5,
+             "langTag": "de"}
+EOF
+    ./perl/experiment.pl;
 done
+cp -r ./results/* results_classes/

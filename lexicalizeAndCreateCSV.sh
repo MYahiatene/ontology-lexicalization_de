@@ -361,6 +361,7 @@ if [ ! -d "$DIR" ]; then
 fi
 
 for class in "${classes[@]}"; do
+    rm -r inter/*
     cat << EOF > inputLex.json  
     {"class_url": "$class",
              "minimum_entities_per_class": 100,

@@ -112,3 +112,17 @@ Please use the following citation:
 
 
 ---
+
+perl installation and modules
+
+python 3.11 install 
+
+pip3 install virtualenv
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+edit ./lexicalizeAndCreateCSV.sh for choosing classes
+./lexicalizeAndCreateCSV.sh
+cd post_processing
+./post_process.py

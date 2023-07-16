@@ -135,10 +135,6 @@ $CFG_IMPORT = read_json($INPUTLEX);
 
 $className = (split '/', $CFG_IMPORT->{'class_url'})[-1];
 $LANGTAG = $CFG_IMPORT->{'langTag'};
-print($BASEDIR . \n);
-print($className . \n);
-print($LANGTAG . \n);
-print($INPUTLEX . \n);
 foreach my $key (keys %{$CFG_IMPORT}) {
 
     $CFG->{$key} = $CFG_IMPORT->{$key};
@@ -171,6 +167,7 @@ my $folder_length = 4; # length of the name of the subfolder in $BASEDIR/input/d
 open(LOG, ">>logfile.txt");
 
 # Step 1. find frequent classes
+mkdir "$BASEDIR/inter/" if not -d "$BASEDIR/inter/";
 my $frequent_class_to_entities = {};
 my $entity_to_frequent_classes = {};
 my $frequent_class_to_entities_file = "$BASEDIR/inter/frequent_class_to_entities-" . $CFG->{min_entities_per_class} . "-" . $CFG->{max_entities_per_class} . ".yml";

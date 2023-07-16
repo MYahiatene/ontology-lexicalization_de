@@ -5,6 +5,7 @@ import os
 import csv
 import nltk
 import pickle
+from alive_progress import alive_bar
 from qald7_properties import qald7_properties
 import umlaute
 import pandas as pd
@@ -61,7 +62,7 @@ with open('nltk_german_classifier_data.pickle', 'rb') as f:
 def replace_stop_words(words):
     with open('stopwords-de.txt', mode='r', encoding='utf-8') as f:
         lines = f.readlines()
-        return [word for word in words if word + '\n' not in lines]
+        return [word for word in words.split(" ") if word + '\n' not in lines]
 
 
 def read_lemma(words):
@@ -97,107 +98,154 @@ if os.path.exists('TransitiveFrame.csv'):
     os.unlink('TransitiveFrame.csv')
 if os.path.exists('InTransitiveFrame.csv'):
     os.unlink('InTransitiveFrame.csv')
+# used to save requests to wiktionary ( dynamic programming)
+wiktionary_map = {}
+# used to prevent saving same entries in the csv
+noun_csv_map = {}
+# used to prevent saving same entries in the csv
+transitive_csv_map = {}
+# used to prevent saving same entries in the csv
+intransitive_csv_map = {}
+# used to prevent saving same entries in the csv
+adjective_csv_map = {}
 
 csv_files = glob.glob(
     '../results_classes/*.csv.bz2')
 
+total_filesizes = 0
+
 for file in csv_files:
-    with bz2.open(file, mode='rt') as f:
-        csv_df = pd.read_csv(f)
-        csv_df.sort_values('Cosine', inplace=True, ascending=False)
-        csv_df = csv_df.loc[csv_df['predicate'].isin(qald7_properties)]
-        line = csv_df.head(1)
-        if len(line['predicate']) == 0:
-            continue
-        reference = line['predicate'].values[0]
-        words = line['linguistic pattern'].values
-        words = replace_stop_words([replace_umlaute(words[0])])
-        lemmata_pos_word = read_lemma(words)
-        if len(lemmata_pos_word) == 0:
-            continue
-        word = lemmata_pos_word[0][0]
-        pos_tag = lemmata_pos_word[0][1][0][1]
-        if pos_tag.startswith('ADJ'):
-            with open('AttributeAdjective.csv', 'a') as file:
-                writer = csv.DictWriter(file, fieldnames=['LemonEntry', 'partOfSpeech', 'writtenForm', 'reference'])
-                if os.stat('AttributeAdjective.csv').st_size == 0:
-                    writer.writeheader()
-                writer.writerow({'LemonEntry': word, 'partOfSpeech': 'adjective',
-                                 'writtenForm': word, 'reference': reference})
-        else:
-            wiktionary_data = get_wiktionary_data(word, pos_tag)
-            if wiktionary_data is None:
-                continue
-            pos = wiktionary_data[0]
-            try:
-                if pos == 'noun':
-                    domain = nounMap[reference][0]
-                    range = nounMap[reference][1]
-                    noun_row = {"LemonEntry": word, 'partOfSpeech': 'noun', 'gender': wiktionary_data[1],
-                                'writtenFormNominative(singular)': wiktionary_data[2],
-                                'writtenFormNominative (plural)': wiktionary_data[3],
-                                'writtenFormSingular (accusative)':
-                                    wiktionary_data[4],
-                                'writtenFormSingular (dative)':
-                                    wiktionary_data[5],
-                                'writtenFormSingular (genetive)': wiktionary_data[6],
-                                'preposition': 'von',
-                                'SyntacticFrame': 'NounPPFrame',
-                                'copulativeArg': 'range',
-                                'prepositionalAdjunct': 'domain',
-                                'sense': '1',
-                                'reference': reference,
-                                'domain': domain,
-                                'range': range}
-                    with open('NounPPFrame.csv', 'a') as file:
-                        writer = csv.DictWriter(file, fieldnames=nounHeader)
-                        if os.stat('NounPPFrame.csv').st_size == 0:
+    total_filesizes = + os.path.getsize(file)
+
+current_file_size = 0
+with alive_bar(total_filesizes, manual=True) as bar:
+    for file in csv_files:
+        current_file_size += os.path.getsize(file)
+        bar(total_filesizes / current_file_size)
+        with bz2.open(file, mode='rt') as f:
+            csv_df = pd.read_csv(f)
+            csv_df.sort_values('Cosine', inplace=True, ascending=False)
+            csv_df = csv_df.loc[csv_df['predicate'].isin(qald7_properties)]
+            for index, line in csv_df.iterrows():
+                ngram = line['patterntype']
+                if len(line['predicate']) == 0:
+                    continue
+                reference = line['predicate']
+                words = line['linguistic pattern']
+                words = replace_stop_words(replace_umlaute(words))
+                if len(words) >2:
+                    continue
+                lemmata_pos_word = read_lemma(words)
+                if len(lemmata_pos_word) == 0:
+                    continue
+                word = lemmata_pos_word[0][0]
+                pos_tag = lemmata_pos_word[0][1][0][1]
+                if pos_tag.startswith('ADJ'):
+                    with open('Adjective.csv', 'a') as file:
+                        writer = csv.DictWriter(file, fieldnames=["class",
+                                                                  "linguistic pattern", "patterntype",
+                                                                  "subject", "predicate", "object", "Cosine",
+
+                                                                  ])
+                        if os.stat('Adjective.csv').st_size == 0:
                             writer.writeheader()
-                        writer.writerow(noun_row)
-                if pos == 'verb':
-                    if wiktionary_data[4] == "transitive":
-                        domain = verbFrameMap[reference][0]
-                        range = verbFrameMap[reference][1]
-                        with open('TransitiveFrame.csv', 'a') as file:
-                            writer = csv.DictWriter(file, fieldnames=transitiveVerbHeader)
-                            verb_row = {'LemonEntry': word,
-                                        'partOfSpeech': 'verb',
-                                        'writtenFormInfinitive': word,
-                                        'writtenForm3rdPresent': wiktionary_data[1],
-                                        'writtenFormPast': wiktionary_data[2],
-                                        'writtenFormPerfect': wiktionary_data[3],
-                                        'SyntacticFrame': 'TransitiveFrame',
-                                        'subject': 'range',
-                                        'directObject': 'domain',
+                        writer.writerow({"class": line["class"], "linguistic pattern": words[0],
+                                         "patterntype": ngram,
+                                         "predicate": reference,
+                                         })
+                else:
+                    wiktionary_data = get_wiktionary_data(word, pos_tag)
+                    if wiktionary_data is None:
+                        continue
+                    pos = wiktionary_data[0]
+                    try:
+                        if pos == 'noun':
+                            domain = nounMap[reference][0]
+                            range = nounMap[reference][1]
+                            noun_row = {"LemonEntry": word, 'partOfSpeech': 'noun', 'gender': wiktionary_data[1],
+                                        'writtenFormNominative(singular)': wiktionary_data[2],
+                                        'writtenFormNominative (plural)': wiktionary_data[3],
+                                        'writtenFormSingular (accusative)':
+                                            wiktionary_data[4],
+                                        'writtenFormSingular (dative)':
+                                            wiktionary_data[5],
+                                        'writtenFormSingular (genetive)': wiktionary_data[6],
+                                        'preposition': 'von',
+                                        'SyntacticFrame': 'NounPPFrame',
+                                        'copulativeArg': 'range',
+                                        'prepositionalAdjunct': 'domain',
                                         'sense': '1',
                                         'reference': reference,
                                         'domain': domain,
-                                        'range': range,
-                                        'passivePreposition': 'von', }
-                            if os.stat('TransitiveFrame.csv').st_size == 0:
-                                writer.writeheader()
-                            writer.writerow(verb_row)
-                    if wiktionary_data[4] == "intransitive":
-                        domain = verbFrameMap[reference][0]
-                        range = verbFrameMap[reference][1]
-                        with open('InTransitiveFrame.csv', 'a') as file:
-                            writer = csv.DictWriter(file, fieldnames=intransitiveVerbHeader)
-                            verb_row = {'LemonEntry': word,
-                                        'partOfSpeech': 'verb',
-                                        'writtenFormInfinitive': word,
-                                        'writtenForm3rdPresent': wiktionary_data[1],
-                                        'writtenFormPast': wiktionary_data[2],
-                                        'writtenFormPerfect': wiktionary_data[3],
-                                        'preposition': 'durch',
-                                        'SyntacticFrame': 'IntransitivePPFrame',
-                                        'subject': 'domain',
-                                        'prepositionalAdjunct': 'range',
-                                        'sense': '1',
-                                        'reference': reference,
-                                        'domain': domain,
-                                        'range': range, }
-                            if os.stat('InTransitiveFrame.csv').st_size == 0:
-                                writer.writeheader()
-                            writer.writerow(verb_row)
-            except Exception:
-                continue
+                                        'range': range}
+                            with open('NounPPFrame.csv', 'a') as file:
+                                writer = csv.DictWriter(file, fieldnames=nounHeader)
+                                if os.stat('NounPPFrame.csv').st_size == 0:
+                                    writer.writeheader()
+                                writer.writerow(noun_row)
+                        if pos == 'verb':
+                            if wiktionary_data[4] == "transitive":
+                                domain = verbFrameMap[reference][0]
+                                range = verbFrameMap[reference][1]
+                                with open('TransitiveFrame.csv', 'a') as file:
+                                    writer = csv.DictWriter(file, fieldnames=transitiveVerbHeader)
+                                    verb_row = {'LemonEntry': word,
+                                                'partOfSpeech': 'verb',
+                                                'writtenFormInfinitive': word,
+                                                'writtenForm3rdPresent': wiktionary_data[1],
+                                                'writtenFormPast': wiktionary_data[2],
+                                                'writtenFormPerfect': wiktionary_data[3],
+                                                'SyntacticFrame': 'TransitiveFrame',
+                                                'subject': 'range',
+                                                'directObject': 'domain',
+                                                'sense': '1',
+                                                'reference': reference,
+                                                'domain': domain,
+                                                'range': range,
+                                                'passivePreposition': 'von', }
+                                    if os.stat('TransitiveFrame.csv').st_size == 0:
+                                        writer.writeheader()
+                                    writer.writerow(verb_row)
+                            elif wiktionary_data[4] == "intransitive":
+                                domain = verbFrameMap[reference][0]
+                                range = verbFrameMap[reference][1]
+                                with open('InTransitiveFrame.csv', 'a') as file:
+                                    writer = csv.DictWriter(file, fieldnames=intransitiveVerbHeader)
+                                    verb_row = {'LemonEntry': word,
+                                                'partOfSpeech': 'verb',
+                                                'writtenFormInfinitive': word,
+                                                'writtenForm3rdPresent': wiktionary_data[1],
+                                                'writtenFormPast': wiktionary_data[2],
+                                                'writtenFormPerfect': wiktionary_data[3],
+                                                'preposition': 'durch',
+                                                'SyntacticFrame': 'IntransitivePPFrame',
+                                                'subject': 'domain',
+                                                'prepositionalAdjunct': 'range',
+                                                'sense': '1',
+                                                'reference': reference,
+                                                'domain': domain,
+                                                'range': range, }
+                                    if os.stat('InTransitiveFrame.csv').st_size == 0:
+                                        writer.writeheader()
+                                    writer.writerow(verb_row)
+                            else:
+                                writer = csv.DictWriter(file, fieldnames=transitiveVerbHeader)
+                                verb_row = {'LemonEntry': word,
+                                            'partOfSpeech': 'verb',
+                                            'writtenFormInfinitive': word,
+                                            'writtenForm3rdPresent': wiktionary_data[1],
+                                            'writtenFormPast': wiktionary_data[2],
+                                            'writtenFormPerfect': wiktionary_data[3],
+                                            'SyntacticFrame': 'TransitiveFrame',
+                                            'subject': 'range',
+                                            'directObject': 'domain',
+                                            'sense': '1',
+                                            'reference': reference,
+                                            'domain': domain,
+                                            'range': range,
+                                            'passivePreposition': 'von', }
+                                if os.stat('TransitiveFrame.csv').st_size == 0:
+                                    writer.writeheader()
+                                writer.writerow(verb_row)
+                    except Exception:
+                        continue

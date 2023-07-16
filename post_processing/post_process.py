@@ -119,12 +119,9 @@ adjective_csv_set = set()
 csv_files = glob.glob(
     '../results_classes/*.csv.bz2')
 
-count = 0
-
-with alive_bar(len(csv_files)) as bar:
-    for file in csv_files:
+with alive_bar(len(csv_files), force_tty=True) as bar:
+    for count, file in enumerate(csv_files):
         bar(count)
-        count += 1
         with bz2.open(file, mode='rt') as f:
             csv_df = pd.read_csv(f)
             csv_df.sort_values('Cosine', inplace=True, ascending=False)

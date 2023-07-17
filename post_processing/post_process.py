@@ -10,6 +10,7 @@ from qald7_properties import qald7_properties
 import umlaute
 import pandas as pd
 from request import get_wiktionary_data
+from request import prepare_local_wiktionary_data
 from nounMap import nounMap
 from verbFrameMap import verbFrameMap
 from headers import nounHeader, transitiveVerbHeader, intransitiveVerbHeader
@@ -95,6 +96,9 @@ verb_transitive_df = pd.DataFrame
 verb_intransitive_df = pd.DataFrame
 adj_df = pd.DataFrame
 pd.set_option('display.max_colwidth', None)
+
+dict_wiktionary_noun, dict_wiktionary_verb, dict_wiktionary_adj = prepare_local_wiktionary_data()
+
 
 lemmata_pos = []
 if os.path.exists('Adjective.csv'):

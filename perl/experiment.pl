@@ -1176,7 +1176,7 @@ if (-e $step3_finished_file and not -e $step4_finished_file) {
                 }
                 else {
                     print "unexpected entity URI namespace <$e>\n";
-                    <STDIN>;
+                    #<STDIN>;
                     print LOG "STEP 4 - unexpected entity URI namespace <$e>.\n";
                     next;
                 }
@@ -1201,7 +1201,6 @@ if (-e $step3_finished_file and not -e $step4_finished_file) {
                     $cnt_missing++;
                     print LOG "STEP 4 - pattern file missing for entity <$e>, class <$c>. filename: <$entitypatternfilename>.\n";
                     print "pattern file does not exist ($c): <$entitypatternfilename>\n";
-                    <STDIN>;
                 }
 
                 my $entitypropertypatternfilename = "$BASEDIR/inter/data_per_entity/$last/$e_enc-propertypatterns-" . join("-",

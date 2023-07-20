@@ -97,7 +97,8 @@ verb_intransitive_df = pd.DataFrame
 adj_df = pd.DataFrame
 pd.set_option('display.max_colwidth', None)
 
-dict_wiktionary_noun, dict_wiktionary_verb, dict_wiktionary_adj = prepare_local_wiktionary_data()
+# uncomment for local wiktionary data
+#dict_wiktionary_noun, dict_wiktionary_verb, dict_wiktionary_adj = prepare_local_wiktionary_data()
 
 
 lemmata_pos = []
@@ -121,7 +122,7 @@ intransitive_csv_set = set()
 adjective_csv_set = set()
 
 csv_files = glob.glob(
-    '../results_classes/*.csv.bz2')
+    '../results/*.csv.bz2')
 
 with alive_bar(len(csv_files), force_tty=True) as bar:
     for count, file in enumerate(csv_files):

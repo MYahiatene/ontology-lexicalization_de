@@ -48,16 +48,17 @@ def get_verb_wiktionary_data(word: str):
     return ['verb', written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type]
 
 
-def get_wiktionary_data_from_dumps(word: str, pos: str):
+'''def get_wiktionary_data_from_dumps(word: str, pos: str):
     if pos.startswith('N'):
         return get_noun_wiktionary_data(word)
     if pos.startswith('V'):
         return get_verb_wiktionary_data(word)
     if pos.startswith('ADJ'):
         None
-
+'''
 
 ####################### Reading wiktionary from file and then creating a hashmap #################
+
 
 def prepare_local_wiktionary_data():
     with open('kaikki_dot_org-dictionary-German-by-pos-noun.json', 'r') as file1, open(
@@ -72,11 +73,11 @@ def prepare_local_wiktionary_data():
     return df2_noun, df2_verb, df2_adj
 
 
-dict_wiktionary_noun, dict_wiktionary_verb, dict_wiktionary_adj = prepare_local_wiktionary_data()
 
 
-def get_noun_wiktionary_data_from_dumps(word: str):
-    forms_senses_list = dict_wiktionary_noun.get(word)
+
+def get_noun_wiktionary_data_from_dumps(dict_noun,word: str):
+    forms_senses_list = dict_noun.get(word)
     forms = forms_senses_list[0]
     senses = forms_senses_list[1]
     genus = ''
@@ -99,32 +100,33 @@ def get_noun_wiktionary_data_from_dumps(word: str):
         for el in senses[0]['tags']:
             if el == 'neuter' or el == 'masculine' or el == 'feminine':
                 genus = el
-    return ['noun', genus, nominativ_singular, nominativ_plural, akkusativ_singular, dativ_singular, genetiv_singular]
+    return [ genus, nominativ_singular, nominativ_plural, akkusativ_singular, dativ_singular, genetiv_singular]
 
 
 #TODO: wen oder was? => transitiv
-def get_verb_wiktionary_data_from_dumps(word: str):
-    forms_senses_list = dict_wiktionary_verb.get(word)
+def get_verb_wiktionary_data_from_dumps(dict_verb,word: str):
+    forms_senses_list = dict_verb.get(word)
     forms = forms_senses_list[0]
     senses = forms_senses_list[1]
     written_form_3rd_present = ''
     written_form_3rd_past = ''
     written_form_3rd_perfect = ''
     verb_type = ''
-    return ['verb', written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type]
+    return [ written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type]
 
 #TODO:
-def get_adj_wiktionary_data_from_dumps(word: str):
-    return dict_wiktionary_adj.get(word)
+def get_adj_wiktionary_data_from_dumps(dict_adj,word: str):
+    return dict_adj.get(word)
 
 
 #     return ['verb', written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type]
 # TODO: implement wiktionary data retriever from json dumps
-tmp1 = get_noun_wiktionary_data_from_dumps('Flugzeug')
-tmp2 = dict_wiktionary_verb.get('schwimmen')
-tmp3 = dict_wiktionary_verb.get('überqueren')
-tmp4 = dict_wiktionary_adj.get('hoch')
-tmp5 = dict_wiktionary_verb.get('reden')
+dict_wiktionary_noun, dict_wiktionary_verb, dict_wiktionary_adj = prepare_local_wiktionary_data()
+tmp1 = get_noun_wiktionary_data_from_dumps(dict_wiktionary_noun,'Flugzeug')
+tmp2 = dict_wiktionary_verb.get(dict_wiktionary_verb,'schwimmen')
+tmp3 = dict_wiktionary_verb.get(dict_wiktionary_verb,'überqueren')
+tmp4 = dict_wiktionary_adj.get(dict_wiktionary_adj,'hoch')
+tmp5 = dict_wiktionary_verb.get(dict_wiktionary_verb,'reden')
 
 print(tmp1)
 print('\n')
@@ -162,3 +164,7 @@ print('\n')
 end = time.time()
 print(end - start)
 '''
+
+
+
+

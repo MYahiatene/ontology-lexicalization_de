@@ -131,18 +131,21 @@ def get_verb_wiktionary_data_from_dumps(dict_verb, word: str):
             if 'perfect' in obj['tags'] and 'singular' in obj['tags'] and 'third-person' in obj['tags']:
                 perfect = obj['form'].split(' ')
                 written_form_3rd_perfect = perfect[1] if len(perfect) == 2 else perfect[0]
-    # TODO: find a better and distinct way. error prone
+    # TODO: transitive or intransitive classification is relatively heuristic, could be done better
     if type(senses) != float:
-        for obj in senses:
-            raw_glosses = obj.get('raw_glosses', None)
-            if raw_glosses is None:
-                continue
-            if '(intransitive, transitive)' in raw_glosses:
-                verb_type = 'intransitive/transitive'
+        tags= None
+        for sense in senses:
+            tags = sense.get('tags')
+            if tags is not None:
                 break
-            if '(intransitive)' in raw_glosses:
-                verb_type = 'intransitive'
-                break
+        if tags is None:
+            verb_type = 'transitive'
+        elif 'intransitive' in tags and 'transitive' in tags:
+            verb_type = 'intransitive/transitive'
+        elif 'intransitive' in tags:
+            verb_type = 'intransitive'
+        elif 'transitive' in tags:
+            verb_type = 'transitive'
     return [written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type]
 
 
@@ -159,8 +162,8 @@ def get_adj_wiktionary_data_from_dumps(dict_adj, word: str):
 # tmp3 = get_verb_wiktionary_data_from_dumps(dict_wiktionary_verb, 'besitzen')
 # tmp4 = dict_wiktionary_adj.get(dict_wiktionary_adj,'hoch')
 # tmp5 = dict_wiktionary_adj.get(dict_wiktionary_adj,'deutsch')
-# print(dict_wiktionary_verb.get('schwimmen'))
-# print(dict_wiktionary_verb.get('wählen'))
+# print(dict_wiktionary_verb.get('schwimmen')[1])
+# print(dict_wiktionary_verb.get('wählen')[1])
 # print(tmp1)
 # print('\n')
 # print(tmp2)

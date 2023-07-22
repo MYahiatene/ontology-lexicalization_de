@@ -6,13 +6,17 @@ import csv
 import nltk
 import pickle
 from alive_progress import alive_bar
+
+from intransitiveFrameMap import intransitiveFrameMap
 from qald7_properties import qald7_properties
 import umlaute
 import pandas as pd
 from request import prepare_local_wiktionary_data, get_noun_wiktionary_data_from_dumps, \
     get_verb_wiktionary_data_from_dumps, get_adj_wiktionary_data_from_dumps
 from nounMap import nounMap
+from transitiveFrameMap import transitiveFrameMap
 from verbFrameMap import verbFrameMap
+from qald7_mappings import qald7_mappings
 from headers import nounHeader, transitiveVerbHeader, intransitiveVerbHeader
 
 corp = nltk.corpus.ConllCorpusReader('.', 'tiger_release_aug07.corrected.16012013.conll09',
@@ -118,24 +122,29 @@ def post_proccess_noun(noun_map, noun_list: list):
                 'reference': reference,
                 'domain': domain,
                 'range': range}
-    with open('NounPPFrame.csv', 'a') as file:
+    with open('NounPPFrame.csv', 'a+') as file:
         writer = csv.DictWriter(file, fieldnames=nounHeader)
         if os.stat('NounPPFrame.csv').st_size == 0:
             writer.writeheader()
-            if str(noun_row) not in noun_csv_set:
-                writer.writerow(noun_row)
-                noun_csv_set.add(str(noun_row))
+            return
+        if str(noun_row) not in noun_csv_set:
+            writer.writerow(noun_row)
+            noun_csv_set.add(str(noun_row))
 
 
-def post_proccess_verb(verbFrameMap, verb_list):
-    domain_range_map_entry = verbFrameMap.get(reference, None)
-    if domain_range_map_entry is None:
-        return
-    domain = domain_range_map_entry[0]
-    range = domain_range_map_entry[1]
+def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list):
+    domain_range_map_entry = None
+    if verb_list[-1] == 'transitive':
+        domain_range_map_entry = transitiveFrameMap.get(reference, None)
+    if verb_list[-1] == 'intransitive':
+        domain_range_map_entry = intransitiveFrameMap.get(reference, None)
     written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type = verb_list
     if verb_type == 'transitive':
-        with open('TransitiveFrame.csv', 'a') as file:
+        if domain_range_map_entry is None:
+            return
+        domain = domain_range_map_entry[0]
+        range = domain_range_map_entry[1]
+        with open('TransitiveFrame.csv', 'a+') as file:
             writer = csv.DictWriter(file, fieldnames=transitiveVerbHeader)
             verb_row = {'LemonEntry': word,
                         'partOfSpeech': 'verb',
@@ -157,9 +166,11 @@ def post_proccess_verb(verbFrameMap, verb_list):
                 writer.writerow(verb_row)
                 transitive_csv_set.add(str(verb_row))
     if verb_type == "intransitive":
-        domain = verbFrameMap[reference][0]
-        range = verbFrameMap[reference][1]
-        with open('InTransitiveFrame.csv', 'a') as file:
+        if domain_range_map_entry is None:
+            return
+        domain = domain_range_map_entry[0]
+        range = domain_range_map_entry[1]
+        with open('InTransitiveFrame.csv', 'a+') as file:
             writer = csv.DictWriter(file, fieldnames=intransitiveVerbHeader)
             verb_row = {'LemonEntry': word,
                         'partOfSpeech': 'verb',
@@ -177,11 +188,23 @@ def post_proccess_verb(verbFrameMap, verb_list):
                         'range': range, }
             if os.stat('InTransitiveFrame.csv').st_size == 0:
                 writer.writeheader()
-            if verb_row not in intransitive_csv_set:
+            if str(verb_row) not in intransitive_csv_set:
                 writer.writerow(verb_row)
-                intransitive_csv_set.add(verb_row)
+                intransitive_csv_set.add(str(verb_row))
     if verb_type == 'intransitive/transitive':
-        with open('TransitiveFrame.csv', 'a') as file, open('InTransitiveFrame.csv', 'a') as file2:
+        domain_range_map_entry_transitive = transitiveFrameMap.get(reference, None)
+        domain_transitive = None
+        range_transitive = None
+        domain_intransitive = None
+        range_intransitive = None
+        if domain_range_map_entry_transitive is not None:
+            domain_transitive = domain_range_map_entry_transitive[0]
+            range_transitive = domain_range_map_entry_transitive[1]
+        domain_range_map_entry_intransitive = intransitiveFrameMap.get(reference, None)
+        if domain_range_map_entry_intransitive is not None:
+            domain_intransitive = domain_range_map_entry_intransitive[0]
+            range_intransitive = domain_range_map_entry_intransitive[1]
+        with open('TransitiveFrame.csv', 'a+') as file, open('InTransitiveFrame.csv', 'a+') as file2:
             writer = csv.DictWriter(file, fieldnames=transitiveVerbHeader)
             writer2 = csv.DictWriter(file2, fieldnames=intransitiveVerbHeader)
             verb_row_transitive = {'LemonEntry': word,
@@ -195,8 +218,8 @@ def post_proccess_verb(verbFrameMap, verb_list):
                                    'directObject': 'domain',
                                    'sense': '1',
                                    'reference': reference,
-                                   'domain': domain,
-                                   'range': range,
+                                   'domain': domain_transitive,
+                                   'range': range_transitive,
                                    'passivePreposition': 'von', }
             verb_row_intransitive = {'LemonEntry': word,
                                      'partOfSpeech': 'verb',
@@ -210,22 +233,22 @@ def post_proccess_verb(verbFrameMap, verb_list):
                                      'prepositionalAdjunct': 'range',
                                      'sense': '1',
                                      'reference': reference,
-                                     'domain': domain,
-                                     'range': range, }
+                                     'domain': domain_intransitive,
+                                     'range': range_intransitive, }
             if os.stat('TransitiveFrame.csv').st_size == 0:
                 writer.writeheader()
-            if verb_row_transitive not in transitive_csv_set:
+            if str(verb_row_transitive) not in transitive_csv_set and domain_range_map_entry_transitive is not None:
                 writer.writerow(verb_row_transitive)
-                transitive_csv_set.add(verb_row_transitive)
+                transitive_csv_set.add(str(verb_row_transitive))
             if os.stat('InTransitiveFrame.csv').st_size == 0:
                 writer2.writeheader()
-            if verb_row_intransitive not in intransitive_csv_set:
+            if str(verb_row_intransitive) not in intransitive_csv_set and domain_range_map_entry_intransitive is not None:
                 writer2.writerow(verb_row_intransitive)
-                intransitive_csv_set.add(verb_row_intransitive)
+                intransitive_csv_set.add(str(verb_row_intransitive))
 
 
 def post_proccess_adj(adj_map, adj_list):
-    with open('Adjective.csv', 'a') as file:
+    with open('Adjective.csv', 'a+') as file:
         writer = csv.DictWriter(file, fieldnames=["class",
                                                   "linguistic pattern",
                                                   "predicate"
@@ -279,18 +302,18 @@ with alive_bar(number_of_csv_files, title='Processing', force_tty=True) as bar:
                     # adj_map = {}
                     # post_proccess_adj(adj_map, adj_list)
                     None
-                    #TODO: Debug nounppframe
+                    # TODO: Debug nounppframe
                 if pos_tag.startswith('N'):
                     noun_list = get_noun_wiktionary_data_from_dumps(
                         dict_wiktionary_noun, word)
                     if noun_list is None:
                         continue
                     post_proccess_noun(nounMap, noun_list)
-                    #TODO: check why only transitive
+                    # TODO: check why only transitive
                 if pos_tag.startswith('V'):
                     verb_list = get_verb_wiktionary_data_from_dumps(
                         dict_wiktionary_verb, word)
                     if verb_list is None:
                         continue
-                    post_proccess_verb(verbFrameMap, verb_list)
+                    post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list)
             bar()

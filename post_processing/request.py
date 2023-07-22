@@ -57,13 +57,14 @@ def get_verb_wiktionary_data(word: str):
         None
 '''
 
+
 ####################### Reading wiktionary from file and then creating a hashmap #################
 
 
 def prepare_local_wiktionary_data():
     with open('kaikki_dot_org-dictionary-German-by-pos-noun.json', 'r') as file1, open(
             'kaikki_dot_org-dictionary-German-by-pos-verb.json', 'r') as file2, open(
-            'kaikki_dot_org-dictionary-German-by-pos-adj.json', 'r') as file3:
+        'kaikki_dot_org-dictionary-German-by-pos-adj.json', 'r') as file3:
         df_noun = pd.read_json(file1, lines=True)
         df2_noun = dict([(i, [x, y]) for i, x, y in zip(df_noun['word'], df_noun['forms'], df_noun['senses'])])
         df_verb = pd.read_json(file2, lines=True)
@@ -73,11 +74,10 @@ def prepare_local_wiktionary_data():
     return df2_noun, df2_verb, df2_adj
 
 
-
-
-
-def get_noun_wiktionary_data_from_dumps(dict_noun,word: str):
-    forms_senses_list = dict_noun.get(word)
+def get_noun_wiktionary_data_from_dumps(dict_noun, word: str):
+    forms_senses_list = dict_noun.get(word, None)
+    if forms_senses_list is None:
+        return ['', '', '', '', '', '']
     forms = forms_senses_list[0]
     senses = forms_senses_list[1]
     genus = ''
@@ -86,55 +86,88 @@ def get_noun_wiktionary_data_from_dumps(dict_noun,word: str):
     akkusativ_singular = ''
     dativ_singular = ''
     genetiv_singular = ''
-    for obj in forms:
-        if 'nominative' in obj['tags'] and 'singular' in obj['tags']:
-            nominativ_singular = obj['form']
-        if 'nominative' in obj['tags'] and 'plural' in obj['tags']:
-            nominativ_plural = obj['form']
-        if 'accusative' in obj['tags'] and 'singular' in obj['tags']:
-            akkusativ_singular = obj['form']
-        if 'dative' in obj['tags'] and 'singular' in obj['tags']:
-            dativ_singular = obj['form']
-        if 'genitive' in obj['tags'] and 'singular' in obj['tags']:
-            genetiv_singular = obj['form']
-        for el in senses[0]['tags']:
-            if el == 'neuter' or el == 'masculine' or el == 'feminine':
-                genus = el
-    return [ genus, nominativ_singular, nominativ_plural, akkusativ_singular, dativ_singular, genetiv_singular]
+    if type(forms) != float:
+        for obj in forms:
+            if 'nominative' in obj['tags'] and 'singular' in obj['tags']:
+                nominativ_singular = obj['form']
+            if 'nominative' in obj['tags'] and 'plural' in obj['tags']:
+                nominativ_plural = obj['form']
+            if 'accusative' in obj['tags'] and 'singular' in obj['tags']:
+                akkusativ_singular = obj['form']
+            if 'dative' in obj['tags'] and 'singular' in obj['tags']:
+                dativ_singular = obj['form']
+            if 'genitive' in obj['tags'] and 'singular' in obj['tags']:
+                genetiv_singular = obj['form']
+    if type(senses) != float:
+        for obj in senses:
+            if genus != '':
+                break
+            tags = obj.get('tags', None)
+            if tags is None:
+                continue
+            for el in tags:
+                if el == 'neuter' or el == 'masculine' or el == 'feminine':
+                    genus = el
+    return [genus, nominativ_singular, nominativ_plural, akkusativ_singular, dativ_singular, genetiv_singular]
 
 
-#TODO: wen oder was? => transitiv
-def get_verb_wiktionary_data_from_dumps(dict_verb,word: str):
-    forms_senses_list = dict_verb.get(word)
+# TODO: wen oder was? => transitiv
+def get_verb_wiktionary_data_from_dumps(dict_verb, word: str):
+    forms_senses_list = dict_verb.get(word, None)
+    if forms_senses_list is None:
+        return ['', '', '', '']
     forms = forms_senses_list[0]
     senses = forms_senses_list[1]
     written_form_3rd_present = ''
     written_form_3rd_past = ''
     written_form_3rd_perfect = ''
-    verb_type = ''
-    return [ written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type]
+    verb_type = 'transitive'
+    if type(forms) != float:
+        for obj in forms:
+            if 'present' in obj['tags'] and 'singular' in obj['tags'] and 'third-person' in obj['tags']:
+                written_form_3rd_present = obj['form']
+            if 'preterite' in obj['tags'] and 'singular' in obj['tags'] and 'third-person' in obj['tags']:
+                written_form_3rd_past = obj['form']
+            if 'perfect' in obj['tags'] and 'singular' in obj['tags'] and 'third-person' in obj['tags']:
+                perfect = obj['form'].split(' ')
+                written_form_3rd_perfect = perfect[1] if len(perfect) == 2 else perfect[0]
+    # TODO: find a better and distinct way. error prone
+    if type(senses) != float:
+        for obj in senses:
+            raw_glosses = obj.get('raw_glosses', None)
+            if raw_glosses is None:
+                continue
+            if '(intransitive, transitive)' in raw_glosses:
+                verb_type = 'intransitive/transitive'
+                break
+            if '(intransitive)' in raw_glosses:
+                verb_type = 'intransitive'
+                break
+    return [written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type]
 
-#TODO:
-def get_adj_wiktionary_data_from_dumps(dict_adj,word: str):
+
+# TODO:
+def get_adj_wiktionary_data_from_dumps(dict_adj, word: str):
     return dict_adj.get(word)
 
 
 #     return ['verb', written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type]
 # TODO: implement wiktionary data retriever from json dumps
-dict_wiktionary_noun, dict_wiktionary_verb, dict_wiktionary_adj = prepare_local_wiktionary_data()
-tmp1 = get_noun_wiktionary_data_from_dumps(dict_wiktionary_noun,'Flugzeug')
-tmp2 = dict_wiktionary_verb.get(dict_wiktionary_verb,'schwimmen')
-tmp3 = dict_wiktionary_verb.get(dict_wiktionary_verb,'überqueren')
-tmp4 = dict_wiktionary_adj.get(dict_wiktionary_adj,'hoch')
-tmp5 = dict_wiktionary_verb.get(dict_wiktionary_verb,'reden')
-
-print(tmp1)
-print('\n')
-'''print(len(tmp2))
-print('\n')
-print(len(tmp3))
-print('\n')
-print(len(tmp4))
+# dict_wiktionary_noun, dict_wiktionary_verb, dict_wiktionary_adj = prepare_local_wiktionary_data()
+# tmp1 = get_noun_wiktionary_data_from_dumps(dict_wiktionary_noun,'Flugzeug')
+# tmp2 = get_verb_wiktionary_data_from_dumps(dict_wiktionary_verb, 'existieren')
+# tmp3 = get_verb_wiktionary_data_from_dumps(dict_wiktionary_verb, 'besitzen')
+# tmp4 = dict_wiktionary_adj.get(dict_wiktionary_adj,'hoch')
+# tmp5 = dict_wiktionary_adj.get(dict_wiktionary_adj,'deutsch')
+# print(dict_wiktionary_verb.get('schwimmen'))
+# print(dict_wiktionary_verb.get('wählen'))
+# print(tmp1)
+# print('\n')
+# print(tmp2)
+# print('\n')
+# print(tmp3)
+# print('\n')
+'''print(len(tmp4))
 print('\n')
 print(tmp1[0])
 print('\n')
@@ -152,10 +185,10 @@ print(tmp4[0])
 print('\n')
 print(tmp4[1])
 print('\n')'''
-print(tmp5[0])
+'''print(tmp5[0])
 print('\n')
 print(tmp5[1])
-print('\n')
+print('\n')'''
 
 # get_noun_wiktionary_data_from_dumps('Flugzeug')
 '''start = time.time()
@@ -164,7 +197,3 @@ print('\n')
 end = time.time()
 print(end - start)
 '''
-
-
-
-

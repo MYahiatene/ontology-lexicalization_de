@@ -125,7 +125,7 @@ def post_proccess_noun(noun_map, noun_list: list):
                 'range': range}
     with open('csv_results/NounPPFrame.csv', 'a+') as file:
         writer = csv.DictWriter(file, fieldnames=nounHeader)
-        if os.stat('NounPPFrame.csv').st_size == 0:
+        if os.stat('csv_results/NounPPFrame.csv').st_size == 0:
             writer.writeheader()
             return
         if str(noun_row) not in noun_csv_set:
@@ -161,7 +161,7 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list):
                         'domain': domain,
                         'range': range,
                         'passivePreposition': 'von', }
-            if os.stat('TransitiveFrame.csv').st_size == 0:
+            if os.stat('csv_results/TransitiveFrame.csv').st_size == 0:
                 writer.writeheader()
             if str(verb_row) not in transitive_csv_set:
                 writer.writerow(verb_row)
@@ -187,7 +187,7 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list):
                         'reference': reference,
                         'domain': domain,
                         'range': range, }
-            if os.stat('InTransitiveFrame.csv').st_size == 0:
+            if os.stat('csv_results/InTransitiveFrame.csv').st_size == 0:
                 writer.writeheader()
             if str(verb_row) not in intransitive_csv_set:
                 writer.writerow(verb_row)
@@ -236,12 +236,12 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list):
                                      'reference': reference,
                                      'domain': domain_intransitive,
                                      'range': range_intransitive, }
-            if os.stat('TransitiveFrame.csv').st_size == 0:
+            if os.stat('csv_results/TransitiveFrame.csv').st_size == 0:
                 writer.writeheader()
             if str(verb_row_transitive) not in transitive_csv_set and domain_range_map_entry_transitive is not None:
                 writer.writerow(verb_row_transitive)
                 transitive_csv_set.add(str(verb_row_transitive))
-            if os.stat('InTransitiveFrame.csv').st_size == 0:
+            if os.stat('csv_results/InTransitiveFrame.csv').st_size == 0:
                 writer2.writeheader()
             if str(verb_row_intransitive) not in intransitive_csv_set and domain_range_map_entry_intransitive is not None:
                 writer2.writerow(verb_row_intransitive)
@@ -254,7 +254,7 @@ def post_proccess_adj(adj_list):
     if is_attribute:
         with open('csv_results/AttributeAdjective.csv', 'a+') as file:
             writer = csv.DictWriter(file, fieldnames=attributeAdjHeader)
-            if os.stat('AttributeAdjective.csv').st_size == 0:
+            if os.stat('csv_results/AttributeAdjective.csv').st_size == 0:
                 writer.writeheader()
             adj_row = {'LemonEntry': word,
                        'partOfSpeech': 'adjective',
@@ -275,7 +275,7 @@ def post_proccess_adj(adj_list):
     if is_gradable:
         with open('csv_results/GradableAdjective.csv', 'a+') as file:
             writer = csv.DictWriter(file, fieldnames=gradableAdjHeader)
-            if os.stat('GradableAdjective.csv').st_size == 0:
+            if os.stat('csv_results/GradableAdjective.csv').st_size == 0:
                 writer.writeheader()
             adj_row = {'LemonEntry': word,
                        'partOfSpeech': 'adjective',

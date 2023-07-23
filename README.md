@@ -152,24 +152,8 @@ Please use the following citation:
 
 ---
 
-install gnu parallel
+docker build -t lexicalization_de .
 
-perl installation and modules
+docker run --name lexicalization_de lexicalization_de
 
-python 3.11 install
-
-pip3 install virtualenv
-virtualenv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-edit ./input/classes.txt if you want to change the classes for which the script runs
-run ./lexicalizeAndCreateCSV.sh for executing the script sequentially for every class
-
-TODO: Parallel not working yet cause of perl inter folder and files unique
-
-if you want to run the script in parallel:
-./lexicalizeAndCreateCSV.sh <number of parallel Jobs>
-
-cd post_processing
-./post_process.py
+docker cp lexicalization_de:/app/post_processing/csv_results/ .

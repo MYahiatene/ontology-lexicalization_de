@@ -7,6 +7,7 @@ import nltk
 import pickle
 from alive_progress import alive_bar
 
+from de_properties_map import de_properties_map
 from intransitiveFrameMap import intransitiveFrameMap
 from qald7_properties import qald7_properties
 import umlaute
@@ -289,6 +290,11 @@ with alive_bar(number_of_csv_files, title='Processing', force_tty=True) as bar:
             for index, line in csv_df.iterrows():
                 ngram = line['patterntype']
                 reference = line['predicate']
+                mapped_reference = None
+                if 'de.dbpedia.org/property' in reference:
+                    mapped_reference = de_properties_map.get(reference, None)
+                if mapped_reference is not None:
+                    reference = mapped_reference
                 words = replace_stop_words(replace_umlaute(line['linguistic pattern']))
                 if len(reference) == 0:
                     continue

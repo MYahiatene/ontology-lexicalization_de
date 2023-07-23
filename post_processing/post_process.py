@@ -123,7 +123,7 @@ def post_proccess_noun(noun_map, noun_list: list):
                 'reference': reference,
                 'domain': domain,
                 'range': range}
-    with open('NounPPFrame.csv', 'a+') as file:
+    with open('csv_results/NounPPFrame.csv', 'a+') as file:
         writer = csv.DictWriter(file, fieldnames=nounHeader)
         if os.stat('NounPPFrame.csv').st_size == 0:
             writer.writeheader()
@@ -145,7 +145,7 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list):
             return
         domain = domain_range_map_entry[0]
         range = domain_range_map_entry[1]
-        with open('TransitiveFrame.csv', 'a+') as file:
+        with open('csv_results/TransitiveFrame.csv', 'a+') as file:
             writer = csv.DictWriter(file, fieldnames=transitiveVerbHeader)
             verb_row = {'LemonEntry': word,
                         'partOfSpeech': 'verb',
@@ -171,7 +171,7 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list):
             return
         domain = domain_range_map_entry[0]
         range = domain_range_map_entry[1]
-        with open('InTransitiveFrame.csv', 'a+') as file:
+        with open('csv_results/InTransitiveFrame.csv', 'a+') as file:
             writer = csv.DictWriter(file, fieldnames=intransitiveVerbHeader)
             verb_row = {'LemonEntry': word,
                         'partOfSpeech': 'verb',
@@ -205,7 +205,7 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list):
         if domain_range_map_entry_intransitive is not None:
             domain_intransitive = domain_range_map_entry_intransitive[0]
             range_intransitive = domain_range_map_entry_intransitive[1]
-        with open('TransitiveFrame.csv', 'a+') as file, open('InTransitiveFrame.csv', 'a+') as file2:
+        with open('csv_results/TransitiveFrame.csv', 'a+') as file, open('csv_results/InTransitiveFrame.csv', 'a+') as file2:
             writer = csv.DictWriter(file, fieldnames=transitiveVerbHeader)
             writer2 = csv.DictWriter(file2, fieldnames=intransitiveVerbHeader)
             verb_row_transitive = {'LemonEntry': word,
@@ -252,7 +252,7 @@ def post_proccess_adj(adj_list):
     gradable_list, is_attribute = adj_list
     is_gradable, comparative, superlative_singular, superlative_plural = gradable_list
     if is_attribute:
-        with open('AttributeAdjective.csv', 'a+') as file:
+        with open('csv_results/AttributeAdjective.csv', 'a+') as file:
             writer = csv.DictWriter(file, fieldnames=attributeAdjHeader)
             if os.stat('AttributeAdjective.csv').st_size == 0:
                 writer.writeheader()
@@ -273,7 +273,7 @@ def post_proccess_adj(adj_list):
                 writer.writerow(adj_row)
                 attribute_adjective_csv_set.add(str(adj_row))
     if is_gradable:
-        with open('GradableAdjective.csv', 'a+') as file:
+        with open('csv_results/GradableAdjective.csv', 'a+') as file:
             writer = csv.DictWriter(file, fieldnames=gradableAdjHeader)
             if os.stat('GradableAdjective.csv').st_size == 0:
                 writer.writeheader()
@@ -298,16 +298,16 @@ def post_proccess_adj(adj_list):
                 gradable_adjective_csv_set.add(str(adj_row))
 
 
-if os.path.exists('AttributeAdjective.csv'):
-    os.unlink('AttributeAdjective.csv')
-if os.path.exists('GradableAdjective.csv'):
-    os.unlink('GradableAdjective.csv')
-if os.path.exists('NounPPFrame.csv'):
-    os.unlink('NounPPFrame.csv')
-if os.path.exists('TransitiveFrame.csv'):
-    os.unlink('TransitiveFrame.csv')
+if os.path.exists('csv_results/AttributeAdjective.csv'):
+    os.unlink('csv_results/AttributeAdjective.csv')
+if os.path.exists('csv_results/GradableAdjective.csv'):
+    os.unlink('csv_results/GradableAdjective.csv')
+if os.path.exists('csv_results/NounPPFrame.csv'):
+    os.unlink('csv_results/NounPPFrame.csv')
+if os.path.exists('csv_results/TransitiveFrame.csv'):
+    os.unlink('csv_results/TransitiveFrame.csv')
 if os.path.exists('InTransitiveFrame.csv'):
-    os.unlink('InTransitiveFrame.csv')
+    os.unlink('csv_results/InTransitiveFrame.csv')
 
 number_of_csv_files = len(csv_files)
 with alive_bar(number_of_csv_files, title='Processing', force_tty=True) as bar:

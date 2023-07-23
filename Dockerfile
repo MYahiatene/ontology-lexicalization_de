@@ -52,17 +52,19 @@ RUN apt-get update \
 
 
 USER root
-
+SHELL ["/bin/bash", "-c"]
 WORKDIR /app
-COPY ./input /app/
-COPY ./perl /app/
-COPY ./post_processing /app/
-COPY inputLex.json /app/
-COPY lexicalizeAndCreateCSV.sh /app/
-COPY requirements.txt /app/
-RUN chmod +x /app
+COPY ./input ./input
+COPY ./perl ./perl
+COPY ./post_processing ./post_processing
+COPY inputLex.json .
+COPY lexicalizeAndCreateCSV.sh .
+COPY requirements.txt .
+RUN mkdir "results"
+RUN mkdir "inter"
+RUN chmod -R u+x .
 
-RUN python3 -m venv /app
-RUN source /app/venv/bin/activate
-RUN pip3 install -r /app/requirements.txt
-CMD ["./lexicalizeAndCreateCSV"]
+RUN python -m pip install -r requirements.txt
+RUN  virtualenv venv
+RUN . venv/bin/activate
+CMD ["./lexicalizeAndCreateCSV.sh"]

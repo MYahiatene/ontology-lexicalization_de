@@ -1,12 +1,4 @@
-FROM maven:3.8-openjdk-11 AS buildweb
-
-ADD pom.xml /source/pom.xml
-RUN cd /source && mvn verify clean --fail-never
-
-ADD ./src /source/src
-RUN cd /source && mvn -B package -DskipTests
-
-FROM maven:3.8-openjdk-11 AS buildconv
+FROM python:3.11
 # Update the repository sources list
 RUN apt-get update
 
@@ -59,12 +51,18 @@ RUN apt-get update \
 
 
 
-EXPOSE 8080
 USER root
 
 WORKDIR /app
-COPY ./ /app
+COPY ./input /app/
+COPY ./perl /app/
+COPY ./post_processing /app/
+COPY inputLex.json /app/
+COPY lexicalizeAndCreateCSV.sh /app/
+COPY requirements.txt /app/
 RUN chmod +x /app
-COPY ./openapi.yaml /openapi.yaml
-COPY --from=buildweb /source/target /app/
-CMD ["java","-jar","-Xmx16G","rest-service-0.0.1-SNAPSHOT.jar"]
+
+RUN python3 -m venv /app
+RUN source /app/venv/bin/activate
+RUN pip3 install -r /app/requirements.txt
+CMD ["./lexicalizeAndCreateCSV"]

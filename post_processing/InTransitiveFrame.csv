@@ -385,8 +385,3 @@ reisen,verb,reisen,,,,durch,IntransitivePPFrame,domain,range,1,http://dbpedia.or
 abdrehen,verb,abdrehen,abdreht,abdrehte,abgedreht,durch,IntransitivePPFrame,domain,range,1,http://dbpedia.org/ontology/country,http://dbpedia.org/ontology/Lake,http://dbpedia.org/ontology/Country
 reisen,verb,reisen,,,,durch,IntransitivePPFrame,domain,range,1,http://dbpedia.org/ontology/language,http://dbpedia.org/ontology/Country,http://dbpedia.org/ontology/Language
 lernen,verb,lernen,lernt,lernte,gelernt,durch,IntransitivePPFrame,domain,range,1,http://dbpedia.org/ontology/language,http://dbpedia.org/ontology/Country,http://dbpedia.org/ontology/Language
-spielen,verb,spielen,spielt,spielte,gespielt,durch,IntransitivePPFrame,domain,range,1,http://dbpedia.org/ontology/city,http://dbpedia.org/ontology/River,http://dbpedia.org/ontology/City
-treten,verb,treten,tritt,trat,getreten,durch,IntransitivePPFrame,domain,range,1,http://dbpedia.org/ontology/city,http://dbpedia.org/ontology/River,http://dbpedia.org/ontology/City
-gewinnen,verb,gewinnen,gewinnt,gewann,gewonnen,durch,IntransitivePPFrame,domain,range,1,http://dbpedia.org/ontology/city,http://dbpedia.org/ontology/River,http://dbpedia.org/ontology/City
-ziehen,verb,ziehen,zieht,zog,gezogen,durch,IntransitivePPFrame,domain,range,1,http://dbpedia.org/ontology/city,http://dbpedia.org/ontology/River,http://dbpedia.org/ontology/City
-sehen,verb,sehen,sieht,sah,gesehen,durch,IntransitivePPFrame,domain,range,1,http://dbpedia.org/ontology/city,http://dbpedia.org/ontology/River,http://dbpedia.org/ontology/City

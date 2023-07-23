@@ -16,9 +16,7 @@ from request import prepare_local_wiktionary_data, get_noun_wiktionary_data_from
     get_verb_wiktionary_data_from_dumps, get_adj_wiktionary_data_from_dumps
 from nounMap import nounMap
 from transitiveFrameMap import transitiveFrameMap
-from verbFrameMap import verbFrameMap
-from qald7_mappings import qald7_mappings
-from headers import nounHeader, transitiveVerbHeader, intransitiveVerbHeader
+from headers import nounHeader, transitiveVerbHeader, intransitiveVerbHeader, attributeAdjHeader, gradableAdjHeader
 
 corp = nltk.corpus.ConllCorpusReader('.', 'tiger_release_aug07.corrected.16012013.conll09',
                                      ['ignore', 'words', 'ignore', 'ignore', 'pos'],
@@ -38,7 +36,9 @@ transitive_csv_set = set()
 # used to prevent saving same entries in the csv
 intransitive_csv_set = set()
 # used to prevent saving same entries in the csv
-adjective_csv_set = set()
+attribute_adjective_csv_set = set()
+# used to prevent saving same entries in the csv
+gradable_adjective_csv_set = set()
 
 noun_df = pd.DataFrame
 verb_transitive_df = pd.DataFrame
@@ -248,28 +248,60 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list):
                 intransitive_csv_set.add(str(verb_row_intransitive))
 
 
-def post_proccess_adj(adj_map, adj_list):
-    with open('Adjective.csv', 'a+') as file:
-        writer = csv.DictWriter(file, fieldnames=["class",
-                                                  "linguistic pattern",
-                                                  "predicate"
-                                                  ])
-        if os.stat('Adjective.csv').st_size == 0:
-            writer.writeheader()
-        # TODO: local wiktionary and differentiate between attribute and gradable
-        # get_adj_wiktionary_data_from_dumps(dict_wiktionary_adj,words[0])
-        adj_row = {"class": line["class"], "linguistic pattern": word,
-                   "predicate": reference,
-                   }
-        # TODO: case for gradable and attribute adjective
-        if adj_row not in adjective_csv_set:
-            writer.writerow(adj_row)
-            adjective_csv_set.add(adj_row)
-        writer.writerow(adj_row)
+def post_proccess_adj(adj_list):
+    gradable_list, is_attribute = adj_list
+    is_gradable, comparative, superlative_singular, superlative_plural = gradable_list
+    if is_attribute:
+        with open('AttributeAdjective.csv', 'a+') as file:
+            writer = csv.DictWriter(file, fieldnames=attributeAdjHeader)
+            if os.stat('AttributeAdjective.csv').st_size == 0:
+                writer.writeheader()
+            adj_row = {'LemonEntry': word,
+                       'partOfSpeech': 'adjective',
+                       'writtenForm': word,
+                       'SyntacticFrame': 'AdjectiveAttributiveFrame',
+                       'copulativeSubject': 'PredSynArg',
+                       'attributiveArg': 'AttrSynArg',
+                       'sense': '1',
+                       'reference': 'owl:Restriction',
+                       'owl:onProperty': reference,
+                       'owl:hasValue': '',
+                       'domain': 'dbo:Person',
+                       'range': 'dbo:Person',
+                       }
+            if str(adj_row) not in attribute_adjective_csv_set:
+                writer.writerow(adj_row)
+                attribute_adjective_csv_set.add(str(adj_row))
+    if is_gradable:
+        with open('GradableAdjective.csv', 'a+') as file:
+            writer = csv.DictWriter(file, fieldnames=gradableAdjHeader)
+            if os.stat('GradableAdjective.csv').st_size == 0:
+                writer.writeheader()
+            adj_row = {'LemonEntry': word,
+                       'partOfSpeech': 'adjective',
+                       'writtenForm': word,
+                       'comparative': comparative,
+                       'superlative_singular': superlative_singular,
+                       'superlative_plural': superlative_plural,
+                       'SyntacticFrame': 'AdjectiveSuperlativeFrame',
+                       'predFrame': 'PredSynArg',
+                       'sense': '1',
+                       'reference': 'oils:CovariantScalar',
+                       'oils:boundTo': reference,
+                       'oils:degree': 'oils:high',
+                       'domain': 'dbo:Person',
+                       'range': 'dbo:Person',
+                       'preposition': 'in',
+                       }
+            if str(adj_row) not in gradable_adjective_csv_set:
+                writer.writerow(adj_row)
+                gradable_adjective_csv_set.add(str(adj_row))
 
 
-if os.path.exists('Adjective.csv'):
-    os.unlink('Adjective.csv')
+if os.path.exists('AttributeAdjective.csv'):
+    os.unlink('AttributeAdjective.csv')
+if os.path.exists('GradableAdjective.csv'):
+    os.unlink('GradableAdjective.csv')
 if os.path.exists('NounPPFrame.csv'):
     os.unlink('NounPPFrame.csv')
 if os.path.exists('TransitiveFrame.csv'):
@@ -291,6 +323,7 @@ with alive_bar(number_of_csv_files, title='Processing', force_tty=True) as bar:
                 ngram = line['patterntype']
                 reference = line['predicate']
                 mapped_reference = None
+                # TODO: Do it for more properties including converting properties to ontologies
                 if 'de.dbpedia.org/property' in reference:
                     mapped_reference = de_properties_map.get(reference, None)
                 if mapped_reference is not None:
@@ -304,18 +337,16 @@ with alive_bar(number_of_csv_files, title='Processing', force_tty=True) as bar:
                 word = lemmata_pos_word[0][0]
                 pos_tag = lemmata_pos_word[0][1][0][1]
                 if pos_tag.startswith('ADJ'):
-                    # adj_list = get_adj_wiktionary_data_from_dumps(dict_wiktionary_adj, word)
-                    # adj_map = {}
-                    # post_proccess_adj(adj_map, adj_list)
-                    None
-                    # TODO: Debug nounppframe
+                    adj_list = get_adj_wiktionary_data_from_dumps(dict_wiktionary_adj, word)
+                    if adj_list is None:
+                        continue
+                    post_proccess_adj(adj_list)
                 if pos_tag.startswith('N'):
                     noun_list = get_noun_wiktionary_data_from_dumps(
                         dict_wiktionary_noun, word)
                     if noun_list is None:
                         continue
                     post_proccess_noun(nounMap, noun_list)
-                    # TODO: check why only transitive
                 if pos_tag.startswith('V'):
                     verb_list = get_verb_wiktionary_data_from_dumps(
                         dict_wiktionary_verb, word)

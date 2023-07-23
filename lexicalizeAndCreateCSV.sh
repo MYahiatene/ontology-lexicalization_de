@@ -33,6 +33,8 @@ if [ -z "$1" ]; then
     startJobForClass "$line"
   done <./input/classes.txt
 fi
+cd post_processing || exit
+./post_process.py
 
 #TODO: Parallel not working yet cause of perl inter folder and files unique
 #if [[ $1 =~ ^[0-9]+$ ]]; then

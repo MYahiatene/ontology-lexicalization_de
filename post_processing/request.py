@@ -133,7 +133,7 @@ def get_verb_wiktionary_data_from_dumps(dict_verb, word: str):
                 written_form_3rd_perfect = perfect[1] if len(perfect) == 2 else perfect[0]
     # TODO: transitive or intransitive classification is relatively heuristic, could be done better
     if type(senses) != float:
-        tags= None
+        tags = None
         for sense in senses:
             tags = sense.get('tags')
             if tags is not None:
@@ -151,52 +151,34 @@ def get_verb_wiktionary_data_from_dumps(dict_verb, word: str):
 
 # TODO:
 def get_adj_wiktionary_data_from_dumps(dict_adj, word: str):
-    return dict_adj.get(word)
+    forms_senses = dict_adj.get(word)
+    if forms_senses is None:
+        return
+    forms = forms_senses[0]
+    comparative = ''
+    superlative_singular = ''
+    superlative_plural = ''
+    is_attribute = False
+    is_gradable = False
+    if type(forms) != float:
+        for form in forms:
+            tags = form.get('tags', None)
+            if form.get('source', '') == 'declension':
+                is_attribute = True
+            if tags is not None:
+                if 'comparative' in tags:
+                    is_gradable = True
+                    comparative = form.get('form', '').split(' ')[-1]
+                if 'superlative' in tags and 'singular' in tags:
+                    superlative_singular = form.get('form', '').split(" ")[-1]
+                if 'superlative' in tags and 'plural' in tags:
+                    superlative_plural = form.get('form', '').split(' ')[-1]
+    return [[is_gradable, comparative, superlative_singular, superlative_plural], is_attribute]
 
-
-#     return ['verb', written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type]
 # TODO: implement wiktionary data retriever from json dumps
-# dict_wiktionary_noun, dict_wiktionary_verb, dict_wiktionary_adj = prepare_local_wiktionary_data()
-# tmp1 = get_noun_wiktionary_data_from_dumps(dict_wiktionary_noun,'Flugzeug')
-# tmp2 = get_verb_wiktionary_data_from_dumps(dict_wiktionary_verb, 'existieren')
-# tmp3 = get_verb_wiktionary_data_from_dumps(dict_wiktionary_verb, 'besitzen')
-# tmp4 = dict_wiktionary_adj.get(dict_wiktionary_adj,'hoch')
-# tmp5 = dict_wiktionary_adj.get(dict_wiktionary_adj,'deutsch')
-# print(dict_wiktionary_verb.get('schwimmen')[1])
-# print(dict_wiktionary_verb.get('wählen')[1])
-# print(tmp1)
-# print('\n')
-# print(tmp2)
-# print('\n')
-# print(tmp3)
-# print('\n')
-'''print(len(tmp4))
-print('\n')
-print(tmp1[0])
-print('\n')
-print(tmp1[1])
-print('\n')
-print(tmp2[0])
-print('\n')
-print(tmp2[1])
-print('\n')
-print(tmp3[0])
-print('\n')
-print(tmp3[1])
-print('\n')
-print(tmp4[0])
-print('\n')
-print(tmp4[1])
-print('\n')'''
-'''print(tmp5[0])
-print('\n')
-print(tmp5[1])
-print('\n')'''
-
-# get_noun_wiktionary_data_from_dumps('Flugzeug')
-'''start = time.time()
-# takes about 23 seconds on my machine
-
-end = time.time()
-print(end - start)
-'''
+#dict_wiktionary_noun, dict_wiktionary_verb, dict_wiktionary_adj = prepare_local_wiktionary_data()
+# print(dict_wiktionary_adj.get('hoch'))
+# print(dict_wiktionary_adj.get('tot'))
+# print(dict_wiktionary_adj.get('schwanger'))
+# print(dict_wiktionary_adj.get('schön'))
+#print(dict_wiktionary_adj.get('deutsch'))

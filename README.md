@@ -3,25 +3,27 @@
 TODO: Add description
 
 
-## Execute the System
+
 added platform support for linux/amd64,linux/arm64
-### Prerquisites
+
+### Prerequisites
 
 about 7gb of disk space
 
 docker version >= 20
 
-### Method 1 (docker)
-clone the repository:
-`git clone`
-change to repository folder:
-`cd name`
+## Execute the System
+
 pull the latest image:
 `docker pull myahiatene/ontology-lexicalization_de`
-start the container for all classes
-`docker run myahiatene/ontology-lexicalization_de -v <absolute path of your current working directory>/results_csv:/app/results_csv/`
-start the container for explicitly specified classes. Here an example fo 2 classes:
-`docker run myahiatene/ontology-lexicalization_de -v <absolute path of repository directory>/results_csv:/app/post_processing/results_csv/ "Actor" "Politician"`
+
+You can either run the project for all 354 classes or explicitly defining the classes to be run:
+
+start the container for all classes:
+`docker run --rm -v <path on your local machine where your results should be stored>:/app/post_processing/csv_results myahiatene/ontology-lexicalization_de`
+
+Example of 2 classes:
+`docker run --rm -v <path on your local machine where your results should be stored>:/app/post_processing/csv_results myahiatene/ontology-lexicalization_de "Person" "Actor"`
 
 ## Developers
 

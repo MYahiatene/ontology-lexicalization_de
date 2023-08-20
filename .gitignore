@@ -397,6 +397,10 @@ input
 results_classes
 inputLex.json
 post_processing/nltk_german.*.pickle
-post_processing//tiger_release.*.conll09
-post_processing/kaikki.*
-# End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,intellij+all,python,pycharm+all
+post_processing/tiger_release.*.conll09
+post_processing/kaikki_dot_org-dictionary-German-by-pos-verb.json
+post_processing/kaikki_dot_org-dictionary-German-by-pos-noun.json
+post_processing/kaikki_dot_org-dictionary-German-by-pos-adj.json
+logfile.txt
+results/
+results_old/

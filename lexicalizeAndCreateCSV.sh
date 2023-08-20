@@ -381,6 +381,12 @@ EOF
 
 export -f startJobForClass
 
+if [ ! -z "$1" ]; then
+  for class in "${@}"; do
+    startJobForClass "http://dbpedia.org/ontology/$class"
+  done
+fi
+
 if [ -z "$1" ]; then
   for class in "${classesArray[@]}"; do
     startJobForClass "$class"

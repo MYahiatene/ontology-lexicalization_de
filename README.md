@@ -19,22 +19,10 @@ change to repository folder:
 pull the latest image:
 `docker pull myahiatene/ontology-lexicalization_de`
 start the container for all classes
-`docker run myahiatene/ontology-lexicalization_de -v ./:/app/results_csv/`
+`docker run myahiatene/ontology-lexicalization_de -v <absolute path of your current working directory>/results_csv:/app/results_csv/`
+start the container for explicitly specified classes. Here an example fo 2 classes:
+`docker run myahiatene/ontology-lexicalization_de -v <absolute path of repository directory>/results_csv:/app/post_processing/results_csv/ "Actor" "Politician"`
 
-`docker run -it --name=ontology-lexicalization_de --rm -v "./:/app/" myahiatene/ontology-lexicalization_de:latest /bin/bash  -c "$(cat ./lexicalizeAndCreateCSV.sh)"`
-todo: delete this and use volumes instead`docker cp lexicalization_de:/app/post_processing/csv_results/ .`
-
-### Method 2 
-
-### Prerequisites
-
-pyhton 3.11
-
-perl 5 including dependencies and module
-
-TODO:
-chmod u+x lexicalizeAndCreateCSV.sh
-./lexicalizeAndCreateCSV.sh
 ## Developers
 
 * **Mokrane Yahiatene**

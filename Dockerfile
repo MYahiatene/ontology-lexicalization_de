@@ -67,4 +67,4 @@ RUN chmod -R u+x .
 RUN python -m pip install -r requirements.txt
 RUN  virtualenv venv
 RUN . venv/bin/activate
-CMD ["./lexicalizeAndCreateCSV.sh"]
+ENTRYPOINT ["./lexicalizeAndCreateCSV.sh"]

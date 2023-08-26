@@ -6,7 +6,7 @@ import csv
 import nltk
 import pickle
 from alive_progress import alive_bar
-from evaluation_utils import merge_csvs, create_rank_metric_csvs
+from evaluation_utils import merge_csvs_and_add_metrics, create_rank_metric_csvs
 
 from de_properties_map import de_properties_map
 from intransitiveFrameMap import intransitiveFrameMap
@@ -18,8 +18,6 @@ from request import prepare_local_wiktionary_data, get_noun_wiktionary_data_from
 from nounMap import nounMap
 from transitiveFrameMap import transitiveFrameMap
 from headers import nounHeader, transitiveVerbHeader, intransitiveVerbHeader, attributeAdjHeader, gradableAdjHeader
-from evaluation import lift, conv, leverage
-import sys
 
 corp = nltk.corpus.ConllCorpusReader('.', 'tiger_release_aug07.corrected.16012013.conll09',
                                      ['ignore', 'words', 'ignore', 'ignore', 'pos'],
@@ -307,10 +305,10 @@ def post_proccess_adj(adj_list, rank=None, metric=None):
                 gradable_adjective_csv_set.add(str(adj_row))
 
 
-rank_metric_aval_flag = True
+rank_metric_eval_flag = True
 metrics = ['Cosine', 'Conviction', 'Lift']
 ranks = [100]
-if rank_metric_aval_flag:
+if rank_metric_eval_flag:
     for rank in ranks:
         for metric in metrics:
             if os.path.exists(f'csv_results/AttributeAdjective_{metric}_{rank}.csv'):
@@ -335,13 +333,10 @@ else:
     if os.path.exists('InTransitiveFrame.csv'):
         os.unlink('csv_results/InTransitiveFrame.csv')
 
-if rank_metric_aval_flag:
-    print(f'Merging association rule files\n')
-    if os.stat('csv_results/merged_association_rules.csv').st_size == 0:
-        merge_csvs()
-    print('Merging done!\n')
+if rank_metric_eval_flag:
+    merged_csv = merge_csvs_and_add_metrics()
     print(f'Creating csv files with ranks:{ranks} and with metrics:{metrics}\n')
-    csv_pd_metric_arr = create_rank_metric_csvs(ranks, metrics)
+    csv_pd_metric_arr = create_rank_metric_csvs(merged_csv, ranks, metrics)
     number_of_csv_files = len(csv_pd_metric_arr)
     print("Done.\n")
     print(f'Created in total {number_of_csv_files} pandas dataframes:{csv_pd_metric_arr}\n')
@@ -349,7 +344,7 @@ else:
     number_of_csv_files = len(csv_files)
 
 with alive_bar(number_of_csv_files, title='Processing', force_tty=True) as bar:
-    if rank_metric_aval_flag:
+    if rank_metric_eval_flag:
         for csv_df in csv_pd_metric_arr:
             class_name = csv_df['class'][0] if len(csv_df['class']) > 0 else 'Empty Class Name'
             rule_name = csv_df['ruletype_longname'][0] if len(csv_df['ruletype_longname']) > 0 else 'Empty Rule Name'

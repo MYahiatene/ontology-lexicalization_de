@@ -28,11 +28,6 @@ def get_wiktionary_data(word: str, pos: str):
     except Exception as e:
         return None
 
-
-'''    elif pos.startswith('ADJ'):
-        wiktionary_records = records_adj'''
-
-
 def get_verb_wiktionary_data(word: str):
     response = requests.get(
         'https://de.wiktionary.org/w/api.php?action=parse&page=%s&prop=wikitext&format=json' % word)
@@ -46,16 +41,6 @@ def get_verb_wiktionary_data(word: str):
     written_form_3rd_past = transitive_verb_json_arr[4].split('=')[1]
     written_form_3rd_perfect = transitive_verb_json_arr[5].split('=')[1]
     return ['verb', written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type]
-
-
-'''def get_wiktionary_data_from_dumps(word: str, pos: str):
-    if pos.startswith('N'):
-        return get_noun_wiktionary_data(word)
-    if pos.startswith('V'):
-        return get_verb_wiktionary_data(word)
-    if pos.startswith('ADJ'):
-        None
-'''
 
 
 ####################### Reading wiktionary from file and then creating a hashmap #################
@@ -76,16 +61,16 @@ def prepare_local_wiktionary_data():
 
 def get_noun_wiktionary_data_from_dumps(dict_noun, word: str):
     forms_senses_list = dict_noun.get(word, None)
+    genus = 'masculine'
+    nominativ_singular = word
+    nominativ_plural = word
+    akkusativ_singular = word
+    dativ_singular = word
+    genetiv_singular = word
     if forms_senses_list is None:
-        return ['', '', '', '', '', '']
+        return [genus, nominativ_singular, nominativ_plural, akkusativ_singular, dativ_singular, genetiv_singular]
     forms = forms_senses_list[0]
     senses = forms_senses_list[1]
-    genus = ''
-    nominativ_singular = ''
-    nominativ_plural = ''
-    akkusativ_singular = ''
-    dativ_singular = ''
-    genetiv_singular = ''
     if type(forms) != float:
         for obj in forms:
             if 'nominative' in obj['tags'] and 'singular' in obj['tags']:
@@ -114,14 +99,14 @@ def get_noun_wiktionary_data_from_dumps(dict_noun, word: str):
 # TODO: wen oder was? => transitiv
 def get_verb_wiktionary_data_from_dumps(dict_verb, word: str):
     forms_senses_list = dict_verb.get(word, None)
+    written_form_3rd_present = word
+    written_form_3rd_past = word
+    written_form_3rd_perfect = word
+    verb_type = 'transitive'
     if forms_senses_list is None:
-        return ['', '', '', '']
+        return [written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type]
     forms = forms_senses_list[0]
     senses = forms_senses_list[1]
-    written_form_3rd_present = ''
-    written_form_3rd_past = ''
-    written_form_3rd_perfect = ''
-    verb_type = 'transitive'
     if type(forms) != float:
         for obj in forms:
             if 'present' in obj['tags'] and 'singular' in obj['tags'] and 'third-person' in obj['tags']:
@@ -152,14 +137,14 @@ def get_verb_wiktionary_data_from_dumps(dict_verb, word: str):
 # TODO:
 def get_adj_wiktionary_data_from_dumps(dict_adj, word: str):
     forms_senses = dict_adj.get(word)
-    if forms_senses is None:
-        return
-    forms = forms_senses[0]
-    comparative = ''
-    superlative_singular = ''
-    superlative_plural = ''
+    comparative = word
+    superlative_singular = word
+    superlative_plural = word
     is_attribute = False
     is_gradable = False
+    if forms_senses is None:
+        return [[True, comparative, superlative_singular, superlative_plural], True]
+    forms = forms_senses[0]
     if type(forms) != float:
         for form in forms:
             tags = form.get('tags', None)
@@ -174,11 +159,3 @@ def get_adj_wiktionary_data_from_dumps(dict_adj, word: str):
                 if 'superlative' in tags and 'plural' in tags:
                     superlative_plural = form.get('form', '').split(' ')[-1]
     return [[is_gradable, comparative, superlative_singular, superlative_plural], is_attribute]
-
-# TODO: implement wiktionary data retriever from json dumps
-#dict_wiktionary_noun, dict_wiktionary_verb, dict_wiktionary_adj = prepare_local_wiktionary_data()
-# print(dict_wiktionary_adj.get('hoch'))
-# print(dict_wiktionary_adj.get('tot'))
-# print(dict_wiktionary_adj.get('schwanger'))
-# print(dict_wiktionary_adj.get('schön'))
-#print(dict_wiktionary_adj.get('deutsch'))

@@ -79,7 +79,8 @@ lemmata_mapping = read_lemmata_from_tiger_corpus('tiger_release_aug07.corrected.
 def replace_stop_words(words):
     with open('stopwords-de.txt', mode='r', encoding='utf-8') as f:
         lines = f.readlines()
-        return [word for word in words.split(" ") if word + '\n' not in lines]
+        lines_upper = [line.capitalize() for line in lines]
+        return [word for word in words.split(" ") if (word + '\n' not in lines and word + '\n' not in lines_upper)]
 
 
 def read_lemma(words):
@@ -104,9 +105,11 @@ def post_proccess_noun(noun_map, noun_list: list, rank=None, metric=None):
     path = 'csv_results/NounPPFrame.csv' if rank is None and metric is None else f'csv_results/NounPPFrame_{metric}_{rank}.csv'
     domain_range_map_entry = noun_map.get(reference, None)
     if domain_range_map_entry is None:
-        return
-    domain = domain_range_map_entry[0]
-    range = domain_range_map_entry[1]
+        domain = '-'
+        range = '-'
+    else:
+        domain = domain_range_map_entry[0]
+        range = domain_range_map_entry[1]
     genus, nominativ_singular, nominativ_plural, akkusativ_singular, dativ_singular, genetiv_singular = noun_list
     noun_row = {"LemonEntry": word, 'partOfSpeech': 'noun',
                 'gender': genus,
@@ -146,9 +149,11 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list, rank
     written_form_3rd_present, written_form_3rd_past, written_form_3rd_perfect, verb_type = verb_list
     if verb_type == 'transitive':
         if domain_range_map_entry is None:
-            return
-        domain = domain_range_map_entry[0]
-        range = domain_range_map_entry[1]
+            domain = '-'
+            range = '-'
+        else:
+            domain = domain_range_map_entry[0]
+            range = domain_range_map_entry[1]
         with open(path, 'a+') as file:
             writer = csv.DictWriter(file, fieldnames=transitiveVerbHeader)
             verb_row = {'LemonEntry': word,
@@ -172,9 +177,11 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list, rank
                 transitive_csv_set.add(str(verb_row))
     if verb_type == "intransitive":
         if domain_range_map_entry is None:
-            return
-        domain = domain_range_map_entry[0]
-        range = domain_range_map_entry[1]
+            domain = '-'
+            range = '-'
+        else:
+            domain = domain_range_map_entry[0]
+            range = domain_range_map_entry[1]
         with open(path2, 'a+') as file:
             writer = csv.DictWriter(file, fieldnames=intransitiveVerbHeader)
             verb_row = {'LemonEntry': word,
@@ -205,10 +212,16 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list, rank
         if domain_range_map_entry_transitive is not None:
             domain_transitive = domain_range_map_entry_transitive[0]
             range_transitive = domain_range_map_entry_transitive[1]
+        else:
+            domain_transitive = '-'
+            range_transitive = '-'
         domain_range_map_entry_intransitive = intransitiveFrameMap.get(reference, None)
         if domain_range_map_entry_intransitive is not None:
             domain_intransitive = domain_range_map_entry_intransitive[0]
             range_intransitive = domain_range_map_entry_intransitive[1]
+        else:
+            domain_intransitive = '-'
+            range_intransitive = '-'
         with open(path, 'a+') as file, open(path2,
                                             'a+') as file2:
             writer = csv.DictWriter(file, fieldnames=transitiveVerbHeader)
@@ -306,8 +319,12 @@ def post_proccess_adj(adj_list, rank=None, metric=None):
 
 
 rank_metric_eval_flag = True
-metrics = ['Cosine', 'Conviction', 'Lift']
-ranks = [100]
+global metrics
+metrics = ['Cosine', 'Conviction', 'Leverage', 'Lift']
+global csv_pd_metric_arr
+global ranks
+ranks = [10]
+
 if rank_metric_eval_flag:
     for rank in ranks:
         for metric in metrics:
@@ -332,65 +349,49 @@ else:
         os.unlink('csv_results/TransitiveFrame.csv')
     if os.path.exists('InTransitiveFrame.csv'):
         os.unlink('csv_results/InTransitiveFrame.csv')
-
 if rank_metric_eval_flag:
     merged_csv = merge_csvs_and_add_metrics()
     print(f'Creating csv files with ranks:{ranks} and with metrics:{metrics}\n')
     csv_pd_metric_arr = create_rank_metric_csvs(merged_csv, ranks, metrics)
     number_of_csv_files = len(csv_pd_metric_arr)
     print("Done.\n")
-    print(f'Created in total {number_of_csv_files} pandas dataframes:{csv_pd_metric_arr}\n')
+    # print(f'Created in total {number_of_csv_files} pandas dataframes:{csv_pd_metric_arr}\n')
 else:
     number_of_csv_files = len(csv_files)
 
 with alive_bar(number_of_csv_files, title='Processing', force_tty=True) as bar:
     if rank_metric_eval_flag:
-        for csv_df in csv_pd_metric_arr:
-            class_name = csv_df['class'][0] if len(csv_df['class']) > 0 else 'Empty Class Name'
-            rule_name = csv_df['ruletype_longname'][0] if len(csv_df['ruletype_longname']) > 0 else 'Empty Rule Name'
-            print(f'class: {class_name} rule: {rule_name}')
-            csv_df.sort_values('Cosine', inplace=True, ascending=False)
+        # print(f'Array of metrics: {csv_pd_metric_arr}')
+        for tuple_csv in csv_pd_metric_arr:
+            csv_df, rank, metric = tuple_csv
             for index, line in csv_df.iterrows():
                 ngram = line['patterntype']
                 reference = line['predicate']
-                mapped_reference = None
-                # TODO: Do it for more properties including converting properties to ontologies
-                if 'de.dbpedia.org/property' in reference:
-                    mapped_reference = de_properties_map.get(reference, None)
-                if mapped_reference is not None:
-                    reference = mapped_reference
-                if reference not in qald7_properties:
-                    continue
                 words = replace_stop_words(replace_umlaute(line['linguistic pattern']))
-                if len(reference) == 0:
-                    continue
                 lemmata_pos_word = read_lemma(words)
                 if len(lemmata_pos_word) == 0:
-                    continue
-                word = lemmata_pos_word[0][0]
-                pos_tag = lemmata_pos_word[0][1][0][1]
+                    word = words[0]
+                    pos_tag = 'NOUN'
+                else:
+                    word = lemmata_pos_word[0][0]
+                    pos_tag = lemmata_pos_word[0][1][0][1]
                 if pos_tag.startswith('ADJ'):
                     adj_list = get_adj_wiktionary_data_from_dumps(dict_wiktionary_adj, word)
-                    if adj_list is None:
-                        continue
                     post_proccess_adj(adj_list, rank, metric)
                 if pos_tag.startswith('N'):
                     noun_list = get_noun_wiktionary_data_from_dumps(
                         dict_wiktionary_noun, word)
-                    if noun_list is None:
-                        continue
                     post_proccess_noun(nounMap, noun_list, rank, metric)
                 if pos_tag.startswith('V'):
                     verb_list = get_verb_wiktionary_data_from_dumps(
                         dict_wiktionary_verb, word)
-                    if verb_list is None:
-                        continue
                     post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list, rank, metric)
             bar()
     else:
         for file in csv_files:
             with bz2.open(file, mode='rt') as f:
                 csv_df = pd.read_csv(f)
+                # TODO: check if index 0 in both lines is correct
                 class_name = csv_df['class'][0] if len(csv_df['class']) > 0 else 'Empty Class Name'
                 rule_name = csv_df['ruletype_longname'][0] if len(
                     csv_df['ruletype_longname']) > 0 else 'Empty Rule Name'

@@ -1,4 +1,4 @@
-qald7_properties = {"http://dbpedia.org/ontology/capital", "http://dbpedia.org/ontology/mayor",
+qald7_properties = ["http://dbpedia.org/ontology/capital", "http://dbpedia.org/ontology/mayor",
                     "http://dbpedia.org/ontology/leaderName", "http://dbpedia.org/ontology/height",
                     "http://dbpedia.org/ontology/officialLanguage", "http://dbpedia.org/ontology/populationTotal",
                     "http://dbpedia.org/ontology/editor", "http://dbpedia.org/ontology/child",
@@ -56,4 +56,4 @@ qald7_properties = {"http://dbpedia.org/ontology/capital", "http://dbpedia.org/o
                     "http://dbpedia.org/ontology/populationTotal", "http://dbpedia.org/ontology/populationTotal",
                     "http://dbpedia.org/ontology/growingGrape", "http://dbpedia.org/ontology/wineRegion",
                     "http://dbpedia.org/ontology/starring", "http://dbpedia.org/ontology/currency",
-                    "http://dbpedia.org/property/nickname", "http://dbpedia.org/ontology/language"}
+                    "http://dbpedia.org/property/nickname", "http://dbpedia.org/ontology/language"]

@@ -51,6 +51,6 @@ def create_rank_metric_csvs(merged_csv, ranks, metrics):
         for rank in ranks:
             print(f'Extracting rank: {rank} and metric:{metric}\n')
             csv_df = merged_csv.sort_values(metric, inplace=False, ascending=False)
-            csv_results.append((csv_df.head(rank), rank, metric))
+            csv_results.append((csv_df, rank, metric))
             print(f'Done.\n')
     return csv_results

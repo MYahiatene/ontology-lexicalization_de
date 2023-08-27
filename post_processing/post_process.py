@@ -132,16 +132,18 @@ def post_proccess_noun(noun_map, noun_list: list, rank=None, metric=None):
         writer = csv.DictWriter(file, fieldnames=nounHeader)
         if os.stat(path).st_size == 0:
             writer.writeheader()
-            return
         if str(noun_row) not in noun_csv_set:
             writer.writerow(noun_row)
             noun_csv_set.add(str(noun_row))
+            return 1
+    return 0
 
 
 def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list, rank=None, metric=None):
     path = 'csv_results/TransitiveFrame.csv' if rank is None and metric is None else f'csv_results/TransitiveFrame_{metric}_{rank}.csv'
     path2 = 'csv_results/IntransitiveFrame.csv' if rank is None and metric is None else f'csv_results/IntransitiveFrame_{metric}_{rank}.csv'
     domain_range_map_entry = None
+    count = 0
     if verb_list[-1] == 'transitive':
         domain_range_map_entry = transitiveFrameMap.get(reference, None)
     if verb_list[-1] == 'intransitive':
@@ -175,6 +177,7 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list, rank
             if str(verb_row) not in transitive_csv_set:
                 writer.writerow(verb_row)
                 transitive_csv_set.add(str(verb_row))
+                count += 1
     if verb_type == "intransitive":
         if domain_range_map_entry is None:
             domain = '-'
@@ -203,6 +206,7 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list, rank
             if str(verb_row) not in intransitive_csv_set:
                 writer.writerow(verb_row)
                 intransitive_csv_set.add(str(verb_row))
+                count += 1
     if verb_type == 'intransitive/transitive':
         domain_range_map_entry_transitive = transitiveFrameMap.get(reference, None)
         domain_transitive = None
@@ -259,14 +263,18 @@ def post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list, rank
             if str(verb_row_transitive) not in transitive_csv_set and domain_range_map_entry_transitive is not None:
                 writer.writerow(verb_row_transitive)
                 transitive_csv_set.add(str(verb_row_transitive))
+                count += 1
             if os.stat(path2).st_size == 0:
                 writer2.writeheader()
             if str(verb_row_intransitive) not in intransitive_csv_set and domain_range_map_entry_intransitive is not None:
                 writer2.writerow(verb_row_intransitive)
                 intransitive_csv_set.add(str(verb_row_intransitive))
+                count += 1
+    return count
 
 
 def post_proccess_adj(adj_list, rank=None, metric=None):
+    count = 0
     path = 'csv_results/AttributeAdjective.csv' if rank is None and metric is None else f'csv_results/AttributeAdjective_{metric}_{rank}.csv'
     path2 = 'csv_results/GradableAdjective.csv' if rank is None and metric is None else f'csv_results/GradableAdjective_{metric}_{rank}.csv'
     gradable_list, is_attribute = adj_list
@@ -292,6 +300,7 @@ def post_proccess_adj(adj_list, rank=None, metric=None):
             if str(adj_row) not in attribute_adjective_csv_set:
                 writer.writerow(adj_row)
                 attribute_adjective_csv_set.add(str(adj_row))
+                count += 1
     if is_gradable:
         with open(path2, 'a+') as file:
             writer = csv.DictWriter(file, fieldnames=gradableAdjHeader)
@@ -316,27 +325,30 @@ def post_proccess_adj(adj_list, rank=None, metric=None):
             if str(adj_row) not in gradable_adjective_csv_set:
                 writer.writerow(adj_row)
                 gradable_adjective_csv_set.add(str(adj_row))
+                count += 1
+    return count
 
 
 rank_metric_eval_flag = True
 global metrics
-metrics = ['Cosine', 'Conviction', 'Leverage', 'Lift']
+metrics = ['Conviction', 'Lift']
 global csv_pd_metric_arr
 global ranks
-ranks = [10]
+ranks = [100]
 
 if rank_metric_eval_flag:
+    dir_list = os.listdir('csv_results')
     for rank in ranks:
         for metric in metrics:
-            if os.path.exists(f'csv_results/AttributeAdjective_{metric}_{rank}.csv'):
+            if f'AttributeAdjective_{metric}_{rank}.csv' in dir_list:
                 os.unlink(f'csv_results/AttributeAdjective_{metric}_{rank}.csv')
-            if os.path.exists(f'csv_results/GradableAdjective_{metric}_{rank}.csv'):
+            if f'GradableAdjective_{metric}_{rank}.csv' in dir_list:
                 os.unlink(f'csv_results/GradableAdjective_{metric}_{rank}.csv')
-            if os.path.exists(f'csv_results/NounPPFrame_{metric}_{rank}.csv'):
+            if f'NounPPFrame_{metric}_{rank}.csv' in dir_list:
                 os.unlink(f'csv_results/NounPPFrame_{metric}_{rank}.csv')
-            if os.path.exists(f'csv_results/TransitiveFrame_{metric}_{rank}.csv'):
+            if f'TransitiveFrame_{metric}_{rank}.csv' in dir_list:
                 os.unlink(f'csv_results/TransitiveFrame_{metric}_{rank}.csv')
-            if os.path.exists(f'InTransitiveFrame_{metric}_{rank}.csv'):
+            if f'InTransitiveFrame_{metric}_{rank}.csv' in dir_list:
                 os.unlink(f'csv_results/InTransitiveFrame_{metric}_{rank}.csv')
 else:
     if os.path.exists('csv_results/AttributeAdjective.csv'):
@@ -363,8 +375,11 @@ with alive_bar(number_of_csv_files, title='Processing', force_tty=True) as bar:
     if rank_metric_eval_flag:
         # print(f'Array of metrics: {csv_pd_metric_arr}')
         for tuple_csv in csv_pd_metric_arr:
+            count = 0
             csv_df, rank, metric = tuple_csv
             for index, line in csv_df.iterrows():
+                if count >= rank:
+                    break
                 ngram = line['patterntype']
                 reference = line['predicate']
                 words = replace_stop_words(replace_umlaute(line['linguistic pattern']))
@@ -377,15 +392,15 @@ with alive_bar(number_of_csv_files, title='Processing', force_tty=True) as bar:
                     pos_tag = lemmata_pos_word[0][1][0][1]
                 if pos_tag.startswith('ADJ'):
                     adj_list = get_adj_wiktionary_data_from_dumps(dict_wiktionary_adj, word)
-                    post_proccess_adj(adj_list, rank, metric)
+                    count += post_proccess_adj(adj_list, rank, metric)
                 if pos_tag.startswith('N'):
                     noun_list = get_noun_wiktionary_data_from_dumps(
                         dict_wiktionary_noun, word)
-                    post_proccess_noun(nounMap, noun_list, rank, metric)
+                    count += post_proccess_noun(nounMap, noun_list, rank, metric)
                 if pos_tag.startswith('V'):
                     verb_list = get_verb_wiktionary_data_from_dumps(
                         dict_wiktionary_verb, word)
-                    post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list, rank, metric)
+                    count += post_proccess_verb(transitiveFrameMap, intransitiveFrameMap, verb_list, rank, metric)
             bar()
     else:
         for file in csv_files:

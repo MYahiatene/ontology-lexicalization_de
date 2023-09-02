@@ -149,19 +149,19 @@ foreach my $key (keys %{$CFG_IMPORT}) {
 # print "className::" . $className . "\n";
 
 #################################################
-open(DAT, "<$BASEDIR/input/stopwords-de.txt");
+open(DAT, "<$BASEDIR/input/stopwords-$LANGTAG.txt");
 while (defined(my $line = <DAT>)) {
     next if $line =~ m/\A#/;
     $line =~ s/\n//;
     $CFG->{stopwords}->{$line} = 1;
 }
 close DAT;
-open(DAT, "<$BASEDIR/input/classes_map_$LANGTAG.txt");
-while (defined(my $line = <DAT>)) {
-    if ($line =~ m/^$className,(.*)/) {
-        $classes->{$className} = ucfirst $1;}
-}
-close DAT;
+#open(DAT, "<$BASEDIR/input/classes_map_$LANGTAG.txt");
+#while (defined(my $line = <DAT>)) {
+#    if ($line =~ m/^$className,(.*)/) {
+#        $classes->{$className} = ucfirst $1;}
+#}
+#close DAT;
 my $folder_length = 4; # length of the name of the subfolder in $BASEDIR/input/data_per_entity/
 
 open(LOG, ">>logfile.txt");
@@ -182,7 +182,7 @@ if (
     my $entities_with_abstract = {};
     my $entities_with_abstract_file = "$BASEDIR/inter/entities_with_abstract.yml";
     if (not -s $entities_with_abstract_file) {
-        print " < $BASEDIR/input/inputAbstract/short-abstracts_lang=$LANGTAG.ttl.bz2 " . format_bytes(-s "$BASEDIR/input/inputAbstract/short-abstracts_lang=de.ttl.bz2") . "\n";
+        print " < $BASEDIR/input/inputAbstract/short-abstracts_lang=$LANGTAG.ttl.bz2 " . format_bytes(-s "$BASEDIR/input/inputAbstract/short-abstracts_lang=$LANGTAG.ttl.bz2") . "\n";
         my $zh = IO::Uncompress::Bunzip2->new(
             "$BASEDIR/input/inputAbstract/short-abstracts_lang=$LANGTAG.ttl.bz2",
             { AutoClose => 1, Transparent => 1, }
@@ -202,7 +202,7 @@ if (
         $entities_with_abstract = LoadFile($entities_with_abstract_file);
     }
 
-    print " < $BASEDIR/input/inputSemantic/instance-types_lang=$LANGTAG\_specific.ttl.bz2 " . (format_bytes(-s "$BASEDIR/input/inputSemantic/instance-types_lang=de_specific.ttl.bz2")) . "\n";
+    print " < $BASEDIR/input/inputSemantic/instance-types_lang=$LANGTAG\_specific.ttl.bz2 " . (format_bytes(-s "$BASEDIR/input/inputSemantic/instance-types_lang=$LANGTAG\_specific.ttl.bz2")) . "\n";
     my $zh = IO::Uncompress::Bunzip2->new(
         "$BASEDIR/input/inputSemantic/instance-types_lang=$LANGTAG\_specific.ttl.bz2",
         { AutoClose => 1, Transparent => 1, }
@@ -540,7 +540,7 @@ if (not -e $step3_finished_file) {
 
     # TODO step 3 could be cleaned up a bit
     my $start_time = time();
-    print " < $BASEDIR/input/inputAbstract/short-abstracts_lang=$LANGTAG.ttl.bz2 " . format_bytes(-s "$BASEDIR/input/inputAbstract/short-abstracts_lang=de.ttl.bz2") . "\n";
+    print " < $BASEDIR/input/inputAbstract/short-abstracts_lang=$LANGTAG.ttl.bz2 " . format_bytes(-s "$BASEDIR/input/inputAbstract/short-abstracts_lang=$LANGTAG.ttl.bz2") . "\n";
     my $zh = IO::Uncompress::Bunzip2->new(
         "$BASEDIR/input/inputAbstract/short-abstracts_lang=$LANGTAG.ttl.bz2",
         { AutoClose => 1, Transparent => 1, }
@@ -3095,19 +3095,19 @@ sub parse_NT_into_obj {
 
 
     # URI+(Politiker...) URI URI
-    if ($string =~ m/<(.*\($classes->{$className}.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/i) {
+#    if ($string =~ m/<(.*\($classes->{$className}.*\).*)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/i) {
         # class =  Politiker
         # <http://de.dbpedia.org/resource/Franziska_Reindl_(Politikerin)> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person> .
         # class = Place
         # <http://de.dbpedia.org/resource/Franziskanerkirche_(Bratislava)> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Place> .
-        return {
-            s => { type => "uri", value => "$1" },
-            p => { type => "uri", value => "$2" },
-            o => { type => "uri", value => "http://dbpedia.org/ontology/$className" }, # http://dbpedia.org/ontology/Politiker -> http://dbpedia.org/ontology/Politician
-        };
-    }
+#        return {
+#            s => { type => "uri", value => "$1" },
+#            p => { type => "uri", value => "$2" },
+#            o => { type => "uri", value => "http://dbpedia.org/ontology/$className" }, # http://dbpedia.org/ontology/Politiker -> http://dbpedia.org/ontology/Politician
+#        };
+ #   }
     # URI URI URI
-    elsif ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
+    if ($string =~ m/<(.+)>(?:\s|\t)<(.+)>(?:\s|\t)<(.+)> .\n\Z/) {
         return {
             s => { type => "uri", value => "$1" },
             p => { type => "uri", value => "$2" },
